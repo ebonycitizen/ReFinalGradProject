@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400002}
+  - component: {fileID: 1165638721}
+  - component: {fileID: 774236159}
+  m_Layer: 0
+  m_Name: BlobShadowProjector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_LocalRotation: {x: 0.75157493, y: 0, z: 0, w: 0.65964776}
+  m_LocalPosition: {x: 0, y: 1.877, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 97.45398, y: 0, z: 0}
+--- !u!114 &1165638721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba8e907f2450774fb55281098f20b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fps: 8
+  frames:
+  - {fileID: 2800000, guid: 2aeabd53596d1f2469fceaaefd88a54f, type: 3}
+  - {fileID: 2800000, guid: ffffb9f4c49131d43b4283dc787b0582, type: 3}
+  - {fileID: 2800000, guid: 7052ccf85be5e4644976928aff8176a0, type: 3}
+  - {fileID: 2800000, guid: 47d67d93ca3000344b67fbf80631a543, type: 3}
+  - {fileID: 2800000, guid: db7252a25e1ce7c48bfb75e65d80295c, type: 3}
+  - {fileID: 2800000, guid: 848afff57f37f4d49ac9d439ac1d4067, type: 3}
+  - {fileID: 2800000, guid: e92e92aa875ca1d439fd665eee54dc91, type: 3}
+  - {fileID: 2800000, guid: 463577cf7e4fc6443ab8a16e5136b096, type: 3}
+  - {fileID: 2800000, guid: 91370749e143891459b93ab57484f678, type: 3}
+  - {fileID: 2800000, guid: dcc24b890f856fc4e8925cb42d36428c, type: 3}
+  - {fileID: 2800000, guid: 965b995ac83d9f041837d66dac07811a, type: 3}
+  - {fileID: 2800000, guid: d9eabd8014564be4987e18e0f178dd5e, type: 3}
+  - {fileID: 2800000, guid: 3c112257ace996c4891f12b93df1c38c, type: 3}
+  - {fileID: 2800000, guid: 700c80530c69e8f4c8627d79b3198e6e, type: 3}
+  - {fileID: 2800000, guid: 418f3b8872d79e84c8cac5bd501e30f7, type: 3}
+  - {fileID: 2800000, guid: 9c046975e3b03a748bdb2c7597c54900, type: 3}
+--- !u!119 &774236159
+Projector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 0.1
+  m_FarClipPlane: 150
+  m_FieldOfView: 60
+  m_AspectRatio: 1
+  m_Orthographic: 1
+  m_OrthographicSize: 60
+  m_Material: {fileID: 2100000, guid: 9850b9f04251c784a86677d61591df04, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 512

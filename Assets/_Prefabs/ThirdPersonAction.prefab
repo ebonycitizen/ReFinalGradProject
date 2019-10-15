@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1979951714279268192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1979951714279268194}
+  - component: {fileID: 1979951714279268193}
+  - component: {fileID: 1979951714279268195}
+  m_Layer: 0
+  m_Name: ThirdPersonAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1979951714279268194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979951714279268192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1979951714279268193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979951714279268192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa76159027d4e834c8657f218e03e44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabAction:
+    actionPath: 
+    needsReinit: 0
+  useCamera: 1
+  useHand: 0
+  rayCamera: {fileID: 0}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  cameraCursor: {fileID: 0}
+  rightCursor: {fileID: 0}
+  leftCursor: {fileID: 0}
+  deadEffect: {fileID: 0}
+  lockNumMax: 8
+  targetLayer: Enemy
+  atkSpeedRequire: 10
+  lockOnCursorPrefab: {fileID: 5380623678541295918, guid: 90323a0d551e2ce4b866b904a7597174,
+    type: 3}
+  missilePrefab: {fileID: 4878354690156721428, guid: 60270c6e5e01cf144b6b4aa569007795,
+    type: 3}
+  missileInitPos: {fileID: 0}
+--- !u!114 &1979951714279268195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979951714279268192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaab0635ce24cf14eb65cddc35ccb8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  target: {fileID: 0}
+  rotateSec: 0.5
+  moveDist: 7
