@@ -57,7 +57,7 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
     {
         targetPos = Quaternion.Euler(target.localEulerAngles) * transform.forward * distance;
 
-        transform.localPosition = Vector3.Slerp(transform.localPosition, targetPos, Time.deltaTime * 2f);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * 2f);
     }
 
     private void LookForward()
