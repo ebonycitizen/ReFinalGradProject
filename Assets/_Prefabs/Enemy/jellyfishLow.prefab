@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 3806951445652001920}
   - component: {fileID: 8868363869942618898}
   - component: {fileID: 7101643048234047804}
+  - component: {fileID: 6363079206332630815}
   m_Layer: 12
   m_Name: jellyfishLow
   m_TagString: Untagged
@@ -165,6 +166,19 @@ MonoBehaviour:
   delayTime: 0
   floatingTime: 3
   increasePositionY: 5
+--- !u!135 &6363079206332630815
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103644325438663831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.0166565
+  m_Center: {x: 0.09117286, y: -0.22793612, z: -0.42}
 --- !u!1 &1372221238166648944
 GameObject:
   m_ObjectHideFlags: 0
