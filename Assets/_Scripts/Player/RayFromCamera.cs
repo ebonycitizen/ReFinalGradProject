@@ -28,7 +28,7 @@ public class RayFromCamera : MonoBehaviour
     {
         rayDirection = (rayPos.position - transform.position).normalized;
         int layerMask = LayerMask.NameToLayer(layer);
-        Debug.DrawRay(transform.position, rayDirection * rayLegth);
+        //Debug.DrawRay(transform.position, rayDirection * rayLegth);
         bool isHit = Physics.Raycast(transform.position, rayDirection, out hit, rayLegth , 1 << layerMask);
 
         if (isHit)

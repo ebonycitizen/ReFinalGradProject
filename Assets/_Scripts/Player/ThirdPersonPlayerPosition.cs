@@ -12,6 +12,9 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
 
     [SerializeField]
     private float distance;
+    private float maxDistance=7;
+    [SerializeField]
+    private LayerMask layerMask;
 
     [SerializeField]
     private GameObject hitPrefab;
@@ -22,8 +25,9 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
     private ContactPoint[] c;
 
     private Rigidbody rb;
-    private GameObject collideTarget;
+
     private Vector3 targetPos;
+
     private Vector3 oldPos;
     private Vector3 oldForwardPos = Vector3.zero;
 
@@ -55,7 +59,19 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
 
     private void MovePos()
     {
-        targetPos = Quaternion.Euler(target.localEulerAngles) * transform.forward * distance;
+
+        RaycastHit hit;
+        var direction = Quaternion.Euler(target.localEulerAngles) * transform.forward;
+
+        Debug.DrawRay(transform.parent.position, direction.normalized*34);
+        bool isHit = Physics.Raycast(transform.parent.position, direction, out hit,34 , layerMask);
+
+        if (isHit)
+            targetPos = transform.parent.InverseTransformPoint(hit.point-direction*10);//distance = (transform.position - hit.point).magnitude;
+        else
+            targetPos = direction * distance;//distance = maxDistance;
+
+        //targetPos = direction * distance;
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * 2f);
     }
@@ -91,11 +107,14 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
         oldPos = transform.localPosition;
     }
 
+
+    private float time=0;
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint[] c = collision.contacts;
 
         Instantiate(hitPrefab, c[0].point, Quaternion.identity);
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -107,6 +126,15 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
 
         //Debug.Log(c[0].normal + " " + c[0].separation);
         transform.position = transform.position + c[0].normal * -c[0].separation;
+
+        time += 10;
+
+        Debug.Log(time);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log(time);
     }
 
     #region gomi
