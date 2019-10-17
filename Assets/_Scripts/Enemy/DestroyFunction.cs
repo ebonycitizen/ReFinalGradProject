@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destory : MonoBehaviour
+public class DestroyFunction : MonoBehaviour
 {
     public void DoDestory()
     {

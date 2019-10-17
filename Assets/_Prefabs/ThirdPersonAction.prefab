@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrabAction:
-    actionPath: 
+    actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
   useCamera: 1
   useHand: 0
@@ -55,10 +55,11 @@ MonoBehaviour:
   cameraCursor: {fileID: 0}
   rightCursor: {fileID: 0}
   leftCursor: {fileID: 0}
-  deadEffect: {fileID: 0}
   lockNumMax: 8
-  targetLayer: Enemy
-  atkSpeedRequire: 10
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  atkSpeedRequire: 1.2
   lockOnCursorPrefab: {fileID: 5380623678541295918, guid: 90323a0d551e2ce4b866b904a7597174,
     type: 3}
   missilePrefab: {fileID: 4878354690156721428, guid: 60270c6e5e01cf144b6b4aa569007795,
