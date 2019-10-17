@@ -29,12 +29,9 @@ public class LockOnTarget : MonoBehaviour
     private GameObject leftCursor;
 
     [SerializeField]
-    private GameObject deadEffect;
-
+    private int lockNumMax = 4;//ロックオンできる最大数
     [SerializeField]
-    private int lockNumMax = 8;//ロックオンできる最大数
-    [SerializeField]
-    private string targetLayer;
+    private LayerMask targetLayer;
 
     [SerializeField]
     private float atkSpeedRequire;
@@ -134,9 +131,11 @@ public class LockOnTarget : MonoBehaviour
             //HI5_Manager.EnableBothGlovesVibration(400, 400);
             player.Attack(0);
 
-            StartCoroutine("Blastoff");
+            //delete lockon mark
+            foreach(GameObject obj in GameObject.FindGameObjectsWithTag("LockOn"))
+                Destroy(obj);
 
-            //DestroyTarget();
+            StartCoroutine("Blastoff");
         }
     }
 
@@ -148,6 +147,8 @@ public class LockOnTarget : MonoBehaviour
         {
             if (obj == null)
                 continue;
+
+            
 
             GameObject missile = Instantiate(missilePrefab, missileInitPos);
             missile.GetComponent<Missile>().initMissile(obj, directionX);
@@ -161,7 +162,7 @@ public class LockOnTarget : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        DestroyTarget();
+        lockOnTargets.Clear();
         canAtack = true;
 
         yield return null;
@@ -171,23 +172,8 @@ public class LockOnTarget : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         
-        Instantiate(deadEffect, obj.transform);
+        Instantiate(obj.GetComponent<EnemyDeadEffect>().GetDeadEffect(), obj.transform);
         obj.transform.DOScale(Vector3.zero, 0.5f);
-        Destroy(obj, 1);
-        yield return null;
-    }
-
-    private void DestroyTarget()
-    {
-        foreach (GameObject obj in lockOnTargets)
-        {
-            if (obj == null)
-                continue;
-            obj.GetComponent<Collider>().enabled = false;
-            Instantiate(deadEffect, obj.transform);
-            obj.transform.DOScale(Vector3.zero, 0.5f);
-            Destroy(obj, 1);
-        }
-        lockOnTargets.Clear();
+        Destroy(obj, 1);        
     }
 }

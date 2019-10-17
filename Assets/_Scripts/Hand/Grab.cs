@@ -50,11 +50,11 @@ public class Grab : MonoBehaviour
         return forward;
     }
 
-    public GameObject LockOn(string layer)
+    public GameObject LockOn(LayerMask layerMask)
     {
-        int layerMask = LayerMask.NameToLayer(layer);
+        //int layerMask = LayerMask.NameToLayer(layer);
         Debug.DrawRay(palmCenter.position, forward * rayLegth * 15);
-        bool isHit = Physics.Raycast(palmCenter.position, forward, out hit, rayLegth * 15f, 1 << layerMask);
+        bool isHit = Physics.Raycast(palmCenter.position, forward, out hit, rayLegth * 15f, layerMask);
         //bool isHit = Physics.BoxCast(palmCenter.position, Vector3.one * 0.5f, forward, out hit, palmCenter.rotation, Mathf.Infinity, 1 << layer);
 
         if (isHit)
