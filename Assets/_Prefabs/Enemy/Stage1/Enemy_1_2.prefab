@@ -46,7 +46,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4962001470804717589}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 4
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -59,6 +59,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7143866816854131567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962001470804717589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1854c7978f471a4f8b38e6cf294f21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4962001470814124925}
 --- !u!1001 &4962001470804599293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +269,12 @@ PrefabInstance:
       objectReference: {fileID: 4962001470804305157}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c66e2fd21d94be41ab66f591a280f29, type: 3}
+--- !u!95 &4962001470814124925 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9525888, guid: 8c66e2fd21d94be41ab66f591a280f29,
+    type: 3}
+  m_PrefabInstance: {fileID: 4962001470804599293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4962001470804305157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 492792, guid: 8c66e2fd21d94be41ab66f591a280f29,
@@ -334,15 +353,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4962001470804599293}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4962001470804257627 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 445094, guid: 8c66e2fd21d94be41ab66f591a280f29,
-    type: 3}
-  m_PrefabInstance: {fileID: 4962001470804599293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4962001470804717589 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 119272, guid: 8c66e2fd21d94be41ab66f591a280f29,
+    type: 3}
+  m_PrefabInstance: {fileID: 4962001470804599293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4962001470804233923 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 438078, guid: 8c66e2fd21d94be41ab66f591a280f29,
     type: 3}
   m_PrefabInstance: {fileID: 4962001470804599293}
   m_PrefabAsset: {fileID: 0}
@@ -436,9 +455,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4962001470804599293}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4962001470804233923 stripped
+--- !u!4 &4962001470804257627 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 438078, guid: 8c66e2fd21d94be41ab66f591a280f29,
+  m_CorrespondingSourceObject: {fileID: 445094, guid: 8c66e2fd21d94be41ab66f591a280f29,
     type: 3}
   m_PrefabInstance: {fileID: 4962001470804599293}
   m_PrefabAsset: {fileID: 0}
