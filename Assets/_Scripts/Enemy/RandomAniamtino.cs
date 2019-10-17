@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomAniamtino : MonoBehaviour
+public class RandomAniamtion : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
