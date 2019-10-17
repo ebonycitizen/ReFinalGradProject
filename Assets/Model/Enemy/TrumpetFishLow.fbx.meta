@@ -9,38 +9,48 @@ ModelImporter:
     100006: Bone03
     100008: Bone04
     100010: Bone04_end
-    100012: Bone05
-    100014: Bone06
-    100016: Bone07
-    100018: Bone08
-    100020: Bone09
-    100022: Bone10
-    100024: Bone11
-    100026: Bone12
-    100028: Bone12_end
-    100030: Cylinder01
-    100032: //RootNode
+    100012: Bone04_end_end
+    100014: Bone05
+    100016: Bone06
+    100018: Bone07
+    100020: Bone08
+    100022: Bone09
+    100024: Bone10
+    100026: Bone11
+    100028: Bone12
+    100030: Bone12_end
+    100032: Bone12_end_end
+    100034: Cube
+    100036: Cylinder01
+    100038: //RootNode
     400000: Armature
     400002: Bone01
     400004: Bone02
     400006: Bone03
     400008: Bone04
     400010: Bone04_end
-    400012: Bone05
-    400014: Bone06
-    400016: Bone07
-    400018: Bone08
-    400020: Bone09
-    400022: Bone10
-    400024: Bone11
-    400026: Bone12
-    400028: Bone12_end
-    400030: Cylinder01
-    400032: //RootNode
-    2100000: 01 - Default.001
-    4300000: Cylinder01
-    7400000: Armature|Armature|Take 001|Layer0.001
-    7400002: Armature|Armature|Take 001|Layer0.002
+    400012: Bone04_end_end
+    400014: Bone05
+    400016: Bone06
+    400018: Bone07
+    400020: Bone08
+    400022: Bone09
+    400024: Bone10
+    400026: Bone11
+    400028: Bone12
+    400030: Bone12_end
+    400032: Bone12_end_end
+    400034: Cube
+    400036: Cylinder01
+    400038: //RootNode
+    2100000: Material
+    2100002: 01 - Default.001
+    2300000: Cube
+    3300000: Cube
+    4300000: Cube
+    4300002: Cylinder01
+    7400000: Armature|Armature|Armature|Armature|Take 001|Layer0.001|Armature|Armatur
+    7400002: Armature|Armature|Armature|Armature|Take 001|Layer0.002|Armature|Armatur
     9500000: //RootNode
     13700000: Cylinder01
   externalObjects: {}
@@ -70,63 +80,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Armature|Armature|Take 001|Layer0.001
-      takeName: Armature|Armature|Take 001|Layer0.001
-      firstFrame: 0
-      lastFrame: 120
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Take 001|Layer0.002
-      takeName: Armature|Armature|Take 001|Layer0.002
-      firstFrame: 0
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
