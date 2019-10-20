@@ -23,6 +23,8 @@ public class StageManager : MonoBehaviour
 
     private IEnumerator Load(string scene)
     {
+        Scene oldScene = SceneManager.GetActiveScene();
+
         SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
 
         foreach(GameObject obj in transferObj)
@@ -33,7 +35,7 @@ public class StageManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         yield return new WaitForSeconds(UnloadWaitSec);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.UnloadSceneAsync(oldScene);
     }
 
     public void LoadNextScene(string scene)

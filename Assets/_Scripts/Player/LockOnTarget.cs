@@ -91,7 +91,7 @@ public class LockOnTarget : MonoBehaviour
 
     private void LockTarget(GameObject target)
     {
-        if (target != null && !lockOnTargets.Contains(target))
+        if (target != null && !lockOnTargets.Contains(target) && target.layer == 12)
         {
             lockOnTargets.Add(target);
             Instantiate(lockOnCursorPrefab, target.transform);
@@ -131,10 +131,6 @@ public class LockOnTarget : MonoBehaviour
             //HI5_Manager.EnableBothGlovesVibration(400, 400);
             player.Attack(0);
 
-            //delete lockon mark
-            foreach(GameObject obj in GameObject.FindGameObjectsWithTag("LockOn"))
-                Destroy(obj);
-
             StartCoroutine("Blastoff");
         }
     }
@@ -143,12 +139,20 @@ public class LockOnTarget : MonoBehaviour
     {
         int directionX = 1;
 
-        foreach (GameObject obj in lockOnTargets)
+        GameObject[] objects = new GameObject[lockOnTargets.Count];
+        for (int i = 0; i < lockOnTargets.Count; i++)
+        {
+            objects[i] = lockOnTargets[i];
+        }
+
+        GameObject[] mark = GameObject.FindGameObjectsWithTag("LockOn");
+
+        lockOnTargets.Clear();
+
+        foreach (GameObject obj in objects)
         {
             if (obj == null)
                 continue;
-
-            
 
             GameObject missile = Instantiate(missilePrefab, missileInitPos);
             missile.GetComponent<Missile>().initMissile(obj, directionX);
@@ -159,10 +163,15 @@ public class LockOnTarget : MonoBehaviour
 
             directionX *= -1;
 
+            //lockOnTargets.Remove(obj);
+
             yield return new WaitForSeconds(0.1f);
         }
 
-        lockOnTargets.Clear();
+        //delete lockon mark
+        foreach (GameObject obj in mark)
+            Destroy(obj);
+
         canAtack = true;
 
         yield return null;
@@ -171,9 +180,19 @@ public class LockOnTarget : MonoBehaviour
     IEnumerator DeadEffect(GameObject obj)
     {
         yield return new WaitForSeconds(0.3f);
-        
+
+        if (obj == null)
+            yield break;
+
         Instantiate(obj.GetComponent<EnemyDeadEffect>().GetDeadEffect(), obj.transform);
         obj.transform.DOScale(Vector3.zero, 0.5f);
-        Destroy(obj, 1);        
+        Destroy(obj, 1);
+
+        if (obj.tag == "Core")
+        {
+            var core = obj.GetComponentInParent<EnemyWithCore>();
+            core.coreNum--;
+            core.CanDisappear();
+        }
     }
 }

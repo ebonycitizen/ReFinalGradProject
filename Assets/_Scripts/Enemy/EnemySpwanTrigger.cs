@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpwanTrigger : MonoBehaviour
+namespace SWS
 {
-    [SerializeField]
-    private GameObject spawnObj;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public class EnemySpwanTrigger : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private GameObject spawnObj;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (spawnObj.activeSelf || other.gameObject.layer != LayerMask.NameToLayer("Dolly"))
-            return;
+        [SerializeField]
+        private ActiveSplineMove activeScript;
 
-        spawnObj.SetActive(true);
+        private void OnTriggerEnter(Collider other)
+        {
+            if (spawnObj.activeSelf || other.gameObject.layer != LayerMask.NameToLayer("Dolly"))
+                return;
+
+            spawnObj.SetActive(true);
+
+            if (activeScript)
+                activeScript.DoSplineMove();
+        }
     }
 }

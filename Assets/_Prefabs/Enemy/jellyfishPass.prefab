@@ -226,10 +226,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2233912873752429629}
   - component: {fileID: 5820814784253545391}
-  - component: {fileID: 5285936780242848129}
   - component: {fileID: 8330325689118054306}
+  - component: {fileID: 861600345354477692}
   m_Layer: 12
-  m_Name: jellyfishLow 1
+  m_Name: jellyfishPass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,21 +270,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5285936780242848129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2631684850321816618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b375e4970fc10544e9a11ea43ed994fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0
-  floatingTime: 3
-  increasePositionY: 5
 --- !u!135 &8330325689118054306
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -298,6 +283,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0166565
   m_Center: {x: 0.09117286, y: -0.22793612, z: -0.42}
+--- !u!114 &861600345354477692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631684850321816618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3009b55cfe36940833bdd6eb522e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffect: {fileID: 6303127679484440403, guid: 270a23eca98f91243881793db5f8b1c5,
+    type: 3}
 --- !u!1 &3294929732813477260
 GameObject:
   m_ObjectHideFlags: 0

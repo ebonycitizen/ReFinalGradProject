@@ -6,6 +6,7 @@ public class EnemyDeadEffect : MonoBehaviour
 {
     [SerializeField]
     private GameObject deadEffect;
+
     public GameObject GetDeadEffect()
     {
         return deadEffect;
@@ -13,6 +14,7 @@ public class EnemyDeadEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         
     }
 
