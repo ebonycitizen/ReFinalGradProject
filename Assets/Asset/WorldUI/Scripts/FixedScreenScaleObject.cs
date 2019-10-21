@@ -11,7 +11,7 @@ public class FixedScreenScaleObject : MonoBehaviour {
 	private void Start() {
 		if (_baseScale != INVAILD_BASE_SCALE) return;
 		// カメラからの距離が1のときのスケール値を算出
-		_baseScale = transform.localScale.x / GetDistance();
+		_baseScale = transform.lossyScale.x / GetDistance();
 
 	}
 
@@ -23,10 +23,16 @@ public class FixedScreenScaleObject : MonoBehaviour {
 	}
 
 	private void Update() {
-        if (transform.parent.localScale.x <= 0f)
+        if (transform.parent.lossyScale.x <= 0f)
             return;
-		transform.localScale = Vector3.one * _baseScale / transform.parent.localScale.x * GetDistance();
-        Debug.Log(transform.parent.localScale.x);
+
+        float scale = transform.parent.lossyScale.x;
+        if (scale > transform.parent.lossyScale.y)
+            scale = transform.parent.lossyScale.y;
+        if (scale > transform.parent.lossyScale.z)
+            scale = transform.parent.lossyScale.z;
+
+        transform.localScale = Vector3.one * _baseScale / scale ;// * GetDistance();
 
     }
 }

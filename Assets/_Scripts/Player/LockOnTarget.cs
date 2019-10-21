@@ -29,12 +29,9 @@ public class LockOnTarget : MonoBehaviour
     private GameObject leftCursor;
 
     [SerializeField]
-    private GameObject deadEffect;
-
+    private int lockNumMax = 4;//ロックオンできる最大数
     [SerializeField]
-    private int lockNumMax = 8;//ロックオンできる最大数
-    [SerializeField]
-    private string targetLayer;
+    private LayerMask targetLayer;
 
     [SerializeField]
     private float atkSpeedRequire;
@@ -94,7 +91,7 @@ public class LockOnTarget : MonoBehaviour
 
     private void LockTarget(GameObject target)
     {
-        if (target != null && !lockOnTargets.Contains(target))
+        if (target != null && !lockOnTargets.Contains(target) && target.layer == 12)
         {
             lockOnTargets.Add(target);
             Instantiate(lockOnCursorPrefab, target.transform);
@@ -135,8 +132,6 @@ public class LockOnTarget : MonoBehaviour
             player.Attack(0);
 
             StartCoroutine("Blastoff");
-
-            //DestroyTarget();
         }
     }
 
@@ -144,7 +139,17 @@ public class LockOnTarget : MonoBehaviour
     {
         int directionX = 1;
 
-        foreach (GameObject obj in lockOnTargets)
+        GameObject[] objects = new GameObject[lockOnTargets.Count];
+        for (int i = 0; i < lockOnTargets.Count; i++)
+        {
+            objects[i] = lockOnTargets[i];
+        }
+
+        GameObject[] mark = GameObject.FindGameObjectsWithTag("LockOn");
+
+        lockOnTargets.Clear();
+
+        foreach (GameObject obj in objects)
         {
             if (obj == null)
                 continue;
@@ -158,10 +163,15 @@ public class LockOnTarget : MonoBehaviour
 
             directionX *= -1;
 
+            //lockOnTargets.Remove(obj);
+
             yield return new WaitForSeconds(0.1f);
         }
 
-        DestroyTarget();
+        //delete lockon mark
+        foreach (GameObject obj in mark)
+            Destroy(obj);
+
         canAtack = true;
 
         yield return null;
@@ -170,24 +180,19 @@ public class LockOnTarget : MonoBehaviour
     IEnumerator DeadEffect(GameObject obj)
     {
         yield return new WaitForSeconds(0.3f);
-        
-        Instantiate(deadEffect, obj.transform);
+
+        if (obj == null)
+            yield break;
+
+        Instantiate(obj.GetComponent<EnemyDeadEffect>().GetDeadEffect(), obj.transform);
         obj.transform.DOScale(Vector3.zero, 0.5f);
         Destroy(obj, 1);
-        yield return null;
-    }
 
-    private void DestroyTarget()
-    {
-        foreach (GameObject obj in lockOnTargets)
+        if (obj.tag == "Core")
         {
-            if (obj == null)
-                continue;
-            obj.GetComponent<Collider>().enabled = false;
-            Instantiate(deadEffect, obj.transform);
-            obj.transform.DOScale(Vector3.zero, 0.5f);
-            Destroy(obj, 1);
+            var core = obj.GetComponentInParent<EnemyWithCore>();
+            core.coreNum--;
+            core.CanDisappear();
         }
-        lockOnTargets.Clear();
     }
 }
