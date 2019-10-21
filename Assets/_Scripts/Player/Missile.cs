@@ -56,7 +56,7 @@ public class Missile : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
             return;
         }
 
