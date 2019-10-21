@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8841908242507743062}
   - component: {fileID: 3026391800643816880}
   - component: {fileID: 815067859274709178}
-  - component: {fileID: 8309758612394613633}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -152,18 +151,3 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &8309758612394613633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4878354690156721428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab7088656ec315f4ba44c8ccc9b94c51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gemPrefab: {fileID: 6128712485405423923, guid: 908361f67b9c1ec409c2a456f569204f,
-    type: 3}
-  num: 7
