@@ -18,6 +18,8 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
 
     [SerializeField]
     private GameObject hitPrefab;
+    [SerializeField]
+    private GameObject waterSplash;
 
     [SerializeField]
     private float torque;
@@ -111,9 +113,10 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
     private float time=0;
     private void OnCollisionEnter(Collision collision)
     {
-        ContactPoint[] c = collision.contacts;
+        c = collision.contacts;
 
-        Instantiate(hitPrefab, c[0].point, Quaternion.identity);
+        if (collision.gameObject.tag != "Water")
+            Instantiate(hitPrefab, c[0].point, Quaternion.identity);
 
     }
 
@@ -122,19 +125,18 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
         if (collision.gameObject.layer != LayerMask.NameToLayer("Stage"))
             return;
 
-        ContactPoint[] c = collision.contacts;
+        c = collision.contacts;
 
         //Debug.Log(c[0].normal + " " + c[0].separation);
         transform.position = transform.position + c[0].normal * -c[0].separation;
 
         time += 10;
-
-        Debug.Log(time);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log(time);
+        if (collision.gameObject.tag == "Water")
+            Instantiate(waterSplash,transform);
     }
 
     #region gomi
