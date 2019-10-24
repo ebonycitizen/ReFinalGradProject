@@ -184,6 +184,8 @@ public class LockOnTarget : MonoBehaviour
         if (obj == null)
             yield break;
 
+        obj.GetComponent<EnemyDeadEffect>().SpawnGem();
+
         Instantiate(obj.GetComponent<EnemyDeadEffect>().GetDeadEffect(), obj.transform);
         obj.transform.DOScale(Vector3.zero, 0.5f);
         Destroy(obj, 1);

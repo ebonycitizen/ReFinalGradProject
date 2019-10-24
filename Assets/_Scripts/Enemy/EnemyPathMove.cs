@@ -26,7 +26,7 @@ public class EnemyPathMove : MonoBehaviour
 
         transform.DOPath(movePath, moveTime, PathType.CatmullRom)
        .SetEase(ease).SetDelay(delayTime)
-       .OnComplete(() => DestroyObj()).GotoWaypoint(1, true);
+       .OnComplete(() => DestroyObj()).SetLookAt(0.02f,Vector3.forward);
     }
 
     // Update is called once per frame
