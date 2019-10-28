@@ -22,14 +22,14 @@ public partial class OrcaState : MonoBehaviour
     private GameObject cameraRig;
     [SerializeField]
     private GameObject rayObject;
-    [SerializeField]
-    private GameObject orca;
 
     [SerializeField]
     private GameObject orcaModel;
 
     [SerializeField]
     private Transform idleTarget;
+    [SerializeField]
+    private Transform idleRotation;
 
     private void Awake()
     {
@@ -54,13 +54,13 @@ public partial class OrcaState : MonoBehaviour
     private void ChangeParentCameraRig()
     {
         if (cameraRig != null)
-            orca.transform.parent = cameraRig.transform;
+            transform.parent = cameraRig.transform;
     }
 
     private void ChangeParentRayObject()
     {
         if (rayObject != null)
-            orca.transform.parent = rayObject.transform;
+            transform.parent = rayObject.transform;
     }
 
 }

@@ -8,6 +8,7 @@ public partial class OrcaState
     private class IdleState : ImtStateMachine<OrcaState>.State
     {
         private Transform target;
+        private Transform rot;
         private Transform orca;
 
         private float distance = 7;
@@ -19,6 +20,7 @@ public partial class OrcaState
         {
             Context.ChangeParentCameraRig();
             target = Context.idleTarget;
+            rot = Context.idleRotation;
             orca = Context.orcaModel.transform;
 
             forwardPos = Context.cameraRig.transform;
@@ -44,7 +46,7 @@ public partial class OrcaState
 
             orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime * 2f);
         }
-
+        private Vector3 old;
         private void Rotate()
         {
             var d = forwardPos.position - oldForwardPos;
@@ -52,10 +54,26 @@ public partial class OrcaState
             {
                 var q = Quaternion.LookRotation(d);
 
+
                 if (q.eulerAngles != Vector3.zero)
-                    orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
+                {
+                    orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z);
+                }
+                
             }
+
             oldForwardPos = forwardPos.position;
+
+            //var t =  old -orca.localPosition;
+
+            //var rot = orca.localEulerAngles.y;
+
+            //var x = Mathf.Sin(rot) * t.x + Mathf.Cos(rot) *t.z;
+
+            //Debug.Log(x);
+
+            //old = orca.localPosition;
+             
         }
         protected internal override void Exit()
         {
