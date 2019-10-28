@@ -7,7 +7,7 @@ public class RayFromCamera : MonoBehaviour
     [SerializeField]
     private Transform rayPos;
 
-    private float rayLegth = 240;
+    private float rayLegth = 100;
     private RaycastHit hit;
     private Vector3 rayDirection;
 
