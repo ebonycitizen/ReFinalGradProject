@@ -5,12 +5,9 @@ using UnityEngine;
 public class IdleTarget : MonoBehaviour
 {
     [SerializeField]
-    private Transform target;
+    private Transform mainCameraEye;
     [SerializeField]
     private float ratio;
-
-    [SerializeField]
-    private Transform player;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +22,7 @@ public class IdleTarget : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        var q = target.rotation * Quaternion.Inverse(transform.rotation);
+        var q = mainCameraEye.rotation * Quaternion.Inverse(transform.rotation);
         if(q.w<0f)
         {
             q.x = -q.x;
