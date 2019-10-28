@@ -9,7 +9,8 @@ public class OrcaCollision : MonoBehaviour
     [SerializeField]
     private GameObject hitPrefab;
 
-
+    [SerializeField]
+    private GameObject bigSplash;
     [SerializeField]
     private GameObject waterSplash;
 
@@ -19,7 +20,8 @@ public class OrcaCollision : MonoBehaviour
 
         if (collision.gameObject.tag != "Water")
             Instantiate(hitPrefab, c[0].point, Quaternion.identity);
-
+        else
+            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -37,6 +39,9 @@ public class OrcaCollision : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Water")
+        {
+            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
+        }
     }
 }

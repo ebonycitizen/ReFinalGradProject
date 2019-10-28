@@ -4968,7 +4968,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.6666667, b: 0.23529412, a: 0.7058824}
-      maxColor: {r: 0.18431373, g: 0.7058824, b: 1, a: 1}
+      maxColor: {r: 0.5254902, g: 0.827451, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9555,7 +9555,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.6666667, b: 0.23529412, a: 0.7058824}
-      maxColor: {r: 0.18396229, g: 0.70505995, b: 1, a: 1}
+      maxColor: {r: 0.5235849, g: 0.8267581, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9617,8 +9617,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 0.8
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14202,8 +14202,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.18431373, g: 0.7058824, b: 1, a: 0.78431374}
-      maxColor: {r: 0.18431373, g: 0.7058824, b: 1, a: 1}
+      minColor: {r: 0.5254902, g: 0.827451, b: 1, a: 0.78431374}
+      maxColor: {r: 0.5254902, g: 0.827451, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14265,8 +14265,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 1.5
+      minScalar: 1.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -18645,7 +18645,7 @@ Transform:
   m_GameObject: {fileID: 5605012788620035418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -25.42, y: -3.5, z: -2.69}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 5605012788053149313}
   - {fileID: 5605012788049154749}
@@ -23337,8 +23337,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 262144
   startLockOn: {fileID: 5605012787890421138}
-  normalColor: {r: 0.18431373, g: 0.7058824, b: 1, a: 0.89411765}
-  lockonColor: {r: 1, g: 0.78039217, b: 0.30980393, a: 0.92941177}
+  normalColor: {r: 0.5254902, g: 0.827451, b: 1, a: 1}
+  lockonColor: {r: 1, g: 0.78039217, b: 0.30980393, a: 1}
 --- !u!135 &5605012788620035423
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23350,5 +23350,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
