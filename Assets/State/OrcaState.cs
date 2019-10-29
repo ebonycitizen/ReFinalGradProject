@@ -14,6 +14,7 @@ public partial class OrcaState : MonoBehaviour
         Swim,
         Click,
         Come,
+        Rescue,
     }
 
     private ImtStateMachine<OrcaState> stateMachine;
@@ -38,6 +39,7 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.AddAnyTransition<IdleState>((int)StateEventId.Idle);
             stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
             stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
+            stateMachine.AddTransition<IdleState, RescueState>((int)StateEventId.Rescue);
 
             stateMachine.SetStartState<IdleState>();
         }

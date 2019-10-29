@@ -32,14 +32,12 @@ public partial class OrcaState
             Move();
             Rotate();
 
-            if (Input.GetKeyDown(KeyCode.A))
-            {
+            if (Input.GetKeyDown(KeyCode.J))
                 stateMachine.SendEvent((int)StateEventId.Jump);
-            }
             if(Input.GetKeyDown(KeyCode.S))
-            {
                 stateMachine.SendEvent((int)StateEventId.Swim);
-            }
+            if (Input.GetKeyDown(KeyCode.R))
+                stateMachine.SendEvent((int)StateEventId.Rescue);
         }
 
         private void Move()
