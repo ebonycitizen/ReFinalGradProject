@@ -37,6 +37,7 @@ public partial class OrcaState : MonoBehaviour
             stateMachine = new ImtStateMachine<OrcaState>(this);
             stateMachine.AddAnyTransition<IdleState>((int)StateEventId.Idle);
             stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
+            stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
 
             stateMachine.SetStartState<IdleState>();
         }
@@ -54,13 +55,13 @@ public partial class OrcaState : MonoBehaviour
     private void ChangeParentCameraRig()
     {
         if (cameraRig != null)
-            transform.parent = cameraRig.transform;
+            orcaModel.transform.parent = transform;
     }
 
     private void ChangeParentRayObject()
     {
         if (rayObject != null)
-            transform.parent = rayObject.transform;
+            orcaModel.transform.parent = rayObject.transform;
     }
 
 }
