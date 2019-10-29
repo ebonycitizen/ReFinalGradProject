@@ -31,11 +31,11 @@ public class IdleRotation : MonoBehaviour
 
         rb.AddRelativeTorque(new Vector3(0, h, -h));
         rb.AddRelativeTorque(new Vector3(v, 0, 0));
-        var left = orca.transform.TransformVector(Vector3.left);
+        var left = transform.TransformVector(Vector3.left);
         var horiLeft = new Vector3(left.x, 0, left.z).normalized;
         rb.AddTorque(Vector3.Cross(left, horiLeft) * torque);
 
-        var forward = orca.transform.TransformVector(Vector3.forward);
+        var forward = transform.TransformVector(Vector3.forward);
         var horiForward = new Vector3(forward.x, 0, forward.z).normalized;
         rb.AddTorque(Vector3.Cross(forward, horiForward) * torque);
 

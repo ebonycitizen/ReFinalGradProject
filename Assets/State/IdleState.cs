@@ -58,10 +58,10 @@ public partial class OrcaState
             {
                 var q = Quaternion.LookRotation(d);
 
-
                 if (q.eulerAngles != Vector3.zero)
                 {
-                    orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z);
+                    //orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z);
+                    orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z),0.2f);
                 }
                 
             }

@@ -9,6 +9,7 @@ public partial class OrcaState
     private class JumpState : ImtStateMachine<OrcaState>.State
     {
         private Transform orca;
+        private float elaspedTime = 0f;
         Sequence s;
         Sequence s2;
 
@@ -25,9 +26,9 @@ public partial class OrcaState
         {
             s = DOTween.Sequence();
             s.Append(orca.DOLocalMoveY(orca.localPosition.y + 6, 1).SetEase(Ease.InOutQuad))
-                .Append(orca.DOLocalMoveY(orca.localPosition.y, 1).SetEase(Ease.InQuad))
+                .Append(orca.DOLocalMoveY(orca.localPosition.y, 1).SetEase(Ease.InOutQuad))
                 .AppendCallback(()=> stateMachine.SendEvent((int)StateEventId.Idle));
-
+               
             s.Play();
         }
 
@@ -36,8 +37,7 @@ public partial class OrcaState
             s2 = DOTween.Sequence();
             s2.Append(orca.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 0.5f).SetEase(Ease.InOutQuad))
                 .Append(orca.DOBlendableLocalRotateBy(new Vector3(90, 0, 0), 1f).SetEase(Ease.InOutQuad))
-                .Append(orca.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 1))
-                ;
+                .Append(orca.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 1));
                 
             s2.Play();
         }
@@ -51,16 +51,15 @@ public partial class OrcaState
         }
         protected internal override void Update()
         {
-            //Move();
+            elaspedTime += Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                
-                //stateMachine.SendEvent((int)StateEventId.Idle);
-            }
+            if (elaspedTime >= 1.5f)
+                Move();
+
         }
         protected internal override void Exit()
         {
+
         }
     }
 }
