@@ -13,9 +13,9 @@ public class PathMoveSeq : MonoBehaviour
     private Transform pathRef;
     [SerializeField]
     private Ease ease;
-    [SerializeField]
 
     private Sequence s;
+    public bool hasReach { get; private set; }
     public bool hasDone { get; private set; }
 
     // Start is called before the first frame update
@@ -28,6 +28,7 @@ public class PathMoveSeq : MonoBehaviour
             movePath[i] = pathRef.GetChild(i).position;
         }
         hasDone = false;
+        hasReach = false;
 
         s = DOTween.Sequence();
         s.Append(transform.DOPath(movePath, duration, PathType.CatmullRom).SetEase(ease).SetDelay(delayTime).SetLookAt(0.02f, Vector3.forward))
@@ -43,11 +44,10 @@ public class PathMoveSeq : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
             s.Play();
+            hasReach = true;
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 }

@@ -5,7 +5,7 @@ using IceMilkTea.Core;
 
 public partial class OrcaState : MonoBehaviour
 {
-   private enum StateEventId
+    private enum StateEventId
     {
         Idle,
         Eat,
@@ -16,12 +16,13 @@ public partial class OrcaState : MonoBehaviour
         Come,
         Rescue,
     }
-
+   
     private ImtStateMachine<OrcaState> stateMachine;
 
     [SerializeField]
     private GameObject cameraRig;
-    [SerializeField]
+
+    [SerializeField] //for debug
     private GameObject rayObject;
 
     [SerializeField]
@@ -66,4 +67,16 @@ public partial class OrcaState : MonoBehaviour
             orcaModel.transform.parent = rayObject.transform;
     }
 
+    public void ChangeState(string tag, GameObject obj)
+    {
+        if (obj == null)
+            return;
+
+        this.rayObject = obj;
+
+        if (tag == "G_Jump")
+            stateMachine.SendEvent((int)StateEventId.Jump);
+        if (tag == "G_Rescue")
+            stateMachine.SendEvent((int)StateEventId.Rescue);
+    }
 }
