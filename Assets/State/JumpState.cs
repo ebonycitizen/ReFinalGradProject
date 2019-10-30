@@ -10,8 +10,15 @@ public partial class OrcaState
     {
         private Transform orca;
         private float elaspedTime = 0f;
-        Sequence s;
-        Sequence s2;
+        private Sequence s;
+        private Sequence s2;
+
+        private Transform rayObject;
+
+        private void MoveToGlitter()
+        {
+            orca.position = Vector3.Lerp(orca.position, rayObject.position, Time.fixedDeltaTime * 2f);
+        }
 
         private void Move()
         {
@@ -25,7 +32,7 @@ public partial class OrcaState
         private void Jump(Vector3 pos)
         {
             s = DOTween.Sequence();
-            s.Append(orca.DOLocalMoveY(orca.localPosition.y + 6, 1).SetEase(Ease.InOutQuad))
+            s.Append(orca.DOLocalMoveY(orca.localPosition.y + 10, 1).SetEase(Ease.InOutQuad))
                 .Append(orca.DOLocalMoveY(orca.localPosition.y, 1).SetEase(Ease.InOutQuad))
                 .AppendCallback(()=> stateMachine.SendEvent((int)StateEventId.Idle));
                
@@ -44,6 +51,7 @@ public partial class OrcaState
 
         protected internal override void Enter()
         {
+            rayObject = Context.rayObject.transform;
             orca = Context.orcaModel.transform;
             Jump(orca.localPosition);
             Rotate();
@@ -55,11 +63,13 @@ public partial class OrcaState
 
             if (elaspedTime >= 1.5f)
                 Move();
+            else
+                MoveToGlitter();
 
         }
         protected internal override void Exit()
         {
-
+            elaspedTime = 0f;
         }
     }
 }
