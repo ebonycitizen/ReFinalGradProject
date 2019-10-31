@@ -1,151 +1,188 @@
 ﻿using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
+using System.Collections;
+
 public enum EBgmTable
 {
     Default,
     Stage1,
 }
-
 public enum ESeTable
 {
-    Default,
-    Default2,
+    Twinkle,
+    Action,
 }
 
-/// <summary>
-/// シーンごとにBGMとSEを読み込み
-/// Playすれば、対応する
-/// </summary>
+
 namespace Stage1
 {
-    //public class SoundManager : SingletonMonoBehaviour<SoundManager>
-    //{
-    //    [SerializeField, Range(0, 1), Tooltip("マスタ音量")]
-    //    float volume = 1;
-    //    [SerializeField, Range(0, 1), Tooltip("BGMの音量")]
-    //    float bgmVolume = 1;
-    //    [SerializeField, Range(0, 1), Tooltip("SEの音量")]
-    //    float seVolume = 1;
+    public class SoundManager : SingletonMonoBehaviour<SoundManager>
+    {
+        [Serializable]
+        public class BgmItem
+        {
+            public EBgmTable BgmType;
 
-    //    [SerializeField]
-    //    private List<>
+            public AudioClip BgmClip;
+        }
 
-    //    AudioSource bgmAudioSource;
-    //    AudioSource seAudioSource;
-    //    public float Volume
-    //    {
-    //        set
-    //        {
-    //            volume = Mathf.Clamp01(value);
-    //            bgmAudioSource.volume = bgmVolume * volume;
-    //            seAudioSource.volume = seVolume * volume;
-    //        }
-    //        get
-    //        {
-    //            return volume;
-    //        }
-    //    }
-    //    public float BgmVolume
-    //    {
-    //        set
-    //        {
-    //            bgmVolume = Mathf.Clamp01(value);
-    //            bgmAudioSource.volume = bgmVolume * volume;
-    //        }
-    //        get
-    //        {
-    //            return bgmVolume;
-    //        }
-    //    }
-    //    public float SeVolume
-    //    {
-    //        set
-    //        {
-    //            seVolume = Mathf.Clamp01(value);
-    //            seAudioSource.volume = seVolume * volume;
-    //        }
-    //        get
-    //        {
-    //            return seVolume;
-    //        }
-    //    }
-    //    public void Awake()
-    //    {
-    //        if (this != Instance)
-    //        {
-    //            Destroy(gameObject);
-    //            return;
-    //        }
-    //        DontDestroyOnLoad(gameObject);
-    //        bgmAudioSource = gameObject.AddComponent<AudioSource>();
-    //        seAudioSource = gameObject.AddComponent<AudioSource>();
-    //        bgm = Resources.LoadAll<AudioClip>("Audio/BGM");
-    //        se = Resources.LoadAll<AudioClip>("Audio/SE");
-    //        for (int i = 0; i < bgm.Length; i++)
-    //        {
-    //            bgmIndex.Add(bgm[i].name, i);
-    //        }
-    //        for (int i = 0; i < se.Length; i++)
-    //        {
-    //            seIndex.Add(se[i].name, i);
-    //        }
-    //    }
-    //    public int GetBgmIndex(string name)
-    //    {
-    //        if (bgmIndex.ContainsKey(name))
-    //        {
-    //            return bgmIndex[name];
-    //        }
-    //        else
-    //        {
-    //            Debug.LogError("指定された名前のBGMファイルが存在しません。");
-    //            return 0;
-    //        }
-    //    }
-    //    public int GetSeIndex(string name)
-    //    {
-    //        if (seIndex.ContainsKey(name))
-    //        {
-    //            return seIndex[name];
-    //        }
-    //        else
-    //        {
-    //            Debug.LogError("指定された名前のSEファイルが存在しません。");
-    //            return 0;
-    //        }
-    //    }
-    //    //BGM再生
-    //    public void PlayBgm(int index)
-    //    {
-    //        index = Mathf.Clamp(index, 0, bgm.Length);
-    //        bgmAudioSource.clip = bgm[index];
-    //        bgmAudioSource.loop = true;
-    //        bgmAudioSource.volume = BgmVolume * Volume;
-    //        bgmAudioSource.Play();
-    //    }
-    //    public void PlayBgmByName(string name)
-    //    {
-    //        PlayBgm(GetBgmIndex(name));
-    //    }
-    //    public void StopBgm()
-    //    {
-    //        bgmAudioSource.Stop();
-    //        bgmAudioSource.clip = null;
-    //    }
-    //    //SE再生
-    //    public void PlaySe(int index)
-    //    {
-    //        index = Mathf.Clamp(index, 0, se.Length);
-    //        seAudioSource.PlayOneShot(se[index], SeVolume * Volume);
-    //    }
-    //    public void PlaySeByName(string name)
-    //    {
-    //        PlaySe(GetSeIndex(name));
-    //    }
-    //    public void StopSe()
-    //    {
-    //        seAudioSource.Stop();
-    //        seAudioSource.clip = null;
-    //    }
-    //}
+        [SerializeField]
+        private List<BgmItem> m_bgmItems = new List<BgmItem>();
+
+        [Serializable]
+        public class SeItem
+        {
+            public ESeTable SeType;
+
+            public AudioClip SeClip;
+        }
+
+        [SerializeField]
+        private List<SeItem> m_seItems = new List<SeItem>();
+
+        [SerializeField]
+        private AudioSource m_bgmAudio = null;
+
+        [SerializeField]
+        private List<AudioSource> m_seAudioSources = new List<AudioSource>();
+
+        [SerializeField]
+        private GameObject m_3dSoundItem = null;
+
+
+        public void PlayBgm(EBgmTable bgmType)
+        {
+            if (m_bgmAudio.isPlaying)
+                m_bgmAudio.Stop();
+
+            var clip = m_bgmItems.Find(x => x.BgmType == bgmType).BgmClip;
+
+            if (!clip)
+            {
+                Debug.LogError("該当のBgmが見つかりません");
+                return;
+            }
+
+            m_bgmAudio.clip = clip;
+            m_bgmAudio.Play();
+        }
+
+        public void PlayBgm(EBgmTable bgmType, float volume)
+        {
+            if (m_bgmAudio.isPlaying)
+                m_bgmAudio.Stop();
+
+            var clampVolume = Mathf.Clamp01(volume);
+
+            m_bgmAudio.volume = clampVolume;
+
+            var clip = m_bgmItems.Find(x => x.BgmType == bgmType).BgmClip;
+
+            if (!clip)
+            {
+                Debug.LogError("該当のBgmが見つかりません");
+                return;
+            }
+
+            m_bgmAudio.clip = clip;
+            m_bgmAudio.Play();
+        }
+        public void StopBgm()
+        {
+            m_bgmAudio.Stop();
+        }
+
+        public void PlayOntShotSe(ESeTable seType)
+        {
+            var clip = m_seItems.Find(x => x.SeType == seType).SeClip;
+
+            if (!clip)
+            {
+                Debug.LogError("該当のSeが見つかりません");
+                return;
+            }
+
+            var availableAudio = m_seAudioSources.Find(x => !x.isPlaying);
+
+            availableAudio.PlayOneShot(clip);
+        }
+
+        public void PlayOntShotSe(ESeTable seType, float volume)
+        {
+            var clip = m_seItems.Find(x => x.SeType == seType).SeClip;
+
+            if (!clip)
+            {
+                Debug.LogError("該当のSeが見つかりません");
+                return;
+            }
+
+            var clampVolume = Mathf.Clamp01(volume);
+
+            var availableAudio = m_seAudioSources.Find(x => !x.isPlaying);
+
+            availableAudio.PlayOneShot(clip, clampVolume);
+        }
+
+        public void StopSe(ESeTable seType)
+        {
+            AudioClip clip = m_seItems.Find(x => x.SeType == seType).SeClip;
+
+            if (!clip)
+            {
+                Debug.LogError("該当のSeが見つかりません");
+                return;
+            }
+            var playingAudioSource = m_seAudioSources.Find(x => x.clip == clip);
+
+            playingAudioSource.Stop();
+        }
+        public void Play3DSe(ESeTable seType, Transform obj)
+        {
+            var soundItem = Instantiate(m_3dSoundItem, obj);
+
+            soundItem.transform.position = obj.position;
+
+            var soundItemSource = soundItem.GetComponent<AudioSource>();
+
+            var clip = m_seItems.Find(x => x.SeType == seType).SeClip;
+
+            if (!clip)
+            {
+                Debug.LogError("該当のSeが見つかりません");
+                return;
+            }
+
+            var availableAudio = m_seAudioSources.Find(x => !x.isPlaying);
+
+            availableAudio.PlayOneShot(clip);
+        }
+
+        public void Play3DSe(ESeTable seType, float volume, Transform obj)
+        {
+            var soundItem = Instantiate(m_3dSoundItem, obj);
+
+            soundItem.transform.position = obj.position;
+
+            var soundItemSource = soundItem.GetComponent<AudioSource>();
+
+            var clip = m_seItems.Find(x => x.SeType == seType).SeClip;
+
+            if (!clip)
+            {
+                Debug.LogError("該当のSeが見つかりません");
+                return;
+            }
+
+            var clampVolume = Mathf.Clamp01(volume);
+
+            var availableAudio = m_seAudioSources.Find(x => !x.isPlaying);
+
+            availableAudio.PlayOneShot(clip, clampVolume);
+
+        }
+    }
 }
