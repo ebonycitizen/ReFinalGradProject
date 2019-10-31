@@ -8,14 +8,13 @@ public partial class OrcaState : MonoBehaviour
     private enum StateEventId
     {
         Idle,
-        Eat,
         Jump,
-        Collect,
         Swim,
         Click,
         Come,
         Rescue,
         PlayerJump,
+        Kick,
     }
    
     private ImtStateMachine<OrcaState> stateMachine;
@@ -43,6 +42,8 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
             stateMachine.AddTransition<IdleState, RescueState>((int)StateEventId.Rescue);
             stateMachine.AddTransition<IdleState, PlayerJumpState>((int)StateEventId.PlayerJump);
+            stateMachine.AddTransition<IdleState, PlayerJumpState>((int)StateEventId.Kick);
+
 
             stateMachine.SetStartState<IdleState>();
         }

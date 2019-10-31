@@ -109,8 +109,8 @@ GameObject:
   - component: {fileID: 8868363869942618898}
   - component: {fileID: 7101643048234047804}
   - component: {fileID: 6363079206332630815}
-  - component: {fileID: 9007553512617894138}
-  m_Layer: 12
+  - component: {fileID: 1404242883}
+  m_Layer: 0
   m_Name: jellyfishLow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,9 +124,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103644325438663831}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -36.2, y: 16.04, z: 28.47}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 3.5127, y: 3.5127, z: 3.5127}
   m_Children:
   - {fileID: 6800723369038275094}
   - {fileID: 5166501329827814671}
@@ -165,9 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b375e4970fc10544e9a11ea43ed994fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0
   floatingTime: 3
-  increasePositionY: 5
+  increasePositionY: 10
+  dushSpeed: 4
 --- !u!135 &6363079206332630815
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -181,24 +181,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0166565
   m_Center: {x: 0.09117286, y: -0.22793612, z: -0.42}
---- !u!114 &9007553512617894138
-MonoBehaviour:
+--- !u!54 &1404242883
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103644325438663831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3009b55cfe36940833bdd6eb522e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deadEffect: {fileID: 6303127679484440403, guid: 270a23eca98f91243881793db5f8b1c5,
-    type: 3}
-  gemPrefab: {fileID: 6128712485405423923, guid: 908361f67b9c1ec409c2a456f569204f,
-    type: 3}
-  num: 7
-  directionPos: {fileID: 7920470780696260785}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1372221238166648944
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +670,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583303588956550271}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -802,7 +800,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7920470780696260785}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: GemSpaenDir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
