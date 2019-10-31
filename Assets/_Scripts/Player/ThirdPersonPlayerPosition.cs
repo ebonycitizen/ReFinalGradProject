@@ -22,6 +22,9 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
     private GameObject waterSplash;
 
     [SerializeField]
+    private GameObject bigSplash;
+
+    [SerializeField]
     private float torque;
 
     private ContactPoint[] c;
@@ -115,8 +118,11 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
     {
         c = collision.contacts;
 
+
         if (collision.gameObject.tag != "Water")
             Instantiate(hitPrefab, c[0].point, Quaternion.identity);
+        else
+            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
 
     }
 
@@ -136,7 +142,10 @@ public class ThirdPersonPlayerPosition : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Water")
-            Instantiate(waterSplash,transform);
+        {
+            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
+            Instantiate(waterSplash, transform);
+        }
     }
 
     #region gomi
