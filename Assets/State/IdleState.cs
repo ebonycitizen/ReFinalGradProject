@@ -40,6 +40,8 @@ public partial class OrcaState
                 stateMachine.SendEvent((int)StateEventId.Rescue);
             if (Input.GetKeyDown(KeyCode.P))
                 stateMachine.SendEvent((int)StateEventId.PlayerJump);
+            if (Input.GetKeyDown(KeyCode.T))
+                stateMachine.SendEvent((int)StateEventId.Tutorial);
         }
 
         private void Move()
