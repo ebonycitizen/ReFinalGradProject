@@ -66,8 +66,11 @@ public class Glitter : MonoBehaviour
         if (rightHand.GetVelocity().magnitude >= atkSpeedRequire ||
             leftHand.GetVelocity().magnitude >= atkSpeedRequire || GrabAction.stateDown)
         {
+            bool hasChangeState = orcaState.ChangeState(gameObject.tag, sendObj);
+            if (!hasChangeState)
+                return;
+
             //HI5_Manager.EnableBothGlovesVibration(400, 400);
-            orcaState.ChangeState(gameObject.tag, sendObj);
 
             foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
             {

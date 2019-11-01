@@ -37,6 +37,7 @@ public partial class OrcaState
                 .AppendCallback(()=> stateMachine.SendEvent((int)StateEventId.Idle));
                
             s.Play();
+
         }
 
         private void Rotate()
@@ -55,8 +56,6 @@ public partial class OrcaState
             orca = Context.orcaModel.transform;
             Jump(orca.localPosition);
             Rotate();
-            //Context.ChangeParentRayObject();
-
             elaspedTime = 0f;
         }
         protected internal override void Update()
