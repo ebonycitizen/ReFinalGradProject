@@ -56,6 +56,8 @@ public partial class OrcaState
             Jump(orca.localPosition);
             Rotate();
             //Context.ChangeParentRayObject();
+
+            elaspedTime = 0f;
         }
         protected internal override void Update()
         {
@@ -69,7 +71,7 @@ public partial class OrcaState
         }
         protected internal override void Exit()
         {
-            elaspedTime = 0f;
+            
         }
     }
 }

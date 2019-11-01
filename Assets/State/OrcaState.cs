@@ -83,5 +83,9 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Jump);
         if (tag == "G_Rescue")
             stateMachine.SendEvent((int)StateEventId.Rescue);
+        if (tag == "G_Tutorial")
+            stateMachine.SendEvent((int)StateEventId.Tutorial);
+        if (tag == "G_Idle")
+            stateMachine.SendEvent((int)StateEventId.Idle);
     }
 }
