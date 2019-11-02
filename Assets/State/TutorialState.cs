@@ -27,7 +27,8 @@ public partial class OrcaState
         }
         protected internal override void Update()
         {
-
+            if (rayObject == null)
+                return;
             if (!gotoPath)
             {
                 orca.position = Vector3.Lerp(orca.position, rayObject.position, Time.fixedDeltaTime);
@@ -56,7 +57,7 @@ public partial class OrcaState
         }
         protected internal override void Exit()
         {
-            Destroy(path.gameObject);
+            //Destroy(path.gameObject);
         }
     }
 }
