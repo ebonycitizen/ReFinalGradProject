@@ -11,20 +11,7 @@ public partial class OrcaState
         private Transform orca;
         private Transform player;
         Sequence s;
-        Sequence s2;
-
         
-
-        private void Jump(Vector3 pos)
-        {
-            s = DOTween.Sequence();
-            s.Append(orca.DOLocalMoveY(orca.localPosition.y + 6, 1).SetEase(Ease.InOutQuad))
-                .Append(orca.DOLocalMoveY(orca.localPosition.y, 1).SetEase(Ease.InOutQuad))
-                .AppendCallback(() => stateMachine.SendEvent((int)StateEventId.Idle));
-
-            s.Play();
-        }
-
         private Vector3 oldPos;
         private void Rotate()
         {
@@ -50,7 +37,7 @@ public partial class OrcaState
             s.Append(orca.DOLocalMove(new Vector3(0, -0.05f, 0.8f), 1).SetEase(Ease.InOutQuad))
                 .Append(player.DOLocalMoveY(80, 2).SetEase(Ease.OutQuad))
                 .AppendInterval(0.1f)
-                .Append(player.DOLocalMoveY(0, 2).SetEase(Ease.InOutQuad))
+                .Append(player.DOLocalMoveY(0, 2).SetEase(Ease.InQuad))
                 .AppendCallback(() => stateMachine.SendEvent((int)StateEventId.Idle));
 
             s.Play();
@@ -59,7 +46,6 @@ public partial class OrcaState
         {
             orca = Context.orcaModel.transform;
             player = Context.transform.parent;
-            //Jump(orca.localPosition);
             
             Come();
         }

@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 169522629}
   - component: {fileID: 169522630}
   - component: {fileID: 1961671242960512213}
-  - component: {fileID: 4376308787985004098}
   m_Layer: 12
   m_Name: ShellGrabLow
   m_TagString: Untagged
@@ -193,7 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d7913a82f07ad4b85a31cfbfda81a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 169522631}
 --- !u!195 &169522629
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -266,20 +264,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.65
   m_Center: {x: 0, y: 3.18, z: 1.13}
---- !u!114 &4376308787985004098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169522626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d3009b55cfe36940833bdd6eb522e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deadEffect: {fileID: 6303127679484440403, guid: 270a23eca98f91243881793db5f8b1c5,
-    type: 3}
 --- !u!1 &230075770
 GameObject:
   m_ObjectHideFlags: 0
