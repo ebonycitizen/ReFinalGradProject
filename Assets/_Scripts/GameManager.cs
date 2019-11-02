@@ -2,25 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Stage1
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
+    private void Awake()
     {
-        private void Awake()
-        {
 
-        }
+    }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            SoundManager.Instance.PlayBgm(EBgmTable.Stage1);
-        }
+    // Start is called before the first frame update
+    void Start()
+    {
+        SoundManager.Instance.PlayBgm(EBgmTable.Stage1);
+    }
 
-        // Update is called once per frame
-        void Update()
-        {
+    // Update is called once per frame
+    void Update()
+    {
 
-        }
     }
 }
