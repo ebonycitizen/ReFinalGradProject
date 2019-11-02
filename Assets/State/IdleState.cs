@@ -46,6 +46,8 @@ public partial class OrcaState
                 stateMachine.SendEvent((int)StateEventId.Kick);
             if (Input.GetKeyDown(KeyCode.E))
                 stateMachine.SendEvent((int)StateEventId.ElectricShock);
+            if (Input.GetKeyDown(KeyCode.C))
+                stateMachine.SendEvent((int)StateEventId.Come);
         }
 
         private void Move()
