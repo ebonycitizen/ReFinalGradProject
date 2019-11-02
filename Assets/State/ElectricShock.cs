@@ -19,7 +19,7 @@ public partial class OrcaState
 
         private void MoveForward()
         {
-            if (Vector3.Distance(orca.position, rayObject.position) <= distOffset * 1.3f)
+            if (Vector3.Distance(orca.position, rayObject.position) <= distOffset * 1.5f)
                 canMove = false;
 
             orca.position = Vector3.Lerp(orca.position, rayObject.position + Vector3.right * distOffset, Time.fixedDeltaTime * 2f);
@@ -38,6 +38,27 @@ public partial class OrcaState
                 r.material.DisableKeyword("_EMISSION");
         }
 
+        private void SetMovement()
+        {
+            Sequence s = DOTween.Sequence();
+            s.AppendInterval(0.6f)
+                .AppendCallback(()=> Instantiate(jellyfish.GetBoomEffect(),rayObject))
+
+                .AppendInterval(0.1f)
+                .AppendCallback(()=> Context.ChangeParentRayObject())
+                .AppendCallback(() => animator.speed = 0f)
+                .AppendCallback(() => EnableEmission())
+                .AppendCallback(()=>Instantiate(jellyfish.GetShockEffect(),orca))
+                .Join(orca.DOShakePosition(2f,0.2f))
+                .Join(orca.DORotate( new Vector3(-29,12,-134), 0.3f))
+
+                .AppendCallback(() => DisableEmission())
+                .AppendCallback(() => animator.speed = 1f)
+                .AppendCallback(() => Context.ChangeParentCameraRig())
+                .AppendCallback(()=> stateMachine.SendEvent((int)StateEventId.Idle));
+                
+            s.Play();
+        }
 
         protected internal override void Enter()
         {
@@ -48,22 +69,7 @@ public partial class OrcaState
             
             canMove = true;
 
-            //Set animator speed back, set parent
-
-            Sequence s = DOTween.Sequence();
-            s.AppendInterval(0.6f)
-                .AppendCallback(()=> Instantiate(jellyfish.GetBoomEffect(),rayObject))
-                .AppendInterval(0.1f)
-                .AppendCallback(() => animator.speed = 0f)
-                .AppendCallback(() => EnableEmission())
-                .AppendCallback(()=>Instantiate(jellyfish.GetShockEffect(),orca))
-                .Join(orca.DOShakePosition(2f,0.2f))
-                .Join(orca.DORotate( new Vector3(-29,12,-134), 0.3f))
-                .AppendCallback(() => DisableEmission())
-                .AppendCallback(()=> stateMachine.SendEvent((int)StateEventId.Idle));
-                
-            s.Play();
-            
+            SetMovement();
         }
         protected internal override void Update()
         {
