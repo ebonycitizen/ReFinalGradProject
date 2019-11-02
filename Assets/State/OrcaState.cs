@@ -49,7 +49,8 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.AddTransition<TutorialState, TutorialState>((int)StateEventId.Tutorial);
             stateMachine.AddTransition<IdleState, KickState>((int)StateEventId.Kick);
             stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
-
+            stateMachine.AddTransition<IdleState, ComeState>((int)StateEventId.Come);
+            stateMachine.AddTransition<TutorialState, ComeState>((int)StateEventId.Come);
 
             stateMachine.SetStartState<IdleState>();
 
@@ -80,7 +81,7 @@ public partial class OrcaState : MonoBehaviour
 
     public bool ChangeState(string tag, GameObject obj)
     {
-        if (obj == null || stateMachine.CurrentStateName != "IdleState")
+        if (obj == null /*|| stateMachine.CurrentStateName != "IdleState"*/)
             return false;
 
         this.rayObject = obj;
@@ -93,6 +94,8 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Tutorial);
         if (tag == "G_Idle")
             stateMachine.SendEvent((int)StateEventId.Idle);
+        if (tag == "G_Come")
+            stateMachine.SendEvent((int)StateEventId.Come);
 
         return true;
     }

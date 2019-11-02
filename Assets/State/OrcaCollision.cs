@@ -16,6 +16,8 @@ public class OrcaCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        Debug.Log(collision.gameObject.name);
         c = collision.contacts;
 
         if (collision.gameObject.tag != "Water")
