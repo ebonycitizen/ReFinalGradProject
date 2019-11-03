@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 8868363869942618898}
   - component: {fileID: 7101643048234047804}
   - component: {fileID: 6363079206332630815}
-  - component: {fileID: 1404242883}
+  - component: {fileID: 1322913518}
   m_Layer: 0
   m_Name: jellyfishLow
   m_TagString: Untagged
@@ -126,11 +126,12 @@ Transform:
   m_GameObject: {fileID: 1103644325438663831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -36.2, y: 16.04, z: 28.47}
-  m_LocalScale: {x: 3.5127, y: 3.5127, z: 3.5127}
+  m_LocalScale: {x: 4.3884697, y: 4.3884697, z: 4.3884697}
   m_Children:
   - {fileID: 6800723369038275094}
   - {fileID: 5166501329827814671}
   - {fileID: 7920470780696260785}
+  - {fileID: 1434423926}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,7 +182,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0166565
   m_Center: {x: 0.09117286, y: -0.22793612, z: -0.42}
---- !u!54 &1404242883
+--- !u!54 &1322913518
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -975,3 +976,78 @@ Transform:
   m_Father: {fileID: 1528612084603633963}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &29336794
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3806951445652001920}
+    m_Modifications:
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883048, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: m_Name
+      value: EletricityJellyfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883051, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883051, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421883051, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee1d781f84922e542af034f0a085ea51, type: 3}
+--- !u!4 &1434423926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1421883052, guid: ee1d781f84922e542af034f0a085ea51,
+    type: 3}
+  m_PrefabInstance: {fileID: 29336794}
+  m_PrefabAsset: {fileID: 0}

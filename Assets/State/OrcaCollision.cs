@@ -20,10 +20,15 @@ public class OrcaCollision : MonoBehaviour
         Debug.Log(collision.gameObject.name);
         c = collision.contacts;
 
-        if (collision.gameObject.tag != "Water")
-            Instantiate(hitPrefab, c[0].point, Quaternion.identity);
-        else
+
+
+        if (collision.gameObject.tag == "Water")
             Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Dolly") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
+            ;
+        else
+            Instantiate(hitPrefab, c[0].point, Quaternion.identity);
     }
 
     private void OnCollisionStay(Collision collision)

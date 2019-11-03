@@ -29,7 +29,7 @@ public partial class OrcaState
 
             orca.localPosition = Vector3.Lerp(orca.localPosition, Vector3.zero, Time.fixedDeltaTime * 1f);
             orca.localRotation= Quaternion.Lerp(orca.localRotation, Quaternion.Euler(0,0, rot.localEulerAngles.z), Time.fixedDeltaTime * 2f);
-            
+
         }
         protected internal override void Exit()
         {

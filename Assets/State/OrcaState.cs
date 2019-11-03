@@ -40,21 +40,25 @@ public partial class OrcaState : MonoBehaviour
     {
         {
             stateMachine = new ImtStateMachine<OrcaState>(this);
+
             stateMachine.AddAnyTransition<IdleState>((int)StateEventId.Idle);
+
             stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
             stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
             stateMachine.AddTransition<IdleState, RescueState>((int)StateEventId.Rescue);
-            stateMachine.AddTransition<IdleState, PlayerJumpState>((int)StateEventId.PlayerJump);
-            stateMachine.AddTransition<IdleState, TutorialState>((int)StateEventId.Tutorial);
-            stateMachine.AddTransition<TutorialState, TutorialState>((int)StateEventId.Tutorial);
             stateMachine.AddTransition<IdleState, KickState>((int)StateEventId.Kick);
             stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
+
             stateMachine.AddTransition<IdleState, ComeState>((int)StateEventId.Come);
             stateMachine.AddTransition<TutorialState, ComeState>((int)StateEventId.Come);
 
-            stateMachine.SetStartState<IdleState>();
+            stateMachine.AddTransition<IdleState, TutorialState>((int)StateEventId.Tutorial);
+            stateMachine.AddTransition<TutorialState, TutorialState>((int)StateEventId.Tutorial);
 
-            
+            stateMachine.AddTransition<IdleState, PlayerJumpState>((int)StateEventId.PlayerJump);
+            stateMachine.AddTransition<SwimState, PlayerJumpState>((int)StateEventId.PlayerJump);
+
+            stateMachine.SetStartState<IdleState>();
         }
     }
 
@@ -79,9 +83,17 @@ public partial class OrcaState : MonoBehaviour
             orcaModel.transform.parent = rayObject.transform;
     }
 
+    public void GotoPlayerJumpState()
+    {
+        stateMachine.SendEvent((int)StateEventId.PlayerJump);
+    }
+
     public bool ChangeState(string tag, GameObject obj)
     {
         if (obj == null /*|| stateMachine.CurrentStateName != "IdleState"*/)
+            return false;
+
+        if (tag != "G_Tutorial" && stateMachine.CurrentStateName != "IdleState")
             return false;
 
         this.rayObject = obj;

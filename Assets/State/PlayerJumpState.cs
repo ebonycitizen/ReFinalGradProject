@@ -46,6 +46,7 @@ public partial class OrcaState
         {
             orca = Context.orcaModel.transform;
             player = Context.transform.parent;
+            Context.ChangeParentCameraRig();
             
             Come();
         }
