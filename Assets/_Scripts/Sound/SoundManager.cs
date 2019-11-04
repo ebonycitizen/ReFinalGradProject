@@ -129,7 +129,47 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         availableAudio.PlayOneShot(clip, clampVolume);
     }
 
-    public void StopOntShotSe(ESeTable seType)
+    public void PlayLoopSe(ESeTable seType)
+    {
+        var clip = FindClipInSeContainer(seType);
+
+        if (!clip)
+        {
+            return;
+        }
+
+        var availableAudio = m_seAudioSources.Find(x => !x.isPlaying);
+        if (!availableAudio)
+        {
+            availableAudio = this.gameObject.AddComponent<AudioSource>();
+            m_seAudioSources.Add(availableAudio);
+        }
+        availableAudio.clip = clip;
+        availableAudio.Play();
+    }
+
+    public void PlayLoopSe(ESeTable seType, float volume)
+    {
+        var clampVolume = Mathf.Clamp01(volume);
+        var clip = FindClipInSeContainer(seType);
+
+        if (!clip)
+        {
+            return;
+        }
+
+        var availableAudio = m_seAudioSources.Find(x => !x.isPlaying);
+        if (!availableAudio)
+        {
+            availableAudio = this.gameObject.AddComponent<AudioSource>();
+            m_seAudioSources.Add(availableAudio);
+        }
+        availableAudio.clip = clip;
+        availableAudio.volume = clampVolume;
+        availableAudio.Play();
+    }
+
+    public void StopSelectedSe(ESeTable seType)
     {
         var clip = FindClipInSeContainer(seType);
 
@@ -149,8 +189,8 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         playingAudioSources.Stop();
 
     }
-    
-    public void StopMultipleSe(ESeTable seType)
+
+    public void StopAllSelectedSe(ESeTable seType)
     {
         var clip = FindClipInSeContainer(seType);
 
@@ -171,9 +211,9 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
     }
 
-    public void Play3DSe(ESeTable seType, GameObject obj)
+    public void PlayLoop3DSe(ESeTable seType, Speaker speaker)
     {
-        AudioSource soundItemSource = Create3DSpeaker(obj);
+        var audioSource = speaker.AudioSource;
 
         var clip = FindClipInSeContainer(seType);
 
@@ -182,25 +222,15 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
             return;
         }
 
-        soundItemSource.clip = clip;
+        audioSource.clip = clip;
 
-        soundItemSource.loop = true;
-        soundItemSource.Play();
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
-    private AudioSource Create3DSpeaker(GameObject obj)
+    public void PlayLoop3DSe(ESeTable seType, Speaker speaker, float volume)
     {
-        var soundItem = Instantiate(m_3dSoundItem, obj.transform);
-
-        soundItem.transform.position = obj.transform.position;
-
-        var soundItemSource = soundItem.GetComponent<AudioSource>();
-        return soundItemSource;
-    }
-
-    public void Play3DSe(ESeTable seType, float volume, GameObject obj)
-    {
-        AudioSource soundItemSource = Create3DSpeaker(obj);
+        var audioSource = speaker.AudioSource;
 
         var clip = FindClipInSeContainer(seType);
 
@@ -209,15 +239,51 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
             return;
         }
 
-        var clampVolume = Mathf.Clamp01(volume);
-        soundItemSource.clip = clip;
-        soundItemSource.loop = true;
-        soundItemSource.Play();
+        audioSource.clip = clip;
+
+        audioSource.loop = true;
+
+        volume = Mathf.Clamp01(volume);
+        audioSource.volume = volume;
+        audioSource.Play();
     }
 
-    public void Stop3DSe(ESeTable seType, GameObject obj)
+    public void PlayOneShot3DSe(ESeTable seType, Speaker speaker)
     {
-        var audioSource = obj.GetComponentInChildren<AudioSource>();
+        var audioSource = speaker.AudioSource;
+
+        var clip = FindClipInSeContainer(seType);
+
+        if (!clip)
+        {
+            return;
+        }
+
+        //audioSource.clip = clip;
+
+        audioSource.PlayOneShot(clip);
+    }
+
+    public void PlayOneShot3DSe(ESeTable seType, Speaker speaker, float volume)
+    {
+        var audioSource = speaker.AudioSource;
+
+        var clip = FindClipInSeContainer(seType);
+
+        if (!clip)
+        {
+            return;
+        }
+
+        //audioSource.clip = clip;
+        volume = Mathf.Clamp01(volume);
+
+        audioSource.PlayOneShot(clip, volume);
+    }
+
+    public void Stop3DSe(ESeTable seType, Speaker speaker)
+    {
+        var audioSource = speaker.AudioSource;
 
         if (!audioSource)
         {
