@@ -35,8 +35,8 @@ public partial class OrcaState
         {
             s = DOTween.Sequence();
             s.Append(orca.DOLocalMove(new Vector3(0, -0.05f, 0.8f), 1).SetEase(Ease.InOutQuad))
-                .Append(player.DOLocalMoveY(80, 2).SetEase(Ease.OutQuad))
-                .AppendInterval(0.1f)
+                .Append(player.DOLocalMoveY(70, 2).SetEase(Ease.OutQuad))
+                .AppendInterval(0.3f)
                 .Append(player.DOLocalMoveY(0, 2).SetEase(Ease.InQuad))
                 .AppendCallback(() => stateMachine.SendEvent((int)StateEventId.Idle));
 

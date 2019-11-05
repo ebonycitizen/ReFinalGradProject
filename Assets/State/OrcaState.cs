@@ -96,9 +96,14 @@ public partial class OrcaState : MonoBehaviour
         stateMachine.SendEvent((int)StateEventId.PlayerJump);
     }
 
+    public void GotoSwimState()
+    {
+        stateMachine.SendEvent((int)StateEventId.Swim);
+    }
+
     public bool ChangeState(string tag, GameObject obj)
     {
-        if (obj == null || tag == "")
+        if (obj == null /*|| stateMachine.CurrentStateName != "IdleState"*/)
             return false;
 
         this.rayObject = obj;
@@ -113,8 +118,21 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Rescue);
             return true;
         }
-
-
+        if (tag == "G_ElectricShock" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.ElectricShock);
+            return true;
+        }
+        if (tag == "G_Kick" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.Kick);
+            return true;
+        }
+        if (tag == "G_Swim" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.Swim);
+            return true;
+        }
         if (tag == "G_Tutorial")
         {
             stateMachine.SendEvent((int)StateEventId.Tutorial);
@@ -135,7 +153,6 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Follow);
             return true;
         }
-
         return false;
     }
 }

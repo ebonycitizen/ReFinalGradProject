@@ -27,7 +27,7 @@ public class RayFromCamera : MonoBehaviour
     public GameObject LockOn(LayerMask layerMask)
     {
         rayDirection = (rayPos.position - transform.position).normalized;
-        //int layerMask = LayerMask.NameToLayer(layer);
+
         Debug.DrawRay(transform.position, rayDirection * rayLegth);
         bool isHit = Physics.Raycast(transform.position, rayDirection, out hit, rayLegth, layerMask);
 
