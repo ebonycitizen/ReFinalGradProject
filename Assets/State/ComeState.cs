@@ -31,13 +31,13 @@ public partial class OrcaState
         }
         protected internal override void Update()
         {
-            if(path.hasDone)
-            {
-                orca.position = Vector3.Lerp(orca.position, cameraRig.position+pos, Time.fixedDeltaTime);
-                orca.rotation = Quaternion.Lerp(orca.rotation, Quaternion.Euler(cameraRig.eulerAngles), Time.fixedDeltaTime);
+            //if(path.hasDone)
+            //{
+            //    orca.position = Vector3.Lerp(orca.position, cameraRig.position+pos, Time.fixedDeltaTime);
+            //    orca.rotation = Quaternion.Lerp(orca.rotation, Quaternion.Euler(cameraRig.eulerAngles), Time.fixedDeltaTime);
 
-                return;
-            }
+            //    return;
+            //}
 
             if (!gotoPath)
             {
@@ -58,12 +58,12 @@ public partial class OrcaState
             else
             {
                 gotoPath = false;
-                path.startEvent();
+                path.StartEvent();
             }
         }
         protected internal override void Exit()
         {
-
+            path.EndEvent();
         }
     }
 }

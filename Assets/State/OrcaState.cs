@@ -7,6 +7,7 @@ public partial class OrcaState : MonoBehaviour
 {
     private enum StateEventId
     {
+        None,
         Idle,
         Jump,
         Swim,
@@ -17,13 +18,15 @@ public partial class OrcaState : MonoBehaviour
         Tutorial,
         Kick,
         ElectricShock,
-
+        Follow,
     }
    
     private ImtStateMachine<OrcaState> stateMachine;
 
     [SerializeField]
     private GameObject cameraRig;
+    [SerializeField]
+    private GameObject cameraEye;
 
     [SerializeField] //for debug
     private GameObject rayObject;
@@ -49,11 +52,16 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.AddTransition<IdleState, KickState>((int)StateEventId.Kick);
             stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
 
+            stateMachine.AddTransition<IdleState, FollowState>((int)StateEventId.Follow);
+            stateMachine.AddTransition<TutorialState, FollowState>((int)StateEventId.Follow);
+
             stateMachine.AddTransition<IdleState, ComeState>((int)StateEventId.Come);
             stateMachine.AddTransition<TutorialState, ComeState>((int)StateEventId.Come);
 
+            stateMachine.AddTransition<IdleState, NoneState>((int)StateEventId.None);
+
             stateMachine.AddTransition<IdleState, TutorialState>((int)StateEventId.Tutorial);
-            stateMachine.AddTransition<TutorialState, TutorialState>((int)StateEventId.Tutorial);
+            stateMachine.AddTransition<NoneState, TutorialState>((int)StateEventId.Tutorial);
 
             stateMachine.AddTransition<IdleState, PlayerJumpState>((int)StateEventId.PlayerJump);
             stateMachine.AddTransition<SwimState, PlayerJumpState>((int)StateEventId.PlayerJump);
@@ -90,25 +98,44 @@ public partial class OrcaState : MonoBehaviour
 
     public bool ChangeState(string tag, GameObject obj)
     {
-        if (obj == null /*|| stateMachine.CurrentStateName != "IdleState"*/)
-            return false;
-
-        if (tag != "G_Tutorial" && stateMachine.CurrentStateName != "IdleState")
+        if (obj == null || tag == "")
             return false;
 
         this.rayObject = obj;
 
-        if (tag == "G_Jump")
+        if (tag == "G_Jump" && stateMachine.CurrentStateName == "IdleState")
+        {
             stateMachine.SendEvent((int)StateEventId.Jump);
-        if (tag == "G_Rescue")
+            return true;
+        }
+        if (tag == "G_Rescue" && stateMachine.CurrentStateName == "IdleState")
+        {
             stateMachine.SendEvent((int)StateEventId.Rescue);
-        if (tag == "G_Tutorial")
-            stateMachine.SendEvent((int)StateEventId.Tutorial);
-        if (tag == "G_Idle")
-            stateMachine.SendEvent((int)StateEventId.Idle);
-        if (tag == "G_Come")
-            stateMachine.SendEvent((int)StateEventId.Come);
+            return true;
+        }
 
-        return true;
+
+        if (tag == "G_Tutorial")
+        {
+            stateMachine.SendEvent((int)StateEventId.Tutorial);
+            return true;
+        }
+        if (tag == "G_Idle")
+        {
+            stateMachine.SendEvent((int)StateEventId.Idle);
+            return true;
+        }
+        if (tag == "G_Come")
+        {
+            stateMachine.SendEvent((int)StateEventId.Come);
+            return true;
+        }
+        if (tag == "G_Near")
+        {
+            stateMachine.SendEvent((int)StateEventId.Follow);
+            return true;
+        }
+
+        return false;
     }
 }

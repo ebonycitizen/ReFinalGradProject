@@ -20,6 +20,10 @@ public class PathMoveCome : MonoBehaviour
 
     public bool hasDone { get; private set; }
 
+    [SerializeField]
+    private MyCinemachineDollyCart dollyCart;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +54,27 @@ public class PathMoveCome : MonoBehaviour
 
     }
 
-    public void startEvent()
+    public void StartEvent()
     {
         s.Play();
+    }
+    public void EndEvent()
+    {
+        StartCoroutine("EventEnd");
+    }
+    private IEnumerator EventEnd()
+    {
+        float time = 10;
+        while (time < 25)
+        {
+
+            dollyCart.m_Speed = time;
+            time += Time.deltaTime * 3;
+            yield return null;
+        }
+
+        dollyCart.m_Speed = 25f;
+
+        yield return null;
     }
 }

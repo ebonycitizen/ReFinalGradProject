@@ -92,7 +92,8 @@ public class PathMoveEvent : MonoBehaviour
         //if (lockRotate)
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 
-        glitter.position = orca.position + relativePos * distance;
+        if (glitter != null)
+            glitter.position = orca.position + relativePos * distance;
     }
 
     public void startEvent()
