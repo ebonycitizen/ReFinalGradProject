@@ -18,7 +18,7 @@ Shader "FX/Gem"
 		// convex objects, this is effectively rendering the inside of them.
 		Pass {
 
-			Cull Front
+			Cull Back
 			ZWrite Off
 
 			CGPROGRAM

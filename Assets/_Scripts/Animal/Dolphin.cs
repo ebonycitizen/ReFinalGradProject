@@ -20,6 +20,7 @@ public class Dolphin : MonoBehaviour
     private splineMove splineMove;
     private Animator animator;
     private ContactPoint[] c;
+    private Vector3 oldPos;
 
     private Sequence s;
     private Sequence s2;
@@ -59,11 +60,12 @@ public class Dolphin : MonoBehaviour
 
     public void Jump()
     {
-        float delay = Random.Range(1f, 2f);
+        float delay = Random.Range(0f, 1f);
 
         s = DOTween.Sequence();
-        s.Append(transform.DOLocalMoveY(transform.localPosition.y + 10, 3).SetEase(Ease.InOutQuad))
-            .Append(transform.DOLocalMoveY(transform.localPosition.y, 3).SetEase(Ease.InOutQuad));
+        s.Append(transform.DOLocalMoveY(transform.localPosition.y + 9, 2.5f).SetEase(Ease.InOutQuad))
+            .AppendInterval(0.7f)
+            .Append(transform.DOLocalMoveY(transform.localPosition.y, 3.5f).SetEase(Ease.InOutQuad));
 
         s.Play().SetDelay(delay);
 
@@ -73,9 +75,15 @@ public class Dolphin : MonoBehaviour
     private void Rotate(float delay)
     {
         s2 = DOTween.Sequence();
-        s2.Append(transform.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 2f).SetEase(Ease.InOutQuad))
-            .Append(transform.DOBlendableLocalRotateBy(new Vector3(90, 0, 0), 2f).SetEase(Ease.InOutQuad))
-            .Append(transform.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 2f));
+
+        s2.Append(transform.DOLocalRotate(new Vector3(-45, 0, 0), 0.5f).SetEase(Ease.InOutQuad))
+            .AppendInterval(delay)
+            .AppendCallback(() => animator.speed = 1f)
+            .AppendCallback(() => animator.SetTrigger("Jump"))
+            .Append(transform.DOLocalRotate(new Vector3(0, 0, 0), 1f).SetEase(Ease.InOutQuad))
+            .Append(transform.DOLocalRotate(new Vector3(45, 0, 0), 0.5f).SetEase(Ease.InOutQuad))
+            .AppendInterval(2.5f)
+            .Append(transform.DOLocalRotate(new Vector3(0, 0, 0),1f).SetEase(Ease.InOutQuad));
 
         s2.Play().SetDelay(delay);
     }

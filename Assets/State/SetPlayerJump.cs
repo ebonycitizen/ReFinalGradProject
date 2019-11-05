@@ -24,9 +24,14 @@ public class SetPlayerJump : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
-            orcaState.GotoPlayerJumpState();
             foreach (Dolphin d in dolphins)
                 d.Jump();
+
+            Invoke("PlayJump", 0.7f);
         }
+    }
+    private void PlayJump()
+    {
+        orcaState.GotoPlayerJumpState();
     }
 }

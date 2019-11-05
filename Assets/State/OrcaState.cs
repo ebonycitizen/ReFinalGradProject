@@ -88,27 +88,60 @@ public partial class OrcaState : MonoBehaviour
         stateMachine.SendEvent((int)StateEventId.PlayerJump);
     }
 
+    public void GotoSwimState()
+    {
+        stateMachine.SendEvent((int)StateEventId.Swim);
+    }
+
     public bool ChangeState(string tag, GameObject obj)
     {
         if (obj == null /*|| stateMachine.CurrentStateName != "IdleState"*/)
             return false;
 
-        if (tag != "G_Tutorial" && stateMachine.CurrentStateName != "IdleState")
-            return false;
-
         this.rayObject = obj;
 
-        if (tag == "G_Jump")
+        if (tag == "G_Jump" && stateMachine.CurrentStateName == "IdleState")
+        {
             stateMachine.SendEvent((int)StateEventId.Jump);
-        if (tag == "G_Rescue")
+            return true;
+        }
+        if (tag == "G_Rescue" && stateMachine.CurrentStateName == "IdleState")
+        {
             stateMachine.SendEvent((int)StateEventId.Rescue);
-        if (tag == "G_Tutorial")
-            stateMachine.SendEvent((int)StateEventId.Tutorial);
-        if (tag == "G_Idle")
-            stateMachine.SendEvent((int)StateEventId.Idle);
-        if (tag == "G_Come")
-            stateMachine.SendEvent((int)StateEventId.Come);
+            return true;
+        }
+        if (tag == "G_ElectricShock" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.ElectricShock);
+            return true;
+        }
+        if (tag == "G_Kick" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.Kick);
+            return true;
+        }
+        if (tag == "G_Swim" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.Swim);
+            return true;
+        }
 
-        return true;
+        if (tag == "G_Tutorial")
+        {
+            stateMachine.SendEvent((int)StateEventId.Tutorial);
+            return true;
+        }
+        if (tag == "G_Idle")
+        {
+            stateMachine.SendEvent((int)StateEventId.Idle);
+            return true;
+        }
+        if (tag == "G_Come")
+        {
+            stateMachine.SendEvent((int)StateEventId.Come);
+            return true;
+        }
+
+        return false;
     }
 }
