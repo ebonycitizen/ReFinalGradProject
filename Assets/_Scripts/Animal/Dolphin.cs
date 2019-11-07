@@ -63,8 +63,8 @@ public class Dolphin : MonoBehaviour
         float delay = Random.Range(0f, 1f);
 
         s = DOTween.Sequence();
-        s.Append(transform.DOLocalMoveY(transform.localPosition.y + 9, 2.5f).SetEase(Ease.InOutQuad))
-            .AppendInterval(0.7f)
+        s.Append(transform.DOLocalMoveY(transform.localPosition.y + 8.5f, 2.5f).SetEase(Ease.InOutQuad))
+            .AppendInterval(0.8f)
             .Append(transform.DOLocalMoveY(transform.localPosition.y, 3.5f).SetEase(Ease.InOutQuad));
 
         s.Play().SetDelay(delay);
