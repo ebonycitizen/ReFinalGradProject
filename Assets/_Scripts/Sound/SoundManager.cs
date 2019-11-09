@@ -17,6 +17,11 @@ public enum ESeTable
     Twinkle,
     Action,
     Call,
+    Drown,
+    WaterJump,
+    WaterDown,
+    Touch,
+
 }
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
@@ -112,7 +117,27 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         availableAudio.PlayOneShot(clip);
     }
 
-    public void PlayOntShotSe(ESeTable seType, float volume)
+    public void PlayOneShotDelaySe(ESeTable seType, float delay)
+    {
+
+        var clip = FindClipInSeContainer(seType);
+
+        if (!clip)
+        {
+            return;
+        }
+
+        var availableAudio = m_seAudioSources.Find(x => !x.isPlaying);
+        if (!availableAudio)
+        {
+            availableAudio = this.gameObject.AddComponent<AudioSource>();
+            m_seAudioSources.Add(availableAudio);
+        }
+        availableAudio.clip = clip;
+        availableAudio.PlayDelayed(delay);
+    }
+
+    public void PlayOneShotSe(ESeTable seType, float volume)
     {
 
         var clampVolume = Mathf.Clamp01(volume);

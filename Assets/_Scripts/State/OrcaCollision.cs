@@ -15,26 +15,39 @@ public class OrcaCollision : MonoBehaviour
     private GameObject waterSplash;
     [SerializeField]
     private ParticleSystem heart;
+    [SerializeField]
+    private ParticleSystem breakHeart;
 
+    private float touchSpeed = 4.5f;
+
+    private Speaker speaker;
     private Animator animator;
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        speaker = GetComponentInChildren<Speaker>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
 
         c = collision.contacts;
 
         if (collision.gameObject.tag == "Water")
-            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
-            if (!heart.isPlaying)
-                heart.Play();
-
+            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterJump, speaker);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        {
+            Grab grab = collision.gameObject.GetComponent<Grab>();
+            if (grab != null)
+            {
+                if (grab.GetVelocity().magnitude < touchSpeed && !heart.isPlaying)
+                    heart.Play();
+                else if(grab.GetVelocity().magnitude >= touchSpeed && !breakHeart.isPlaying)
+                    breakHeart.Play();
+            }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Dolly"))
             ;
@@ -59,9 +72,11 @@ public class OrcaCollision : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
             heart.Stop();
+            breakHeart.Stop();
         }
         else if (collision.gameObject.tag == "Water")
         {
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterDown, speaker);
             Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
         }

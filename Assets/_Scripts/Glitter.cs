@@ -6,8 +6,7 @@ using HI5;
 
 public class Glitter : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject cameraRig;
+    private Transform orca;
     [SerializeField]
     private GameObject sendObj;
 
@@ -27,7 +26,7 @@ public class Glitter : MonoBehaviour
 
     private void OnEnable()
     {
-        ripple.Stop();
+        //ripple.Stop();
     }
 
     private void Awake()
@@ -39,21 +38,26 @@ public class Glitter : MonoBehaviour
     {
         startLockOn.Stop();
         endLockOn.Stop();
-        ripple.Stop();
+        //ripple.Stop();
 
         gameObject.SetActive(false);
+        orca = GameObject.Find("OrcaModel").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.tag == "G_Approach")
+            transform.position = orca.position;
     }
 
-    public void StartUp(OrcaState orcaState, GameObject cameraTarget)
+    public void StartUp(OrcaState orcaState, GameObject cameraTarget, GameObject send)
     {        
         if (cameraTarget != gameObject)
             return;
 
+        if (gameObject.tag == "G_Approach")
+            sendObj = send;
 
         bool hasChangeState = orcaState.ChangeState(gameObject.tag, sendObj);
         if (!hasChangeState)

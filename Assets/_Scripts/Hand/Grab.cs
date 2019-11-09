@@ -11,6 +11,8 @@ public class Grab : MonoBehaviour
     private Transform palmCenter;
     [SerializeField]
     private GameObject indexFinger;
+    [SerializeField]
+    private GameObject thumb;
 
     private List<GameObject> fingers;
     private int previousFingerCount;
@@ -58,10 +60,28 @@ public class Grab : MonoBehaviour
         return isPoint;
     }
 
+    private GameObject pointObj;
+    public GameObject GetPointObj()
+    {
+        return pointObj;
+    }
+
+    private bool isThumbUp;
+    public bool GetIsThumbUp()
+    {
+        return isThumbUp;
+    }
+
     private bool isApproach;
     public bool GetIsApproach()
     {
         return isApproach;
+    }
+
+    private GameObject approachObj;
+    public GameObject GetApproachObj()
+    {
+        return approachObj;
     }
 
     private LineRenderer line;
@@ -115,16 +135,24 @@ public class Grab : MonoBehaviour
             hasGrab = true;
 
         isPoint = false;
-        if (fingers.Count > 1 && !fingers.Contains(indexFinger))
+        if (fingers.Count > 2 && !fingers.Contains(indexFinger))
             isPoint = true;
+
+        isThumbUp = false;
+        if (fingers.Count > 2 && !fingers.Contains(thumb) && (thumb.transform.position - palmCenter.position).normalized.y >= 0.9f)
+            isThumbUp = true;
 
         previousFingerCount = fingers.Count;
 
         forward = (palmForward.position - palmCenter.position).normalized;
-        Debug.Log(isApproach);
-        //line.SetPosition(0, palmCenter.position);
-        //line.SetPosition(1, palmCenter.position + forward * 10);
 
+        line.SetPosition(0, palmCenter.position);
+        line.SetPosition(1, palmCenter.position + forward * 10);
+
+        if (isPoint)
+            line.enabled = true;
+        else
+            line.enabled = false;
     }
 
     public GameObject LockOn(LayerMask layerMask)
@@ -154,10 +182,11 @@ public class Grab : MonoBehaviour
             fingers.Add(other.gameObject);
 
         if (other.gameObject.layer == LayerMask.NameToLayer("ApproachTrigger") && fingers.Count == 0)
+        {
             isApproach = true;
+            approachObj = other.gameObject;
+        }
     }
-
-
 
     private void OnTriggerExit(Collider other)
     {

@@ -14,19 +14,30 @@ public partial class OrcaState
 
         private Transform forwardPos;
         private Vector3 oldForwardPos;
+        private GameObject rayObj;
+
+        private Grab rightHand;
+        private Grab leftHand;
 
         protected internal override void Enter()
         {
+            rayObj = Context.rayObject;
             orca = Context.orcaModel.transform;
             forwardPos = Context.cameraRig.transform;
 
-            pos = new Vector3(0.85f, 0.5f,-0.05f);
+            rightHand = Context.rightHand;
+            leftHand = Context.leftHand;
+
+            if (rayObj.tag == "RightApproach")
+                pos = new Vector3(0.85f, 0.5f,-0.05f);
+            else if (rayObj.tag == "LeftApproach")
+                pos = new Vector3(-0.85f, 0.5f, -0.05f);
         }
         protected internal override void Update()
         {
             orca.localPosition = Vector3.Lerp(orca.localPosition, pos, Time.fixedDeltaTime / 2);
             Rotate();
-            if (Input.GetKeyDown(KeyCode.I))
+            if (rightHand.GetIsThumbUp() || leftHand.GetIsThumbUp())
                 stateMachine.SendEvent((int)StateEventId.Idle);
         }
 

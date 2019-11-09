@@ -16,6 +16,8 @@ public partial class OrcaState
 
         private Vector3 pos;
 
+        private Grab rightHand;
+        private Grab leftHand;
 
         private bool gotoPath;
         protected internal override void Enter()
@@ -24,6 +26,9 @@ public partial class OrcaState
             rayObject = Context.rayObject.transform;
             cameraRig = Context.cameraRig.transform;
             path = rayObject.GetComponent<PathMoveCome>();
+
+            rightHand = Context.rightHand;
+            leftHand = Context.leftHand;
 
             gotoPath = true;
 
@@ -38,6 +43,9 @@ public partial class OrcaState
 
             //    return;
             //}
+
+            if (rightHand.GetIsThumbUp() || leftHand.GetIsThumbUp())
+                stateMachine.SendEvent((int)StateEventId.Idle);
 
             if (!gotoPath)
             {

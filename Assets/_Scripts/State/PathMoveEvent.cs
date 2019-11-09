@@ -66,6 +66,7 @@ public class PathMoveEvent : MonoBehaviour
             .SetLookAt(0.05f, Vector3.forward))
             .AppendCallback(() => NextEvent())
             .AppendInterval(2f)
+            .AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Twinkle))
             .AppendCallback(()=>glitter.gameObject.SetActive(true));
             
 

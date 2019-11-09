@@ -26,6 +26,8 @@ public class ChangeState : MonoBehaviour
         {
             orcaState = Object.FindObjectOfType<OrcaState>();
             bool hasChangeState = orcaState.ChangeState(gameObject.tag, sendObj);
+            if (!hasChangeState)
+                return;
             Destroy(gameObject);
         }
     }

@@ -29,7 +29,7 @@ public class PathMoveCome : MonoBehaviour
     {
         hasDone = false;
 
-        glitter.gameObject.SetActive(false);
+        //glitter.gameObject.SetActive(false);
 
         Vector3[] movePath = new Vector3[pathRef.childCount];
 

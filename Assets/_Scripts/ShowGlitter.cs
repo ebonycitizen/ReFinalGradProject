@@ -7,6 +7,8 @@ public class ShowGlitter : MonoBehaviour
     [SerializeField]
     private GameObject glitter;
 
+    [SerializeField]
+    private float duration;
     private Speaker speaker;
 
     // Start is called before the first frame update
@@ -26,6 +28,8 @@ public class ShowGlitter : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
             glitter.SetActive(true);
+            if (glitter.tag == "G_Come")
+                Destroy(glitter, duration);
             SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, speaker);
             Destroy(gameObject);
         }

@@ -28,6 +28,10 @@ public partial class OrcaState : MonoBehaviour
     private GameObject cameraRig;
     [SerializeField]
     private GameObject cameraEye;
+    [SerializeField]
+    private Grab rightHand;
+    [SerializeField]
+    private Grab leftHand;
 
     [SerializeField] //for debug
     private GameObject rayObject;
@@ -93,6 +97,7 @@ public partial class OrcaState : MonoBehaviour
             orcaModel.transform.parent = rayObject.transform;
     }
 
+    //del this two function
     public void GotoPlayerJumpState()
     {
         stateMachine.SendEvent((int)StateEventId.PlayerJump);
@@ -110,6 +115,12 @@ public partial class OrcaState : MonoBehaviour
             return false;
 
         this.rayObject = obj;
+
+        if (tag == "G_Approach" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.Approach);
+            return true;
+        }
 
         if (tag == "G_Jump" && stateMachine.CurrentStateName == "IdleState")
         {

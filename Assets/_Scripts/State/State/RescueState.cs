@@ -22,7 +22,7 @@ public partial class OrcaState
             path = rayObject.GetComponent<PathMoveSeq>();
 
             rot = Context.idleRotation;
-
+            SoundManager.Instance.PlayOneShotDelaySe(ESeTable.Call, 0.5f);
             ratio = 0;
         }
         protected internal override void Update()

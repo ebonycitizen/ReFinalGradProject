@@ -57,7 +57,7 @@ public class StageManager : MonoBehaviour
         SoundManager.Instance.StopAllBgm();
         if (scene == "TutorialF")
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
-        if (scene == "SeasideF")
+        if (scene == "SeasideF"|| scene == "SeasideGes")
             SoundManager.Instance.PlayBgm(EBgmTable.Seaside);
         if (scene == "OceanF")
             SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
