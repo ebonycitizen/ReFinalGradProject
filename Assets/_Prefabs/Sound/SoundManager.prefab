@@ -47,12 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bgmItems:
   - BgmType: 1
-    BgmClip: {fileID: 8300000, guid: b049a3e393aeec744a1b04461f2a2a1e, type: 3}
+    BgmClip: {fileID: 8300000, guid: aac9b1f0c35ee574f9762a14d31db5c2, type: 3}
+  - BgmType: 2
+    BgmClip: {fileID: 8300000, guid: c2e860a47feb31341b41ff963b2d3ddc, type: 3}
+  - BgmType: 3
+    BgmClip: {fileID: 8300000, guid: d750ff28bf5622c43bf971b6ed478155, type: 3}
   m_seItems:
   - SeType: 0
-    SeClip: {fileID: 8300000, guid: 37c9e69911022452a9ebd4ee732ab036, type: 3}
+    SeClip: {fileID: 8300000, guid: ca45e5d9c2f5eb54faed2e63ce826e09, type: 3}
   - SeType: 1
-    SeClip: {fileID: 8300000, guid: b7389d44fe0567847b600c29f52db781, type: 3}
+    SeClip: {fileID: 8300000, guid: 8efa3c271ebad814baa87ff71d0f73ec, type: 3}
+  - SeType: 2
+    SeClip: {fileID: 8300000, guid: 17ffb5f0d4265ea4eaf7dd85c5fa91a5, type: 3}
   m_bgmAudio: {fileID: 4403260522004914657}
   m_seAudioSources:
   - {fileID: 4403260522004914670}
@@ -72,7 +78,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

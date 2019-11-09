@@ -3,15 +3,20 @@ using System;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using DG.Tweening;
+
 public enum EBgmTable
 {
     Default,
-    Stage1,
+    Tutorial,
+    Seaside,
+    Ocean,
 }
 public enum ESeTable
 {
     Twinkle,
     Action,
+    Call,
 }
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
@@ -264,6 +269,23 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         audioSource.PlayOneShot(clip);
     }
 
+    public void PlayOneShotDelay3DSe(ESeTable seType, Speaker speaker, float delaySec)
+    {
+        var audioSource = speaker.AudioSource;
+
+        var clip = FindClipInSeContainer(seType);
+
+        if (!clip)
+        {
+            return;
+        }
+
+        audioSource.clip = clip;
+        
+        
+        audioSource.PlayDelayed(delaySec);//audioSource.PlayOneShot(clip);
+    }
+
     public void PlayOneShot3DSe(ESeTable seType, Speaker speaker, float volume)
     {
         var audioSource = speaker.AudioSource;
@@ -277,7 +299,6 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
         //audioSource.clip = clip;
         volume = Mathf.Clamp01(volume);
-
         audioSource.PlayOneShot(clip, volume);
     }
 

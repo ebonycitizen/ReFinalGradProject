@@ -9,6 +9,8 @@ public class Grab : MonoBehaviour
     private Transform palmForward;
     [SerializeField]
     private Transform palmCenter;
+    [SerializeField]
+    private GameObject indexFinger;
 
     private List<GameObject> fingers;
     private int previousFingerCount;
@@ -50,26 +52,38 @@ public class Grab : MonoBehaviour
         return forward;
     }
 
-    public GameObject LockOn(LayerMask layerMask)
+    private bool isPoint;
+    public bool GetIsPoint()
     {
-        //int layerMask = LayerMask.NameToLayer(layer);
-        Debug.DrawRay(palmCenter.position, forward * rayLegth * 15);
-        bool isHit = Physics.Raycast(palmCenter.position, forward, out hit, rayLegth * 15f, layerMask);
-        //bool isHit = Physics.BoxCast(palmCenter.position, Vector3.one * 0.5f, forward, out hit, palmCenter.rotation, Mathf.Infinity, 1 << layer);
-
-        if (isHit)
-            return hit.transform.gameObject;
-
-        return null;
+        return isPoint;
     }
 
-    private float rayLegth = 20;
+    private bool isApproach;
+    public bool GetIsApproach()
+    {
+        return isApproach;
+    }
+
+    private LineRenderer line;
+
+    //public GameObject LockOn(LayerMask layerMask)
+    //{
+    //    //int layerMask = LayerMask.NameToLayer(layer);
+    //    Debug.DrawRay(palmCenter.position, forward * rayLegth * 15);
+    //    bool isHit = Physics.Raycast(palmCenter.position, forward, out hit, rayLegth * 15f, layerMask);
+    //    //bool isHit = Physics.BoxCast(palmCenter.position, Vector3.one * 0.5f, forward, out hit, palmCenter.rotation, Mathf.Infinity, 1 << layer);
+
+    //    if (isHit)
+    //        return hit.transform.gameObject;
+
+    //    return null;
+    //}
+
+    private float rayLegth = 150;
     public float GetRayLength()
     {
         return rayLegth;
     }
-
-    //private LineRenderer line;
 
     // Start is called before the first frame update
     void Start()
@@ -79,8 +93,7 @@ public class Grab : MonoBehaviour
         previousFingerCount = fingers.Count;
         previousPos = transform.position;
 
-        //line = GetComponent<LineRenderer>();
-
+        line = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -98,17 +111,33 @@ public class Grab : MonoBehaviour
 
         hasGrab = false;
 
-        if (previousFingerCount != fingers.Count && previousFingerCount == 0 && fingers.Count > 2)
+        if (previousFingerCount != fingers.Count && previousFingerCount == 0 && fingers.Count > 1)
             hasGrab = true;
+
+        isPoint = false;
+        if (fingers.Count > 1 && !fingers.Contains(indexFinger))
+            isPoint = true;
 
         previousFingerCount = fingers.Count;
 
         forward = (palmForward.position - palmCenter.position).normalized;
-
+        Debug.Log(isApproach);
         //line.SetPosition(0, palmCenter.position);
         //line.SetPosition(1, palmCenter.position + forward * 10);
 
     }
+
+    public GameObject LockOn(LayerMask layerMask)
+    {
+        bool isHit = Physics.Raycast(transform.position, forward, out hit, rayLegth, layerMask);
+        Debug.DrawRay(palmCenter.position, forward * rayLegth );
+        if (isHit)
+            return hit.transform.gameObject;
+
+        return null;
+    }
+
+
     private void FixedUpdate()
     {
         if (!HI5_Manager.GetGloveStatus().IsGloveAvailable(HI5.Hand.LEFT) &&
@@ -123,12 +152,20 @@ public class Grab : MonoBehaviour
     {
         if (other.tag == "FingerTrigger" && !fingers.Contains(other.gameObject))
             fingers.Add(other.gameObject);
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("ApproachTrigger") && fingers.Count == 0)
+            isApproach = true;
     }
+
+
 
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "FingerTrigger" && fingers.Contains(other.gameObject))
             fingers.Remove(other.gameObject);
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("ApproachTrigger"))
+            isApproach = false;
     }
 
 }

@@ -7,8 +7,6 @@ public class RescuePenguin : MonoBehaviour
 {
     [SerializeField]
     private Transform seperatePoint;
-    [SerializeField]
-    private Transform parent;
 
     private Transform originParent;
     private Sequence s;
@@ -33,7 +31,7 @@ public class RescuePenguin : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            transform.parent = parent;
+            transform.parent = other.gameObject.transform;
             s.Pause();
         }
         if(other.gameObject.tag == "PenguinStop")

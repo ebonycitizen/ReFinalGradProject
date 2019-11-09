@@ -28,5 +28,6 @@ public class ChangeStage : MonoBehaviour
         if (stageManager != null)
             stageManager.LoadNextScene(nextScene);
         GetComponent<Collider>().enabled = false;
+        Destroy(gameObject);
     }
 }

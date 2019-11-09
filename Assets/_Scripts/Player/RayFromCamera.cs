@@ -10,6 +10,7 @@ public class RayFromCamera : MonoBehaviour
     private float rayLegth = 150;
     private RaycastHit hit;
     private Vector3 rayDirection;
+    private GameObject hitObject;
 
     // Start is called before the first frame update
     void Start()
@@ -18,16 +19,11 @@ public class RayFromCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public GameObject LockOn(LayerMask layerMask)
     {
         rayDirection = (rayPos.position - transform.position).normalized;
-
+        
         Debug.DrawRay(transform.position, rayDirection * rayLegth);
         bool isHit = Physics.Raycast(transform.position, rayDirection, out hit, rayLegth, layerMask);
 

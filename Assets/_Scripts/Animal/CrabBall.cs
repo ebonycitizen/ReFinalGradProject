@@ -36,6 +36,8 @@ public class CrabBall : MonoBehaviour
     {
         StopAllCoroutines();
 
+        kickTarget = GameObject.Find("Main Camera (eye)").transform;
+
         StartCoroutine("MoveToPlayer");
     }
 

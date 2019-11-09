@@ -6,24 +6,10 @@ using HI5;
 
 public class Glitter : MonoBehaviour
 {
-    public SteamVR_Action_Boolean GrabAction;
-
     [SerializeField]
-    private RayFromCamera rayCamera;
-    [SerializeField]
-    private Grab rightHand;
-    [SerializeField]
-    private Grab leftHand;
-
-    [SerializeField]
-    private float atkSpeedRequire;
-
-    [SerializeField]
-    private OrcaState orcaState;
+    private GameObject cameraRig;
     [SerializeField]
     private GameObject sendObj;
-    [SerializeField]
-    private LayerMask targetLayer;
 
     [SerializeField]
     private ParticleSystem ripple;
@@ -37,77 +23,101 @@ public class Glitter : MonoBehaviour
     [SerializeField]
     private Color lockonColor;
 
-    private GameObject cameraTarget;
-    private GameObject lockTarget;
+    private Speaker speaker;
 
+    private void OnEnable()
+    {
+        ripple.Stop();
+    }
+
+    private void Awake()
+    {
+        speaker = GetComponentInChildren<Speaker>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        lockTarget = null;
         startLockOn.Stop();
         endLockOn.Stop();
         ripple.Stop();
+
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        cameraTarget = rayCamera.LockOn(targetLayer);
-        ChangeEffect();
-        StartUp();
-        lockTarget = cameraTarget;
     }
 
-    private void StartUp()
-    {
+    public void StartUp(OrcaState orcaState, GameObject cameraTarget)
+    {        
         if (cameraTarget != gameObject)
             return;
 
-        if (rightHand.GetVelocity().magnitude >= atkSpeedRequire ||
-            leftHand.GetVelocity().magnitude >= atkSpeedRequire || GrabAction.stateDown)
+
+        bool hasChangeState = orcaState.ChangeState(gameObject.tag, sendObj);
+        if (!hasChangeState)
+            return;
+
+        //HI5_Manager.EnableBothGlovesVibration(400, 400);
+
+        GetComponent<Collider>().enabled = false;
+
+        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Action, speaker);
+        foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
         {
-            bool hasChangeState = orcaState.ChangeState(gameObject.tag, sendObj);
-            if (!hasChangeState)
-                return;
-
-            //HI5_Manager.EnableBothGlovesVibration(400, 400);
-
-            foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
-            {
-                p.Stop();
-            }
-
-            if (endLockOn.isStopped)
-                endLockOn.Play();
-            Destroy(gameObject,2f);
+            p.Stop();
         }
+        
+        endLockOn.Play();
+
+        Destroy(gameObject,3f);
     }
 
-    private void ChangeEffect()
+    public void HitEffect()
     {
-        if (cameraTarget == gameObject && cameraTarget != lockTarget)
+        if (!startLockOn.isPlaying)
+            startLockOn.Play();
+        ripple.Play();
+
+        foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
         {
-            if (startLockOn.isStopped)
-                startLockOn.Play();
-
-            if (ripple.isStopped)
-                ripple.Play();
-
-            foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
-            {
-                p.startColor = lockonColor;
-            }
-        }
-
-        if (cameraTarget == null && lockTarget == gameObject)
-        {
-            if (ripple.isPlaying)
-                ripple.Stop();
-
-            foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
-            {
-                p.startColor = normalColor;
-            }
+            p.startColor = lockonColor;
         }
     }
+
+    public void DisableEffect()
+    {
+        ripple.Stop();
+
+        foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
+        {
+            p.startColor = normalColor;
+        }
+    }
+
+    //public void ChangeEffect()
+    //{
+    //    if (cameraTarget == gameObject && cameraTarget != lockTarget)
+    //    {
+    //        if(!startLockOn.isPlaying)
+    //            startLockOn.Play();
+    //        ripple.Play();
+
+    //        foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
+    //        {
+    //            p.startColor = lockonColor;
+    //        }
+    //    }
+
+    //    if (cameraTarget == null && lockTarget == gameObject)
+    //    {
+    //        ripple.Stop();
+
+    //        foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
+    //        {
+    //            p.startColor = normalColor;
+    //        }
+    //    }
+    //}
 }
