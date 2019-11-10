@@ -37,6 +37,7 @@ public partial class OrcaState
         {
             orca.localPosition = Vector3.Lerp(orca.localPosition, pos, Time.fixedDeltaTime / 2);
             Rotate();
+
             if (rightHand.GetIsThumbUp() || leftHand.GetIsThumbUp())
                 stateMachine.SendEvent((int)StateEventId.Idle);
         }

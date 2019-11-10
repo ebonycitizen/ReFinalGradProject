@@ -51,13 +51,15 @@ public partial class OrcaState : MonoBehaviour
 
             stateMachine.AddAnyTransition<IdleState>((int)StateEventId.Idle);
 
-            stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
+
             stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
             stateMachine.AddTransition<IdleState, RescueState>((int)StateEventId.Rescue);
             stateMachine.AddTransition<IdleState, KickState>((int)StateEventId.Kick);
             stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
-
             stateMachine.AddTransition<IdleState, ApproachState>((int)StateEventId.Approach);
+
+            stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
+            stateMachine.AddTransition<ApproachState, JumpState>((int)StateEventId.Jump);
 
             //stateMachine.AddTransition<IdleState, FollowState>((int)StateEventId.Follow);
             //stateMachine.AddTransition<TutorialState, FollowState>((int)StateEventId.Follow);
@@ -112,7 +114,7 @@ public partial class OrcaState : MonoBehaviour
     public bool ChangeState(string tag, GameObject obj)
     {
         if (obj == null)
-            return false;
+            this.rayObject = orcaModel;
 
         this.rayObject = obj;
 
@@ -157,6 +159,12 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Idle);
             return true;
         }
+        if (tag == "G_PlayerJump")
+        {
+            stateMachine.SendEvent((int)StateEventId.PlayerJump);
+            return true;
+        }
+
         if (tag == "G_Come")
         {
             stateMachine.SendEvent((int)StateEventId.Come);

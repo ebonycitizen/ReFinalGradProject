@@ -17,6 +17,14 @@ public class OrcaCollision : MonoBehaviour
     private ParticleSystem heart;
     [SerializeField]
     private ParticleSystem breakHeart;
+    [SerializeField]
+    private ParticleSystem no;
+
+    public void PlayNoEffect()
+    {
+        if (!no.isPlaying)
+            no.Play();
+    }
 
     private float touchSpeed = 4.5f;
 

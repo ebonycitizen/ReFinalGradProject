@@ -30,6 +30,7 @@ public class PathMoveEvent : MonoBehaviour
     private Sequence s2;
 
     private bool lockRotate=false;
+    public bool canTouch { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -65,9 +66,10 @@ public class PathMoveEvent : MonoBehaviour
             .SetEase(Ease.Linear)
             .SetLookAt(0.05f, Vector3.forward))
             .AppendCallback(() => NextEvent())
-            .AppendInterval(2f)
-            .AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Twinkle))
-            .AppendCallback(()=>glitter.gameObject.SetActive(true));
+            .AppendCallback(() => canTouch = true);
+            //.AppendInterval(2f)
+            //.AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Twinkle))
+            //.AppendCallback(()=>glitter.gameObject.SetActive(true));
             
 
 

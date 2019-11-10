@@ -19,10 +19,10 @@ public partial class OrcaState
 
         private void MoveForward()
         {
-            if (Vector3.Distance(orca.position, rayObject.position) <= distOffset * 1.5f)
+            if (Vector3.Distance(orca.position, rayObject.position) <= distOffset * 2f)
                 canMove = false;
 
-            orca.position = Vector3.Lerp(orca.position, rayObject.position + Vector3.right * distOffset, Time.fixedDeltaTime * 2f);
+            orca.position = Vector3.Lerp(orca.position, rayObject.position - Vector3.up * distOffset, Time.fixedDeltaTime * 2f);
         }
 
         private void EnableEmission()
@@ -46,6 +46,7 @@ public partial class OrcaState
 
                 .AppendInterval(0.1f)
                 .AppendCallback(()=> Context.ChangeParentRayObject())
+                .AppendCallback(()=>SoundManager.Instance.PlayOneShot3DSe(ESeTable.Call, orca.GetComponentInChildren<Speaker>()))
                 .AppendCallback(() => animator.speed = 0f)
                 .AppendCallback(() => EnableEmission())
                 .AppendCallback(()=>Instantiate(jellyfish.GetShockEffect(),orca))

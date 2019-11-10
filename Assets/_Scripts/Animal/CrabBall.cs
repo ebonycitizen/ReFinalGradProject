@@ -14,10 +14,13 @@ public class CrabBall : MonoBehaviour
 
     private Vector3 initPos;
     private Sequence s;
+    private bool hitPlayer;
+    private Transform originParent;
 
     // Start is called before the first frame update
     void Start()
     {
+        originParent = transform.parent;
         initPos = transform.position;
         StartCoroutine("RandMove");
     }
@@ -56,6 +59,11 @@ public class CrabBall : MonoBehaviour
 
         while (time < duration)
         {
+            if (hitPlayer)
+            {
+                transform.eulerAngles = new Vector3(-42, -172, -3);
+                yield break;
+            }
             time += Time.deltaTime;
 
             if (time < duration/2)
@@ -92,5 +100,29 @@ public class CrabBall : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         StartCoroutine("RandMove");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
+        {
+            hitPlayer = true;
+            transform.parent = other.transform;
+            transform.GetComponent<Rigidbody>().isKinematic = false;
+        }
+
+        if(hitPlayer && other.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        {
+            transform.parent = originParent;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (hitPlayer && collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        {
+            transform.parent = originParent;
+            transform.GetComponent<Rigidbody>().useGravity = true;
+        }
     }
 }

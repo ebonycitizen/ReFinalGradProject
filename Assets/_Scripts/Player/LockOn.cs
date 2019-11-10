@@ -8,6 +8,8 @@ public class LockOn : MonoBehaviour
 {
     public SteamVR_Action_Boolean GrabAction;
 
+    public bool CanTouch { get; set; }
+
     [SerializeField]
     private RayFromCamera rayCamera;
     [SerializeField]
@@ -16,24 +18,27 @@ public class LockOn : MonoBehaviour
     private Grab leftHand;
 
     [SerializeField]
-    private GameObject approachGlitter;
-
-    [SerializeField]
     private float atkSpeedRequire;
     [SerializeField]
     private LayerMask targetLayer;
     [SerializeField]
+    private GameObject orca;
+
+    private GameObject cameraTarget;
+    private GameObject rightTarget;
+    private GameObject leftTarget;
+
+    private GameObject lockTarget;
     private OrcaState orcaState;
+    private OrcaCollision orcaCollision;
 
-    GameObject cameraTarget;
-    GameObject rightTarget;
-    GameObject leftTarget;
-
-    GameObject lockTarget;
     // Start is called before the first frame update
     void Start()
     {
         lockTarget = null;
+        CanTouch = false;
+        orcaState = orca.GetComponent<OrcaState>();
+        orcaCollision = orca.GetComponentInChildren<OrcaCollision>();
     }
 
     // Update is called once per frame
@@ -55,14 +60,11 @@ public class LockOn : MonoBehaviour
         //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
         //}
 
+        Point();
+        Touch();
+    
         //if (cameraTarget != null && cameraTarget.tag != "G_Appraoch" && cameraTarget.tag != "G_Come" && (rightHand.GetIsPoint() || leftHand.GetIsPoint()))
         //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, null);
-
-
-        Point();
-        approachGlitter = GameObject.FindGameObjectWithTag("G_Approach");
-        if(approachGlitter != null)
-            Touch();
 
         //if (cameraTarget != null && cameraTarget.tag == "G_Come" && (rightHand.GetIsApproach() || leftHand.GetIsApproach()))
         //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, null);
@@ -76,6 +78,12 @@ public class LockOn : MonoBehaviour
         //}
 
         lockTarget = cameraTarget;
+    }
+
+    public void CancelApproach()
+    {
+        if(!CanTouch)
+            orcaState.ChangeState("G_Idle", null);
     }
 
     private void Point()
@@ -97,12 +105,22 @@ public class LockOn : MonoBehaviour
     {
         if (rightHand.GetIsApproach())
         {
-            approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, rightHand.GetApproachObj());
+            if (CanTouch)
+                orcaState.ChangeState("G_Approach", rightHand.GetApproachObj());
+            else
+                orcaCollision.PlayNoEffect();
+           // approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, rightHand.GetApproachObj());
         }
 
         if (leftHand.GetIsApproach())
         {
-            approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, leftHand.GetApproachObj());
+            if(CanTouch)
+                orcaState.ChangeState("G_Approach", leftHand.GetApproachObj());
+            else
+                orcaCollision.PlayNoEffect();
+            //approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, leftHand.GetApproachObj());
         }
     }
+
+
 }
