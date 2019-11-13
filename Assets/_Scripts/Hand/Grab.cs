@@ -6,6 +6,8 @@ using HI5;
 public class Grab : MonoBehaviour
 {
     [SerializeField]
+    private bool isRightHand;
+    [SerializeField]
     private Transform palmForward;
     [SerializeField]
     private Transform palmCenter;
@@ -146,18 +148,29 @@ public class Grab : MonoBehaviour
 
         forward = (palmForward.position - palmCenter.position).normalized;
 
-        line.SetPosition(0, palmCenter.position);
-        line.SetPosition(1, palmCenter.position + forward * 10);
+        //line.SetPosition(0, palmCenter.position);
+        //line.SetPosition(1, palmCenter.position + forward * 10);
 
-        if (isPoint)
-            line.enabled = true;
-        else
-            line.enabled = false;
+        //line.SetPosition(0, indexFinger.transform.position);
+        //if(isRightHand)
+        //    line.SetPosition(1, indexFinger.transform.position + indexFinger.transform.right * 10);
+        //else
+        //    line.SetPosition(1, indexFinger.transform.position - indexFinger.transform.right * 10);
+        //if (isPoint)
+        //    line.enabled = true;
+        //else
+        //    line.enabled = false;
     }
 
     public GameObject LockOn(LayerMask layerMask)
     {
-        bool isHit = Physics.Raycast(transform.position, forward, out hit, rayLegth, layerMask);
+        Vector3 forwardDir = forward;
+        if (isRightHand)
+            forwardDir = indexFinger.transform.right;
+        else
+            forwardDir = -indexFinger.transform.right;
+
+        bool isHit = Physics.Raycast(indexFinger.transform.position, forwardDir, out hit, rayLegth, layerMask);
         Debug.DrawRay(palmCenter.position, forward * rayLegth );
         if (isHit)
             return hit.transform.gameObject;

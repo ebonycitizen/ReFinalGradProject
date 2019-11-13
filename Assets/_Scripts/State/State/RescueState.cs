@@ -21,6 +21,8 @@ public partial class OrcaState
             rayObject = Context.rayObject.transform;
             path = rayObject.GetComponent<PathMoveSeq>();
 
+            Context.ChangeParentNull();
+
             rot = Context.idleRotation;
             SoundManager.Instance.PlayOneShotDelaySe(ESeTable.Call, 0.5f);
             ratio = 0;
@@ -45,6 +47,7 @@ public partial class OrcaState
         }
         protected internal override void Exit()
         {
+            Context.ChangeParentCameraRig();
             
         }
     }

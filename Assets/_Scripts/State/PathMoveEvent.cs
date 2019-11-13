@@ -66,10 +66,9 @@ public class PathMoveEvent : MonoBehaviour
             .SetEase(Ease.Linear)
             .SetLookAt(0.05f, Vector3.forward))
             .AppendCallback(() => NextEvent())
-            .AppendCallback(() => canTouch = true);
             //.AppendInterval(2f)
-            //.AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Twinkle))
-            //.AppendCallback(()=>glitter.gameObject.SetActive(true));
+            .AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Twinkle))
+            .AppendCallback(()=>glitter.gameObject.SetActive(true));
             
 
 

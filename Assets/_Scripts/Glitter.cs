@@ -51,13 +51,13 @@ public class Glitter : MonoBehaviour
             transform.position = orca.position;
     }
 
-    public void StartUp(OrcaState orcaState, GameObject cameraTarget, GameObject send)
+    public void StartUp(OrcaState orcaState, GameObject cameraTarget)
     {        
         if (cameraTarget != gameObject)
             return;
 
-        if (gameObject.tag == "G_Approach")
-            sendObj = send;
+        //if (gameObject.tag == "G_Approach")
+        //    sendObj = send;
 
         bool hasChangeState = orcaState.ChangeState(gameObject.tag, sendObj);
         if (!hasChangeState)
@@ -100,28 +100,28 @@ public class Glitter : MonoBehaviour
         }
     }
 
-    //public void ChangeEffect()
-    //{
-    //    if (cameraTarget == gameObject && cameraTarget != lockTarget)
-    //    {
-    //        if(!startLockOn.isPlaying)
-    //            startLockOn.Play();
-    //        ripple.Play();
+    public void ChangeEffect(GameObject cameraTarget, GameObject lockTarget)
+    {
+        if (cameraTarget == gameObject && cameraTarget != lockTarget)
+        {
+            if (!startLockOn.isPlaying)
+                startLockOn.Play();
+            ripple.Play();
 
-    //        foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
-    //        {
-    //            p.startColor = lockonColor;
-    //        }
-    //    }
+            foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
+            {
+                p.startColor = lockonColor;
+            }
+        }
 
-    //    if (cameraTarget == null && lockTarget == gameObject)
-    //    {
-    //        ripple.Stop();
+        if (cameraTarget == null && lockTarget == gameObject)
+        {
+            ripple.Stop();
 
-    //        foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
-    //        {
-    //            p.startColor = normalColor;
-    //        }
-    //    }
-    //}
+            foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
+            {
+                p.startColor = normalColor;
+            }
+        }
+    }
 }
