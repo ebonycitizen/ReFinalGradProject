@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.AI;
 
 public class CrabBall : MonoBehaviour
 {
@@ -17,26 +18,31 @@ public class CrabBall : MonoBehaviour
     private bool hitPlayer;
     private Transform originParent;
 
+    [SerializeField]
+    private Rigidbody rb;
+
+    [SerializeField]
+    private NavMeshAgent agent;
+
+    [SerializeField]
+    private Behaviour behaviour;
+
     // Start is called before the first frame update
     void Start()
     {
         originParent = transform.parent;
         initPos = transform.position;
-        StartCoroutine("RandMove");
+        agent.enabled = true;
     }
-
     // Update is called once per frame
     void Update()
     {
 
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
-
     public void Kick()
     {
+        agent.enabled = false;
+        behaviour.enabled = false;
         StopAllCoroutines();
 
         kickTarget = GameObject.Find("Main Camera (eye)").transform;
@@ -81,37 +87,21 @@ public class CrabBall : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator RandMove()
-    {
-        Vector3 randPos = initPos + Random.insideUnitSphere * radius;
-        Vector3 targetPos = new Vector3(randPos.x, initPos.y, randPos.z);
-        Vector3 oldPos = transform.position;
-        float speed = 4f;
-
-        while (Vector3.Distance(transform.position, targetPos) > 0.1f)
-        {
-            transform.position += (targetPos - transform.position).normalized * Time.deltaTime * speed;
-            var rotation = Quaternion.LookRotation(transform.position - oldPos);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * (speed/2));
-
-            oldPos = transform.position;
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(0.3f);
-        StartCoroutine("RandMove");
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
+            behaviour.enabled = false;
+            agent.enabled = false;
             hitPlayer = true;
             transform.parent = other.transform;
         }
 
         if(hitPlayer && other.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
+            behaviour.enabled = false;
+            agent.enabled = false;
             transform.parent = originParent;
         }
     }
@@ -120,6 +110,8 @@ public class CrabBall : MonoBehaviour
     {
         if (hitPlayer && collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
+            behaviour.enabled = false;
+            agent.enabled = false;
             transform.GetComponent<Rigidbody>().isKinematic = false;
             transform.parent = originParent;
             transform.GetComponent<Rigidbody>().useGravity = true;
