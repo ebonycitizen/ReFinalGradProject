@@ -18,6 +18,9 @@ public class PathMoveSeq : MonoBehaviour
     public bool hasReach { get; private set; }
     public bool hasDone { get; private set; }
 
+    [field: SerializeField]
+    public bool comeDone { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,21 +36,36 @@ public class PathMoveSeq : MonoBehaviour
         s = DOTween.Sequence();
         s.Append(transform.DOPath(movePath, duration, PathType.CatmullRom).SetEase(ease).SetDelay(delayTime).SetLookAt(0.02f, Vector3.forward))
             .AppendCallback(() => hasDone = true);
+
+        StartCoroutine("SetUp");
     }
 
+    IEnumerator SetUp()
+    {
+        s.Play();
+        yield return null;
+        s.Pause();
+        yield return null;
+
+    }
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+    //    {
+    //        s.Play();
+    //        hasReach = true;
+    //    }
+    //}
+    public void StartPath()
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            s.Play();
-            hasReach = true;
-        }
+        s.Play();
+        hasReach = true;
     }
 
 }

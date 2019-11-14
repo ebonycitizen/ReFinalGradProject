@@ -75,7 +75,7 @@ public partial class OrcaState : MonoBehaviour
             
             stateMachine.AddTransition<SwimState, ClickState>((int)StateEventId.Click);
             stateMachine.AddTransition<ClickState, SwimState>((int)StateEventId.Swim);
-            
+
             stateMachine.SetStartState<IdleState>();
         }
     }

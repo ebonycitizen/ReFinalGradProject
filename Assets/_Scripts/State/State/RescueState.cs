@@ -30,7 +30,20 @@ public partial class OrcaState
         protected internal override void Update()
         {
             if (path.hasDone)
-                stateMachine.SendEvent((int)StateEventId.Idle);
+            {
+                if (path.comeDone)
+                    stateMachine.SendEvent((int)StateEventId.Idle);
+
+                var dir = Vector3.zero - orca.localPosition;
+                var rot = Quaternion.LookRotation(dir);
+                orca.localRotation = Quaternion.Lerp(orca.rotation, rot, Time.fixedDeltaTime);
+
+                orca.localPosition += orca.forward * Time.fixedDeltaTime * 4f;
+
+                Context.ChangeParentCameraRig();
+
+                return;
+            }
 
             if (path.hasReach)
             {
@@ -41,6 +54,8 @@ public partial class OrcaState
             }
             else
             {
+                if (Vector3.Distance(orca.position, rayObject.position) < 10f)
+                    path.StartPath();
                 orca.position = Vector3.Lerp(orca.position, rayObject.position, Time.fixedDeltaTime * 1f);
                 orca.rotation = Quaternion.Lerp(orca.rotation, Quaternion.Euler(rayObject.eulerAngles), Time.fixedDeltaTime * 2f);
             }
