@@ -1209,6 +1209,8 @@ GameObject:
   - component: {fileID: 5191976213407948402}
   - component: {fileID: 7983451643868876644}
   - component: {fileID: 7983451643868876640}
+  - component: {fileID: 795039999}
+  - component: {fileID: 795040000}
   m_Layer: 12
   m_Name: CrabBall
   m_TagString: Untagged
@@ -1296,6 +1298,69 @@ MonoBehaviour:
   kickTarget: {fileID: 0}
   kickEffect: {fileID: 4853777985376528361, guid: 4629ba70c7f56eb4ab4848aa3ca7449b,
     type: 3}
+  rb: {fileID: 7983451643868876644}
+  agent: {fileID: 795040000}
+  behaviour: {fileID: 795039999}
+--- !u!114 &795039999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983451643868876639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Behavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: "{\n\t\"EntryTask\":{\n\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.EntryTask\",\n\t\t\"NodeData\":{\n\t\t\t\"Offset\":\"(834,115)\"\n\t\t},\n\t\t\"ID\":0,\n\t\t\"Name\":\"Entry\",\n\t\t\"Instant\":true\n\t},\n\t\"RootTask\":{\n\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Movement.CenterWander\",\n\t\t\"NodeData\":{\n\t\t\t\"Offset\":\"(-3.5,149)\"\n\t\t},\n\t\t\"ID\":1,\n\t\t\"Name\":\"Center
+        Wander\",\n\t\t\"Instant\":true,\n\t\t\"SharedFloatminWanderDistance\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":10\n\t\t},\n\t\t\"SharedFloatmaxWanderDistance\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":10\n\t\t},\n\t\t\"SharedFloatwanderRate\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":2\n\t\t},\n\t\t\"SharedFloatminPauseDuration\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":0.5\n\t\t},\n\t\t\"SharedFloatmaxPauseDuration\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":1\n\t\t},\n\t\t\"SharedInttargetRetries\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedInt\",\n\t\t\t\"Name\":null,\n\t\t\t\"Int32mValue\":1\n\t\t},\n\t\t\"SharedFloatspeed\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":6\n\t\t},\n\t\t\"SharedFloatangularSpeed\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":120\n\t\t},\n\t\t\"SharedFloatarriveDistance\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":0.2\n\t\t},\n\t\t\"SharedBoolstopOnTaskEnd\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedBool\",\n\t\t\t\"Name\":null,\n\t\t\t\"BooleanmValue\":true\n\t\t},\n\t\t\"SharedBoolupdateRotation\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedBool\",\n\t\t\t\"Name\":null,\n\t\t\t\"BooleanmValue\":true\n\t\t}\n\t},\n\t\"DetachedTasks\":[{\n\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Movement.Patrol\",\n\t\t\"NodeData\":{\n\t\t\t\"Offset\":\"(609.5,266)\"\n\t\t},\n\t\t\"ID\":2,\n\t\t\"Name\":\"Patrol\",\n\t\t\"Instant\":true,\n\t\t\"SharedBoolrandomPatrol\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedBool\",\n\t\t\t\"Name\":null,\n\t\t\t\"BooleanmValue\":false\n\t\t},\n\t\t\"SharedFloatwaypointPauseDuration\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":0\n\t\t},\n\t\t\"SharedGameObjectListwaypoints\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedGameObjectList\",\n\t\t\t\"Name\":null,\n\t\t\t\"List`1mValue\":[]\n\t\t},\n\t\t\"SharedFloatspeed\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":10\n\t\t},\n\t\t\"SharedFloatangularSpeed\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":120\n\t\t},\n\t\t\"SharedFloatarriveDistance\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\"Name\":null,\n\t\t\t\"SinglemValue\":0.2\n\t\t},\n\t\t\"SharedBoolstopOnTaskEnd\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedBool\",\n\t\t\t\"Name\":null,\n\t\t\t\"BooleanmValue\":true\n\t\t},\n\t\t\"SharedBoolupdateRotation\":{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedBool\",\n\t\t\t\"Name\":null,\n\t\t\t\"BooleanmValue\":true\n\t\t}\n\t}]\n}"
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.6
+--- !u!195 &795040000
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7983451643868876639}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 3
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 7
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8038263857353847811
 GameObject:
   m_ObjectHideFlags: 0
