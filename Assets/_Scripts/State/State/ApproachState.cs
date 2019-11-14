@@ -21,6 +21,7 @@ public partial class OrcaState
 
         protected internal override void Enter()
         {
+            SoundManager.Instance.PlayOneShotSe(ESeTable.Action, 1);
             rayObj = Context.rayObject;
             orca = Context.orcaModel.transform;
             forwardPos = Context.cameraRig.transform;
@@ -28,10 +29,10 @@ public partial class OrcaState
             rightHand = Context.rightHand;
             leftHand = Context.leftHand;
 
-            if (rayObj.tag == "RightApproach")
+            //if (rayObj.tag == "RightApproach")
                 pos = new Vector3(0.85f, 0.5f,-0.05f);
-            else if (rayObj.tag == "LeftApproach")
-                pos = new Vector3(-0.85f, 0.5f, -0.05f);
+            //else if (rayObj.tag == "LeftApproach")
+            //    pos = new Vector3(-0.85f, 0.5f, -0.05f);
         }
         protected internal override void Update()
         {

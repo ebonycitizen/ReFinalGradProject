@@ -52,7 +52,7 @@ public class CrabBall : MonoBehaviour
 
         Vector3 initTargetPos = kickTarget.position;
         Vector3 initPos = transform.position;
-        Vector3 kickPos = Vector3.zero;
+        //Vector3 kickPos = Vector3.zero;
         Vector3 axis = Random.insideUnitSphere * 360;
 
         Instantiate(kickEffect, transform.position, kickEffect.transform.rotation);
@@ -66,13 +66,13 @@ public class CrabBall : MonoBehaviour
             }
             time += Time.deltaTime;
 
-            if (time < duration/2)
-                kickPos = kickTarget.position;
-            else
-                kickPos = initTargetPos;
+            //if (time < duration/2)
+                //kickPos = kickTarget.position;
+            //else
+            //    kickPos = initTargetPos;
 
-            transform.position += (kickPos - initPos).normalized * Time.deltaTime * moveSpeed;
-            transform.position += Vector3.up * 0.03f;
+            transform.position += (kickTarget.position - transform.position).normalized * Time.deltaTime * moveSpeed;
+            //transform.position += Vector3.up * 0.03f;
 
             transform.rotation = Quaternion.AngleAxis(10, axis) * transform.rotation;
             yield return null;
@@ -104,11 +104,10 @@ public class CrabBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Head"))
         {
             hitPlayer = true;
             transform.parent = other.transform;
-            transform.GetComponent<Rigidbody>().isKinematic = false;
         }
 
         if(hitPlayer && other.gameObject.layer == LayerMask.NameToLayer("Hand"))
@@ -121,6 +120,7 @@ public class CrabBall : MonoBehaviour
     {
         if (hitPlayer && collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
+            transform.GetComponent<Rigidbody>().isKinematic = false;
             transform.parent = originParent;
             transform.GetComponent<Rigidbody>().useGravity = true;
         }

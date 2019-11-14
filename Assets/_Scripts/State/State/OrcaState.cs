@@ -93,6 +93,11 @@ public partial class OrcaState : MonoBehaviour
             orcaModel.transform.parent = transform;
     }
 
+    private void ChangeParentNull()
+    {
+        orcaModel.transform.parent = null;
+    }
+
     private void ChangeParentRayObject()
     {
         if (rayObject != null)
@@ -109,6 +114,11 @@ public partial class OrcaState : MonoBehaviour
     {
         this.rayObject = obj;
         stateMachine.SendEvent((int)StateEventId.Swim);
+    }
+
+    public bool IsIdleState()
+    {
+        return stateMachine.IsCurrentState<IdleState>();
     }
 
     public bool ChangeState(string tag, GameObject obj)

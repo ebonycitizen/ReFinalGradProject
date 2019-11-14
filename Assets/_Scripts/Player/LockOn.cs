@@ -48,8 +48,13 @@ public class LockOn : MonoBehaviour
         rightTarget = rightHand.LockOn(targetLayer);
         leftTarget = leftHand.LockOn(targetLayer);
 
-        //if (cameraTarget != null && cameraTarget != lockTarget)
-        //    cameraTarget.GetComponent<Glitter>().HitEffect();
+        if (cameraTarget != null && cameraTarget != lockTarget)
+        {
+            cameraTarget.GetComponent<Glitter>().HitEffect();
+            //cameraTarget.GetComponent<Glitter>().ChangeEffect(cameraTarget, lockTarget);
+        }
+        LookAt();
+
 
         //if (cameraTarget == null && lockTarget != null)
         //    lockTarget.GetComponent<Glitter>().DisableEffect();
@@ -60,9 +65,10 @@ public class LockOn : MonoBehaviour
         //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
         //}
 
-        Point();
-        Touch();
-    
+        //Point();
+        //if(orcaState.IsIdleState())
+        //    Touch();
+
         //if (cameraTarget != null && cameraTarget.tag != "G_Appraoch" && cameraTarget.tag != "G_Come" && (rightHand.GetIsPoint() || leftHand.GetIsPoint()))
         //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, null);
 
@@ -77,6 +83,7 @@ public class LockOn : MonoBehaviour
         //        cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, leftHand.GetApproachObj());
         //}
 
+
         lockTarget = cameraTarget;
     }
 
@@ -86,41 +93,49 @@ public class LockOn : MonoBehaviour
             orcaState.ChangeState("G_Idle", null);
     }
 
-    private void Point()
+    private void LookAt()
     {
-        if (rightTarget != null && rightTarget.tag != "G_Appraoch" && rightTarget.tag != "G_Come"
-           && rightHand.GetIsPoint())
+        if (cameraTarget != null)
         {
-            rightTarget.GetComponent<Glitter>().StartUp(orcaState, rightTarget, null);
-        }
-
-        if (leftTarget != null && leftTarget.tag != "G_Appraoch" && leftTarget.tag != "G_Come"
-            && leftHand.GetIsPoint())
-        {
-            leftTarget.GetComponent<Glitter>().StartUp(orcaState, leftTarget, null);
+            cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
         }
     }
 
-    private void Touch()
-    {
-        if (rightHand.GetIsApproach())
-        {
-            if (CanTouch)
-                orcaState.ChangeState("G_Approach", rightHand.GetApproachObj());
-            else
-                orcaCollision.PlayNoEffect();
-           // approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, rightHand.GetApproachObj());
-        }
+    //private void Point()
+    //{
+    //    if (rightTarget != null && rightTarget.tag != "G_Appraoch" && rightTarget.tag != "G_Come"
+    //       && rightHand.GetIsPoint())
+    //    {
+    //        rightTarget.GetComponent<Glitter>().StartUp(orcaState, rightTarget, null);
+    //    }
 
-        if (leftHand.GetIsApproach())
-        {
-            if(CanTouch)
-                orcaState.ChangeState("G_Approach", leftHand.GetApproachObj());
-            else
-                orcaCollision.PlayNoEffect();
-            //approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, leftHand.GetApproachObj());
-        }
-    }
+    //    if (leftTarget != null && leftTarget.tag != "G_Appraoch" && leftTarget.tag != "G_Come"
+    //        && leftHand.GetIsPoint())
+    //    {
+    //        leftTarget.GetComponent<Glitter>().StartUp(orcaState, leftTarget, null);
+    //    }
+    //}
+
+    //private void Touch()
+    //{
+    //    if (rightHand.GetIsApproach())
+    //    {
+    //        if (CanTouch)
+    //            orcaState.ChangeState("G_Approach", rightHand.GetApproachObj());
+    //        else
+    //            orcaCollision.PlayNoEffect();
+    //       // approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, rightHand.GetApproachObj());
+    //    }
+
+    //    if (leftHand.GetIsApproach())
+    //    {
+    //        if(CanTouch)
+    //            orcaState.ChangeState("G_Approach", leftHand.GetApproachObj());
+    //        else
+    //            orcaCollision.PlayNoEffect();
+    //        //approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, leftHand.GetApproachObj());
+    //    }
+    //}
 
 
 }

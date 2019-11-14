@@ -24,8 +24,9 @@ public class SetComeTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(moveEvent.canTouch == true && (rightHand.GetIsApproach() || leftHand.GetIsApproach() ||Input.GetKeyDown(KeyCode.C)))
+        if(moveEvent.canTouch == true/* && (rightHand.GetIsApproach() || leftHand.GetIsApproach())*/)
         {
+            SoundManager.Instance.PlayOneShotSe(ESeTable.Action, 1);
             orcaState.ChangeState(gameObject.tag, sendObj);
             Destroy(gameObject);
         }

@@ -5,12 +5,13 @@ using SWS;
 
 public class EnableDolphins : MonoBehaviour
 {
+    [SerializeField]
     private splineMove[] splineMoves;
 
     // Start is called before the first frame update
     void Start()
     {
-        splineMoves = Object.FindObjectsOfType<splineMove>();
+        //splineMoves = Object.FindObjectsOfType<splineMove>();
     }
 
     // Update is called once per frame
