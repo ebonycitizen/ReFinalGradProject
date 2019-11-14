@@ -20,14 +20,14 @@ public class PenguinFall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Drown, speaker);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Drown, speaker, 0.1f);
             spline.StartMove();
             Destroy(gameObject);
         }
