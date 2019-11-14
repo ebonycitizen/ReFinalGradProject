@@ -28,7 +28,6 @@ public class ShowGlitter : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
             glitter.SetActive(true);
-            if (glitter.tag == "G_Come")
                 Destroy(glitter, duration);
             SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, speaker);
             Destroy(gameObject);

@@ -5,7 +5,7 @@ using IceMilkTea.Core;
 
 public partial class OrcaState
 {
-    public class SwimState : ImtStateMachine<OrcaState>.State
+    private class SwimState : ImtStateMachine<OrcaState>.State
     {
         private Transform orca;
         private Transform rayObject;
@@ -16,7 +16,6 @@ public partial class OrcaState
         {
             Context.ChangeParentRayObject();
             orca = Context.orcaModel.transform;
-            rayObject = Context.rayObject.transform;
 
             rot = Context.idleRotation;
         }
