@@ -23,8 +23,9 @@ public class EnableDolphins : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
-            foreach (splineMove s in splineMoves)
+            foreach (splineMove s in splineMoves)          
                 s.StartMove();
+            
         }
     }
 }
