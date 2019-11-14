@@ -21,7 +21,6 @@ public enum ESeTable
     WaterJump,
     WaterDown,
     Touch,
-
 }
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
@@ -53,9 +52,30 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     [SerializeField]
     private List<AudioSource> m_seAudioSources = new List<AudioSource>();
 
-    [SerializeField]
-    private GameObject m_3dSoundItem = null;
+    public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float volume = 1)
+    {
+        if (m_bgmAudio.isPlaying)
+            m_bgmAudio.Stop();
 
+        if (m_bgmAudio.volume != 0)
+            m_bgmAudio.volume = 0;
+
+        var clip = FindClipInBgmContainer(bgmType);
+
+        if (!clip)
+            return;
+        else
+        {
+            m_bgmAudio.clip = clip;
+            m_bgmAudio.Play();
+            m_bgmAudio.DOFade(volume, duration);
+        }
+    }
+    public void DoFadeOutBgm(float duration = 3)
+    {
+        m_bgmAudio.DOFade(0, duration).OnComplete(() => m_bgmAudio.Stop());
+
+    }
 
     public void PlayBgm(EBgmTable bgmType)
     {
@@ -306,8 +326,8 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         }
 
         audioSource.clip = clip;
-        
-        
+
+
         audioSource.PlayDelayed(delaySec);//audioSource.PlayOneShot(clip);
     }
 

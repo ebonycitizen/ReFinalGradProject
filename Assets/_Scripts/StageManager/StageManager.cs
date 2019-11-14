@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UniRx;
+using UniRx.Triggers;
 public class StageManager : MonoBehaviour
 {
     [SerializeField]
@@ -20,7 +22,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
+        SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial,10);
     }
 
     private IEnumerator Load(string scene)
@@ -29,7 +31,7 @@ public class StageManager : MonoBehaviour
 
         SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
 
-        foreach(GameObject obj in transferObj)
+        foreach (GameObject obj in transferObj)
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
 
         yield return new WaitForSeconds(waitActiveSec);
@@ -54,13 +56,18 @@ public class StageManager : MonoBehaviour
 
     private void ChangeBGM(string scene)
     {
-        SoundManager.Instance.StopAllBgm();
-        if (scene == "TutorialF")
-            SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
-        if (scene == "SeasideF"|| scene == "SeasideGes")
-            SoundManager.Instance.PlayBgm(EBgmTable.Seaside);
-        if (scene == "OceanF" || scene == "OceanGes")
-            SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
-        
+        var _duration = 1;
+        SoundManager.Instance.DoFadeOutBgm(duration: _duration);
+
+        Observable.Timer(TimeSpan.FromSeconds(_duration))
+            .Subscribe(_ =>
+            {
+                if (scene == "TutorialF")
+                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial);
+                if (scene == "SeasideF" || scene == "SeasideGes")
+                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Seaside);
+                if (scene == "OceanF" || scene == "OceanGes")
+                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Ocean);
+            });
     }
 }

@@ -16,7 +16,13 @@ public class ChangeStage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+#if DEBUG
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SoundManager.Instance.DoFadeOutBgm();
+        }
+#endif
+
     }
 
     private void OnTriggerEnter(Collider other)
