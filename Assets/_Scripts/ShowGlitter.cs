@@ -30,6 +30,7 @@ public class ShowGlitter : MonoBehaviour
             glitter.SetActive(true);
                 Destroy(glitter, duration);
             SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, speaker);
+            SoundManager.Instance.PlayLoop3DSe(ESeTable.Twinkle, speaker,0.3f);
             Destroy(gameObject);
         }
     }
