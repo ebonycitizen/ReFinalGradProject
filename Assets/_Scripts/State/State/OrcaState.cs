@@ -72,8 +72,10 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.AddTransition<NoneState, TutorialState>((int)StateEventId.Tutorial);
 
             stateMachine.AddTransition<SwimState, PlayerJumpState>((int)StateEventId.PlayerJump);
+            
             stateMachine.AddTransition<SwimState, ClickState>((int)StateEventId.Click);
-
+            stateMachine.AddTransition<ClickState, SwimState>((int)StateEventId.Swim);
+            
             stateMachine.SetStartState<IdleState>();
         }
     }
@@ -182,10 +184,14 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.PlayerJump);
             return true;
         }
-
         if (tag == "G_Come")
         {
             stateMachine.SendEvent((int)StateEventId.Come);
+            return true;
+        }
+        if (tag == "G_Click")
+        {
+            stateMachine.SendEvent((int)StateEventId.Click);
             return true;
         }
         return false;

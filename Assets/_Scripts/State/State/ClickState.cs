@@ -5,29 +5,27 @@ using IceMilkTea.Core;
 
 public partial class OrcaState
 {
-    public class ClickState : ImtStateMachine<OrcaState>.State
+    private class ClickState : ImtStateMachine<OrcaState>.State
     {
         private Transform orca;
         private Transform rayObject;
-
-        private Transform rot;
+        private ClickEffect click;
 
         protected internal override void Enter()
         {
-            Context.ChangeParentRayObject();
             orca = Context.orcaModel.transform;
             rayObject = Context.rayObject.transform;
+            click = rayObject.GetComponent<ClickEffect>();
 
-            rot = Context.idleRotation;
-            Debug.Log("ClickEnter");
+            click.StartEffect(orca);
         }
         protected internal override void Update()
         {
-            
+            if (click.hasDone)
+                stateMachine.SendEvent((int)StateEventId.Swim);
         }
         protected internal override void Exit()
         {
-            
         }
     }
 }
