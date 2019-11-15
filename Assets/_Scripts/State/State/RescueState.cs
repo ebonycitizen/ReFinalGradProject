@@ -13,6 +13,7 @@ public partial class OrcaState
 
         private Transform rot;
         private float ratio;
+        private int gotoIdle;
 
         protected internal override void Enter()
         {
@@ -26,23 +27,64 @@ public partial class OrcaState
             rot = Context.idleRotation;
             SoundManager.Instance.PlayOneShotDelaySe(ESeTable.Call, 0.5f);
             ratio = 0;
+            gotoIdle = 0;
         }
         protected internal override void Update()
         {
             if (path.hasDone)
             {
-                if (path.comeDone)
-                    stateMachine.SendEvent((int)StateEventId.Idle);
-
-                var dir = Vector3.zero - orca.localPosition;
-                var rot = Quaternion.LookRotation(dir);
-                orca.localRotation = Quaternion.Lerp(orca.rotation, rot, Time.fixedDeltaTime);
-
-                orca.localPosition += orca.forward * Time.fixedDeltaTime * 4f;
 
                 Context.ChangeParentCameraRig();
+                if (path.comeDone)
+                {
 
-                return;
+                    if (Vector3.Distance(orca.localPosition, new Vector3(-2, 0, 1)) < 5f)
+                        stateMachine.SendEvent((int)StateEventId.Idle);
+                    
+
+                    orca.localPosition = Vector3.Lerp(orca.localPosition, new Vector3(-2, 0, 1), Time.fixedDeltaTime);
+                    orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.identity, Time.fixedDeltaTime*2);
+                    return;
+                }
+                else
+                {
+
+                    var targetPos = Vector3.zero;
+                    var speed = 0;
+                    switch(gotoIdle)
+                    {
+                        case 0:
+                            targetPos = new Vector3(-2, 0, 0);
+                            speed = 6;
+                            break;
+                        case 1:
+                            targetPos = new Vector3(0, 0, -3);
+                            speed = 3;
+                            break;
+                        case 2:
+                            targetPos = new Vector3(3, 0, 1.5f);
+                            speed = 2;
+                            break;
+                        case 3:
+                            stateMachine.SendEvent((int)StateEventId.Idle);
+                            break;
+                    }
+
+                    if (Vector3.Distance(orca.localPosition, targetPos) < 2f)
+                        gotoIdle++;
+
+                    var dir = (targetPos - orca.localPosition).normalized;
+                    var rot = Quaternion.LookRotation(dir);
+                    orca.localRotation = Quaternion.Lerp(orca.localRotation, rot, Time.fixedDeltaTime*3);
+
+                    orca.localPosition += orca.forward * Time.fixedDeltaTime * speed;
+
+                    //orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime);
+                    //orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(targetRot), Time.fixedDeltaTime*3);
+                    return;
+                }
+
+                
             }
 
             if (path.hasReach)
@@ -57,7 +99,7 @@ public partial class OrcaState
                 if (Vector3.Distance(orca.position, rayObject.position) < 10f)
                     path.StartPath();
                 orca.position = Vector3.Lerp(orca.position, rayObject.position, Time.fixedDeltaTime * 1f);
-                orca.rotation = Quaternion.Lerp(orca.rotation, Quaternion.Euler(rayObject.eulerAngles), Time.fixedDeltaTime * 2f);
+                orca.rotation = Quaternion.Lerp(orca.rotation, Quaternion.Euler(rayObject.eulerAngles), Time.fixedDeltaTime * 3f);
             }
         }
         protected internal override void Exit()

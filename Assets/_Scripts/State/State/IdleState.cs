@@ -16,6 +16,8 @@ public partial class OrcaState
         private Transform forwardPos;
         private Vector3 oldForwardPos;
 
+        private float ratio;
+
         protected internal override void Enter()
         {
             Context.ChangeParentCameraRig();
@@ -24,6 +26,8 @@ public partial class OrcaState
             orca = Context.orcaModel.transform;
 
             forwardPos = Context.cameraRig.transform;
+
+            ratio = 0.25f;
         }
         protected internal override void Update()
         {
@@ -31,6 +35,9 @@ public partial class OrcaState
 
             Move();
             Rotate();
+
+            if (ratio < 2f)
+                ratio += Time.fixedDeltaTime * 0.5f;
 
             if (Input.GetKeyDown(KeyCode.J))
                 stateMachine.SendEvent((int)StateEventId.Jump);
@@ -62,7 +69,7 @@ public partial class OrcaState
 
             var targetPos = direction * distance;
 
-            orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime * 2f);
+            orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime * ratio);
         }
         private Vector3 old;
         private void Rotate()
@@ -75,7 +82,7 @@ public partial class OrcaState
                 if (q.eulerAngles != Vector3.zero)
                 {
                     //orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z);
-                    orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z),0.2f);
+                    orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z), Time.fixedDeltaTime);
                 }
                 
             }
