@@ -43,7 +43,7 @@ public class PathMoveSeq : MonoBehaviour
     IEnumerator SetUp()
     {
         s.Play();
-        yield return null;
+        yield return new WaitForSeconds(0.2f);
         s.Pause();
         yield return null;
 

@@ -26,6 +26,7 @@ public partial class OrcaState
         }
         protected internal override void Exit()
         {
+            Context.rayObject = null;
         }
     }
 }

@@ -48,7 +48,7 @@ public partial class OrcaState
             if (path.hasReach)
             {
                 if (ratio < 1f)
-                    ratio += Time.fixedDeltaTime;
+                    ratio += Time.fixedDeltaTime * 0.25f;
                 orca.position = Vector3.Lerp(orca.position, rayObject.position, ratio);
                 orca.rotation = Quaternion.Lerp(orca.rotation, Quaternion.Euler(rayObject.eulerAngles), ratio);
             }

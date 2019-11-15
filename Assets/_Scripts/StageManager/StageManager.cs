@@ -22,7 +22,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial,10);
+        SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial, duration: 3, volume: 1);
     }
 
     private IEnumerator Load(string scene)
