@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2738152979033360393}
   - component: {fileID: 2738152979033360392}
+  - component: {fileID: 8659190774370258645}
   m_Layer: 10
   m_Name: Orca
   m_TagString: Untagged
@@ -118,6 +119,19 @@ MonoBehaviour:
   orcaModel: {fileID: 3816547670673454700}
   idleTarget: {fileID: 2738152980436163316}
   idleRotation: {fileID: 5859573812926652527}
+  orcaAnim: {fileID: 0}
+--- !u!114 &8659190774370258645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738152979033360398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d18e59d2e184554bbedfe62278358b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2738152980436163317
 GameObject:
   m_ObjectHideFlags: 0

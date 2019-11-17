@@ -77,6 +77,7 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.AddTransition<ClickState, SwimState>((int)StateEventId.Swim);
 
             stateMachine.SetStartState<IdleState>();
+
         }
     }
 
@@ -87,6 +88,7 @@ public partial class OrcaState : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.Update();
+        Debug.Log(stateMachine.CurrentStateName);
     }
 
     private void ChangeParentCameraRig()
