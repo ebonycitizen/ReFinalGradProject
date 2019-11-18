@@ -11,6 +11,7 @@ public enum EBgmTable
     Tutorial,
     Seaside,
     Ocean,
+    Cave,
 }
 public enum ESeTable
 {
@@ -21,6 +22,27 @@ public enum ESeTable
     WaterJump,
     WaterDown,
     Touch,
+    
+    Orac_1,
+    Orac_2,
+    Orac_3,
+    Orac_4,
+    Orac_5,
+    Orac_6,
+    Orac_7,
+
+    Dolphin_1,
+    Dolphin_2,
+    
+    Penguin_1,
+    Penguin_2,
+
+    Water_1,
+    Water_2,
+    Water_3,
+    Water_4,
+    Water_5,
+
 }
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
@@ -52,6 +74,21 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     [SerializeField]
     private List<AudioSource> m_seAudioSources = new List<AudioSource>();
 
+    public void Update()
+    {
+#if DEBUG
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            DoFadeInBgm(EBgmTable.Tutorial);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            DoFadeInBgm(EBgmTable.Seaside);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            DoFadeInBgm(EBgmTable.Ocean);
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            DoFadeInBgm(EBgmTable.Cave);
+
+#endif
+
+    }
     public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float volume = 1)
     {
         if (m_bgmAudio.isPlaying)
