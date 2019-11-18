@@ -44,9 +44,10 @@ public partial class OrcaState
         {
             s2 = DOTween.Sequence();
             s2.Append(orca.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 0.5f).SetEase(Ease.InOutQuad))
+                .AppendCallback(()=> Context.orcaAnim.SetTrigger("Jump"))
                 .Append(orca.DOBlendableLocalRotateBy(new Vector3(90, 0, 0), 1f).SetEase(Ease.InOutQuad))
                 .Append(orca.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 1));
-                
+
             s2.Play();
         }
 

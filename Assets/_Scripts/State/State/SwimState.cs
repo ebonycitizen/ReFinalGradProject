@@ -11,13 +11,19 @@ public partial class OrcaState
         private Transform rayObject;
 
         private Transform rot;
-
+        private Rigidbody rigid;
+        private RigidbodyConstraints constraints;
         protected internal override void Enter()
         {
             Context.ChangeParentRayObject();
             orca = Context.orcaModel.transform;
 
             rot = Context.idleRotation;
+            rigid = orca.GetComponent<Rigidbody>();
+
+            constraints = rigid.constraints;
+
+            rigid.constraints = RigidbodyConstraints.FreezeAll;
         }
         protected internal override void Update()
         {
@@ -27,6 +33,7 @@ public partial class OrcaState
         }
         protected internal override void Exit()
         {
+            rigid.constraints = constraints;
         }
     }
 }

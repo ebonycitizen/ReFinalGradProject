@@ -15,7 +15,7 @@ public partial class OrcaState
 
         private Transform forwardPos;
         private Vector3 oldForwardPos;
-
+        
         private float ratio;
 
         protected internal override void Enter()
@@ -28,6 +28,8 @@ public partial class OrcaState
             forwardPos = Context.cameraRig.transform;
 
             ratio = 0.25f;
+
+            Context.SetBehaviorStatus(true);
         }
         protected internal override void Update()
         {
@@ -38,10 +40,10 @@ public partial class OrcaState
 
             if (ratio < 2f)
                 ratio += Time.fixedDeltaTime * 0.5f;
-
+#if DEBUG
             if (Input.GetKeyDown(KeyCode.J))
                 stateMachine.SendEvent((int)StateEventId.Jump);
-            if(Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S))
                 stateMachine.SendEvent((int)StateEventId.Swim);
             if (Input.GetKeyDown(KeyCode.R))
                 stateMachine.SendEvent((int)StateEventId.Rescue);
@@ -61,6 +63,15 @@ public partial class OrcaState
                 stateMachine.SendEvent((int)StateEventId.None);
             if (Input.GetKeyDown(KeyCode.A))
                 stateMachine.SendEvent((int)StateEventId.Approach);
+#endif
+
+        }
+
+        protected internal override void Exit()
+        {
+            Debug.Log("IdleExit");
+
+            Context.SetBehaviorStatus(false);
         }
 
         private void Move()
@@ -84,7 +95,7 @@ public partial class OrcaState
                     //orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z);
                     orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z), Time.fixedDeltaTime);
                 }
-                
+
             }
 
             oldForwardPos = forwardPos.position;
@@ -98,11 +109,9 @@ public partial class OrcaState
             //Debug.Log(x);
 
             //old = orca.localPosition;
-             
+
         }
-        protected internal override void Exit()
-        {
-            Debug.Log("IdleExit");
-        }
+
+
     }
 }

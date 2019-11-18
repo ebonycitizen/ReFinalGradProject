@@ -20,6 +20,8 @@ public class OrcaCollision : MonoBehaviour
     [SerializeField]
     private ParticleSystem no;
 
+
+
     public void PlayNoEffect()
     {
         if (!no.isPlaying)
@@ -30,6 +32,8 @@ public class OrcaCollision : MonoBehaviour
 
     private Speaker speaker;
     private Animator animator;
+
+
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -52,8 +56,11 @@ public class OrcaCollision : MonoBehaviour
             if (grab != null)
             {
                 if (grab.GetVelocity().magnitude < touchSpeed && !heart.isPlaying)
+                {
                     heart.Play();
-                else if(grab.GetVelocity().magnitude >= touchSpeed && !breakHeart.isPlaying)
+                    animator.SetTrigger("Spoil");
+                }
+                else if (grab.GetVelocity().magnitude >= touchSpeed && !breakHeart.isPlaying)
                     breakHeart.Play();
             }
         }
@@ -79,6 +86,7 @@ public class OrcaCollision : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
+            animator.SetTrigger("Idle");
             heart.Stop();
             breakHeart.Stop();
         }

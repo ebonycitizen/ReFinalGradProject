@@ -2,30 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetSwimState : MonoBehaviour
+public class FallRock : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject sendObj;
-    private OrcaState orcaState;
-
     // Start is called before the first frame update
     void Start()
     {
-        orcaState = Object.FindObjectOfType<OrcaState>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
-            orcaState = Object.FindObjectOfType<OrcaState>();
-            orcaState.GotoSwimState(sendObj);
+            transform.parent.GetComponentInChildren<ParticleSystem>().Play();
+            Rigidbody[] rigid = transform.parent.GetComponentsInChildren<Rigidbody>();
+            foreach (Rigidbody r in rigid)
+                r.isKinematic = false;
         }
     }
 }

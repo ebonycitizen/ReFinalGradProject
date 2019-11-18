@@ -11,8 +11,10 @@ public class ClickEffect : MonoBehaviour
     [SerializeField]
     private GameObject defaultCrystal;
 
-    Transform orca;
     public bool hasDone { get; private set; }
+
+    private Transform orca;
+    
     void Start()
     {
         hasDone = false;
@@ -22,22 +24,34 @@ public class ClickEffect : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
+        {
+            Break();
+        }
+    }
+
+    private void Break()
+    {
+        GetComponentInChildren<ParticleSystem>().Play();
+        defaultCrystal.SetActive(false);
+
+        Rigidbody[] rigid = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody r in rigid)
+            r.isKinematic = false;
+    }
 
     private IEnumerator Click()
     {
         Vector3 dir = (glitterPos.position - orca.position);
         Instantiate(clickEffect, orca.position + orca.forward * 20f, Quaternion.LookRotation(dir));
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.8f);
 
+        Break();
 
-        defaultCrystal.SetActive(false);
-
-        Rigidbody[] rigid = GetComponentsInChildren<Rigidbody>();
-        foreach (Rigidbody r in rigid)
-            r.isKinematic = false;
-
-        //Destroy(gameObject);
+        Destroy(this);
         hasDone = true;
         yield return null;
     }

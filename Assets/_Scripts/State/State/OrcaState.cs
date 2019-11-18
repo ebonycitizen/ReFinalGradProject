@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using IceMilkTea.Core;
+using BehaviorDesigner.Runtime;
 
 public partial class OrcaState : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public partial class OrcaState : MonoBehaviour
         Follow,
         Approach,
     }
-   
+
     private ImtStateMachine<OrcaState> stateMachine;
 
     [SerializeField]
@@ -44,47 +45,51 @@ public partial class OrcaState : MonoBehaviour
     [SerializeField]
     private Transform idleRotation;
 
+    [SerializeField]
+    private Animator orcaAnim;
+    [SerializeField]
+    private BehaviorTree m_changeAnimation;
+
     private void Awake()
     {
-        {
-            stateMachine = new ImtStateMachine<OrcaState>(this);
+        stateMachine = new ImtStateMachine<OrcaState>(this);
 
-            stateMachine.AddAnyTransition<IdleState>((int)StateEventId.Idle);
+        stateMachine.AddAnyTransition<IdleState>((int)StateEventId.Idle);
 
 
-            stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
-            stateMachine.AddTransition<IdleState, RescueState>((int)StateEventId.Rescue);
-            stateMachine.AddTransition<IdleState, KickState>((int)StateEventId.Kick);
-            stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
-            stateMachine.AddTransition<IdleState, ApproachState>((int)StateEventId.Approach);
-            stateMachine.AddTransition<IdleState, NoneState>((int)StateEventId.None);
+        stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
+        stateMachine.AddTransition<IdleState, RescueState>((int)StateEventId.Rescue);
+        stateMachine.AddTransition<IdleState, KickState>((int)StateEventId.Kick);
+        stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
+        stateMachine.AddTransition<IdleState, ApproachState>((int)StateEventId.Approach);
+        stateMachine.AddTransition<IdleState, NoneState>((int)StateEventId.None);
 
-            stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
-            stateMachine.AddTransition<ApproachState, JumpState>((int)StateEventId.Jump);
+        stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
+        stateMachine.AddTransition<ApproachState, JumpState>((int)StateEventId.Jump);
 
-            //stateMachine.AddTransition<IdleState, FollowState>((int)StateEventId.Follow);
-            //stateMachine.AddTransition<TutorialState, FollowState>((int)StateEventId.Follow);
+        //stateMachine.AddTransition<IdleState, FollowState>((int)StateEventId.Follow);
+        //stateMachine.AddTransition<TutorialState, FollowState>((int)StateEventId.Follow);
 
-            //stateMachine.AddTransition<IdleState, ComeState>((int)StateEventId.Come);
-            stateMachine.AddTransition<TutorialState, ComeState>((int)StateEventId.Come);
+        //stateMachine.AddTransition<IdleState, ComeState>((int)StateEventId.Come);
+        stateMachine.AddTransition<TutorialState, ComeState>((int)StateEventId.Come);
 
-            stateMachine.AddTransition<IdleState, TutorialState>((int)StateEventId.Tutorial);
-            stateMachine.AddTransition<NoneState, TutorialState>((int)StateEventId.Tutorial);
+        stateMachine.AddTransition<IdleState, TutorialState>((int)StateEventId.Tutorial);
+        stateMachine.AddTransition<NoneState, TutorialState>((int)StateEventId.Tutorial);
 
-            stateMachine.AddTransition<SwimState, PlayerJumpState>((int)StateEventId.PlayerJump);
-            
-            stateMachine.AddTransition<SwimState, ClickState>((int)StateEventId.Click);
-            stateMachine.AddTransition<ClickState, SwimState>((int)StateEventId.Swim);
+        stateMachine.AddTransition<SwimState, PlayerJumpState>((int)StateEventId.PlayerJump);
 
-            stateMachine.SetStartState<IdleState>();
+        stateMachine.AddTransition<SwimState, ClickState>((int)StateEventId.Click);
+        stateMachine.AddTransition<ClickState, SwimState>((int)StateEventId.Swim);
 
-        }
+        stateMachine.SetStartState<IdleState>();
+
     }
 
     private void Start()
-    {
+    { 
         stateMachine.Update();
     }
+
     private void FixedUpdate()
     {
         stateMachine.Update();
@@ -108,22 +113,19 @@ public partial class OrcaState : MonoBehaviour
             orcaModel.transform.parent = rayObject.transform;
     }
 
-    //del this two function
-    public void GotoPlayerJumpState()
+    public void SetBehaviorStatus(bool status)
     {
-        stateMachine.SendEvent((int)StateEventId.PlayerJump);
-    }
-
-    public void GotoSwimState(GameObject obj)
-    {
-        this.rayObject = obj;
-        stateMachine.SendEvent((int)StateEventId.Swim);
+        if (status)
+            m_changeAnimation.EnableBehavior();
+        else
+            m_changeAnimation.DisableBehavior();
     }
 
     public bool IsIdleState()
     {
         return stateMachine.IsCurrentState<IdleState>();
     }
+
 
     public bool ChangeState(string tag, GameObject obj)
     {

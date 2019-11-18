@@ -28,6 +28,8 @@ public partial class OrcaState
             SoundManager.Instance.PlayOneShotDelaySe(ESeTable.Call, 0.5f);
             ratio = 0;
             gotoIdle = 0;
+
+            Context.orcaAnim.SetTrigger("Rescue");
         }
         protected internal override void Update()
         {
@@ -97,7 +99,10 @@ public partial class OrcaState
             else
             {
                 if (Vector3.Distance(orca.position, rayObject.position) < 10f)
+                {
+                    Context.orcaAnim.SetTrigger("Idle");
                     path.StartPath();
+                }
                 orca.position = Vector3.Lerp(orca.position, rayObject.position, Time.fixedDeltaTime * 1f);
                 orca.rotation = Quaternion.Lerp(orca.rotation, Quaternion.Euler(rayObject.eulerAngles), Time.fixedDeltaTime * 3f);
             }
