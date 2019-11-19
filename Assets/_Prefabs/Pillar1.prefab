@@ -39,10 +39,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5974300888203454188}
     m_Modifications:
-    - target: {fileID: 100000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
-      propertyPath: m_Name
-      value: salactites_1 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.299975
@@ -89,16 +85,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1724
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1723998
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1724
+      value: 2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
+      propertyPath: m_Name
+      value: salactites_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75d75340d23bdff46b1e741226839579, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a3a66f525a84f945bdb23609a185960, type: 3}
 --- !u!4 &6387061814356667273 stripped
@@ -124,7 +128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0c480c6ee373e0a488c9d25fc6136932, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 53.9
+      value: 153.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0c480c6ee373e0a488c9d25fc6136932, type: 3}
       propertyPath: m_LocalPosition.z
@@ -164,12 +168,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0c480c6ee373e0a488c9d25fc6136932, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2000005
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0c480c6ee373e0a488c9d25fc6136932, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2000005
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0c480c6ee373e0a488c9d25fc6136932, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 0c480c6ee373e0a488c9d25fc6136932, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75d75340d23bdff46b1e741226839579, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c480c6ee373e0a488c9d25fc6136932, type: 3}
 --- !u!4 &6891912709802365443 stripped
