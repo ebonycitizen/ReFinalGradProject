@@ -24,6 +24,8 @@ public partial class OrcaState
             constraints = rigid.constraints;
 
             rigid.constraints = RigidbodyConstraints.FreezeAll;
+
+            Context.SetBehaviorStatus(true);
         }
         protected internal override void Update()
         {
@@ -34,6 +36,7 @@ public partial class OrcaState
         protected internal override void Exit()
         {
             rigid.constraints = constraints;
+            Context.SetBehaviorStatus(false);
         }
     }
 }

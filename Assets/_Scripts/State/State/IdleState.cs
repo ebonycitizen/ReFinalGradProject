@@ -28,7 +28,7 @@ public partial class OrcaState
             forwardPos = Context.cameraRig.transform;
 
             ratio = 0.25f;
-
+            
             Context.SetBehaviorStatus(true);
         }
         protected internal override void Update()

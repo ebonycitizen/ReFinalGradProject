@@ -8,8 +8,6 @@ public class ClickEffect : MonoBehaviour
     private GameObject clickEffect;
     [SerializeField]
     private Transform glitterPos;
-    [SerializeField]
-    private GameObject defaultCrystal;
 
     public bool hasDone { get; private set; }
 
@@ -35,7 +33,6 @@ public class ClickEffect : MonoBehaviour
     private void Break()
     {
         GetComponentInChildren<ParticleSystem>().Play();
-        defaultCrystal.SetActive(false);
 
         Rigidbody[] rigid = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody r in rigid)
