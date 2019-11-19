@@ -14,8 +14,7 @@ public partial class OrcaState
 
         private void MoveForward()
         {
-
-            orca.position = Vector3.Lerp(orca.position, rayObject.position + orca.forward * 20, Time.fixedDeltaTime * 2f);
+            orca.position = Vector3.Lerp(orca.position, rayObject.position + orca.forward * 20, Time.fixedDeltaTime);
         }
 
         protected internal override void Enter()
@@ -27,9 +26,11 @@ public partial class OrcaState
             Sequence s = DOTween.Sequence();
 
             s.AppendInterval(1f)
+                .AppendCallback(()=>animator.SetTrigger("Kick"))
                 .AppendCallback(() => animator.speed = 10f)
                 .AppendCallback(() => rayObject.GetComponent<CrabBall>().Kick())
                 .AppendInterval(1.2f)
+                .AppendCallback(() => animator.SetTrigger("Idle"))
                 .AppendCallback(()=> stateMachine.SendEvent((int)StateEventId.Idle));
 
             s.Play();

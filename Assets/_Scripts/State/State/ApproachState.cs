@@ -30,7 +30,7 @@ public partial class OrcaState
             leftHand = Context.leftHand;
 
             //if (rayObj.tag == "RightApproach")
-                pos = new Vector3(0.85f, 0.5f,-0.05f);
+                pos = new Vector3(0.9f, 0.5f,-0.3f);
             //else if (rayObj.tag == "LeftApproach")
             //    pos = new Vector3(-0.85f, 0.5f, -0.05f);
         }
