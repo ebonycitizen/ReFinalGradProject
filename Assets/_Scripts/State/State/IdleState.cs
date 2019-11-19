@@ -18,12 +18,16 @@ public partial class OrcaState
         
         private float ratio;
 
+        private MyCinemachineDollyCart dolly;
+
         protected internal override void Enter()
         {
             Context.ChangeParentCameraRig();
             target = Context.idleTarget;
             rot = Context.idleRotation;
             orca = Context.orcaModel.transform;
+
+            dolly = Context.dolly;
 
             forwardPos = Context.cameraRig.transform;
 
@@ -85,6 +89,14 @@ public partial class OrcaState
         private Vector3 old;
         private void Rotate()
         {
+
+            if (dolly != null)
+            {
+                //orca.rotation = Quaternion.Lerp(orca.rotation, dolly.forward, Time.fixedDeltaTime);
+                orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(dolly.forwardDig.x, dolly.forwardDig.y, rot.localEulerAngles.z), Time.fixedDeltaTime * 3);
+
+                return;
+            }
             var d = forwardPos.position - oldForwardPos;
             if (d.magnitude > 0)
             {
@@ -94,6 +106,7 @@ public partial class OrcaState
                 {
                     //orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z);
                     orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z), Time.fixedDeltaTime);
+                    
                 }
 
             }

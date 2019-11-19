@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orca: {fileID: 7246294037680185300}
   torque: 7
-  force: 200
+  force: 400
   limit: 60
 --- !u!1 &2738152979033360398
 GameObject:
@@ -120,6 +120,7 @@ MonoBehaviour:
   idleRotation: {fileID: 5859573812926652527}
   orcaAnim: {fileID: 6427491504450110668}
   m_changeAnimation: {fileID: 8663372460618704023}
+  dolly: {fileID: 0}
 --- !u!1 &2738152980436163317
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +195,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrcaModel
       objectReference: {fileID: 0}
+    - target: {fileID: 7642113121913110694, guid: 4947c16707c09f249b217f6821767787,
+        type: 3}
+      propertyPath: hitPrefab
+      value: 
+      objectReference: {fileID: 1043807661910233856, guid: a8bc9607ea1d76249a020a646912ee8b,
+        type: 3}
     - target: {fileID: 584454758779219987, guid: 4947c16707c09f249b217f6821767787,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -264,12 +271,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7642113121913110694, guid: 4947c16707c09f249b217f6821767787,
-        type: 3}
-      propertyPath: hitPrefab
-      value: 
-      objectReference: {fileID: 1043807661910233856, guid: a8bc9607ea1d76249a020a646912ee8b,
-        type: 3}
     - target: {fileID: 3042587167579159198, guid: 4947c16707c09f249b217f6821767787,
         type: 3}
       propertyPath: m_Constraints
@@ -1008,12 +1009,12 @@ PrefabInstance:
     - target: {fileID: 1492415319526034256, guid: 4947c16707c09f249b217f6821767787,
         type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.byteDataArray.Array.data[207]
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492415319526034256, guid: 4947c16707c09f249b217f6821767787,
         type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.byteDataArray.Array.data[208]
-      value: 63
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 1492415319526034256, guid: 4947c16707c09f249b217f6821767787,
         type: 3}
@@ -1714,6 +1715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.byteDataArray.Array.data[373]
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492415319526034256, guid: 4947c16707c09f249b217f6821767787,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.byteDataArray.Array.data[247]
+      value: 192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4947c16707c09f249b217f6821767787, type: 3}

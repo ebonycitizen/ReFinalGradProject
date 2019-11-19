@@ -17,6 +17,12 @@ using Cinemachine;
     {
         public bool isDebug;
 
+        public float setForward=30;
+
+        public Quaternion forward;
+
+        public Vector3 forwardDig;
+
 
         /// <summary>The path to follow</summary>
         [Tooltip("The path to follow")]
@@ -90,6 +96,12 @@ using Cinemachine;
             if (!isDebug)
                 tangent.x = 0;
             transform.rotation = Quaternion.LookRotation(tangent);
-        }
+
+            var forwardVec = m_Path.EvaluateTangentAtUnit(m_Position + setForward, m_PositionUnits);
+            
+            forward = Quaternion.LookRotation(forwardVec);
+
+            forwardDig = forward.eulerAngles;
+    }
     }
 

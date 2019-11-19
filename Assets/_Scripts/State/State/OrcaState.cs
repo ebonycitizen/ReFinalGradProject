@@ -50,6 +50,9 @@ public partial class OrcaState : MonoBehaviour
     [SerializeField]
     private BehaviorTree m_changeAnimation;
 
+    [SerializeField]
+    private MyCinemachineDollyCart dolly;
+
     private void Awake()
     {
         stateMachine = new ImtStateMachine<OrcaState>(this);
