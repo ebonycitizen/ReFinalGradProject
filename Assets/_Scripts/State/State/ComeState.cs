@@ -44,7 +44,7 @@ public partial class OrcaState
             //    return;
             //}
 
-            if (rightHand.GetIsThumbUp() || leftHand.GetIsThumbUp() || Input.GetKeyDown(KeyCode.A))
+            if (rightHand.GetIsThumbUp() || leftHand.GetIsThumbUp() || Input.GetKeyDown(KeyCode.Return))
                 stateMachine.SendEvent((int)StateEventId.Idle);
 
             if (!gotoPath)
