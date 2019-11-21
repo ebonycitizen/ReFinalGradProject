@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 169522629}
   - component: {fileID: 169522630}
   - component: {fileID: 1961671242960512213}
+  - component: {fileID: 5641603455297406078}
   m_Layer: 12
   m_Name: ShellGrabLow
   m_TagString: Untagged
@@ -201,7 +202,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 169522626}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 3
+  m_Radius: 5.7
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -211,7 +212,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 7
-  m_BaseOffset: 0
+  m_BaseOffset: -1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &169522630
@@ -264,6 +265,51 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.65
   m_Center: {x: 0, y: 3.18, z: 1.13}
+--- !u!114 &5641603455297406078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169522626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  pauseWhenDisabled: 0
+  restartWhenComplete: 1
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Behavior 2
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: "{\n\t\"EntryTask\":{\n\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.EntryTask\",\n\t\t\"NodeData\":{\n\t\t\t\"Offset\":\"(149,30)\"\n\t\t},\n\t\t\"ID\":0,\n\t\t\"Name\":\"Entry\",\n\t\t\"Instant\":true\n\t},\n\t\"RootTask\":{\n\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Sequence\",\n\t\t\"NodeData\":{\n\t\t\t\"Offset\":\"(-0.9999771,109.130432)\"\n\t\t},\n\t\t\"ID\":1,\n\t\t\"Name\":\"Sequence\",\n\t\t\"Instant\":true,\n\t\t\"AbortTypeabortType\":\"None\",\n\t\t\"Children\":[{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Basic.UnityNavMeshAgent.SetSpeed\",\n\t\t\t\"NodeData\":{\n\t\t\t\t\"Offset\":\"(-469.8262,167.7392)\"\n\t\t\t},\n\t\t\t\"ID\":2,\n\t\t\t\"Name\":\"Set
+        Speed\",\n\t\t\t\"Instant\":true,\n\t\t\t\"SharedGameObjecttargetGameObject\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedGameObject\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"GameObjectmValue\":0\n\t\t\t},\n\t\t\t\"SharedFloatspeed\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":2\n\t\t\t}\n\t\t},{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Basic.UnityAnimator.SetSpeed\",\n\t\t\t\"NodeData\":{\n\t\t\t\t\"Offset\":\"(-251.000015,174.782654)\"\n\t\t\t},\n\t\t\t\"ID\":3,\n\t\t\t\"Name\":\"Set
+        Speed\",\n\t\t\t\"Instant\":true,\n\t\t\t\"SharedGameObjecttargetGameObject\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedGameObject\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"GameObjectmValue\":1\n\t\t\t},\n\t\t\t\"SharedFloatspeed\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":0.3\n\t\t\t}\n\t\t},{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Wait\",\n\t\t\t\"NodeData\":{\n\t\t\t\t\"Offset\":\"(8.434753,156.869629)\"\n\t\t\t},\n\t\t\t\"ID\":4,\n\t\t\t\"Name\":\"Wait\",\n\t\t\t\"Instant\":true,\n\t\t\t\"SharedFloatwaitTime\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":1.5\n\t\t\t},\n\t\t\t\"SharedBoolrandomWait\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedBool\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"BooleanmValue\":false\n\t\t\t},\n\t\t\t\"SharedFloatrandomWaitMin\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":1\n\t\t\t},\n\t\t\t\"SharedFloatrandomWaitMax\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":2\n\t\t\t}\n\t\t},{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Basic.UnityNavMeshAgent.SetSpeed\",\n\t\t\t\"NodeData\":{\n\t\t\t\t\"Offset\":\"(183.782654,151.304382)\"\n\t\t\t},\n\t\t\t\"ID\":5,\n\t\t\t\"Name\":\"Set
+        Speed\",\n\t\t\t\"Instant\":true,\n\t\t\t\"SharedGameObjecttargetGameObject\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedGameObject\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"GameObjectmValue\":2\n\t\t\t},\n\t\t\t\"SharedFloatspeed\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":6\n\t\t\t}\n\t\t},{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Basic.UnityAnimator.SetSpeed\",\n\t\t\t\"NodeData\":{\n\t\t\t\t\"Offset\":\"(368.695557,158.260864)\"\n\t\t\t},\n\t\t\t\"ID\":6,\n\t\t\t\"Name\":\"Set
+        Speed\",\n\t\t\t\"Instant\":true,\n\t\t\t\"SharedGameObjecttargetGameObject\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedGameObject\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"GameObjectmValue\":3\n\t\t\t},\n\t\t\t\"SharedFloatspeed\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":2\n\t\t\t}\n\t\t},{\n\t\t\t\"Type\":\"BehaviorDesigner.Runtime.Tasks.Wait\",\n\t\t\t\"NodeData\":{\n\t\t\t\t\"Offset\":\"(509.130554,159.130432)\"\n\t\t\t},\n\t\t\t\"ID\":7,\n\t\t\t\"Name\":\"Wait\",\n\t\t\t\"Instant\":true,\n\t\t\t\"SharedFloatwaitTime\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":1.5\n\t\t\t},\n\t\t\t\"SharedBoolrandomWait\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedBool\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"BooleanmValue\":false\n\t\t\t},\n\t\t\t\"SharedFloatrandomWaitMin\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":1\n\t\t\t},\n\t\t\t\"SharedFloatrandomWaitMax\":{\n\t\t\t\t\"Type\":\"BehaviorDesigner.Runtime.SharedFloat\",\n\t\t\t\t\"Name\":null,\n\t\t\t\t\"SinglemValue\":2\n\t\t\t}\n\t\t}]\n\t}\n}"
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects:
+        - {fileID: 169522626}
+        - {fileID: 169522626}
+        - {fileID: 169522626}
+        - {fileID: 169522626}
+        byteData: 
+        byteDataArray: 
+      Version: 1.6
 --- !u!1 &230075770
 GameObject:
   m_ObjectHideFlags: 0
