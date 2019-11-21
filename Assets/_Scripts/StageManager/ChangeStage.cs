@@ -6,6 +6,27 @@ public class ChangeStage : MonoBehaviour
 {
     [SerializeField]
     private string nextScene;
+    [SerializeField]
+    private float unloadWaitSec = 8f;
+    [SerializeField]
+    private float waitActiveSec = 6f;
+    [SerializeField]
+    private FogData fogData;
+
+    public float GetUnloadWaitSec()
+    {
+        return unloadWaitSec;
+    }
+
+    public float GetWaitActiveSec()
+    {
+        return waitActiveSec;
+    }
+
+    public FogData GetFogData()
+    {
+        return fogData;
+    }
 
     // Start is called before the first frame update
     void Start()
