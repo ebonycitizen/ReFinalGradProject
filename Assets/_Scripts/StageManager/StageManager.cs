@@ -5,15 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UniRx;
 using UniRx.Triggers;
+using UnityStandardAssets.ImageEffects;
+
 public class StageManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] transferObj;
-    [SerializeField]
-    private float UnloadWaitSec;
-    [SerializeField]
-    private float waitActiveSec;
 
+    private ChangeStage changeStage;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -27,6 +26,8 @@ public class StageManager : MonoBehaviour
 
     private IEnumerator Load(string scene)
     {
+        changeStage = GameObject.FindObjectOfType<ChangeStage>();
+
         Scene oldScene = SceneManager.GetActiveScene();
 
         SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
@@ -34,13 +35,14 @@ public class StageManager : MonoBehaviour
         foreach (GameObject obj in transferObj)
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
 
-        yield return new WaitForSeconds(waitActiveSec);
+        yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
+        ChangeFogData(changeStage);
 
-        yield return new WaitForSeconds(UnloadWaitSec);
+        yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
     }
 
@@ -64,10 +66,24 @@ public class StageManager : MonoBehaviour
             {
                 if (scene == "TutorialF")
                     SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial);
-                if (scene == "SeasideF" || scene == "SeasideGes")
+                if (scene == "SeasideF")
                     SoundManager.Instance.DoFadeInBgm(EBgmTable.Seaside);
-                if (scene == "OceanF" || scene == "OceanGes")
+                if (scene == "OceanF")
+                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Ocean);
+                if (scene == "CaveF")
                     SoundManager.Instance.DoFadeInBgm(EBgmTable.Ocean);
             });
+    }
+
+    private void ChangeFogData(ChangeStage changeStage)
+    {
+        GlobalFog globalFog = GameObject.FindObjectOfType<GlobalFog>();
+
+        globalFog.distanceFog = changeStage.GetFogData().distanceFog;
+        globalFog.useRadialDistance = changeStage.GetFogData().useRadialDistance;
+        globalFog.heightFog = changeStage.GetFogData().heightFog;
+        globalFog.height = changeStage.GetFogData().height;
+        globalFog.heightDensity = changeStage.GetFogData().heightDensity;
+        globalFog.startDistance = changeStage.GetFogData().startDistance;
     }
 }
