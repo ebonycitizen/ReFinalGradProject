@@ -19,4 +19,13 @@ public class FogData : ScriptableObject
     [Tooltip("Push fog away from the camera by this amount")]
     public float startDistance = 0.0f;
 
+    [ColorUsage(true, true)]
+    public Color SkyColor;
+    [ColorUsage(true, true)]
+    public Color EquatorColor;
+    [ColorUsage(true, true)]
+    public Color GroundColor;
+
+    public Color fogColor;
+    public Material skybox;
 }

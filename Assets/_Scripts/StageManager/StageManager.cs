@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour
     private GameObject[] transferObj;
 
     private ChangeStage changeStage;
+    private GlobalFog globalFog;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -34,13 +35,24 @@ public class StageManager : MonoBehaviour
 
         foreach (GameObject obj in transferObj)
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
-
+        
         yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
+        
+        float elaspedTime = 0f;
+        while (elaspedTime < 1f)
+        {
+            RenderSettings.ambientSkyColor = Color.Lerp(RenderSettings.ambientSkyColor, changeStage.GetFogData().SkyColor, elaspedTime);
+            RenderSettings.ambientEquatorColor = Color.Lerp(RenderSettings.ambientEquatorColor, changeStage.GetFogData().EquatorColor, elaspedTime);
+            RenderSettings.ambientGroundColor = Color.Lerp(RenderSettings.ambientGroundColor, changeStage.GetFogData().GroundColor, elaspedTime);
+            RenderSettings.fogColor = Color.Lerp(RenderSettings.fogColor, changeStage.GetFogData().fogColor, elaspedTime);
+            elaspedTime += Time.deltaTime;
+            yield return null;
+        }
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
-        ChangeFogData(changeStage);
+        ChangeFogData();
 
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
@@ -58,28 +70,30 @@ public class StageManager : MonoBehaviour
 
     private void ChangeBGM(string scene)
     {
-        var _duration = 1;
-        SoundManager.Instance.DoFadeOutBgm(duration: _duration);
+        //var _duration = 1;
+        //SoundManager.Instance.DoFadeOutBgm(duration: _duration);
 
-        Observable.Timer(TimeSpan.FromSeconds(_duration))
-            .Subscribe(_ =>
-            {
-                if (scene == "TutorialF")
-                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial);
-                if (scene == "IceF")
-                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Seaside);
-                if (scene == "CoralF")
-                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Ocean);
-                if (scene == "CaveF")
-                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Cave);
-            });
+        //Observable.Timer(TimeSpan.FromSeconds(_duration))
+        //    .Subscribe(_ =>
+        //    {
+        SoundManager.Instance.StopAllBgm();
+
+        if (scene == "TutorialF")
+            SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
+        if (scene == "IceF")
+            SoundManager.Instance.PlayBgm(EBgmTable.Seaside);
+        if (scene == "CoralF")
+            SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
+        if (scene == "CaveF")
+            SoundManager.Instance.PlayBgm(EBgmTable.Cave);
+            //});
     }
 
-    private void ChangeFogData(ChangeStage changeStage)
+    private void ChangeFogData()
     {
         GlobalFog globalFog = GameObject.FindObjectOfType<GlobalFog>();
-
-        globalFog.distanceFog = changeStage.GetFogData().distanceFog;
+        
+        globalFog.distanceFog =  changeStage.GetFogData().distanceFog;
         globalFog.useRadialDistance = changeStage.GetFogData().useRadialDistance;
         globalFog.heightFog = changeStage.GetFogData().heightFog;
         globalFog.height = changeStage.GetFogData().height;

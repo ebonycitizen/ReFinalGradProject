@@ -3,6 +3,7 @@
     Properties
     {
 		_Color("Color", Color) = (0,0,0,0)
+		_Distance("Distance", Range(0.00, 1)) = 0.006
 		 _side_alpha("side_alpha", Range(0.00, 1)) = 0.1
 		 _updown_alpha("updown_alpha", Range(0.00, 1)) = 1
 		 _side_power("side_power", Range(0.0, 10)) = 2.0
@@ -41,6 +42,7 @@
             sampler2D _MainTex;
             float4 _MainTex_ST;
 			fixed4 _Color;
+			float _Distance;
 
 			float _side_alpha, _updown_alpha, _side_power, _updown_power;
 
@@ -58,7 +60,7 @@
             {
                 // sample the texture
                 fixed4 col = _Color;
-				col.a = min(1.0, max(0.0, 0.006 * i.uv.z));
+				col.a = min(1.0, max(0.0, _Distance * i.uv.z));
 
 				// 中心から上下・左右で透明度を変える
 				float dx = abs(i.uv.x - 0.5) * 2.0;
