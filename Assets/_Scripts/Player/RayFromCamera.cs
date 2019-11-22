@@ -32,4 +32,16 @@ public class RayFromCamera : MonoBehaviour
 
         return null;
     }
+    public Vector3 ScrollHit(string layer)
+    {
+        rayDirection = (rayPos.position - transform.position).normalized;
+
+        Debug.DrawRay(transform.position, rayDirection * rayLegth);
+        bool isHit = Physics.Raycast(transform.position, rayDirection, out hit, rayLegth, 1<<LayerMask.NameToLayer(layer));
+
+        if (isHit)
+            return hit.point;
+
+        return Vector3.zero;
+    }
 }
