@@ -28,6 +28,7 @@ public class StageManager : MonoBehaviour
     private IEnumerator Load(string scene)
     {
         changeStage = GameObject.FindObjectOfType<ChangeStage>();
+        globalFog = GameObject.FindObjectOfType<GlobalFog>();
 
         Scene oldScene = SceneManager.GetActiveScene();
 
@@ -37,7 +38,8 @@ public class StageManager : MonoBehaviour
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
         
         yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
-        
+        RenderSettings.skybox = changeStage.GetFogData().skybox;
+
         float elaspedTime = 0f;
         while (elaspedTime < 1f)
         {
@@ -45,6 +47,8 @@ public class StageManager : MonoBehaviour
             RenderSettings.ambientEquatorColor = Color.Lerp(RenderSettings.ambientEquatorColor, changeStage.GetFogData().EquatorColor, elaspedTime);
             RenderSettings.ambientGroundColor = Color.Lerp(RenderSettings.ambientGroundColor, changeStage.GetFogData().GroundColor, elaspedTime);
             RenderSettings.fogColor = Color.Lerp(RenderSettings.fogColor, changeStage.GetFogData().fogColor, elaspedTime);
+            ChangeFogData(elaspedTime);
+
             elaspedTime += Time.deltaTime;
             yield return null;
         }
@@ -52,7 +56,8 @@ public class StageManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
-        ChangeFogData();
+        ChangeFogUsage();
+
 
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
@@ -89,15 +94,17 @@ public class StageManager : MonoBehaviour
             //});
     }
 
-    private void ChangeFogData()
+    private void ChangeFogUsage()
     {
-        GlobalFog globalFog = GameObject.FindObjectOfType<GlobalFog>();
-        
-        globalFog.distanceFog =  changeStage.GetFogData().distanceFog;
+        globalFog.distanceFog = changeStage.GetFogData().distanceFog;
         globalFog.useRadialDistance = changeStage.GetFogData().useRadialDistance;
         globalFog.heightFog = changeStage.GetFogData().heightFog;
-        globalFog.height = changeStage.GetFogData().height;
-        globalFog.heightDensity = changeStage.GetFogData().heightDensity;
-        globalFog.startDistance = changeStage.GetFogData().startDistance;
+    }
+
+    private void ChangeFogData(float elaspedTime)
+    {
+        globalFog.height = Mathf.Lerp(globalFog.height, changeStage.GetFogData().height, elaspedTime);
+        globalFog.heightDensity = Mathf.Lerp(globalFog.heightDensity, changeStage.GetFogData().heightDensity, elaspedTime);
+        globalFog.startDistance = Mathf.Lerp(globalFog.startDistance, changeStage.GetFogData().startDistance, elaspedTime);
     }
 }
