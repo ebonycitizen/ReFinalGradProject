@@ -1,0 +1,38 @@
+DESCRIPTION:
+
+Use this shader with Unity's Projector component to produce a "water caustics" effect.
+
+RESOURCES INCLUDED: 
+
+* CausticsDistort.shader
+* CausticsDistortAlpha.shader
+* CausticsDistortMobile.shader
+* caustic_custom.bmp
+* caustic_noise.bmp
+
+The unitypackage file also includes a Prefab and Material with default settings.
+
+HOW TO USE:
+
+Import the custom package into Unity. Drag the prefab into your scene and adjust the projector component settings and shader material properties to fit your scene!
+Textures are included for convenience, use any textures you want.  Make sure the texture's Import Settings are set to "Repeat".  Don't forget to set texture "tiling" properties on the material.
+
+Updates 2019-11-17
+- New version uses existing "_DepthBlend" property and mip-maps to produce a height/depth blur effect.
+- Includes a Mobile version tested on Android, which uses SinTime for improved results.
+- New "_DepthFade" property for better control over _DepthBlend effect.
+
+Updates 2019-02-20
+- Added an "alpha" version of the shader for masking. 
+- Changed a couple variable types to improve precision on mobile.
+
+Updates 2018-10-10
+- Improved "Caustic" and "Noise" texture.
+- Added a "dual texture blend" option. (This is a duplicate of the main texture that scrolls in the opposite direction)
+- Replaced "Size" variable with standard texture tiling properties. ("Offset" has no affect)
+- Improved "DepthBlend" transition.
+- New "Distance" and "DistanceBlend" variables fade out the effect based on distance from camera.
+
+-----------------------------------------------------------
+Made with Unity 5.6.5, also tested successfully in Unity 2018 and 2019. The projector is broken in Unity 5.3.x [www.unity3d.com]
+Use at your own risk.  You may modify this code, use it in your personal or commercial projects, and redistribute, granted credit is given. Created by Chris Cunningham.
