@@ -59,6 +59,7 @@ public class OrcaCollision : MonoBehaviour
                 {
                     heart.Play();
                     animator.SetTrigger("Spoil");
+                    SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_4, speaker);
                 }
                 else if (grab.GetVelocity().magnitude >= touchSpeed && !breakHeart.isPlaying)
                     breakHeart.Play();

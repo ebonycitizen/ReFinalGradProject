@@ -35,7 +35,6 @@ public class PathMoveEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        glitter.gameObject.SetActive(false);
 
         Vector3[] movePath = new Vector3[pathRef.childCount];
 
@@ -68,7 +67,7 @@ public class PathMoveEvent : MonoBehaviour
             .AppendCallback(() => NextEvent())
             //.AppendInterval(2f)
             .AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Twinkle))
-            .AppendCallback(()=>glitter.gameObject.SetActive(true));
+            .AppendCallback(() => glitter.gameObject.SetActive(true));
             
 
 
@@ -83,7 +82,7 @@ public class PathMoveEvent : MonoBehaviour
     private void NextEvent()
     {
         s2.Play().SetLoops(-1);
-        //glitter.gameObject.SetActive(true);
+        glitter.gameObject.SetActive(true);
     }
 
     // Update is called once per frame

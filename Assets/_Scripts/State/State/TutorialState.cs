@@ -29,7 +29,7 @@ public partial class OrcaState
             gotoPath = true;
             ratio = 0;
 
-            SoundManager.Instance.PlayOneShotDelay3DSe(ESeTable.Call, speaker, 2);
+            SoundManager.Instance.PlayOneShotDelay3DSe(ESeTable.Orac_7, speaker, 2);
         }
         protected internal override void Update()
         {

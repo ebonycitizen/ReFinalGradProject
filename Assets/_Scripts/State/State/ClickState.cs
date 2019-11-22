@@ -18,6 +18,7 @@ public partial class OrcaState
             click = rayObject.GetComponent<ClickEffect>();
 
             click.StartEffect(orca);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_1, orca.GetComponentInChildren<Speaker>());
         }
         protected internal override void Update()
         {

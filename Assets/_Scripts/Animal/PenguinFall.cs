@@ -27,7 +27,7 @@ public class PenguinFall : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Drown, speaker, 0.1f);
+            //SoundManager.Instance.PlayOneShot3DSe(ESeTable.Drown, speaker, 0.1f);
             spline.StartMove();
             Destroy(gameObject);
         }

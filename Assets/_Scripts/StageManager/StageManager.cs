@@ -66,12 +66,12 @@ public class StageManager : MonoBehaviour
             {
                 if (scene == "TutorialF")
                     SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial);
-                if (scene == "SeasideF")
+                if (scene == "IceF")
                     SoundManager.Instance.DoFadeInBgm(EBgmTable.Seaside);
-                if (scene == "OceanF")
+                if (scene == "CoralF")
                     SoundManager.Instance.DoFadeInBgm(EBgmTable.Ocean);
                 if (scene == "CaveF")
-                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Ocean);
+                    SoundManager.Instance.DoFadeInBgm(EBgmTable.Cave);
             });
     }
 

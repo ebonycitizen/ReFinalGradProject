@@ -335,6 +335,26 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         audioSource.Play();
     }
 
+    public void PlayLoopDelay3DSe(ESeTable seType, Speaker speaker, float volume, float delaySec)
+    {
+        var audioSource = speaker.AudioSource;
+
+        var clip = FindClipInSeContainer(seType);
+
+        if (!clip)
+        {
+            return;
+        }
+
+        audioSource.clip = clip;
+
+        audioSource.loop = true;
+
+        volume = Mathf.Clamp01(volume);
+        audioSource.volume = volume;
+        audioSource.PlayDelayed(delaySec);
+    }
+
     public void PlayOneShot3DSe(ESeTable seType, Speaker speaker)
     {
         var audioSource = speaker.AudioSource;

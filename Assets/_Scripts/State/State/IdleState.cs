@@ -84,6 +84,8 @@ public partial class OrcaState
 
             var targetPos = direction * distance;
 
+            targetPos -= orca.transform.up *0.2f;
+
             orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime * ratio);
         }
         private Vector3 old;

@@ -25,7 +25,7 @@ public partial class OrcaState
             Context.ChangeParentNull();
 
             rot = Context.idleRotation;
-            SoundManager.Instance.PlayOneShotDelaySe(ESeTable.Call, 0.5f);
+            SoundManager.Instance.PlayOneShotDelaySe(ESeTable.Orac_7, 0.5f);
             ratio = 0;
             gotoIdle = 0;
 

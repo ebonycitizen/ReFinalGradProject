@@ -56,7 +56,7 @@ public class PathMoveCome : MonoBehaviour
 
     public void StartEvent()
     {
-        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Call, orca.GetComponentInChildren<Speaker>());
+        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_5, orca.GetComponentInChildren<Speaker>());
         s.Play();
     }
     public void EndEvent()

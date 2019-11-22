@@ -36,6 +36,7 @@ public class RescuePenguin : MonoBehaviour
         }
         if(other.gameObject.tag == "PenguinStop")
         {
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Penguin_2, GetComponentInChildren<Speaker>());
             transform.parent = originParent;
             Destroy(this);
         }
