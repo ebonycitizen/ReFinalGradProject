@@ -21,6 +21,7 @@ public partial class OrcaState : MonoBehaviour
         ElectricShock,
         Follow,
         Approach,
+        Scroll,
     }
 
     private ImtStateMachine<OrcaState> stateMachine;
@@ -83,6 +84,8 @@ public partial class OrcaState : MonoBehaviour
 
         stateMachine.AddTransition<SwimState, ClickState>((int)StateEventId.Click);
         stateMachine.AddTransition<ClickState, SwimState>((int)StateEventId.Swim);
+
+        stateMachine.AddTransition<IdleState, ScrollState>((int)StateEventId.Scroll);
 
         stateMachine.SetStartState<IdleState>();
 

@@ -67,6 +67,8 @@ public partial class OrcaState
                 stateMachine.SendEvent((int)StateEventId.None);
             if (Input.GetKeyDown(KeyCode.A))
                 stateMachine.SendEvent((int)StateEventId.Approach);
+            if (Input.GetKeyDown(KeyCode.Space))
+                stateMachine.SendEvent((int)StateEventId.Scroll);
 #endif
 
         }
