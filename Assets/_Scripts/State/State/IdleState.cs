@@ -37,7 +37,7 @@ public partial class OrcaState
         }
         protected internal override void Update()
         {
-            Debug.Log("IdleUpdate");
+            //Debug.Log("IdleUpdate");
 
             Move();
             Rotate();
@@ -75,7 +75,7 @@ public partial class OrcaState
 
         protected internal override void Exit()
         {
-            Debug.Log("IdleExit");
+            //Debug.Log("IdleExit");
 
             Context.SetBehaviorStatus(false);
         }

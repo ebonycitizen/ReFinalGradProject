@@ -17,6 +17,7 @@ public partial class OrcaState
 
         protected internal override void Enter()
         {
+            Context.ChangeParentRayObject();
 
             orca = Context.orcaModel.transform;
 
@@ -28,21 +29,9 @@ public partial class OrcaState
         }
         protected internal override void Update()
         {
-           Vector3 pos=  rayCamera.ScrollHit("Scroll");
-            if(pos!=Vector3.zero)
-            {
-                targetPos = pos;
-            }
-            orca.position = Vector3.Lerp(orca.position, targetPos, Time.fixedDeltaTime);
+            orca.localPosition = Vector3.Lerp(orca.localPosition, Vector3.zero, Time.fixedDeltaTime * 1f);
+            orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 2f);
 
-
-            if (dolly != null)
-            {
-                //orca.rotation = Quaternion.Lerp(orca.rotation, dolly.forward, Time.fixedDeltaTime);
-                orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(dolly.forwardDig.x, dolly.forwardDig.y, 0), Time.fixedDeltaTime * 3);
-
-                return;
-            }
         }
 
         protected internal override void Exit()
