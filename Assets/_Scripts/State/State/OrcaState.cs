@@ -99,7 +99,7 @@ public partial class OrcaState : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.Update();
-        Debug.Log(stateMachine.CurrentStateName);
+        //Debug.Log(stateMachine.CurrentStateName);
     }
 
     private void ChangeParentCameraRig()
@@ -169,6 +169,11 @@ public partial class OrcaState : MonoBehaviour
         if (tag == "G_Swim" && stateMachine.CurrentStateName == "IdleState")
         {
             stateMachine.SendEvent((int)StateEventId.Swim);
+            return true;
+        }
+        if (tag == "G_Scroll" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.Scroll);
             return true;
         }
 
