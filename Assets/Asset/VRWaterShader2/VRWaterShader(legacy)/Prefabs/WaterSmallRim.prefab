@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 33137988906300948}
   - component: {fileID: 23151428246724350}
   - component: {fileID: 1257948153067258213}
-  - component: {fileID: 3974538619372233185}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: WaterSmallRim
   m_TagString: Water
   m_Icon: {fileID: 0}
@@ -87,22 +86,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293297635248848}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 5, z: 10}
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!64 &3974538619372233185
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293297635248848}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}

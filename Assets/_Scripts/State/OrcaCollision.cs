@@ -40,17 +40,31 @@ public class OrcaCollision : MonoBehaviour
         speaker = GetComponentInChildren<Speaker>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Water")
+        {
+            Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterJump, speaker);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Water")
+        {
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterDown, speaker);
+            Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
+            Instantiate(waterSplash, transform);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
 
         c = collision.contacts;
 
-        if (collision.gameObject.tag == "Water")
-        {
-            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterJump, speaker);
-        }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Hand"))
         {
             Grab grab = collision.gameObject.GetComponent<Grab>();
             if (grab != null)
@@ -65,11 +79,11 @@ public class OrcaCollision : MonoBehaviour
                     breakHeart.Play();
             }
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Dolly"))
-            ;
         else
             Instantiate(hitPrefab, c[0].point, Quaternion.identity);
     }
+
+
 
     private void OnCollisionStay(Collision collision)
     {
@@ -90,12 +104,6 @@ public class OrcaCollision : MonoBehaviour
             animator.SetTrigger("Idle");
             heart.Stop();
             breakHeart.Stop();
-        }
-        else if (collision.gameObject.tag == "Water")
-        {
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterDown, speaker);
-            Instantiate(bigSplash, c[0].point, bigSplash.transform.rotation);
-            Instantiate(waterSplash, transform);
         }
     }
 }
