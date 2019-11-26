@@ -16,6 +16,8 @@ public class LockOn : MonoBehaviour
     private Grab rightHand;
     [SerializeField]
     private Grab leftHand;
+    [SerializeField]
+    private float lockSecMax;
 
     [SerializeField]
     private float atkSpeedRequire;
@@ -24,11 +26,10 @@ public class LockOn : MonoBehaviour
     [SerializeField]
     private GameObject orca;
 
+    private float lockSec;
     private GameObject cameraTarget;
-    private GameObject rightTarget;
-    private GameObject leftTarget;
-
     private GameObject lockTarget;
+
     private OrcaState orcaState;
     private OrcaCollision orcaCollision;
 
@@ -36,54 +37,39 @@ public class LockOn : MonoBehaviour
     void Start()
     {
         lockTarget = null;
+        lockSec = 0f;
         CanTouch = false;
         orcaState = orca.GetComponent<OrcaState>();
         orcaCollision = orca.GetComponentInChildren<OrcaCollision>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         cameraTarget = rayCamera.LockOn(targetLayer);
-        rightTarget = rightHand.LockOn(targetLayer);
-        leftTarget = leftHand.LockOn(targetLayer);
 
-        if (cameraTarget != null && cameraTarget != lockTarget)
+        if (cameraTarget == null)
         {
-            cameraTarget.GetComponent<Glitter>().HitEffect();
+            rayCamera.ResetLockOnImg();
+            lockSec = 0f;
+        }
+
+        if (cameraTarget != null && cameraTarget == lockTarget)
+        {
+            lockSec += Time.deltaTime;
+            rayCamera.UpdateLockUI(lockSec, lockSecMax);
+
+            //cameraTarget.GetComponent<Glitter>().HitEffect();
             //cameraTarget.GetComponent<Glitter>().ChangeEffect(cameraTarget, lockTarget);
         }
-        LookAt();
 
-
-        //if (cameraTarget == null && lockTarget != null)
-        //    lockTarget.GetComponent<Glitter>().DisableEffect();
-
-        //if (cameraTarget != null && (rightHand.GetVelocity().magnitude >= atkSpeedRequire ||
-        //    leftHand.GetVelocity().magnitude >= atkSpeedRequire || GrabAction.stateDown))
-        //{
-        //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
-        //}
-
-        //Point();
-        //if(orcaState.IsIdleState())
-        //    Touch();
-
-        //if (cameraTarget != null && cameraTarget.tag != "G_Appraoch" && cameraTarget.tag != "G_Come" && (rightHand.GetIsPoint() || leftHand.GetIsPoint()))
-        //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, null);
-
-        //if (cameraTarget != null && cameraTarget.tag == "G_Come" && (rightHand.GetIsApproach() || leftHand.GetIsApproach()))
-        //    cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, null);
-
-        //if (cameraTarget != null && cameraTarget.tag == "G_Approach")
-        //{
-        //    if (rightHand.GetIsApproach())
-        //        cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, rightHand.GetApproachObj());
-        //    else if (leftHand.GetIsApproach())
-        //        cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget, leftHand.GetApproachObj());
-        //}
-
-
+        if (lockSec >= lockSecMax && cameraTarget != null)
+        {
+            cameraTarget.GetComponent<Glitter>().HitEffect();
+            LookAt();
+            rayCamera.ResetLockOnImg();
+            lockSec = 0f;
+        }
         lockTarget = cameraTarget;
     }
 
@@ -95,47 +81,6 @@ public class LockOn : MonoBehaviour
 
     private void LookAt()
     {
-        if (cameraTarget != null)
-        {
-            cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
-        }
+        cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
     }
-
-    //private void Point()
-    //{
-    //    if (rightTarget != null && rightTarget.tag != "G_Appraoch" && rightTarget.tag != "G_Come"
-    //       && rightHand.GetIsPoint())
-    //    {
-    //        rightTarget.GetComponent<Glitter>().StartUp(orcaState, rightTarget, null);
-    //    }
-
-    //    if (leftTarget != null && leftTarget.tag != "G_Appraoch" && leftTarget.tag != "G_Come"
-    //        && leftHand.GetIsPoint())
-    //    {
-    //        leftTarget.GetComponent<Glitter>().StartUp(orcaState, leftTarget, null);
-    //    }
-    //}
-
-    //private void Touch()
-    //{
-    //    if (rightHand.GetIsApproach())
-    //    {
-    //        if (CanTouch)
-    //            orcaState.ChangeState("G_Approach", rightHand.GetApproachObj());
-    //        else
-    //            orcaCollision.PlayNoEffect();
-    //       // approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, rightHand.GetApproachObj());
-    //    }
-
-    //    if (leftHand.GetIsApproach())
-    //    {
-    //        if(CanTouch)
-    //            orcaState.ChangeState("G_Approach", leftHand.GetApproachObj());
-    //        else
-    //            orcaCollision.PlayNoEffect();
-    //        //approachGlitter.GetComponent<Glitter>().StartUp(orcaState, approachGlitter, leftHand.GetApproachObj());
-    //    }
-    //}
-
-
 }
