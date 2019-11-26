@@ -87,7 +87,10 @@ public partial class OrcaState : MonoBehaviour
 
         stateMachine.AddTransition<IdleState, ScrollState>((int)StateEventId.Scroll);
 
+        stateMachine.SetStartState<NoneState>();
+#if DEBUG
         stateMachine.SetStartState<IdleState>();
+#endif
 
     }
 

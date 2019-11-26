@@ -29821,7 +29821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6874961, b: 0.2028302, a: 0.6}
+  m_Color: {r: 1, g: 0.6874961, b: 0.2028302, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -29924,6 +29924,11 @@ PrefabInstance:
       propertyPath: orca
       value: 
       objectReference: {fileID: 8169514499329488540}
+    - target: {fileID: 6668202602066703164, guid: de28b5969e6879945980e807244de9d8,
+        type: 3}
+      propertyPath: lockSecMax
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de28b5969e6879945980e807244de9d8, type: 3}
 --- !u!4 &7725400003067008841 stripped
