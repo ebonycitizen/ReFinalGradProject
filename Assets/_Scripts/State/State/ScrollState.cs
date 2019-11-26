@@ -11,9 +11,13 @@ public partial class OrcaState
 
         private MyCinemachineDollyCart dolly;
 
-        private RayFromCamera rayCamera;
+        private GameObject camera;
 
         private Vector3 targetPos;
+
+        private float limit = 20;
+
+        private float num = 10;
 
         protected internal override void Enter()
         {
@@ -23,13 +27,32 @@ public partial class OrcaState
 
             dolly = Context.dolly;
 
-            rayCamera = Context.cameraEye.GetComponent<RayFromCamera>();
+            camera = Context.cameraEye;
 
             targetPos = orca.position;
         }
         protected internal override void Update()
         {
-            orca.localPosition = Vector3.Lerp(orca.localPosition, Vector3.zero, Time.fixedDeltaTime * 1f);
+            
+
+            var angle = camera.transform.eulerAngles.x;
+            float maxLimit = limit, minLimit = -limit;
+
+            if (angle > 180)
+                angle = -(360 - angle);
+
+           // angle += num;
+
+            if (angle > limit )
+                angle = limit;
+            if (angle < minLimit)
+                angle = minLimit;
+
+            //angle = 0;
+
+           Debug.Log(angle);
+
+            orca.localPosition = Vector3.Lerp(orca.localPosition, Vector3.zero - new Vector3(0, angle*1.7f, 0), Time.fixedDeltaTime);
             orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 2f);
 
         }
