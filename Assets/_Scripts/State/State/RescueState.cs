@@ -77,7 +77,7 @@ public partial class OrcaState
 
                     var dir = (targetPos - orca.localPosition).normalized;
                     var rot = Quaternion.LookRotation(dir);
-                    orca.localRotation = Quaternion.Lerp(orca.localRotation, rot, Time.fixedDeltaTime*3);
+                    orca.localRotation = Quaternion.Lerp(orca.localRotation, rot, Time.fixedDeltaTime*2);
 
                     orca.localPosition += orca.forward * Time.fixedDeltaTime * speed;
 
