@@ -28,7 +28,7 @@ public class Boid : MonoBehaviour
         UpdateNeighbors();
 
         // 壁に当たりそうになったら向きを変える
-        UpdateWalls();
+        //UpdateWalls();
 
         // 近隣の個体から離れる
         UpdateSeparation();
@@ -39,7 +39,7 @@ public class Boid : MonoBehaviour
         // 近隣の個体の中心に移動する
         UpdateCohesion();
 
-        //UpdateGoal();
+        UpdateGoal();
 
         // 上記 4 つの結果更新された accel を velocity に反映して位置を動かす
         UpdateMove();
@@ -139,7 +139,7 @@ public class Boid : MonoBehaviour
 
     void UpdateGoal()
     {
-        //accel += (goalPrefab.transform.position - this.transform.position) * 2;
+        accel += (goalPrefab.transform.position - this.transform.position) * param.targetWeight;
     }
 
     void UpdateMove()

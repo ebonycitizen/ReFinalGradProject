@@ -17,9 +17,10 @@ MonoBehaviour:
   maxSpeed: 10
   neighborDistance: 10
   neighborFov: 90
-  separationWeight: 15
-  wallScale: 30
+  separationWeight: 30
+  wallScale: {x: 5, y: 5, z: 5}
   wallDistance: 5
   wallWeight: 3
-  alignmentWeight: 2
-  cohesionWeight: 3
+  alignmentWeight: 0
+  cohesionWeight: 2
+  targetWeight: 0.5

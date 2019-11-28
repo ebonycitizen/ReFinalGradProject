@@ -16,4 +16,5 @@ public class Param : ScriptableObject
     public float wallWeight = 1f;
     public float alignmentWeight = 2f;
     public float cohesionWeight = 3f;
+    public float targetWeight = 3f;
 }
