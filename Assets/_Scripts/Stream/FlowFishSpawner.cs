@@ -28,11 +28,10 @@ public class FlowFishSpawner : MonoBehaviour
     [SerializeField]
     private Vector3 spawnBoundSize;
 
-    private void OnEnable()
+    public void SpawnFish()
     {
         StartCoroutine("Spawn");
     }
-
     private IEnumerator Spawn()
     {
         while(true)
@@ -48,6 +47,8 @@ public class FlowFishSpawner : MonoBehaviour
                 float z = Random.Range(transform.position.z - spawnBoundSize.z / 2, transform.position.z + spawnBoundSize.z / 2);
 
                 fish[i] = Instantiate(fishPrefab, new Vector3(x, y, z), fishPrefab.transform.rotation, transform);
+                fish[i].transform.localScale = Vector3.one * Random.Range(0.5f, 1f);
+                fish[i].GetComponentInChildren<Animator>().speed = Random.Range(0.5f, 2f);
 
                 var flowFish = fish[i].GetComponent<FlowFish>();
 
@@ -57,7 +58,7 @@ public class FlowFishSpawner : MonoBehaviour
 
                 float lifeTime = Random.Range(lifeTimeMin, lifeTimeMax);
 
-                //Destroy(fish[i], lifeTime);
+                Destroy(fish[i], lifeTime);
             }
 
             yield return new WaitForSeconds(1f);

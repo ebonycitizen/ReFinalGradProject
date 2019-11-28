@@ -68,6 +68,11 @@ float _IntersectPower;
 
 sampler2D _CameraDepthTexture;
 
+//float rand(float3 co)
+//{
+//	return frac(sin(dot(co.xyz, float3(12.9898, 78.233, 56.787))) * 43758.5453);
+//}
+
 v2f vert(appdata v)
 {
 	v2f o;
@@ -85,8 +90,8 @@ v2f vert(appdata v)
 
 	o.viewDir = normalize(UnityWorldSpaceViewDir(mul(unity_ObjectToWorld, v.vertex)));
 
-	v.vertex.x += sign(v.vertex.x) * sin(_Time.w) / 20;
-	v.vertex.y += sign(v.vertex.y) * cos(_Time.w) / 20;
+	v.vertex.x += sign(v.vertex.x) * sin(_Time.w) / 10;
+	v.vertex.y += sign(v.vertex.y) * cos(_Time.w) / 10;
 	o.vertex = UnityObjectToClipPos(v.vertex);
 	o.uv = v.uv;
 
@@ -116,7 +121,7 @@ fixed4 frag(v2f i) : SV_Target
 	i.grabPos.xy -= offset.xy * _DistortStrength;
 	fixed4 color = tex2Dproj(_GrabTempTex, i.grabPos);
 
-	fixed4 col = _Color * glow + color;
+	fixed4 col = _Color * glow /*+ color*/;
 	return col;
 
 }

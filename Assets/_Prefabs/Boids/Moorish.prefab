@@ -203,7 +203,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fcf3c36298b920148a2322fd34f0703c, type: 2}
+  - {fileID: 2100000, guid: 43a73a2a1fce88544a3844cc47ecc1cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -476,11 +476,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587017303503437253}
-  - component: {fileID: 1092891443902168388}
-  - component: {fileID: 8378129606750967140}
-  - component: {fileID: 7157425688240540483}
+  - component: {fileID: 2370118042408921148}
+  - component: {fileID: 2610083467848725517}
+  - component: {fileID: 7358016201164077745}
   m_Layer: 16
-  m_Name: MoorishFlow
+  m_Name: Moorish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +495,7 @@ Transform:
   m_GameObject: {fileID: 7643973446543581809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.7638583, y: -74.94791, z: 436.26083}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8096592439575895223}
   - {fileID: 8416136957605806381}
@@ -504,24 +504,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &1092891443902168388
-Animation:
+--- !u!95 &2370118042408921148
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7643973446543581809}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: f0b1e83023018af46a36493c0826aea6, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: f0b1e83023018af46a36493c0826aea6, type: 3}
-  - {fileID: 7400002, guid: f0b1e83023018af46a36493c0826aea6, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
---- !u!114 &8378129606750967140
+  m_Avatar: {fileID: 9000000, guid: f0b1e83023018af46a36493c0826aea6, type: 3}
+  m_Controller: {fileID: 9100000, guid: 15201dcd46a211e418c93a03fb054fbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2610083467848725517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -530,22 +532,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7643973446543581809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd22f40f0223e964387c3abeeecaf3ef, type: 3}
+  m_Script: {fileID: 11500000, guid: f6d7913a82f07ad4b85a31cfbfda81a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &7157425688240540483
-BoxCollider:
+--- !u!114 &7358016201164077745
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7643973446543581809}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.72453, y: 2.6669998, z: 2.991394}
-  m_Center: {x: 0.0156883, y: 0.30775833, z: 0.27896118}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6baf16a045854b84e92db99482f28c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8652433043695421860
 GameObject:
   m_ObjectHideFlags: 0

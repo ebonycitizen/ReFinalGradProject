@@ -29921,14 +29921,14 @@ PrefabInstance:
       objectReference: {fileID: 3765551872278122550}
     - target: {fileID: 6668202602066703164, guid: de28b5969e6879945980e807244de9d8,
         type: 3}
-      propertyPath: orca
-      value: 
-      objectReference: {fileID: 8169514499329488540}
-    - target: {fileID: 6668202602066703164, guid: de28b5969e6879945980e807244de9d8,
-        type: 3}
       propertyPath: lockSecMax
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 6668202602066703164, guid: de28b5969e6879945980e807244de9d8,
+        type: 3}
+      propertyPath: orca
+      value: 
+      objectReference: {fileID: 8169514499329488540}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de28b5969e6879945980e807244de9d8, type: 3}
 --- !u!4 &7725400003067008841 stripped
@@ -30039,6 +30039,11 @@ PrefabInstance:
       propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
       value: 
       objectReference: {fileID: 978166224911305202}
+    - target: {fileID: 544544800674589280, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
       propertyPath: cameraRig
