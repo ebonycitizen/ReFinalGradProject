@@ -22,6 +22,7 @@ public partial class OrcaState : MonoBehaviour
         Follow,
         Approach,
         Scroll,
+        Attack,
     }
 
     private ImtStateMachine<OrcaState> stateMachine;
@@ -86,6 +87,9 @@ public partial class OrcaState : MonoBehaviour
         stateMachine.AddTransition<ClickState, SwimState>((int)StateEventId.Swim);
 
         stateMachine.AddTransition<IdleState, ScrollState>((int)StateEventId.Scroll);
+
+        stateMachine.AddTransition<IdleState, AttackState>((int)StateEventId.Attack);
+        stateMachine.AddTransition<ScrollState, AttackState>((int)StateEventId.Attack);
 
         stateMachine.SetStartState<NoneState>();
 #if DEBUG
@@ -186,6 +190,12 @@ public partial class OrcaState : MonoBehaviour
             return true;
         }
 
+        if (tag == "G_Attack")
+        {
+            stateMachine.PushState();
+            stateMachine.SendEvent((int)StateEventId.Attack);
+            return true;
+        }
 
         if (tag == "G_Tutorial")
         {

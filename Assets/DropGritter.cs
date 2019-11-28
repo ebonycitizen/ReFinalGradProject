@@ -6,10 +6,14 @@ public class DropGritter : MonoBehaviour
 {
     public float speed = 1;
     public GameObject gritter;
+    public bool IsDrop = false;
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine("Drop");
+#if DEBUG
+        if(IsDrop)
+            StartCoroutine("Drop");
+#endif
     }
 
     // Update is called once per frame

@@ -11,11 +11,11 @@ public class FishPingpong : MonoBehaviour
     {
         var seq = DOTween.Sequence();
 
-        seq.Append(transform.DOLocalMoveY(20, pingPongTime))
-            .Append(transform.DOLocalMoveY( -20, pingPongTime * 2))
-            .Append(transform.DOLocalMoveY(0, pingPongTime));
+        seq.Append(transform.DOLocalMove(new Vector3(3, 3, 3) , pingPongTime))
+            .Append(transform.DOLocalMove(new Vector3(-3, 3, -3), pingPongTime * 2))
+            .Append(transform.DOLocalMove(Vector3.zero, pingPongTime));
 
-        seq.Play().SetLoops(-1);
+        seq.Play().SetLoops(-1).SetDelay(Random.value);
     }
 
     // Update is called once per frame

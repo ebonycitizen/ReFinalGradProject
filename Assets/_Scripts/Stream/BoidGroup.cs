@@ -8,9 +8,6 @@ public class BoidGroup : MonoBehaviour
     [SerializeField]
     private Material disappearMat;
 
-    [SerializeField]
-    private ThirdPersonAttack thirdPerson;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +25,7 @@ public class BoidGroup : MonoBehaviour
         if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
             return;
 
-        if(!thirdPerson.GetIsAttack())
-            thirdPerson.Attack();
+        Object.FindObjectOfType<OrcaState>().ChangeState(gameObject.tag, null);
 
         StartCoroutine("Disappear");
     }
