@@ -52,7 +52,7 @@ public class Glitter : MonoBehaviour
     }
 
     public void StartUp(OrcaState orcaState, GameObject cameraTarget)
-    {        
+    {
         if (cameraTarget != gameObject)
             return;
 
@@ -72,10 +72,10 @@ public class Glitter : MonoBehaviour
         {
             p.Stop();
         }
-        
+
         endLockOn.Play();
 
-        Destroy(gameObject,3f);
+        Destroy(gameObject, 3f);
     }
 
     public void HitEffect()
