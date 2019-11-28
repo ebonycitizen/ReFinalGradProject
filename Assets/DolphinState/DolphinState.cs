@@ -9,23 +9,42 @@ public partial class DolphinState : MonoBehaviour
     private enum StateEventId
     {
         None,
+        Idle,
+        Come,
+        Swim,
     }
+
+    [SerializeField] //for debug
+    private GameObject rayObject;
 
     private ImtStateMachine<DolphinState> stateMachine;
 
-
-
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         stateMachine = new ImtStateMachine<DolphinState>(this);
 
+        stateMachine.AddAnyTransition<D_IdleState>((int)StateEventId.Idle);
 
+        stateMachine.AddTransition<D_IdleState, D_ComeState>((int)StateEventId.Idle);
+
+        stateMachine.AddTransition<D_IdleState, D_SwimState>((int)StateEventId.Swim);
+
+        stateMachine.AddTransition<D_ComeState, D_SwimState>((int)StateEventId.Swim);
+
+        stateMachine.SetStartState<D_IdleState>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        stateMachine.Update();
+    }
+    private void FixedUpdate()
+    {
+        stateMachine.Update();
+        //Debug.Log(stateMachine.CurrentStateName);
+    }
+    public bool ChangeState(string tag, GameObject obj)
+    {
+        return false;
     }
 }
