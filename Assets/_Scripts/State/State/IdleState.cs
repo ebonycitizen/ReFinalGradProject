@@ -11,7 +11,7 @@ public partial class OrcaState
         private Transform rot;
         private Transform orca;
 
-        private float distance = 5;
+        private float distance = 7;
 
         private Transform forwardPos;
         private Vector3 oldForwardPos;

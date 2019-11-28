@@ -65,7 +65,6 @@ public class LockOn : MonoBehaviour
 
         if (lockSec >= lockSecMax && cameraTarget != null)
         {
-            cameraTarget.GetComponent<Glitter>().HitEffect();
             LookAt();
             rayCamera.ResetLockOnImg();
             lockSec = 0f;
@@ -81,6 +80,16 @@ public class LockOn : MonoBehaviour
 
     private void LookAt()
     {
-        cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
+        if(cameraTarget.layer == LayerMask.NameToLayer("Glitter"))
+        {
+            cameraTarget.GetComponent<Glitter>().HitEffect();
+            cameraTarget.GetComponent<Glitter>().StartUp(orcaState, cameraTarget);
+        }
+        if (cameraTarget.layer == LayerMask.NameToLayer("DolphinGlitter"))
+        {
+            cameraTarget.GetComponent<DolphinGlitter>().HitEffect();
+            cameraTarget.GetComponent<DolphinGlitter>().StartUp(cameraTarget);
+        }
+
     }
 }
