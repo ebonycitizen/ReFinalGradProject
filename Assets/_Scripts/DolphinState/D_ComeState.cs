@@ -7,9 +7,10 @@ public partial class DolphinState
 {
     private class D_ComeState : ImtStateMachine<DolphinState>.State
     {
+        private Transform transform;
         protected internal override void Enter()
         {
-
+            transform = Context.transform;
         }
         protected internal override void Update()
         {

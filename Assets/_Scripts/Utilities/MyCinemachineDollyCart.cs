@@ -23,6 +23,8 @@ using Cinemachine;
 
         public Vector3 forwardDig;
 
+        public Vector3 forwardPos;
+
 
         /// <summary>The path to follow</summary>
         [Tooltip("The path to follow")]
@@ -98,7 +100,10 @@ using Cinemachine;
             transform.rotation = Quaternion.LookRotation(tangent);
 
             var forwardVec = m_Path.EvaluateTangentAtUnit(m_Position + setForward, m_PositionUnits);
-            
+
+            forwardPos = m_Path.EvaluatePositionAtUnit(m_Position + setForward, m_PositionUnits);
+
+
             forward = Quaternion.LookRotation(forwardVec);
 
             forwardDig = forward.eulerAngles;

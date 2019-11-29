@@ -7,18 +7,29 @@ public partial class DolphinState
 {
     private class D_SwimState : ImtStateMachine<DolphinState>.State
     {
+        DolphinBoid boid;
+        DolphinSimulation simulation;
+
         protected internal override void Enter()
         {
+            Context.ChangeParentNull();
 
+            boid = Context.boid;
+            boid.enabled = true;
+
+            simulation = Context.simulation;
+
+            simulation.AddBoid(boid);
         }
         protected internal override void Update()
         {
-
+            
         }
 
         protected internal override void Exit()
         {
-
+            simulation.RemoveVoid(boid);
         }
+        
     }
 }

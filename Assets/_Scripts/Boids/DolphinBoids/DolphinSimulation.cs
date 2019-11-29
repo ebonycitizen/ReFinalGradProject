@@ -13,45 +13,50 @@ public class DolphinSimulation : MonoBehaviour
     [SerializeField]
     private DolphinParam param;
     public List<DolphinBoid> boids_;
+    [SerializeField]
+    private MyCinemachineDollyCart dolly;
 
     public List<DolphinBoid> boids
     {
         get { return boids_; }
     }
+    public Vector3 TargetPos
+    {
+        get { return dolly.forwardPos; }
+    }
+    public Vector3 TargetRot
+    {
+        get { return dolly.forward * Vector3.forward; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        InitBoid();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        while (boids_.Count < boidCount)
-        {
-            //AddBoid();
-        }
+
     }
 
-    void InitBoid()
-    {
-        foreach (DolphinBoid boid in boids_)
-        {
-            boid.simulation = this;
-            boid.param = param;
-            boid.orca = orca;
-            boid.cameraRig = cameraRig;
-        }
-    }
-    void AddBoid(DolphinBoid boid)
+    public void InitBoid(DolphinBoid boid)
     {
         boid.simulation = this;
         boid.param = param;
         boid.orca = orca;
         boid.cameraRig = cameraRig;
+    }
+    public void AddBoid(DolphinBoid boid)
+    {
+        
         boids_.Add(boid);
 
         boidCount = boids_.Count;
+    }
+    public void RemoveVoid(DolphinBoid boid)
+    {
+        boids_.Remove(boid);
     }
 }

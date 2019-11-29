@@ -21,7 +21,7 @@ public class DolphinBoid : MonoBehaviour
     public Vector3 accel = Vector3.zero;
 
     List<DolphinBoid> neighbors = new List<DolphinBoid>();
-    List<Transform> neighborPlayers = new List<Transform>();
+    List<Vector3> neighborsPos = new List<Vector3>();
 
     private Rigidbody rb;
 
@@ -52,6 +52,7 @@ public class DolphinBoid : MonoBehaviour
     private void UpdateNeighbors()
     {
         neighbors.Clear();
+        neighborsPos.Clear();
 
         if (!simulation)
             return;
@@ -67,12 +68,16 @@ public class DolphinBoid : MonoBehaviour
             var dist = to.magnitude;
 
             if (dist < distThreshold)
+            {
                 neighbors.Add(boid);
+                neighborsPos.Add(boid.pos);
+            }
         }
-
-        neighborPlayers.Clear();
+        
         if ((orca.position - pos).magnitude < distThreshold)
-            neighborPlayers.Add(orca);
+            neighborsPos.Add(orca.position);
+        if ((cameraRig.position - pos).magnitude < distThreshold)
+            neighborsPos.Add(cameraRig.position);
     }
 
     private void UpdateWall()
@@ -91,15 +96,15 @@ public class DolphinBoid : MonoBehaviour
     {
         Vector3 force = Vector3.zero;
 
-        if (neighborPlayers.Count != 0)
+        if (neighborsPos.Count != 0)
         {
-            foreach (var neighborPlayer in neighborPlayers)
+            foreach (var neighborPos in neighborsPos)
             {
-                var diff = pos - neighborPlayer.position;
-                force += diff.normalized * 10.0f / (diff.magnitude * diff.magnitude);
+                var diff = pos - neighborPos;
+                force += diff.normalized * 100.0f / (diff.magnitude * diff.magnitude);
             }
 
-            force /= neighborPlayers.Count;
+            force /= neighborsPos.Count;
         }
 
 
@@ -110,7 +115,7 @@ public class DolphinBoid : MonoBehaviour
     {
         var averaveVelocity = Vector3.zero;
 
-        averaveVelocity = orca.forward * velocity.magnitude;
+        averaveVelocity = simulation.TargetRot * velocity.magnitude;
 
         accel += (averaveVelocity - velocity) * param.alignmentWeight;
 
@@ -118,11 +123,23 @@ public class DolphinBoid : MonoBehaviour
     void UpdateCohesion()
     {
         var averagePos = Vector3.zero;
-        averagePos += orca.position;
-        //averagePos += cameraRig.position;
-        //averagePos /= 2;
+        if(neighborsPos.Count!=0)
+        {
+            foreach(var neighborPos in neighborsPos)
+            {
+                averagePos += neighborPos;
+            }
+            averagePos /= neighborsPos.Count;
+        }
+        
+        averagePos += simulation.TargetPos;
+        if (neighborsPos.Count != 0)
+            averagePos /= 2;
+
+        var diff = pos - simulation.TargetPos;
 
         accel += (averagePos - pos) * param.cohesionWeight;
+        
     }
     //private void UpdateSeparation()
     //{
