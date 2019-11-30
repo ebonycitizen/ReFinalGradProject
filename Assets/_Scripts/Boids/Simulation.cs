@@ -74,7 +74,12 @@ public class Simulation : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!param) return;
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, param.wallScale);
+
+        Gizmos.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.3f);
+        
+        Gizmos.DrawSphere(transform.position, spawnRadius);
+
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawWireCube(transform.position, param.wallScale);
     }
 }

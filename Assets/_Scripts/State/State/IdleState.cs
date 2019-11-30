@@ -11,7 +11,7 @@ public partial class OrcaState
         private Transform rot;
         private Transform orca;
 
-        private float distance = 5;
+        private float distance = 7;
 
         private Transform forwardPos;
         private Vector3 oldForwardPos;
@@ -69,6 +69,8 @@ public partial class OrcaState
                 stateMachine.SendEvent((int)StateEventId.Approach);
             if (Input.GetKeyDown(KeyCode.Space))
                 stateMachine.SendEvent((int)StateEventId.Scroll);
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+                stateMachine.SendEvent((int)StateEventId.Attack);
 #endif
 
         }
