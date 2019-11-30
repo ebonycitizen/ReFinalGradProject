@@ -16,11 +16,10 @@ public class DolphinBoid : MonoBehaviour
 
     
     public Transform orca;
-    public Transform cameraRig;
+    public Transform cameraEye;
 
     public Vector3 accel = Vector3.zero;
 
-    List<DolphinBoid> neighbors = new List<DolphinBoid>();
     List<Vector3> neighborsPos = new List<Vector3>();
 
     private Rigidbody rb;
@@ -51,7 +50,6 @@ public class DolphinBoid : MonoBehaviour
 
     private void UpdateNeighbors()
     {
-        neighbors.Clear();
         neighborsPos.Clear();
 
         if (!simulation)
@@ -59,25 +57,28 @@ public class DolphinBoid : MonoBehaviour
 
         var distThreshold = param.neighborDistance;
 
-        foreach(var boid in simulation.boids)
+        if (simulation.boids.Count != 0)
         {
-            if (boid == this)
-                continue;
-
-            var to = boid.pos - pos;
-            var dist = to.magnitude;
-
-            if (dist < distThreshold)
+            foreach (var boid in simulation.boids)
             {
-                neighbors.Add(boid);
-                neighborsPos.Add(boid.pos);
+                if (boid == this)
+                    continue;
+
+                var to = boid.pos - pos;
+                var dist = to.magnitude;
+
+                if (dist < distThreshold)
+                {
+                    neighborsPos.Add(boid.pos);
+                }
             }
+
         }
-        
+       
         if ((orca.position - pos).magnitude < distThreshold)
             neighborsPos.Add(orca.position);
-        if ((cameraRig.position - pos).magnitude < distThreshold)
-            neighborsPos.Add(cameraRig.position);
+        if ((cameraEye.position - pos).magnitude < distThreshold)
+            neighborsPos.Add(cameraEye.position);
     }
 
     private void UpdateWall()
@@ -104,7 +105,7 @@ public class DolphinBoid : MonoBehaviour
                 force += diff.normalized * 100.0f / (diff.magnitude * diff.magnitude);
             }
 
-            force /= neighborsPos.Count;
+            //force /= neighborsPos.Count;
         }
 
 

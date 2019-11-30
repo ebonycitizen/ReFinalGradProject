@@ -28,6 +28,7 @@ public partial class DolphinState
 
         protected internal override void Exit()
         {
+            boid.enabled = false;
             simulation.RemoveVoid(boid);
         }
         
