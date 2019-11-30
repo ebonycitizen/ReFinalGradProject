@@ -62,7 +62,7 @@ namespace Mewlist.Boid
             World.Active = boidWorld;
 
             boidWorld.CreateManager<BoidSystem>();
-            boidWorld.CreateManager<MeshInstanceRendererSystem>();
+            boidWorld.CreateManager<RenderMeshSystem>();
             boidWorld.CreateManager<RenderingSystemBootstrap>();
             boidWorld.CreateManager<EndFrameTransformSystem>();
 
@@ -77,7 +77,7 @@ namespace Mewlist.Boid
                 typeof(Rotation),
                 typeof(AgentData),
                 typeof(Scale),
-                typeof(MeshInstanceRenderer),
+                typeof(RenderMesh),
                 typeof(SharedAgentData));
 
             // workaround for UniRx
@@ -179,7 +179,7 @@ namespace Mewlist.Boid
             {
                 Velocity = velocity,
             });
-            entityManager.SetSharedComponentData(entity, new MeshInstanceRenderer
+            entityManager.SetSharedComponentData(entity, new RenderMesh
             {
                 mesh     = mesh,
                 material = material,

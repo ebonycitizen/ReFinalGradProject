@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Boid
   m_EditorClassIdentifier: 
   initSpeed: 2
-  minSpeed: 1
-  maxSpeed: 1
-  neighborDistance: 1
+  minSpeed: 3
+  maxSpeed: 6
+  neighborDistance: 30
   neighborFov: 90
-  separationWeight: 5
+  separationWeight: 20
   wallScale: {x: 5, y: 5, z: 5}
   wallDistance: 2
-  wallWeight: 1
-  alignmentWeight: 2
-  cohesionWeight: 3
-  targetWeight: 3
+  wallWeight: 0
+  alignmentWeight: 0
+  cohesionWeight: 1
+  targetWeight: 0.5

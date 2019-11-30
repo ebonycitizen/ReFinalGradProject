@@ -19,4 +19,8 @@ public unsafe struct NeighborsEntityBuffer : IBufferElementData
     public Entity Value;
 }
 
+public struct TargetPos : IComponentData
+{
+    public float3 Value;
+}
 }

@@ -11,7 +11,7 @@ using System;
 
 namespace BoidECS
 {
-
+    
 [AlwaysUpdateSystem]
 [UpdateBefore(typeof(BoidsSimulationSystem))]
 public class BoidsEntityGenerationSystem : ComponentSystem
@@ -19,7 +19,7 @@ public class BoidsEntityGenerationSystem : ComponentSystem
     EntityArchetype archetype;
     ComponentGroup group;
     Unity.Mathematics.Random random;
-
+        
     protected override void OnCreateManager()
     {
         if (!Bootstrap.IsValid) return;
@@ -30,8 +30,9 @@ public class BoidsEntityGenerationSystem : ComponentSystem
             typeof(Scale),
             typeof(Velocity),
             typeof(Acceleration),
+            typeof(TargetPos),
             typeof(NeighborsEntityBuffer),
-            typeof(MeshInstanceRenderer));
+            typeof(RenderMesh));
 
         group = GetComponentGroup(archetype.ComponentTypes);
 
@@ -49,30 +50,96 @@ public class BoidsEntityGenerationSystem : ComponentSystem
         }
         for (int i = 0; i < Bootstrap.Boid.count - entities.Length; ++i)
         {
-            CreateEntity();        
+            CreateEntity(i);        
+        }
+
+        for (int i = 0; i < entities.Length; ++i)
+        {
+            PostUpdateCommands.SetComponent(entities[i], new TargetPos { Value = SetSpawnTarget(i) });
         }
     }
+    //target pos を分ける
+    float3 SetSpawnTarget(int i)
+    {
+        #region Group 3
+        if (i > 395)
+            return Bootstrap.Boid.targetPos[11].position;
+        if (i > 375)
+            return Bootstrap.Boid.targetPos[10].position;
+        if (i > 330)
+            return Bootstrap.Boid.targetPos[9].position;
+        if (i > 300)
+            return Bootstrap.Boid.targetPos[8].position;
+        #endregion
 
-    void CreateEntity()
+        #region Group 2
+        if (i > 260)
+            return Bootstrap.Boid.targetPos[7].position;
+        if (i > 220)
+            return Bootstrap.Boid.targetPos[6].position;
+        if (i > 170)
+            return Bootstrap.Boid.targetPos[5].position;
+        #endregion
+
+        #region Group 1
+        if (i > 130)
+            return Bootstrap.Boid.targetPos[4].position;
+        if (i > 105)
+            return Bootstrap.Boid.targetPos[3].position;
+        if (i > 80)
+            return Bootstrap.Boid.targetPos[2].position;
+        if (i > 30)
+            return Bootstrap.Boid.targetPos[1].position;
+        if (i > 0)
+            return Bootstrap.Boid.targetPos[0].position;
+        #endregion
+        return float3.zero;
+    }
+
+    //material を分ける
+    Material SetSpawnMat(int i)
+    {
+        if (i > 300)
+        {
+            if (random.NextBool())
+                return Bootstrap.Boid.material[4];
+            else
+                return Bootstrap.Boid.material[5];
+        }
+
+        if (i > 170)
+        {
+            if (random.NextBool())
+                return Bootstrap.Boid.material[2];
+            else
+                return Bootstrap.Boid.material[3];
+        }
+
+        if (i > 0)
+        {
+            if (random.NextBool())
+                return Bootstrap.Boid.material[0];
+            else
+                return Bootstrap.Boid.material[1];
+        }
+        return Bootstrap.Boid.material[0];
+    }
+
+    void CreateEntity(int i)
     {
         var scale = Bootstrap.Boid.scale;
         var renderer = Bootstrap.Boid.renderer;
         var initSpeed = Bootstrap.Param.initSpeed;
 
         PostUpdateCommands.CreateEntity(archetype);
-        PostUpdateCommands.SetComponent(new Position { Value = 
-            new float3(Bootstrap.Boid.selfTransform.position.x, Bootstrap.Boid.selfTransform.position.y, Bootstrap.Boid.selfTransform.position.z) 
-            + random.NextFloat3(1f) });
+        PostUpdateCommands.SetComponent(new Position { Value = SetSpawnTarget(i) + random.NextFloat3(1f) });
         PostUpdateCommands.SetComponent(new Rotation { Value = quaternion.identity });
         PostUpdateCommands.SetComponent(new Scale { Value = new float3(scale.x, scale.y, scale.z) });
         PostUpdateCommands.SetComponent(new Velocity { Value = random.NextFloat3Direction() * initSpeed });
         PostUpdateCommands.SetComponent(new Acceleration { Value = float3.zero });
-        
-        if (random.NextBool())
-            renderer.material = Bootstrap.Boid.material[0];
-        else
-            renderer.material = Bootstrap.Boid.material[1];
+        PostUpdateCommands.SetComponent(new TargetPos { Value = SetSpawnTarget(i) });
 
+        renderer.material = SetSpawnMat(i);
         PostUpdateCommands.SetSharedComponent(renderer);
     }
 }
@@ -83,7 +150,7 @@ public class BoidsSimulationSystem : JobComponentSystem
 
     protected override void OnCreateManager()
     {
-        group = GetComponentGroup(typeof(Position), typeof(Velocity), typeof(NeighborsEntityBuffer));
+        group = GetComponentGroup(typeof(Position), typeof(Velocity), typeof(NeighborsEntityBuffer), typeof(TargetPos));
     }
 
     [BurstCompile]
@@ -262,19 +329,20 @@ public class BoidsSimulationSystem : JobComponentSystem
     }
 
     [BurstCompile]
-    public struct ToTargetJob : IJobProcessComponentData<Position, Acceleration>
+    public struct ToTargetJob : IJobProcessComponentData<Position, Acceleration, TargetPos>
     {
         [ReadOnly] public float targetWeight;
-        [ReadOnly] public float3 targetPos;
 
-        public void Execute(ref Position pos, ref Acceleration accel)
-        {
-            var a = accel.Value;
-            a += (targetPos - pos.Value) * targetWeight;
-
-            accel = new Acceleration { Value = a };
-        }
+            public void Execute([ReadOnly] ref Position pos, ref Acceleration accel, ref TargetPos targetPos)
+            {
+                var a = accel.Value;
+ 
+                a += (targetPos.Value - pos.Value) * targetWeight;
+                accel = new Acceleration { Value = a };
+            }
     }
+
+
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
@@ -326,8 +394,8 @@ public class BoidsSimulationSystem : JobComponentSystem
         var toTarget = new ToTargetJob
         {
             targetWeight = Bootstrap.Param.targetWeight,
-            targetPos = new float3(Bootstrap.Boid.targetPos.position.x, Bootstrap.Boid.targetPos.position.y, Bootstrap.Boid.targetPos.position.z),
         };
+
 
         inputDeps = neighbors.Schedule(this, inputDeps);
         inputDeps = wall.Schedule(this, inputDeps);

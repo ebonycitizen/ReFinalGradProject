@@ -36,9 +36,9 @@ public class Bootstrap : MonoBehaviour
     {
         public int count;
         public Vector3 scale;
-        public MeshInstanceRenderer renderer;
+        public RenderMesh renderer;
         public Transform selfTransform;
-        public Transform targetPos;
+        public Transform[] targetPos;
         public Material[] material;
     }
 
