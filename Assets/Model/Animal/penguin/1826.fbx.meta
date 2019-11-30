@@ -1,23 +1,23 @@
 fileFormatVersion: 2
-guid: 3277d29cb42a1044597072a215be4b16
+guid: 7d33150cb2c526f4c895e792a54e452b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Armature
-    100002: Cable
-    100004: Foot_L
-    100006: Foot_L_end
-    100008: Foot_R
-    100010: Foot_R_end
-    100012: Hand_L
-    100014: Hand_R
-    100016: Head
-    100018: Leg_L
-    100020: Leg_R
-    100022: LowBody
-    100024: Mouth
-    100026: Mouth_end
-    100028: //RootNode
+    100000: //RootNode
+    100002: Armature
+    100004: Cable
+    100006: Foot_L
+    100008: Foot_L_end
+    100010: Foot_R
+    100012: Foot_R_end
+    100014: Hand_L
+    100016: Hand_R
+    100018: Head
+    100020: Leg_L
+    100022: Leg_R
+    100024: LowBody
+    100026: Mouth
+    100028: Mouth_end
     100030: polySurface103
     100032: Root
     100034: Shoulder_L
@@ -29,21 +29,21 @@ ModelImporter:
     100046: Wind_L_end
     100048: Wind_R
     100050: Wind_R_end
-    400000: Armature
-    400002: Cable
-    400004: Foot_L
-    400006: Foot_L_end
-    400008: Foot_R
-    400010: Foot_R_end
-    400012: Hand_L
-    400014: Hand_R
-    400016: Head
-    400018: Leg_L
-    400020: Leg_R
-    400022: LowBody
-    400024: Mouth
-    400026: Mouth_end
-    400028: //RootNode
+    400000: //RootNode
+    400002: Armature
+    400004: Cable
+    400006: Foot_L
+    400008: Foot_L_end
+    400010: Foot_R
+    400012: Foot_R_end
+    400014: Hand_L
+    400016: Hand_R
+    400018: Head
+    400020: Leg_L
+    400022: Leg_R
+    400024: LowBody
+    400026: Mouth
+    400028: Mouth_end
     400030: polySurface103
     400032: Root
     400034: Shoulder_L
@@ -57,20 +57,19 @@ ModelImporter:
     400050: Wind_R_end
     2100000: lambert3
     4300000: polySurface103
-    7400000: Idle.001
-    7400002: Walk
-    7400004: LookAround2.001
-    7400006: Armature|Action
-    7400008: Armature|ArmatureAction
-    7400010: Armature|Hand_F_0_40
-    7400012: Armature|Shout_F_0_50
-    7400014: Armature|Idle_F_0_60
-    7400016: Armature|JumpToSwim_F_0_60
-    7400018: Armature|JumpToSwim_F_0_60.001
-    7400020: Armature|LookAround_F_0_100
-    7400022: Armature|Swim_F_50_90
-    7400024: Armature|SwimUp_F_50_150
-    7400026: Armature|Walk_F_20_60
+    7400000: Armature|Action
+    7400002: Armature|ArmatureAction
+    7400004: Armature|Hand
+    7400006: Armature|Idle_F_0_50
+    7400008: Armature|Idle_F_0_60
+    7400010: Armature|JumpToSwim_F_0_60
+    7400012: Armature|JumpToSwim_F_0_60.001
+    7400014: Armature|LookAround_F_0_100
+    7400016: Armature|Swim_F_50_90
+    7400018: Armature|SwimIdle2
+    7400020: Armature|SwimIdle_F_50_90
+    7400022: Armature|SwimUp_F_50_150
+    7400024: Armature|Walk_F_20_60
     9500000: //RootNode
     13700000: polySurface103
   externalObjects: {}
@@ -102,18 +101,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Hand_F_0_40
-      takeName: Armature|Hand_F_0_40
+      name: Armature|Action
+      takeName: Armature|Action
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
-      loopTime: 1
-      loopBlend: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -130,7 +129,63 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Shout_F_0_50
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Hand
+      takeName: Armature|Hand
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle_F_0_50
       takeName: Armature|Idle_F_0_50
       firstFrame: 0
       lastFrame: 50
@@ -139,9 +194,9 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
-      loopTime: 1
-      loopBlend: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -167,9 +222,9 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
-      loopTime: 1
-      loopBlend: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -189,7 +244,35 @@ ModelImporter:
       name: Armature|JumpToSwim_F_0_60
       takeName: Armature|JumpToSwim_F_0_60
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 206
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|JumpToSwim_F_0_60.001
+      takeName: Armature|JumpToSwim_F_0_60.001
+      firstFrame: 0
+      lastFrame: 206
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -223,9 +306,9 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
-      loopTime: 1
-      loopBlend: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -244,8 +327,36 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Swim_F_50_90
       takeName: Armature|Swim_F_50_90
-      firstFrame: 50
+      firstFrame: 0
       lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|SwimIdle2
+      takeName: Armature|SwimIdle2
+      firstFrame: 0
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -264,15 +375,57 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.8333333
+        functionName: Resume
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 50
+    - serializedVersion: 16
+      name: Armature|SwimIdle_F_50_90
+      takeName: Armature|SwimIdle_F_50_90
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.87499994
+        functionName: Spurt
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 35
     - serializedVersion: 16
       name: Armature|SwimUp_F_50_150
       takeName: Armature|SwimUp_F_50_150
-      firstFrame: 50
+      firstFrame: 0
       lastFrame: 150
       wrapMode: 0
       orientationOffsetY: 0
@@ -300,16 +453,16 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Walk_F_20_60
       takeName: Armature|Walk_F_20_60
-      firstFrame: 20
+      firstFrame: 0
       lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
-      loopTime: 1
-      loopBlend: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
