@@ -20,6 +20,7 @@ public class FlowFishSpawner : MonoBehaviour
     [SerializeField]
     private float lifeTimeMax;
 
+
     [SerializeField]
     private float speedMin;
     [SerializeField]
