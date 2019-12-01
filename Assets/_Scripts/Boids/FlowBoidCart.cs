@@ -14,16 +14,6 @@ using Cinemachine;
 #endif
 public class FlowBoidCart : MonoBehaviour
 {
-    public bool isDebug;
-
-    public float setForward = 30;
-
-    public Quaternion forward;
-
-    public Vector3 forwardDig;
-
-    public Vector3 forwardPos;
-
 
     /// <summary>The path to follow</summary>
     [Tooltip("The path to follow")]
@@ -51,6 +41,7 @@ public class FlowBoidCart : MonoBehaviour
     /// <summary>Move the cart with this speed</summary>
     [Tooltip("Move the cart with this speed along the path.  The value is interpreted according to the Position Units setting.")]
     [FormerlySerializedAs("m_Velocity")]
+    [HideInInspector]
     public float m_Speed;
 
     /// <summary>The cart's current position on the path, in distance units</summary>

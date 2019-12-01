@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4553839181318197656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4553839181318197662}
+  - component: {fileID: 4553839181318197657}
+  - component: {fileID: 4553839181318197663}
+  - component: {fileID: 4553839181318197660}
+  - component: {fileID: 2080108160}
+  m_Layer: 0
+  m_Name: BoidTrack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4553839181318197662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553839181318197656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 56, y: -318.9, z: 4869}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4553839181318197657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553839181318197656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 1, g: 0.07817811, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0, y: 0, z: 0}
+    tangent: {x: 0.3154831, y: 0, z: 4.9414062}
+    roll: 0
+  - position: {x: 0.3154831, y: 8.438202, z: 468.11182}
+    tangent: {x: -0.10214996, y: 0, z: 53.90088}
+    roll: 0
+  - position: {x: -49.133415, y: 15.26474, z: 637.2544}
+    tangent: {x: 4.2399635, y: -6.327362, z: 91.438965}
+    roll: 0
+  - position: {x: -27.225235, y: 3.577942, z: 808.251}
+    tangent: {x: 1.4715385, y: 0, z: 54.543457}
+    roll: 0
+  - position: {x: -53.3226, y: -4.166687, z: 982.1924}
+    tangent: {x: -32.17064, y: 0, z: 70.558105}
+    roll: 0
+  - position: {x: -174.3782, y: 24.79779, z: 1182.5977}
+    tangent: {x: -37.75789, y: 19.578064, z: 46.037598}
+    roll: 0
+  - position: {x: -271.41608, y: 50.974518, z: 1273.0757}
+    tangent: {x: -32.105896, y: -9.383118, z: 30.894531}
+    roll: 0
+  - position: {x: -336.07104, y: 24.655365, z: 1338.6304}
+    tangent: {x: -40.466095, y: -20.226776, z: 43.9375}
+    roll: 0
+  - position: {x: -505.8064, y: -60.79306, z: 1542.9487}
+    tangent: {x: -34.168762, y: -7.105072, z: 97.168945}
+    roll: 0
+  - position: {x: -529.9104, y: -60.56012, z: 2682.0977}
+    tangent: {x: -8.644653, y: 3.492035, z: 92.75537}
+    roll: 0
+--- !u!114 &4553839181318197663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553839181318197656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fc11655ac7c0342a1aa33d0824da16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Path: {fileID: 4553839181318197657}
+  m_UpdateMethod: 0
+  m_PositionUnits: 1
+  m_Speed: 0
+  m_Position: 0
+--- !u!114 &4553839181318197660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553839181318197656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2598f77259aa01a41ada9fac89912bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPrefab: {fileID: 670590660, guid: cb36ad7a92b92ee4eb70763d9735d705, type: 3}
+  cart: {fileID: 4553839181318197663}
+  fishMax: 30
+  speedMin: 20
+  speedMax: 30
+  scale: {x: 3, y: 3, z: 3}
+  spawnBoundSize: {x: 60, y: 60, z: 50}
+  spawnDelayTime: 1
+  initPos: 200
+--- !u!114 &2080108160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553839181318197656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2598f77259aa01a41ada9fac89912bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPrefab: {fileID: 6478202168208763951, guid: abe7cf0f61e590047bb7e140c47adec7,
+    type: 3}
+  cart: {fileID: 4553839181318197663}
+  fishMax: 30
+  speedMin: 20
+  speedMax: 25
+  scale: {x: 2, y: 2, z: 2}
+  spawnBoundSize: {x: 60, y: 60, z: 50}
+  spawnDelayTime: 1
+  initPos: 200
