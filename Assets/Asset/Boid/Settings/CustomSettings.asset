@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6194ee95dedb4d71a8fe738abba0f47, type: 3}
-  m_Name: Settings
+  m_Name: CustomSettings
   m_EditorClassIdentifier: 
   minSpeed: 5
-  maxSpeed: 8
-  perceptionRadius: 2
-  avoidanceRadius: 1
-  maxSteerForce: 8
-  alignWeight: 1
+  maxSpeed: 10
+  perceptionRadius: 15
+  avoidanceRadius: 10
+  maxSteerForce: 15
+  alignWeight: 15
   cohesionWeight: 1
-  seperateWeight: 10
+  seperateWeight: 1
   targetWeight: 3
   obstacleMask:
     serializedVersion: 2
