@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public enum Position{
+public enum PositionCFX{
 	Middle,
 	Bottom,
 	Bottom02
@@ -11,7 +11,7 @@ public class CFX_DemoGUI : MonoBehaviour {
 
 	public Texture HUETexture;
 	public Material mat;
-	public Position[] Positions;
+	public PositionCFX[] Positions;
 	public GameObject[] Prefabs;
 
 	private int currentNomber;
@@ -97,8 +97,8 @@ public class CFX_DemoGUI : MonoBehaviour {
 			currentNomber = Prefabs.Length - 1;
 		if(currentInstance!=null) Destroy(currentInstance);
 		var pos = transform.position;
-		if(Positions[currentNomber]==Position.Bottom) pos.y-=1;
-		if(Positions[currentNomber]==Position.Bottom02) pos.y-=0.8f;
+		if(Positions[currentNomber]== PositionCFX.Bottom) pos.y-=1;
+		if(Positions[currentNomber]== PositionCFX.Bottom02) pos.y-=0.8f;
 		currentInstance = Instantiate(Prefabs[currentNomber], pos, new Quaternion()) as GameObject;
 		//var reactivator = currentInstance.AddComponent<DemoReactivator>();
 		//reactivator.TimeDelayToReactivate = 1.5f;
