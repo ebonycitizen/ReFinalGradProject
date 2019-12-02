@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace BoidECS
-{
-
-[CreateAssetMenu(menuName = "BoidECS/Param")]
+[CreateAssetMenu(menuName ="Boid/Param")]
 public class Param : ScriptableObject
 {
     public float initSpeed = 2f;
@@ -18,6 +17,4 @@ public class Param : ScriptableObject
     public float alignmentWeight = 2f;
     public float cohesionWeight = 3f;
     public float targetWeight = 3f;
-}
-
 }

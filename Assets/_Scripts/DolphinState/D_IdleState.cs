@@ -7,6 +7,7 @@ public partial class DolphinState
 {
     private class D_IdleState : ImtStateMachine<DolphinState>.State
     {
+
         protected internal override void Enter()
         {
 
@@ -15,7 +16,6 @@ public partial class DolphinState
         {
 
         }
-
         protected internal override void Exit()
         {
 
