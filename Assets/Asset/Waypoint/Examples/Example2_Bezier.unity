@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 12
+    serializedVersion: 10
     m_Resolution: 1
     m_BakeResolution: 50
     m_AtlasSize: 1024
@@ -62,7 +62,6 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 0
     m_CompAOExponentDirect: 0
-    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -77,16 +76,10 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 512
     m_PVRBounces: 2
-    m_PVREnvironmentSampleCount: 512
-    m_PVREnvironmentReferencePointCount: 2048
-    m_PVRFilteringMode: 0
-    m_PVRDenoiserTypeDirect: 0
-    m_PVRDenoiserTypeIndirect: 0
-    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVREnvironmentMIS: 0
+    m_PVRFilteringMode: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -95,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-    m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 0
 --- !u!196 &5
@@ -1883,6 +1875,7 @@ MonoBehaviour:
   onStart: 1
   moveToPath: 1
   reverse: 0
+  delayTime: 0
   startPoint: 0
   currentPoint: 0
   closeLoop: 0
@@ -2612,10 +2605,9 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -3249,6 +3241,7 @@ MonoBehaviour:
   onStart: 1
   moveToPath: 0
   reverse: 0
+  delayTime: 0
   startPoint: 0
   currentPoint: 0
   closeLoop: 0
@@ -5881,6 +5874,7 @@ MonoBehaviour:
   onStart: 1
   moveToPath: 1
   reverse: 0
+  delayTime: 0
   startPoint: 0
   currentPoint: 0
   closeLoop: 0
@@ -6077,7 +6071,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4876fc9dc009bbe4493553020a561611, type: 2}
+  - {fileID: 2100000, guid: 9b779cf45ea03794f9a29653b3222813, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7755,13 +7749,12 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109040073}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.7084775, g: 0.79972553, b: 0.8235294, a: 1}
   m_Intensity: 0.7
   m_Range: 44.6
   m_SpotAngle: 112
-  m_InnerSpotAngle: 93.63751
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -7771,24 +7764,6 @@ Light:
     m_Bias: 0.02
     m_NormalBias: 0.4
     m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -7796,15 +7771,12 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967294
-  m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &1116127811
@@ -8978,13 +8950,12 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264775149}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.9994929, g: 1, b: 0.9632353, a: 1}
   m_Intensity: 1
   m_Range: 44.6
   m_SpotAngle: 112
-  m_InnerSpotAngle: 93.63751
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -8994,24 +8965,6 @@ Light:
     m_Bias: 0.01
     m_NormalBias: 0.4
     m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -9019,15 +8972,12 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1264775151
@@ -9770,6 +9720,7 @@ MonoBehaviour:
   onStart: 1
   moveToPath: 0
   reverse: 0
+  delayTime: 0
   startPoint: 0
   currentPoint: 0
   closeLoop: 0
@@ -10456,6 +10407,7 @@ MonoBehaviour:
   onStart: 1
   moveToPath: 0
   reverse: 0
+  delayTime: 0
   startPoint: 0
   currentPoint: 0
   closeLoop: 0
@@ -12503,6 +12455,7 @@ MonoBehaviour:
   onStart: 1
   moveToPath: 1
   reverse: 0
+  delayTime: 0
   startPoint: 0
   currentPoint: 0
   closeLoop: 0
@@ -15659,6 +15612,7 @@ MonoBehaviour:
   onStart: 1
   moveToPath: 0
   reverse: 0
+  delayTime: 0
   startPoint: 0
   currentPoint: 0
   closeLoop: 0

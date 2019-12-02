@@ -11,14 +11,9 @@ public class RandomAniamtion : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        var randomStartTime=Random.value;
+        var randomStartValue = Random.value;
 
-        Invoke("StartAnimation", randomStartTime);
-    }
-
-    void StartAnimation()
-    {
-        animator.SetTrigger("Play");
+        animator.speed -= randomStartValue * 0.1f;
     }
 
 }

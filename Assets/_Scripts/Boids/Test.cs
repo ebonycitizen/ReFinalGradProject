@@ -7,59 +7,38 @@ using UniRx.Triggers;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField]
-    private const int MaxCount = 30;
+    //[SerializeField]
+    //private Rigidbody rb;
 
-    [SerializeField]
-    private GameObject m_boidPrefab = null;
+    //[SerializeField]
+    //private PenguinAnimatorCtr penguinAnimator;
 
-    [SerializeField]
-    private GameObject m_boidParent = null;
+    //[SerializeField]
+    //private float fowardPower = 10;
 
-    [SerializeField]
-    private List<GameObject> m_boids = new List<GameObject>();
+    //[SerializeField]
+    //private float upPower = 10;
 
-    [SerializeField]
-    private float m_spawnInfluence = 5;
-
-    [SerializeField]
-    private GameObject m_target = null;
-
-    [SerializeField]
-    private GameObject m_center = null;
-
-    [SerializeField]
-    private float m_turbulence = 1;
-
-    private void Start()
-    {
-        for (int i = 0; i < MaxCount; i++)
-        {
-            var boid = Instantiate(m_boidPrefab, m_boidParent.transform);
-
-            var randomCircle = Random.insideUnitCircle * m_spawnInfluence;
-            boid.transform.position = new Vector3(randomCircle.x
-                , 0, randomCircle.y);
-
-            m_boids.Add(boid);
-
-        }
-    }
+    //private void Start()
+    //{
+    //    Debug.LogError(base.value);
+    //}
 
 
-    private void FixedUpdate()
-    {
-        Vector3 center = Vector3.zero;
+    //private void FixedUpdate()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        penguinAnimator.JumpToSwim();
+    //        rb.AddForce(transform.forward * fowardPower, ForceMode.VelocityChange);
+    //        rb.AddForce(transform.up * upPower, ForceMode.VelocityChange);
+    //        Invoke("AddDownPower", 0.5f);
+    //    }
+    //}
 
-        m_boids.ForEach(x => center += x.transform.position);
+    //void AddDownPower()
+    //{
+    //    rb.AddForce(-transform.up * upPower, ForceMode.VelocityChange);
 
-        center /= m_boids.Count - 1;
-
-        center += m_target.transform.position;
-
-        center /= 2;
-
-        m_center.transform.position = center;
-
-    }
+    //}
 }
