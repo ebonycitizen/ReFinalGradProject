@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace BehaviorDesigner.Runtime.Tasks.Movement
 {
@@ -6,7 +6,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
     [TaskCategory("Movement")]
     [HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     [TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}WanderIcon.png")]
-    public class Wander : NavMeshMovement
+    public class WanderOnce : NavMeshMovement
     {
         [Tooltip("Minimum distance ahead of the current position to look ahead for a destination")]
         public SharedFloat minWanderDistance = 20;
@@ -24,33 +24,18 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         private float pauseTime;
         private float destinationReachTime;
 
+        public override void OnStart()
+        {
+            TrySetTarget();
+        }
+
         // There is no success or fail state with wander - the agent will just keep wandering
         public override TaskStatus OnUpdate()
         {
-            if (HasArrived()) {
-                Debug.LogError("Find");
-                // The agent should pause at the destination only if the max pause duration is greater than 0
-                if (maxPauseDuration.Value > 0) {
-                    if (destinationReachTime == -1) {
-                        destinationReachTime = Time.time;
-                        pauseTime = Random.Range(minPauseDuration.Value, maxPauseDuration.Value);
-                    }
-                    if (destinationReachTime + pauseTime <= Time.time) {
-                        // Only reset the time if a destination has been set.
-                        if (TrySetTarget()) {
-                            destinationReachTime = -1;
-                        }
-                    }
-                } else {
-                    TrySetTarget();
-                }
-            }
+            if (HasArrived())
+                return TaskStatus.Success;
             else
-            {
-                Debug.LogError("Arrival");
-
-            }
-            return TaskStatus.Running;
+                return TaskStatus.Running;
         }
 
         private bool TrySetTarget()
@@ -59,13 +44,15 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             var validDestination = false;
             var attempts = targetRetries.Value;
             var destination = transform.position;
-            while (!validDestination && attempts > 0) {
+            while (!validDestination && attempts > 0)
+            {
                 direction = direction + Random.insideUnitSphere * wanderRate.Value;
                 destination = transform.position + direction.normalized * Random.Range(minWanderDistance.Value, maxWanderDistance.Value);
                 validDestination = SamplePosition(destination);
                 attempts--;
             }
-            if (validDestination) {
+            if (validDestination)
+            {
                 SetDestination(destination);
             }
             return validDestination;
