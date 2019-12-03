@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7e8a6476438c3a34d91a02dd676e044c
+guid: 9f397a87a96d2da4cbd471c03fec9d46
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -62,16 +62,17 @@ ModelImporter:
     7400004: LookAround2.001
     7400006: Armature|Action
     7400008: Armature|ArmatureAction
-    7400010: Armature|Hand_F_0_40
-    7400012: Armature|Idle_F_0_50
-    7400014: Idle_F
-    7400016: Armature|JumpToSwim_F_0_60
-    7400018: Armature|JumpToSwim_F_0_60.001
-    7400020: Armature|LookAround_F_0_100
-    7400022: Armature|Slip
-    7400024: Armature|Swim2_F_50_90
-    7400026: Armature|SwimUp_F_50_150
-    7400028: Walk_F
+    7400010: FindFood_F
+    7400012: Armature|Hand_F_0_60
+    7400014: Armature|Idle_F_0_50
+    7400016: Armature|Idle_F_0_60
+    7400018: Armature|JumpToSwim_F_0_60
+    7400020: Armature|JumpToSwim_F_0_60.001
+    7400022: Armature|LookAround_F_0_100
+    7400024: Armature|Slip
+    7400026: Armature|Swim2_F_50_90
+    7400028: Armature|SwimUp_F_50_150
+    7400030: Armature|Walk_F_20_60
     9500000: //RootNode
     13700000: polySurface103
   externalObjects: {}
@@ -243,10 +244,38 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Hand_F_0_40
-      takeName: Armature|Hand_F_0_40
-      firstFrame: 0
+      name: FindFood_F
+      takeName: Armature|FindFood_F_20_40
+      firstFrame: 20
       lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Hand_F_0_60
+      takeName: Armature|Hand_F_0_60
+      firstFrame: 0
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -299,7 +328,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle_F
+      name: Armature|Idle_F_0_60
       takeName: Armature|Idle_F_0_60
       firstFrame: 0
       lastFrame: 60
@@ -308,9 +337,9 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
-      loopTime: 1
-      loopBlend: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -495,18 +524,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk_F
+      name: Armature|Walk_F_20_60
       takeName: Armature|Walk_F_20_60
-      firstFrame: 20
+      firstFrame: 0
       lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
-      loopTime: 1
-      loopBlend: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
