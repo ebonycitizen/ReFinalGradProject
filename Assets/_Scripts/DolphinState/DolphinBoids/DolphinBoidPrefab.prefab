@@ -207,7 +207,7 @@ MonoBehaviour:
   pos: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   orca: {fileID: 0}
-  cameraRig: {fileID: 0}
+  cameraEye: {fileID: 0}
   accel: {x: 0, y: 0, z: 0}
 --- !u!114 &1765343012202961866
 MonoBehaviour:
@@ -223,6 +223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayObject: {fileID: 0}
   boid: {fileID: 1963386778369798871}
+  simulation: {fileID: 0}
+  animator: {fileID: 4143880495896063152}
 --- !u!1 &1325993191634607736
 GameObject:
   m_ObjectHideFlags: 0
