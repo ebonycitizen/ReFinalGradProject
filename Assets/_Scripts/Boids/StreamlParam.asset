@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d4abba17d87abd4583ec241484f3d4c, type: 3}
-  m_Name: Param
+  m_Name: StreamlParam
   m_EditorClassIdentifier: 
   initSpeed: 2
-  minSpeed: 5
+  minSpeed: 4
   maxSpeed: 10
-  neighborDistance: 10
+  neighborDistance: 40
   neighborFov: 90
-  separationWeight: 273.19
+  separationWeight: 8
   wallScale: {x: 5, y: 5, z: 5}
   wallDistance: 5
-  wallWeight: 3
+  wallWeight: 0
   alignmentWeight: 0
-  cohesionWeight: 2
-  targetWeight: 0.5
+  cohesionWeight: 1
+  targetWeight: 1

@@ -114,13 +114,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishPrefab: {fileID: 670590660, guid: cb36ad7a92b92ee4eb70763d9735d705, type: 3}
   cart: {fileID: 4553839181318197663}
-  fishMax: 30
+  fishMax: 100
   speedMin: 20
   speedMax: 30
   scale: {x: 3, y: 3, z: 3}
   spawnBoundSize: {x: 60, y: 60, z: 50}
-  spawnDelayTime: 1
-  initPos: 200
+  spawnDelayTime: 0.3
+  initPos: 400
 --- !u!114 &2080108160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +136,10 @@ MonoBehaviour:
   fishPrefab: {fileID: 6478202168208763951, guid: abe7cf0f61e590047bb7e140c47adec7,
     type: 3}
   cart: {fileID: 4553839181318197663}
-  fishMax: 30
+  fishMax: 100
   speedMin: 20
   speedMax: 25
-  scale: {x: 2, y: 2, z: 2}
+  scale: {x: 1.5, y: 1.5, z: 1.5}
   spawnBoundSize: {x: 60, y: 60, z: 50}
-  spawnDelayTime: 1
-  initPos: 200
+  spawnDelayTime: 0.3
+  initPos: 400

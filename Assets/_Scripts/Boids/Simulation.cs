@@ -6,8 +6,8 @@ using UnityEngine;
 public class Simulation : MonoBehaviour
 {
 
-    [SerializeField]
-    int boidCount = 10;
+    public int boidCount = 10;
+
     [SerializeField]
     GameObject boidPrefab;
 

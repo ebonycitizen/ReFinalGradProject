@@ -4,7 +4,6 @@ Shader "Hidden/GlobalFog" {
 Properties {
 	_MainTex ("Base (RGB)", 2D) = "black" {}
 }
-
 CGINCLUDE
 
 	#include "UnityCG.cginc"

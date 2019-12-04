@@ -8120,7 +8120,7 @@ GameObject:
   - component: {fileID: 3765551872770906625}
   - component: {fileID: 3765551872770906626}
   - component: {fileID: 1413695997}
-  - component: {fileID: 2118903961698737317}
+  - component: {fileID: 836380619482954095}
   m_Layer: 0
   m_Name: Main Camera (eye)
   m_TagString: MainCamera
@@ -8238,7 +8238,7 @@ MonoBehaviour:
     fastMode: 0
     keepAlpha: 0
   fog:
-    enabled: 1
+    enabled: 0
     excludeSkybox: 1
   debugLayer:
     lightMeter:
@@ -8287,7 +8287,7 @@ MonoBehaviour:
   heightDensity: 0.01
   startDistance: 10
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
---- !u!114 &2118903961698737317
+--- !u!114 &836380619482954095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29949,16 +29949,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orca
       objectReference: {fileID: 0}
-    - target: {fileID: 7246294037680185300, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 7246294037680185300, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.98
-      objectReference: {fileID: 0}
     - target: {fileID: 2738152979033360393, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30014,35 +30004,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 469036182510808929, guid: 2448cfea4892e884580860c5a096886a,
+    - target: {fileID: 7246294037680185300, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
-      propertyPath: heart
-      value: 
-      objectReference: {fileID: 3054497521396506878}
-    - target: {fileID: 469036182510808929, guid: 2448cfea4892e884580860c5a096886a,
+      propertyPath: m_LocalPosition.x
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246294037680185300, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
-      propertyPath: breakHeart
-      value: 
-      objectReference: {fileID: 5181339206565126248}
-    - target: {fileID: 469036182510808929, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: no
-      value: 
-      objectReference: {fileID: 1534143919832320147}
-    - target: {fileID: 4640533320442703727, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 8274404151172009499}
-    - target: {fileID: 8663372460618704023, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 978166224911305202}
-    - target: {fileID: 544544800674589280, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_LocalPosition.z
+      value: 8.98
       objectReference: {fileID: 0}
     - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
@@ -30064,11 +30034,6 @@ PrefabInstance:
       propertyPath: leftHand
       value: 
       objectReference: {fileID: 3765551872278122550}
-    - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: rayObject
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
       propertyPath: orcaModel
@@ -30094,11 +30059,6 @@ PrefabInstance:
       propertyPath: m_changeAnimation
       value: 
       objectReference: {fileID: 3213976793552624133}
-    - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
-        type: 3}
-      propertyPath: dolly
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1783710475288126171, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
       propertyPath: orca
@@ -30109,6 +30069,31 @@ PrefabInstance:
       propertyPath: mainCameraEye
       value: 
       objectReference: {fileID: 3765551872770906628}
+    - target: {fileID: 469036182510808929, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 3054497521396506878}
+    - target: {fileID: 469036182510808929, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
+      propertyPath: breakHeart
+      value: 
+      objectReference: {fileID: 5181339206565126248}
+    - target: {fileID: 469036182510808929, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
+      propertyPath: no
+      value: 
+      objectReference: {fileID: 1534143919832320147}
+    - target: {fileID: 4640533320442703727, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 8274404151172009499}
+    - target: {fileID: 8663372460618704023, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 978166224911305202}
     - target: {fileID: 6427491504454302216, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
       propertyPath: m_Bones.Array.data[0]
