@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2803716310106793341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1521178602}
+  - component: {fileID: 8221119678611867317}
+  m_Layer: 0
+  m_Name: BootstrapCoral
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1521178602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803716310106793341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8221119678611867317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803716310106793341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd225d82f62347c4fb9d1eb9f13e19e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  param: {fileID: 11400000, guid: dada1c4b482f1b744959531818e3208c, type: 2}
+  boidInfo:
+    count: 20
+    scale: {x: 0.1, y: 0.1, z: 0.3}
+    renderer:
+      mesh: {fileID: 4300000, guid: 45dd5b3739a6219458f4537099fed233, type: 3}
+      material: {fileID: 2100000, guid: 59f24802d214cf84eba8d5c1be871944, type: 3}
+      subMesh: 0
+      layer: 0
+      castShadows: 0
+      receiveShadows: 0
+    selfTransform: {fileID: 0}
+    targetPos:
+    - {fileID: 1521178602}
+    - {fileID: 1521178602}
+    material:
+    - {fileID: 2100000, guid: 502e3ad987dace64788872a328954c00, type: 2}
+    - {fileID: 2100000, guid: e1fac9f9070995b498b58dd4344c3956, type: 2}
+    hasDestroy: 0

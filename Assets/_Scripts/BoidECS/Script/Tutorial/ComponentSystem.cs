@@ -19,10 +19,11 @@ public class BoidsEntityGenerationSystem : ComponentSystem
     EntityArchetype archetype;
     ComponentGroup group;
     Unity.Mathematics.Random random;
-        
+    bool hasSpawn = false;
+
     protected override void OnCreateManager()
     {
-        if (!Bootstrap.IsValid) return;
+        //if (!Bootstrap.IsValid) return;
 
         archetype = EntityManager.CreateArchetype(
             typeof(Position),
@@ -42,7 +43,7 @@ public class BoidsEntityGenerationSystem : ComponentSystem
     protected override void OnUpdate()
     {
         if (!Bootstrap.IsValid) return;
-        
+
         var entities = group.GetEntityArray();
         for (int i = 0; i < entities.Length - Bootstrap.Boid.count; ++i)
         {
@@ -50,81 +51,26 @@ public class BoidsEntityGenerationSystem : ComponentSystem
         }
         for (int i = 0; i < Bootstrap.Boid.count - entities.Length; ++i)
         {
-            CreateEntity(i);        
+            if (hasSpawn)
+                break;
+            CreateEntity(i);
         }
+         hasSpawn = true;
 
         for (int i = 0; i < entities.Length; ++i)
         {
-            PostUpdateCommands.SetComponent(entities[i], new TargetPos { Value = SetSpawnTarget(i) });
+            PostUpdateCommands.SetComponent(entities[i], new TargetPos { Value = Bootstrap.SetSpawnTarget(i) });
+        }
+
+        if (Bootstrap.Boid.hasDestroy)
+        {
+            for (int i = 0; i < entities.Length; i++)
+            {
+                PostUpdateCommands.DestroyEntity(entities[i]);
+            }
         }
     }
-    //target pos を分ける
-    float3 SetSpawnTarget(int i)
-    {
-        #region Group 3
-        if (i > 395)
-            return Bootstrap.Boid.targetPos[11].position;
-        if (i > 375)
-            return Bootstrap.Boid.targetPos[10].position;
-        if (i > 330)
-            return Bootstrap.Boid.targetPos[9].position;
-        if (i > 300)
-            return Bootstrap.Boid.targetPos[8].position;
-        #endregion
-
-        #region Group 2
-        if (i > 260)
-            return Bootstrap.Boid.targetPos[7].position;
-        if (i > 220)
-            return Bootstrap.Boid.targetPos[6].position;
-        if (i > 170)
-            return Bootstrap.Boid.targetPos[5].position;
-        #endregion
-
-        #region Group 1
-        if (i > 130)
-            return Bootstrap.Boid.targetPos[4].position;
-        if (i > 105)
-            return Bootstrap.Boid.targetPos[3].position;
-        if (i > 80)
-            return Bootstrap.Boid.targetPos[2].position;
-        if (i > 30)
-            return Bootstrap.Boid.targetPos[1].position;
-        if (i > 0)
-            return Bootstrap.Boid.targetPos[0].position;
-        #endregion
-        return float3.zero;
-    }
-
-    //material を分ける
-    Material SetSpawnMat(int i)
-    {
-        if (i > 300)
-        {
-            if (random.NextBool())
-                return Bootstrap.Boid.material[4];
-            else
-                return Bootstrap.Boid.material[5];
-        }
-
-        if (i > 170)
-        {
-            if (random.NextBool())
-                return Bootstrap.Boid.material[2];
-            else
-                return Bootstrap.Boid.material[3];
-        }
-
-        if (i > 0)
-        {
-            if (random.NextBool())
-                return Bootstrap.Boid.material[0];
-            else
-                return Bootstrap.Boid.material[1];
-        }
-        return Bootstrap.Boid.material[0];
-    }
-
+        
     void CreateEntity(int i)
     {
         var scale = Bootstrap.Boid.scale;
@@ -132,14 +78,14 @@ public class BoidsEntityGenerationSystem : ComponentSystem
         var initSpeed = Bootstrap.Param.initSpeed;
 
         PostUpdateCommands.CreateEntity(archetype);
-        PostUpdateCommands.SetComponent(new Position { Value = SetSpawnTarget(i) + random.NextFloat3(1f) });
+        PostUpdateCommands.SetComponent(new Position { Value = Bootstrap.SetSpawnTarget(i) + random.NextFloat3(1f) });
         PostUpdateCommands.SetComponent(new Rotation { Value = quaternion.identity });
         PostUpdateCommands.SetComponent(new Scale { Value = new float3(scale.x, scale.y, scale.z) });
         PostUpdateCommands.SetComponent(new Velocity { Value = random.NextFloat3Direction() * initSpeed });
         PostUpdateCommands.SetComponent(new Acceleration { Value = float3.zero });
-        PostUpdateCommands.SetComponent(new TargetPos { Value = SetSpawnTarget(i) });
+        PostUpdateCommands.SetComponent(new TargetPos { Value = Bootstrap.SetSpawnTarget(i)});
 
-        renderer.material = SetSpawnMat(i);
+        renderer.material = Bootstrap.SetSpawnMat(i);
         PostUpdateCommands.SetSharedComponent(renderer);
     }
 }
@@ -147,7 +93,7 @@ public class BoidsEntityGenerationSystem : ComponentSystem
 public class BoidsSimulationSystem : JobComponentSystem
 {
     ComponentGroup group;
-
+    
     protected override void OnCreateManager()
     {
         group = GetComponentGroup(typeof(Position), typeof(Velocity), typeof(NeighborsEntityBuffer), typeof(TargetPos));
@@ -342,10 +288,12 @@ public class BoidsSimulationSystem : JobComponentSystem
             }
     }
 
-
-
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
+            group = GetComponentGroup(typeof(Position), typeof(Velocity), typeof(NeighborsEntityBuffer), typeof(TargetPos));
+            var entities = group.GetEntityArray();
+
+
         var neighbors = new NeighborsDetectionJob
         {
             prodThresh = math.cos(math.radians(Bootstrap.Param.neighborFov)),
@@ -396,7 +344,6 @@ public class BoidsSimulationSystem : JobComponentSystem
             targetWeight = Bootstrap.Param.targetWeight,
         };
 
-
         inputDeps = neighbors.Schedule(this, inputDeps);
         inputDeps = wall.Schedule(this, inputDeps);
         inputDeps = separation.Schedule(this, inputDeps);
@@ -404,8 +351,10 @@ public class BoidsSimulationSystem : JobComponentSystem
         inputDeps = cohesion.Schedule(this, inputDeps);
         inputDeps = toTarget.Schedule(this, inputDeps);
         inputDeps = move.Schedule(this, inputDeps);
+
+            if (entities.Length == 0)
+                inputDeps.Complete();
         return inputDeps;
     }
 }
-
 }
