@@ -83,7 +83,7 @@ public class TrackFlowFishSpawner : MonoBehaviour
 
             fishes[i].GetComponent<TrackFlowFish>().randOffset = new Vector3(x, y, z);
 
-            interval -= cart.m_Speed;
+            interval -= cart.m_Speed * spawnDelayTime;
         }
         for (int i = fishes.Count - 1; i > 0; i--)
         {

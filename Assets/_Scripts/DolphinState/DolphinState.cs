@@ -24,6 +24,8 @@ public partial class DolphinState : MonoBehaviour
     private DolphinBoid boid;
     [SerializeField]
     private DolphinSimulation simulation;
+    [SerializeField]
+    private Animator animator;
     
     private ImtStateMachine<DolphinState> stateMachine;
 
@@ -34,7 +36,7 @@ public partial class DolphinState : MonoBehaviour
 
         stateMachine.AddAnyTransition<D_IdleState>((int)StateEventId.Idle);
 
-        stateMachine.AddTransition<D_IdleState, D_ComeState>((int)StateEventId.Idle);
+        stateMachine.AddTransition<D_IdleState, D_ComeState>((int)StateEventId.Come);
 
         stateMachine.AddTransition<D_IdleState, D_SwimState>((int)StateEventId.Swim);
 
@@ -66,7 +68,6 @@ public partial class DolphinState : MonoBehaviour
             return;
 
         transform.parent = sendObj.transform;
-        transform.parent = rayObject.transform;
     }
     public bool ChangeState(string tag, GameObject obj)
     {
@@ -81,5 +82,12 @@ public partial class DolphinState : MonoBehaviour
         if (tag == "D_Jump")
             stateMachine.SendEvent((int)StateEventId.Jump);
         return false;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag=="Water")
+        {
+            animator.SetTrigger("Jump");
+        }
     }
 }

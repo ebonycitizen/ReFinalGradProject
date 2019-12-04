@@ -13,7 +13,8 @@
 	SubShader
 	{
 		Tags { "RenderType"="Opaque" }
-		LOD 100 Cull Off
+		LOD 100 
+		Cull Off
 
 		Pass
 		{
@@ -62,7 +63,7 @@
 #endif
 				float x = (vid + 0.5) * ts.x;
 				float y = t;
-				float4 pos = tex2Dlod(_PosTex, float4(x, y, 0, 0));
+				float4 pos = tex2Dlod(_PosTex, float4(x, y, 0, 1));
 				float3 normal = tex2Dlod(_NmlTex, float4(x, y, 0, 0));
 
 				v2f o;
