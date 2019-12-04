@@ -8,13 +8,28 @@ public partial class DolphinState
     private class D_ComeState : ImtStateMachine<DolphinState>.State
     {
         private Transform transform;
+        private Transform sendObj;
         protected internal override void Enter()
         {
             transform = Context.transform;
+            Context.ChangeParentNull();
+            sendObj = Context.sendObj.transform;
         }
         protected internal override void Update()
         {
+            
+            if (Vector3.Distance(transform.position, sendObj.position) > 40f)
+            {
+                var dir = sendObj.position - (transform.position);
+                var rot = Quaternion.LookRotation(dir);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.fixedDeltaTime);
 
+                transform.position += transform.forward * Time.deltaTime * 28f;
+            }
+            else
+            {
+                StateMachine.SendEvent((int)StateEventId.Swim);
+            }
         }
 
         protected internal override void Exit()
