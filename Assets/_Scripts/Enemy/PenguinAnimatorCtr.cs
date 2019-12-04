@@ -92,10 +92,22 @@ namespace SWS
             }
 
         }
+        public void PlaySlidAnimation()
+        {
+            StopAnimation();
+            PlayNextAnimation("Slid");
+        }
+        public void SlidToSwim()
+        {
+            StopAnimation();
+            m_animator.SetTrigger("PlayHelp");
+        }
+
         public void JumpToSwim()
         {
             StopAnimation();
             m_animator.SetTrigger("JumpToSwim");
+            m_animator.SetBool("PlaySwim", true);
         }
 
         public void SwimToIdle()
@@ -174,10 +186,12 @@ namespace SWS
         private void Spurt()
         {
 
+
             //length=speed*t; t=length/speed; 1*(10-2)*0.1=0.8 1*(10-5)*0.1=0.5  
             m_stuckRandomValue = Random.Range(m_spurtMinSpeed, m_spurtMaxSpeed);
 
-            m_move.ChangeSpeed(m_move.speed * m_stuckRandomValue);
+            if (m_move)
+                m_move.ChangeSpeed(m_move.speed * m_stuckRandomValue);
 
             m_prevAnimatorSpeed = m_animator.speed;
             var randomAnimationSpeed = m_animator.speed * (10 - m_stuckRandomValue) * 0.2f;
@@ -188,7 +202,8 @@ namespace SWS
         private void Resume()
         {
             m_animator.speed = m_prevAnimatorSpeed;
-            m_move.ChangeSpeed(m_move.speed / m_stuckRandomValue);
+            if (m_move)
+                m_move.ChangeSpeed(m_move.speed / m_stuckRandomValue);
         }
     }
 
