@@ -27,17 +27,17 @@ public class BubbleController : MonoBehaviour
     {
         if (!m_enable)
             return;
+        //var 
+        //m_bubbleEmmiter.startSize = m_bubbleSize;
 
-        m_bubbleEmmiter.startSize = m_bubbleSize;
 
+        //var value = Random.value;
 
-        var value = Random.value;
-
-        Observable.Interval(TimeSpan.FromSeconds(m_baseIntervalTime + value))
-            .Subscribe(_ =>
-            {
-                m_bubbleEmmiter.Play();
-            }).AddTo(this);
+        //Observable.Interval(TimeSpan.FromSeconds(m_baseIntervalTime + value))
+        //    .Subscribe(_ =>
+        //    {
+        //        m_bubbleEmmiter.Play();
+        //    }).AddTo(this);
 
     }
 }
