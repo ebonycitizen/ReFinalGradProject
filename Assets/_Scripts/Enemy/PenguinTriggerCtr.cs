@@ -42,11 +42,11 @@ public class PenguinTriggerCtr : MonoBehaviour
             m_hasEntered = true;
             m_penguinFunctions.ForEach(x => x.Setup());
 
-            m_prevSpeed = m_cart.m_Speed;
-            m_cart.ChangeSpeed(m_slowSpeed);
+            //m_prevSpeed = m_cart.m_Speed;
+            //m_cart.ChangeSpeed(m_slowSpeed);
 
-            Observable.Timer(TimeSpan.FromSeconds(m_slowTime))
-                .Subscribe(_ => m_cart.ChangeSpeed(m_prevSpeed)).AddTo(this);
+            //Observable.Timer(TimeSpan.FromSeconds(m_slowTime))
+            //    .Subscribe(_ => m_cart.ChangeSpeed(m_prevSpeed)).AddTo(this);
         }
 
     }

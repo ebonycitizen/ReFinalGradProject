@@ -57,6 +57,14 @@ public class PenguinJump : PenguinFunction, ITriggerSetupper
 
     }
 
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Setup();
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == m_waterSurface.name)
