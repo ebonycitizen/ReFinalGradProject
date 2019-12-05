@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5416082094310187638
 Transform:
   m_ObjectHideFlags: 0
@@ -4959,7 +4959,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5416082094901052384}
-  m_LocalRotation: {x: -0, y: 0.024419457, z: -0, w: -0.99970186}
+  m_LocalRotation: {x: 0, y: 0.024423672, z: -0, w: -0.99970174}
   m_LocalPosition: {x: 38, y: 11.2, z: 406.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5106,7 +5106,7 @@ PrefabInstance:
     - target: {fileID: 5010765273113099230, guid: 83d51fd04689d504d9e3948c023e515a,
         type: 3}
       propertyPath: m_Name
-      value: 1710
+      value: SwimPenguin
       objectReference: {fileID: 0}
     - target: {fileID: 5010765273112995838, guid: 83d51fd04689d504d9e3948c023e515a,
         type: 3}
@@ -5184,16 +5184,12 @@ PrefabInstance:
       objectReference: {fileID: 1053870417255538260}
     - target: {fileID: 912835048, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: m_spurtMaxSpeed
-      value: 3.43
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 912835048, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: m_bubbleEffect
       value: 
       objectReference: {fileID: 5416082094310187636}
-    - target: {fileID: 912835048, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
-      propertyPath: m_animatorSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: events.Array.size
       value: 8
@@ -5202,6 +5198,14 @@ PrefabInstance:
       propertyPath: pathContainer
       value: 
       objectReference: {fileID: 5416082095948601659}
+    - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
+      propertyPath: closeLoop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
+      propertyPath: loopType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: events.Array.data[0].m_TypeName
       value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -5246,12 +5250,9 @@ PrefabInstance:
       propertyPath: pathMode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
-      propertyPath: loopType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
-      propertyPath: closeLoop
+    - target: {fileID: 7110721646841404617, guid: 83d51fd04689d504d9e3948c023e515a,
+        type: 3}
+      propertyPath: m_enable
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
