@@ -18,13 +18,13 @@ public partial class DolphinState
         protected internal override void Update()
         {
             
-            if (Vector3.Distance(transform.position, sendObj.position) > 40f)
+            if (Vector3.Distance(transform.position, sendObj.position) > 45f)
             {
                 var dir = sendObj.position - (transform.position);
                 var rot = Quaternion.LookRotation(dir);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.fixedDeltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.fixedDeltaTime * 3f);
 
-                transform.position += transform.forward * Time.deltaTime * 28f;
+                transform.position += transform.forward * Time.deltaTime * 20f;
             }
             else
             {
