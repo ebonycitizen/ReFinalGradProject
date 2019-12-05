@@ -36,7 +36,7 @@ public class StageManager : MonoBehaviour
 
         foreach (GameObject obj in transferObj)
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
-        
+
         yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
         RenderSettings.skybox = changeStage.GetFogData().skybox;
 
