@@ -43,18 +43,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e1c3cc755672f45a4a064a6667745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  param: {fileID: 0}
+  param: {fileID: 11400000, guid: dada1c4b482f1b744959531818e3208c, type: 2}
   boidInfo:
-    count: 20
-    scale: {x: 0.03, y: 0.05, z: 0.05}
+    count: 450
+    scale: {x: 1, y: 1, z: 1.2}
     renderer:
-      mesh: {fileID: 4300000, guid: e2ce76f088837294184d2e90b4aa9e97, type: 3}
-      material: {fileID: 2100000, guid: 51121474f2cc68f4abc0e48ddb14aad6, type: 2}
+      mesh: {fileID: 4300000, guid: ac27648e627ac8f4aa5a9d3a267e4ca5, type: 3}
+      material: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
       subMesh: 0
+      layer: 0
       castShadows: 0
       receiveShadows: 0
     selfTransform: {fileID: 3922166864819166466}
-    targetPos: {fileID: 0}
+    targetPos:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     material:
-    - {fileID: 2100000, guid: 51121474f2cc68f4abc0e48ddb14aad6, type: 2}
-    - {fileID: 2100000, guid: 633780e88fd6ac24091b4e1f9b457be2, type: 2}
+    - {fileID: 2100000, guid: f02cb8ae5b89dfb44bdb1232331d95f0, type: 2}
+    - {fileID: 2100000, guid: d258e5ed576b5164ab731089b40da712, type: 2}
+    - {fileID: 2100000, guid: ba937c0bb84977343aecf258297b06e7, type: 2}
+    hasDestroy: 0

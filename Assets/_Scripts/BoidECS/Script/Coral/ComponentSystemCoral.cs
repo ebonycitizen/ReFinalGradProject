@@ -191,7 +191,10 @@ namespace BoidECSCoral
                 for (int i = 0; i < neighbors.Length; ++i)
                 {
                     var pos1 = positionFromEntity[neighbors[i]].Value;
-                    force += math.normalize(pos0 - pos1);
+
+                    var diff = pos0 - pos1;
+                    force += math.normalize(diff) * 100.0f / (math.length(diff) * math.length(diff));
+
                 }
                 force /= neighbors.Length;
 

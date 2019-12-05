@@ -104,10 +104,9 @@ public class DolphinBoid : MonoBehaviour
                 var diff = pos - neighborPos;
                 force += diff.normalized * 100.0f / (diff.magnitude * diff.magnitude);
             }
-
+            
             //force /= neighborsPos.Count;
         }
-
 
         accel += force * param.separationWeight;
     }

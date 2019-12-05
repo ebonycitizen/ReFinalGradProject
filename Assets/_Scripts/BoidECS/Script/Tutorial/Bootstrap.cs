@@ -96,31 +96,21 @@ public class Bootstrap : MonoBehaviour
 
     public static Material SetSpawnMat(int i)
     {
-        Unity.Mathematics.Random random = new Unity.Mathematics.Random(853);
         if (i > 300)
         {
-            if (random.NextBool())
-                return Bootstrap.Boid.material[4];
-            else
-                return Bootstrap.Boid.material[5];
+            return Bootstrap.Boid.material[2];
         }
 
         if (i > 170)
         {
-            if (random.NextBool())
-                return Bootstrap.Boid.material[2];
-            else
-                return Bootstrap.Boid.material[3];
+            return Bootstrap.Boid.material[1];
         }
 
         if (i > 0)
         {
-            if (random.NextBool())
-                return Bootstrap.Boid.material[0];
-            else
-                return Bootstrap.Boid.material[1];
+            return Bootstrap.Boid.material[0];
         }
-        return Bootstrap.Boid.material[0];
+        return null;
     }
 
 
