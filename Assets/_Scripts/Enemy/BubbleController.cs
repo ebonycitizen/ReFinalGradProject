@@ -21,7 +21,6 @@ public class BubbleController : MonoBehaviour
     [SerializeField]
     private bool m_enable = false;
 
-
     // Start is called before the first frame update
     [Obsolete]
     void Start()
