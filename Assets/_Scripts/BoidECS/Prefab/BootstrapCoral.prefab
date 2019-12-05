@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1521178602
 Transform:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2803716310106793341}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd225d82f62347c4fb9d1eb9f13e19e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  param: {fileID: 11400000, guid: dada1c4b482f1b744959531818e3208c, type: 2}
+  param: {fileID: 11400000, guid: 1da4fe0ad7e2c6c4d9bfefc5f2974900, type: 2}
   boidInfo:
-    count: 20
-    scale: {x: 0.1, y: 0.1, z: 0.3}
+    count: 970
+    scale: {x: 1, y: 1, z: 1}
     renderer:
       mesh: {fileID: 4300000, guid: 45dd5b3739a6219458f4537099fed233, type: 3}
       material: {fileID: 2100000, guid: 59f24802d214cf84eba8d5c1be871944, type: 3}
@@ -54,11 +54,29 @@ MonoBehaviour:
       layer: 0
       castShadows: 0
       receiveShadows: 0
-    selfTransform: {fileID: 0}
+    selfTransform: {fileID: 1521178602}
     targetPos:
-    - {fileID: 1521178602}
-    - {fileID: 1521178602}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     material:
-    - {fileID: 2100000, guid: 502e3ad987dace64788872a328954c00, type: 2}
+    - {fileID: 2100000, guid: 32a870baaba5b4f40a163089701cbc73, type: 2}
+    - {fileID: 2100000, guid: fd6edd4979457414c91e2cb27ff1048f, type: 2}
+    - {fileID: 2100000, guid: 26eb5e53fd93e5e4887855cb1dff05a4, type: 2}
+    - {fileID: 2100000, guid: 0c219553cd8420b45850b674ff173f50, type: 2}
+    - {fileID: 2100000, guid: e1fac9f9070995b498b58dd4344c3956, type: 2}
     - {fileID: 2100000, guid: e1fac9f9070995b498b58dd4344c3956, type: 2}
     hasDestroy: 0

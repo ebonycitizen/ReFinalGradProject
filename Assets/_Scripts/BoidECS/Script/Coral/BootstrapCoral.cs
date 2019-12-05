@@ -66,59 +66,67 @@ namespace BoidECSCoral
 
         public static float3 SetSpawnTarget(int i)
         {
-            //#region Group 3
-            //if (i > 395)
-            //    return Bootstrap.Boid.targetPos[11].position;
-            //if (i > 375)
-            //    return Bootstrap.Boid.targetPos[10].position;
-            //if (i > 330)
-            //    return Bootstrap.Boid.targetPos[9].position;
-            //if (i > 300)
-            //    return Bootstrap.Boid.targetPos[8].position;
-            //#endregion
+            #region Group 3
+            if (i > 870)
+                return BootstrapCoral.Boid.targetPos[11].position;
+            if (i > 800)
+                return BootstrapCoral.Boid.targetPos[11].position;
+            if (i > 750)
+                return BootstrapCoral.Boid.targetPos[10].position;
+            if (i > 710)
+                return BootstrapCoral.Boid.targetPos[9].position;
+            if (i > 680)
+                return BootstrapCoral.Boid.targetPos[8].position;
+            #endregion
 
-            //#region Group 2
-            //if (i > 260)
-            //    return Bootstrap.Boid.targetPos[7].position;
-            //if (i > 220)
-            //    return Bootstrap.Boid.targetPos[6].position;
-            //if (i > 170)
-            //    return Bootstrap.Boid.targetPos[5].position;
-            //#endregion
+            #region Group 2
+            if (i > 580)
+                return BootstrapCoral.Boid.targetPos[7].position;
+            if (i > 480)
+                return BootstrapCoral.Boid.targetPos[7].position;
+            if (i > 430)
+                return BootstrapCoral.Boid.targetPos[7].position;
+            if (i > 380)
+                return BootstrapCoral.Boid.targetPos[7].position;
+            if (i > 350)
+                return BootstrapCoral.Boid.targetPos[6].position;
+            if (i > 310)
+                return BootstrapCoral.Boid.targetPos[5].position;
+            #endregion
 
-            //#region Group 1
-            //if (i > 130)
-            //    return Bootstrap.Boid.targetPos[4].position;
-            //if (i > 105)
-            //    return Bootstrap.Boid.targetPos[3].position;
-            //if (i > 80)
-            //    return Bootstrap.Boid.targetPos[2].position;
+            #region Group 1
+            if (i > 210)
+                return BootstrapCoral.Boid.targetPos[4].position;
+            if (i > 110)
+                return BootstrapCoral.Boid.targetPos[3].position;
+            if (i > 80)
+                return BootstrapCoral.Boid.targetPos[2].position;
             if (i > 30)
                 return BootstrapCoral.Boid.targetPos[1].position;
             if (i > 0)
                 return BootstrapCoral.Boid.targetPos[0].position;
-            //#endregion
+            #endregion
             return float3.zero;
         }
 
         public static Material SetSpawnMat(int i)
         {
             Unity.Mathematics.Random random = new Unity.Mathematics.Random(853);
-            //if (i > 300)
-            //{
-            //    if (random.NextBool())
-            //        return Bootstrap.Boid.material[4];
-            //    else
-            //        return Bootstrap.Boid.material[5];
-            //}
+            if (i > 680)
+            {
+                if (random.NextBool())
+                    return BootstrapCoral.Boid.material[4];
+                else
+                    return BootstrapCoral.Boid.material[5];
+            }
 
-            //if (i > 170)
-            //{
-            //    if (random.NextBool())
-            //        return Bootstrap.Boid.material[2];
-            //    else
-            //        return Bootstrap.Boid.material[3];
-            //}
+            if (i > 310)
+            {
+                if (random.NextBool())
+                    return BootstrapCoral.Boid.material[2];
+                else
+                    return BootstrapCoral.Boid.material[3];
+            }
 
             if (i > 0)
             {
