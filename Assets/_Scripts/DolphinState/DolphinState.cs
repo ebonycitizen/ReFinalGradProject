@@ -76,13 +76,27 @@ public partial class DolphinState : MonoBehaviour
         sendObj = obj;
 
         if (tag == "D_Idle")
+        {
             stateMachine.SendEvent((int)StateEventId.Idle);
+            return true;
+        }
         if (tag == "D_Come")
+        {
             stateMachine.SendEvent((int)StateEventId.Come);
+            return true;
+        }
         if (tag == "D_Swim")
+        {
             stateMachine.SendEvent((int)StateEventId.Swim);
+            return true;
+        }
         if (tag == "D_Jump")
+        {
             stateMachine.SendEvent((int)StateEventId.Jump);
+            return true;
+        }
+
+
         return false;
     }
     private void OnTriggerEnter(Collider other)
