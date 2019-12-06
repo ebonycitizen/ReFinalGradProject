@@ -42,6 +42,8 @@ public partial class DolphinState : MonoBehaviour
 
         stateMachine.AddTransition<D_ComeState, D_SwimState>((int)StateEventId.Swim);
 
+        stateMachine.AddTransition<D_JumpState, D_SwimState>((int)StateEventId.Swim);
+
         stateMachine.AddTransition<D_SwimState, D_JumpState>((int)StateEventId.Jump);
 
         stateMachine.SetStartState<D_IdleState>();
@@ -88,6 +90,14 @@ public partial class DolphinState : MonoBehaviour
         if(other.gameObject.tag=="Water")
         {
             animator.SetTrigger("Jump");
+            stateMachine.SendEvent((int)StateEventId.Jump);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag=="Water")
+        {
+            stateMachine.SendEvent((int)StateEventId.Swim);
         }
     }
 }

@@ -31,6 +31,11 @@ public class DolphinBoid : MonoBehaviour
         velocity = transform.forward * param.initSpeed;
         rb = GetComponent<Rigidbody>();
     }
+    private void OnEnable()
+    {
+        pos = transform.position;
+        velocity = transform.forward * param.initSpeed;
+    }
 
     // Update is called once per frame
     void Update()
@@ -219,5 +224,7 @@ public class DolphinBoid : MonoBehaviour
         
 
         accel = Vector3.zero;
+
+        Debug.Log(velocity);
     }
 }
