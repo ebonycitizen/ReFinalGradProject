@@ -45,7 +45,9 @@ public class SetObjectAtLoad : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //EnableObject();
+        SceneManager.activeSceneChanged -= OnActiveSceneChanged;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
         Invoke("DisableObject", unloadTime);
         Debug.Log(scene.name + " scene loaded");
     }
@@ -54,4 +56,5 @@ public class SetObjectAtLoad : MonoBehaviour
     {
         Debug.Log(scene.name + " scene unloaded");
     }
+
 }

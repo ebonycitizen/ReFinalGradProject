@@ -67,41 +67,35 @@ namespace BoidECSCoral
         public static float3 SetSpawnTarget(int i)
         {
             #region Group 3
-            if (i > 560)
-                return BootstrapCoral.Boid.targetPos[15].position;
-            if (i > 520)
-                return BootstrapCoral.Boid.targetPos[14].position;
-            if (i > 470)
-                return BootstrapCoral.Boid.targetPos[13].position;
-            if (i > 440)
+            if (i > 385)
                 return BootstrapCoral.Boid.targetPos[12].position;
-            if (i > 410)
+            if (i > 345)
                 return BootstrapCoral.Boid.targetPos[11].position;
+            if (i > 305)
+                return BootstrapCoral.Boid.targetPos[10].position;
+            if (i > 280)
+                return BootstrapCoral.Boid.targetPos[9].position;
+            if (i > 250)
+                return BootstrapCoral.Boid.targetPos[8].position;
             #endregion
 
             #region Group 2
-            if (i > 360)
-                return BootstrapCoral.Boid.targetPos[10].position;
-            if (i > 310)
-                return BootstrapCoral.Boid.targetPos[9].position;
-            if (i > 280)
-                return BootstrapCoral.Boid.targetPos[8].position;
-            if (i > 260)
+            if (i > 210)
                 return BootstrapCoral.Boid.targetPos[7].position;
-            if (i > 230)
+            if (i > 175)
                 return BootstrapCoral.Boid.targetPos[6].position;
-            if (i > 190)
+            if (i > 155)
                 return BootstrapCoral.Boid.targetPos[5].position;
+            if (i > 125)
+                return BootstrapCoral.Boid.targetPos[4].position;
             #endregion
 
             #region Group 1
-            if (i > 140)
-                return BootstrapCoral.Boid.targetPos[4].position;
-            if (i > 90)
+            if (i > 75)
                 return BootstrapCoral.Boid.targetPos[3].position;
-            if (i > 60)
+            if (i > 55)
                 return BootstrapCoral.Boid.targetPos[2].position;
-            if (i > 30)
+            if (i > 20)
                 return BootstrapCoral.Boid.targetPos[1].position;
             if (i > 0)
                 return BootstrapCoral.Boid.targetPos[0].position;
@@ -111,12 +105,12 @@ namespace BoidECSCoral
 
         public static Material SetSpawnMat(int i)
         {
-            if (i > 410)
+            if (i > 250)
             {
                 return BootstrapCoral.Boid.material[2];
             }
 
-            if (i > 190)
+            if (i > 125)
             {
                 return BootstrapCoral.Boid.material[1];
             }
