@@ -225,6 +225,6 @@ public class DolphinBoid : MonoBehaviour
 
         accel = Vector3.zero;
 
-        Debug.Log(velocity);
+        //Debug.Log(velocity);
     }
 }

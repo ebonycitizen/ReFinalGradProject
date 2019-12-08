@@ -112,6 +112,11 @@ public partial class DolphinState : MonoBehaviour
         if(other.gameObject.tag=="Water")
         {
             stateMachine.SendEvent((int)StateEventId.Swim);
+            simulation.ChangeExit();
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 }

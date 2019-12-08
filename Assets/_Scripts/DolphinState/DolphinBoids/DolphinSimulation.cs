@@ -5,6 +5,13 @@ using SWS;
 
 public class DolphinSimulation : MonoBehaviour
 {
+    enum State
+    {
+        Enter,
+        Jump,
+        Exit
+    }
+
     [SerializeField]
     private int boidCount = 0;
     [SerializeField]
@@ -18,8 +25,11 @@ public class DolphinSimulation : MonoBehaviour
     private MyCinemachineDollyCart dolly;
     [SerializeField]
     private splineMove s;
-
-    private bool ChangeTarget = false;
+    [SerializeField]
+    private splineMove s2;
+    [SerializeField]
+    private Transform exitPos;
+    private State state = State.Enter;
 
     private Vector3 targetPos;
     private Vector3 targetRot;
@@ -46,15 +56,21 @@ public class DolphinSimulation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!ChangeTarget)
+        switch(state)
         {
-            targetPos = dolly.forwardPos;
-            targetRot= dolly.forward * Vector3.forward;
-        }
-        else
-        {
+            case State.Enter:
+                targetPos = dolly.forwardPos;
+                targetRot= dolly.forward * Vector3.forward;
+                break;
+            case State.Jump:
             targetPos = transform.position;
             targetRot = transform.rotation * Vector3.forward;
+                 break;
+            case State.Exit:
+                targetPos = exitPos.position;
+                targetRot = exitPos.rotation * Vector3.forward;
+                break;
+                
         }
     }
 
@@ -78,7 +94,7 @@ public class DolphinSimulation : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (ChangeTarget)
+        if (state==State.Jump)
             return;
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
@@ -88,8 +104,16 @@ public class DolphinSimulation : MonoBehaviour
                // dolphin.GetComponent<DolphinState>().ChangeState(gameObject.tag, this.gameObject);
 
             s.StartMove();
-            ChangeTarget = true;
+            state = State.Jump;
 
         }
+    }
+    public void ChangeExit()
+    {
+        if (state == State.Exit)
+            return;
+        s2.StartMove();
+        state = State.Exit;
+
     }
 }
