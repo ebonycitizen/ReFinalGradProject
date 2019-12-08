@@ -23,6 +23,7 @@ public partial class OrcaState : MonoBehaviour
         Approach,
         Scroll,
         Attack,
+        LightUp,
     }
 
     private ImtStateMachine<OrcaState> stateMachine;
@@ -68,6 +69,7 @@ public partial class OrcaState : MonoBehaviour
         stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
         stateMachine.AddTransition<IdleState, ApproachState>((int)StateEventId.Approach);
         stateMachine.AddTransition<IdleState, NoneState>((int)StateEventId.None);
+        stateMachine.AddTransition<IdleState, LightUpState>((int)StateEventId.LightUp);
 
         stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
         stateMachine.AddTransition<ApproachState, JumpState>((int)StateEventId.Jump);
@@ -183,6 +185,12 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Scroll);
             return true;
         }
+        if (tag == "G_LightUp" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.LightUp);
+            return true;
+        }
+
 
         if (tag == "G_Click" && stateMachine.CurrentStateName == "SwimState")
         {
