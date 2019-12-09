@@ -8267,7 +8267,13 @@ MonoBehaviour:
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
-  m_AfterStackBundles: []
+  m_AfterStackBundles:
+  - assemblyQualifiedName: Blur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: HeightFog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: StylizedFog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &1413695997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8283,7 +8289,7 @@ MonoBehaviour:
   distanceFog: 0
   useRadialDistance: 0
   heightFog: 1
-  height: 80
+  height: 150
   heightDensity: 0.01
   startDistance: 10
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
@@ -30036,6 +30042,11 @@ PrefabInstance:
       objectReference: {fileID: 3765551872278122550}
     - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
+      propertyPath: rayObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
       propertyPath: orcaModel
       value: 
       objectReference: {fileID: 6942074959058176254}
@@ -30059,6 +30070,11 @@ PrefabInstance:
       propertyPath: m_changeAnimation
       value: 
       objectReference: {fileID: 3213976793552624133}
+    - target: {fileID: 2738152979033360392, guid: 2448cfea4892e884580860c5a096886a,
+        type: 3}
+      propertyPath: dolly
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1783710475288126171, guid: 2448cfea4892e884580860c5a096886a,
         type: 3}
       propertyPath: orca

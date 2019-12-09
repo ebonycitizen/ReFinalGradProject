@@ -19,6 +19,7 @@ public class ChangeDollySpeed : MonoBehaviour
 
     private IEnumerator ChangeSpeed()
     {
+        dollyCart = GameObject.FindObjectOfType<MyCinemachineDollyCart>();
         float time = 0;
         float dollySpeed = dollyCart.m_Speed;
         while (time < 1)

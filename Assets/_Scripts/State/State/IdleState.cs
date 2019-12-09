@@ -71,6 +71,8 @@ public partial class OrcaState
                 stateMachine.SendEvent((int)StateEventId.Scroll);
             if (Input.GetKeyDown(KeyCode.LeftAlt))
                 stateMachine.SendEvent((int)StateEventId.Attack);
+            if (Input.GetKeyDown(KeyCode.L))
+                stateMachine.SendEvent((int)StateEventId.LightUp);
 #endif
 
         }

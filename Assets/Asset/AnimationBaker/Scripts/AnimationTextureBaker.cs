@@ -81,13 +81,13 @@ public class AnimationTextureBaker : MonoBehaviour
 #if UNITY_EDITOR
             var folderName = "BakedAnimationTex";
             var folderPath = Path.Combine("Assets", folderName);
-            if (!AssetDatabase.IsValidFolder(folderPath))
-                AssetDatabase.CreateFolder("Assets", folderName);
+            //if (!AssetDatabase.IsValidFolder(folderPath))
+            //    AssetDatabase.CreateFolder("Assets", folderName);
 
             var subFolder = name;
             var subFolderPath = Path.Combine(folderPath, subFolder);
-            if (!AssetDatabase.IsValidFolder(subFolderPath))
-                AssetDatabase.CreateFolder(folderPath, subFolder);
+            //if (!AssetDatabase.IsValidFolder(subFolderPath))
+            //    AssetDatabase.CreateFolder(folderPath, subFolder);
 
             var posTex = RenderTextureToTexture2D.Convert(pRt);
             var normTex = RenderTextureToTexture2D.Convert(nRt);
@@ -108,10 +108,10 @@ public class AnimationTextureBaker : MonoBehaviour
             go.AddComponent<MeshRenderer>().sharedMaterial = mat;
             go.AddComponent<MeshFilter>().sharedMesh = skin.sharedMesh;
 
-            AssetDatabase.CreateAsset(posTex, Path.Combine(subFolderPath, pRt.name + ".asset"));
-            AssetDatabase.CreateAsset(normTex, Path.Combine(subFolderPath, nRt.name + ".asset"));
-            AssetDatabase.CreateAsset(mat, Path.Combine(subFolderPath, string.Format("{0}.{1}.animTex.asset", name, state.name)));
-            PrefabUtility.CreatePrefab(Path.Combine(folderPath, go.name + ".prefab").Replace("\\", "/"), go);
+            AssetDatabase.CreateAsset(posTex, "Assets/posTex.asset");
+            AssetDatabase.CreateAsset(normTex, "Assets/normalTex.asset");
+            AssetDatabase.CreateAsset(mat, "Assets/material.mat");
+            //PrefabUtility.CreatePrefab(Path.Combine(folderPath, go.name + ".prefab").Replace("\\", "/"), go);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 #endif

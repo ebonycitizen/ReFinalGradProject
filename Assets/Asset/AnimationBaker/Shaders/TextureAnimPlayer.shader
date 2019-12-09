@@ -3,7 +3,7 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		_Color("Main Color", Color) = (1,.5,.5,1)
+		[HDR]_Color("Main Color", Color) = (1,.5,.5,1)
 		_PosTex("position texture", 2D) = "black"{}
 		_NmlTex("normal texture", 2D) = "white"{}
 		_DT ("delta time", float) = 0

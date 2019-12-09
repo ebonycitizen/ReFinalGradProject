@@ -42,6 +42,8 @@ public partial class DolphinState : MonoBehaviour
 
         stateMachine.AddTransition<D_ComeState, D_SwimState>((int)StateEventId.Swim);
 
+        stateMachine.AddTransition<D_JumpState, D_SwimState>((int)StateEventId.Swim);
+
         stateMachine.AddTransition<D_SwimState, D_JumpState>((int)StateEventId.Jump);
 
         stateMachine.SetStartState<D_IdleState>();
@@ -74,13 +76,27 @@ public partial class DolphinState : MonoBehaviour
         sendObj = obj;
 
         if (tag == "D_Idle")
+        {
             stateMachine.SendEvent((int)StateEventId.Idle);
+            return true;
+        }
         if (tag == "D_Come")
+        {
             stateMachine.SendEvent((int)StateEventId.Come);
+            return true;
+        }
         if (tag == "D_Swim")
+        {
             stateMachine.SendEvent((int)StateEventId.Swim);
+            return true;
+        }
         if (tag == "D_Jump")
+        {
             stateMachine.SendEvent((int)StateEventId.Jump);
+            return true;
+        }
+
+
         return false;
     }
     private void OnTriggerEnter(Collider other)
@@ -88,6 +104,19 @@ public partial class DolphinState : MonoBehaviour
         if(other.gameObject.tag=="Water")
         {
             animator.SetTrigger("Jump");
+            stateMachine.SendEvent((int)StateEventId.Jump);
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag=="Water")
+        {
+            stateMachine.SendEvent((int)StateEventId.Swim);
+            simulation.ChangeExit();
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 }
