@@ -28,6 +28,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         public override TaskStatus OnUpdate()
         {
             if (HasArrived()) {
+                Debug.LogError("Find");
                 // The agent should pause at the destination only if the max pause duration is greater than 0
                 if (maxPauseDuration.Value > 0) {
                     if (destinationReachTime == -1) {
@@ -43,6 +44,11 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 } else {
                     TrySetTarget();
                 }
+            }
+            else
+            {
+                Debug.LogError("Arrival");
+
             }
             return TaskStatus.Running;
         }
