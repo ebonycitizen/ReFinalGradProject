@@ -7,7 +7,6 @@ public partial class DolphinState
 {
     private class D_JumpState : ImtStateMachine<DolphinState>.State
     {
-        private GameObject parent;
         private Transform transform;
         private Vector3 initVec;
 
@@ -15,11 +14,12 @@ public partial class DolphinState
         private float gravity=20f;
         protected internal override void Enter()
         {
-            Context.ChangeParentSendObj();
-            parent = Context.sendObj;
+            Context.ChangeParentNull();
+
             transform = Context.transform;
             initVec = Context.boid.velocity+new Vector3(0,5,-4);
 
+            
             time = 0;
         }
         protected internal override void Update()
