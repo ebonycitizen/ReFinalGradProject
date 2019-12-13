@@ -4708,9 +4708,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7014208353195577614}
   - component: {fileID: 7014208353195577613}
+  - component: {fileID: 9001955707451528169}
   m_Layer: 0
   m_Name: FloorLight
-  m_TagString: Untagged
+  m_TagString: DeepLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4767,6 +4768,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!135 &9001955707451528169
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014208353195577612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 200
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7014208353860978022
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,7 +4827,7 @@ SphereCollider:
   m_GameObject: {fileID: 7014208353860978022}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 13
   m_Center: {x: 0, y: 0, z: 0}
@@ -4830,6 +4844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   core: {fileID: 7014208353871208402}
+  mainLight: {fileID: 7014208354480423986}
   action: {fileID: 7014208354513389652}
   firefly: {fileID: 7014208354920544205}
   light: {fileID: 7014208353195577613}
@@ -9633,7 +9648,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.2732734, g: 0.7155618, b: 0.8396226, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.7
   m_Range: 80
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -14700,8 +14715,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 20
-      minScalar: 15
+      scalar: 5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15075,7 +15090,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 10
+    type: 2
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -15083,7 +15098,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 150, y: 150, z: 1}
+    m_Scale: {x: 150, y: 150, z: 120}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -15281,7 +15296,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2

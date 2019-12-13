@@ -64,9 +64,12 @@ public partial class OrcaState
 
             Sequence s = DOTween.Sequence();
 
-            s.AppendCallback(() => SetMat(spark.GetScanMaterial(), renderer))
-                .AppendInterval(0.6f)
-                .AppendCallback(() => SetMat(originMat, renderer));
+            s.AppendCallback(() => spark.StartUp())
+                .AppendInterval(0.2f)
+                .AppendCallback(() => SetMat(spark.GetScanMaterial(), renderer))
+                .AppendInterval(0.8f)
+                .AppendCallback(() => SetMat(originMat, renderer))
+                .AppendCallback(() => stateMachine.SendEvent((int)StateEventId.Idle));
 
             s.Play();
         }
@@ -76,24 +79,26 @@ public partial class OrcaState
             rayObject = Context.rayObject.transform;
             orca = Context.orcaModel.transform;
             spark = rayObject.GetComponent<Spark>();
-            oldPos = orca.transform.position;
+            //oldPos = orca.transform.position;
 
-            Context.ChangeParentNull();
+            //Context.ChangeParentNull();
 
-            hasTouch = false;
-            hasChangeMat = false;
+            //hasTouch = false;
+            //hasChangeMat = false;
+
+            ChangeMat();
         }
         protected internal override void Update()
         {
-            if (hasTouch)
-            {
-                MoveToCameraRig();
-                //stateMachine.SendEvent((int)StateEventId.Idle);
-            }
-            else
-            {
-                MoveToRayObj();
-            }
+            //if (hasTouch)
+            //{
+            //    MoveToCameraRig();
+            //    //stateMachine.SendEvent((int)StateEventId.Idle);
+            //}
+            //else
+            //{
+            //    MoveToRayObj();
+            //}
         }
         protected internal override void Exit()
         {

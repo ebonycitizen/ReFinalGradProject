@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Valve.VR;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Light))]
@@ -12,7 +13,11 @@ public partial class LightShafts : MonoBehaviour
 		if (m_Cameras == null || m_Cameras.Length == 0)
 			m_Cameras = new Camera[]{Camera.main};
 
-		UpdateCameraDepthMode();
+        var vrCam = Object.FindObjectOfType<SteamVR_Camera>().gameObject;
+        m_Cameras[0] = vrCam.GetComponent<Camera>();
+
+
+        UpdateCameraDepthMode();
 	}
 
 	void UpdateShadowmap()

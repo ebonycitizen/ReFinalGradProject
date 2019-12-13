@@ -20,9 +20,7 @@ namespace SWS
 
             public bool onStart;
 
-#if DEBUG
             public bool isPlaying;
-#endif
         }
 
         [SerializeField]
@@ -145,6 +143,7 @@ namespace SWS
 
         public void StopAnimation()
         {
+            //再生中のアニメーションがあるかどうかを調べる
             var playingState = m_customAnimationStates.Find(x => x.isPlaying);
 
             if (playingState != null)

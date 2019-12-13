@@ -11,7 +11,7 @@ public class RayFromCamera : MonoBehaviour
     private Image lockOnImg;
 
 
-    private float rayLegth = 150;
+    private float rayLegth = 200;
     private RaycastHit hit;
     private Vector3 rayDirection;
     private GameObject hitObject;
