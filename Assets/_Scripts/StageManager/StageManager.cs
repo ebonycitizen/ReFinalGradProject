@@ -38,8 +38,9 @@ public class StageManager : MonoBehaviour
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
 
         yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
+       
         RenderSettings.skybox = changeStage.GetFogData().skybox;
-
+        ChangeFogUsage();
         float elaspedTime = 0f;
         while (elaspedTime < 1f)
         {
@@ -52,11 +53,12 @@ public class StageManager : MonoBehaviour
             elaspedTime += Time.deltaTime;
             yield return null;
         }
+        
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
-        ChangeFogUsage();
+        
 
 
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());

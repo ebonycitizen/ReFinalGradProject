@@ -103,8 +103,12 @@ public partial class DolphinState : MonoBehaviour
     {
         if(other.gameObject.tag=="Water")
         {
+            Debug.Log(stateMachine.CurrentStateName);
+            if (stateMachine.CurrentStateName != "D_SwimState")
+                return;
             animator.SetTrigger("Jump");
             stateMachine.SendEvent((int)StateEventId.Jump);
+
         }
     }
     private void OnTriggerExit(Collider other)

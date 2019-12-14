@@ -8,13 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Jellyfish
-  m_Shader: {fileID: 4800000, guid: f4d880de7c8607c43a459330e2e8b387, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -78,7 +79,7 @@ Material:
     - _XRayRimSize: 0.5
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0.60061264, b: 0.7547171, a: 1}
+    - _Color: {r: 0.39701134, g: 0.35257208, b: 0.5377358, a: 1}
+    - _EmissionColor: {r: 0.55238694, g: 0.51584196, b: 0.6792453, a: 1}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _XRayRimColor: {r: 1, g: 1, b: 1, a: 1}

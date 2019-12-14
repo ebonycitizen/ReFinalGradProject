@@ -24,6 +24,9 @@ public class DolphinGlitter : MonoBehaviour
 
     private Speaker speaker;
 
+    [SerializeField]
+    private string sendObjStr = null;
+
     private void OnEnable()
     {
         //ripple.Stop();
@@ -52,6 +55,9 @@ public class DolphinGlitter : MonoBehaviour
     {
         if (cameraTarget != gameObject)
             return;
+
+        if(sendObj!=null)
+            sendObj= GameObject.Find(sendObjStr);
 
         bool hasChangeState = dolphinState.ChangeState(gameObject.tag, sendObj);
         if (!hasChangeState)

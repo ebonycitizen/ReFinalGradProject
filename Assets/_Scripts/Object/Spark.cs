@@ -7,6 +7,8 @@ public class Spark : MonoBehaviour
 {
     [SerializeField]
     private GameObject core;
+    [SerializeField]
+    private Light mainLight;
 
     [SerializeField]
     private ParticleSystem action;
@@ -19,21 +21,34 @@ public class Spark : MonoBehaviour
     [SerializeField]
     private Material scanMat;
 
+    private float mainIntensity;
+
     public Material GetScanMaterial()
     {
         return scanMat;
     }
 
+    private void OnEnable()
+    {
+        mainLight.DOIntensity(mainIntensity, 0.4f);
+    }
+
     private void Awake()
     {
+        mainIntensity = mainLight.intensity;
+        mainLight.intensity = 0f;
+
         light.intensity = 0f;
+        light.transform.localScale = Vector3.zero;
         firefly.localScale = Vector3.zero;
+
+        gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -44,13 +59,18 @@ public class Spark : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            StartCoroutine("StartUp");
-        }
+        //if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        //{
+        //    StartCoroutine("StartUp");
+        //}
     }
 
-    private IEnumerator StartUp()
+    public void StartUp()
+    {
+        StartCoroutine("Action");
+    }
+
+    private IEnumerator Action()
     {
         GetComponent<Collider>().enabled = false;
         action.Play();
@@ -58,6 +78,7 @@ public class Spark : MonoBehaviour
 
         firefly.DOScale(1, 1f);
 
+        light.transform.DOScale(1, 1f);
         light.DOIntensity(1, 2);
 
         yield return null;

@@ -53,6 +53,13 @@ public class DolphinSimulation : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        dolly = GameObject.FindObjectOfType<MyCinemachineDollyCart>();
+        orca = GameObject.Find("OrcaModel").transform;
+        cameraEye = GameObject.Find("Main Camera (eye)").transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -113,6 +120,7 @@ public class DolphinSimulation : MonoBehaviour
         if (state == State.Exit)
             return;
         s2.StartMove();
+        s.Stop();
         state = State.Exit;
 
     }
