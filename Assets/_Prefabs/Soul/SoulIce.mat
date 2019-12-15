@@ -7,15 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jellyfish
+  m_Name: SoulIce
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
-  m_LightmapFlags: 1
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -48,6 +47,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -60,26 +63,23 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 10
+    - _DistortStrength: 0.2
+    - _DistortTimeFactor: 0.2
+    - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.381
+    - _Glossiness: 0
     - _GlossyReflections: 1
-    - _InvFade: 1
-    - _MKEditorShowMainBehavior: 1
-    - _MKEditorShowXRayBehavior: 1
-    - _Metallic: 0.133
-    - _Mode: 2
+    - _IntersectPower: 2
+    - _Metallic: 0
+    - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RimStrength: 0.85
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _UVSec: 0
-    - _XRayInside: 0
-    - _XRayRimSize: 0.5
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.39701134, g: 0.35257208, b: 0.5377358, a: 1}
-    - _EmissionColor: {r: 0.55238694, g: 0.51584196, b: 0.6792453, a: 1}
-    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    - _XRayRimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.5801887, g: 0.99575835, b: 1, a: 1}
+    - _EmissionColor: {r: 0.5882353, g: 0.9833665, b: 1, a: 1}

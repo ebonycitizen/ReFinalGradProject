@@ -17,10 +17,13 @@ public class Spark : MonoBehaviour
     private Transform firefly;
     [SerializeField]
     private Light light;
+    [SerializeField]
+    private Transform soul;
 
     [SerializeField]
     private Material scanMat;
 
+    private Material soulMat;
     private float mainIntensity;
 
     public Material GetScanMaterial()
@@ -30,7 +33,10 @@ public class Spark : MonoBehaviour
 
     private void OnEnable()
     {
-        mainLight.DOIntensity(mainIntensity, 0.4f);
+        float duration = 2f;
+        mainLight.DOIntensity(mainIntensity, duration / 2);
+        core.transform.DOScale(Vector3.one, duration);
+        soulMat.DOColor(new Color(soulMat.color.r, soulMat.color.g, soulMat.color.b, 1f), duration);
     }
 
     private void Awake()
@@ -41,6 +47,10 @@ public class Spark : MonoBehaviour
         light.intensity = 0f;
         light.transform.localScale = Vector3.zero;
         firefly.localScale = Vector3.zero;
+
+        core.transform.localScale = Vector3.zero;
+        soulMat = soul.GetComponentInChildren<SkinnedMeshRenderer>().material;
+        soulMat.color = new Color(soulMat.color.r, soulMat.color.g, soulMat.color.b, 0f);
 
         gameObject.SetActive(false);
     }
@@ -80,7 +90,7 @@ public class Spark : MonoBehaviour
 
         light.transform.DOScale(1, 1f);
         light.DOIntensity(1, 2);
-
+        soulMat.DOColor(new Color(soulMat.color.r, soulMat.color.g, soulMat.color.b, 0f), 1f);
         yield return null;
 
         core.SetActive(false);
