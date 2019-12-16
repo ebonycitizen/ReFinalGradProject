@@ -28,20 +28,15 @@ public partial class OrcaState
 
             orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime * 2f);
         }
-
         private void Jump(Vector3 pos)
         {
             s = DOTween.Sequence();
-            //s.Append(orca.DOLocalMoveY(orca.localPosition.y + 11, 1).SetEase(Ease.InOutQuad))
-            //    .AppendInterval(0.2f)
-            //    .Append(orca.DOLocalMoveY(orca.localPosition.y, 1).SetEase(Ease.InOutQuad))
-            //    .AppendCallback(()=> stateMachine.SendEvent((int)StateEventId.Idle));
 
-
-            s.Append(orca.DOLocalMoveY(orca.localPosition.y + 11f, 1.5f).SetEase(Ease.InOutQuad))
-            //.AppendInterval(0.8f)
+            var jumpDistance = 15f;
+            s.Append(orca.DOLocalMoveY(orca.localPosition.y + jumpDistance, 1.5f).SetEase(Ease.InOutQuad))
             .Append(orca.DOLocalMoveY(orca.localPosition.y, 1f).SetEase(Ease.InOutQuad))
             .AppendCallback(() => stateMachine.SendEvent((int)StateEventId.Idle));
+
             s.Play();
 
         }
@@ -49,10 +44,6 @@ public partial class OrcaState
         private void Rotate()
         {
             s2 = DOTween.Sequence();
-            //s2.Append(orca.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 0.5f).SetEase(Ease.InOutQuad))
-            //    .AppendCallback(()=> Context.orcaAnim.SetTrigger("Jump"))
-            //    .Append(orca.DOBlendableLocalRotateBy(new Vector3(90, 0, 0), 1f).SetEase(Ease.InOutQuad))
-            //    .Append(orca.DOBlendableLocalRotateBy(new Vector3(-45, 0, 0), 1));
 
             s2
                 .Append(orca.DOLocalRotate(new Vector3(-55, 0, 0), 0.5f).SetEase(Ease.Linear))
@@ -60,7 +51,6 @@ public partial class OrcaState
                 .AppendInterval(0.2f)
                 .Append(orca.DOLocalRotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.Linear))
                 .Append(orca.DOLocalRotate(new Vector3(55, 0, 0), 0.7f).SetEase(Ease.Linear))
-                //.AppendInterval(0.5f)
                 .Append(orca.DOLocalRotate(new Vector3(0, 0, 0), 1f).SetEase(Ease.Linear));
 
             s2.Play();
@@ -86,7 +76,7 @@ public partial class OrcaState
         }
         protected internal override void Exit()
         {
-            
+
         }
     }
 }

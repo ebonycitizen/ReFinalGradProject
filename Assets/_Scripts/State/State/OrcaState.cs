@@ -101,7 +101,7 @@ public partial class OrcaState : MonoBehaviour
     }
 
     private void Start()
-    { 
+    {
         stateMachine.Update();
     }
 
@@ -154,7 +154,6 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Approach);
             return true;
         }
-
         if (tag == "G_Jump" && stateMachine.CurrentStateName == "IdleState")
         {
             stateMachine.SendEvent((int)StateEventId.Jump);
