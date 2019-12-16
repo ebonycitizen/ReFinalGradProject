@@ -42,6 +42,9 @@ public class EnableEmission : MonoBehaviour
 
         var renderer = GetComponents<MeshRenderer>();
 
+        if (renderer.Length == 0)
+            renderer = GetComponentsInChildren<MeshRenderer>();
+
         foreach (var r in renderer)
             r.material.EnableKeyword("_EMISSION");
 
