@@ -26,7 +26,12 @@ public partial class DolphinState : MonoBehaviour
     private DolphinSimulation simulation;
     [SerializeField]
     private Animator animator;
-    
+
+    [SerializeField]
+    private GameObject bigSplash;
+    [SerializeField]
+    private GameObject waterSplash;
+
     private ImtStateMachine<DolphinState> stateMachine;
 
     // Start is called before the first frame update
@@ -101,14 +106,15 @@ public partial class DolphinState : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Jump")
+        if (other.gameObject.tag == "Jump")
         {
             Debug.Log(stateMachine.CurrentStateName);
             if (stateMachine.CurrentStateName != "D_SwimState")
                 return;
             animator.SetTrigger("Jump");
             stateMachine.SendEvent((int)StateEventId.Jump);
-
+            Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.WaterJump, 0.1f);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -117,6 +123,9 @@ public partial class DolphinState : MonoBehaviour
         {
             stateMachine.SendEvent((int)StateEventId.Swim);
             simulation.ChangeExit();
+            Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
+            Instantiate(waterSplash, other.ClosestPoint(transform.position), waterSplash.transform.rotation);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.WaterDown, 0.1f);
         }
     }
     private void OnCollisionEnter(Collision collision)
