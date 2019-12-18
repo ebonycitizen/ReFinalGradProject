@@ -13,7 +13,7 @@ public class RandomAniamtion : MonoBehaviour
 
         var randomStartValue = Random.value;
 
-        animator.speed -= randomStartValue * 0.1f;
+        animator.speed -= 2 * randomStartValue * 0.1f;
     }
 
 }

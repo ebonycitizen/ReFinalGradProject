@@ -9,9 +9,9 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
     public class WanderOnce : NavMeshMovement
     {
         [Tooltip("Minimum distance ahead of the current position to look ahead for a destination")]
-        public SharedFloat minWanderDistance = 20;
+        public SharedFloat minWanderDistance = 0;
         [Tooltip("Maximum distance ahead of the current position to look ahead for a destination")]
-        public SharedFloat maxWanderDistance = 20;
+        public SharedFloat maxWanderDistance = 0;
         [Tooltip("The amount that the agent rotates direction")]
         public SharedFloat wanderRate = 2;
         [Tooltip("The minimum length of time that the agent should pause at each destination")]
@@ -21,14 +21,13 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         [Tooltip("The maximum number of retries per tick (set higher if using a slow tick time)")]
         public SharedInt targetRetries = 1;
 
-        private float pauseTime;
-        private float destinationReachTime;
+        private Vector3 m_centerPosition;
 
         public override void OnStart()
         {
             base.OnStart();
             FindTarget();
-
+            m_centerPosition = transform.position;
         }
 
         // Seek the destination. Return success once the agent has reached the destination.
@@ -43,14 +42,15 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             {
                 UpdateRotation(true);
             }
-
             return TaskStatus.Running;
         }
         private void FindTarget()
         {
             var direction = transform.forward;
             var destination = transform.position;
-            destination = transform.position + direction.normalized * Random.Range(minWanderDistance.Value, maxWanderDistance.Value);
+
+            direction = direction + Random.insideUnitSphere * wanderRate.Value;
+            destination = transform.position + new Vector3(direction.x, 0, direction.z) * 15;
             SetDestination(destination);
         }
 
@@ -77,9 +77,9 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         // Reset the public variables
         public override void OnReset()
         {
-            minWanderDistance = 20;
-            maxWanderDistance = 20;
-            wanderRate = 2;
+            minWanderDistance = 5;
+            maxWanderDistance = 30;
+            wanderRate = 1.5f;
             minPauseDuration = 0;
             maxPauseDuration = 0;
             targetRetries = 1;

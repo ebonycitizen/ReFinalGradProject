@@ -50,7 +50,7 @@ public partial class OrcaState
             if (Input.GetKeyDown(KeyCode.S))
                 stateMachine.SendEvent((int)StateEventId.Swim);
             if (Input.GetKeyDown(KeyCode.R))
-                stateMachine.SendEvent((int)StateEventId.Rescue);
+                stateMachine.SendEvent((int)StateEventId.PenguinSinging);
             if (Input.GetKeyDown(KeyCode.P))
                 stateMachine.SendEvent((int)StateEventId.PlayerJump);
             if (Input.GetKeyDown(KeyCode.T))
