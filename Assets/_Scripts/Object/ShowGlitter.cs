@@ -8,6 +8,9 @@ public class ShowGlitter : MonoBehaviour
     private GameObject glitter;
 
     [SerializeField]
+    private List<GameObject> m_glitters = new List<GameObject>();
+
+    [SerializeField]
     private float duration;
     private Speaker speaker;
 
@@ -27,11 +30,25 @@ public class ShowGlitter : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
-            glitter.SetActive(true);
-            if (duration > 0)
-                Destroy(glitter, duration);
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, speaker, 0.5f);
-            //SoundManager.Instance.PlayLoop3DSe(ESeTable.Twinkle, speaker,0.6f);
+
+            if (m_glitters.Count > 0)
+            {
+                m_glitters.ForEach(x =>
+                {
+                    x.SetActive(true);
+                    //Destroy(x, duration);
+                    SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, x.GetComponentInChildren<Speaker>(), 0.5f);
+                });
+            }
+            else
+            {
+                glitter.SetActive(true);
+
+                if (duration > 0)
+                    Destroy(glitter, duration);
+
+                SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, speaker, 0.5f);
+            }
             Destroy(gameObject);
         }
     }

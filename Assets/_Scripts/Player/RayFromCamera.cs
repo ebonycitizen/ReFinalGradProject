@@ -11,7 +11,7 @@ public class RayFromCamera : MonoBehaviour
     private Image lockOnImg;
 
 
-    private float rayLegth = 200;
+    private float rayLegth = 400;
     private RaycastHit hit;
     private Vector3 rayDirection;
     private GameObject hitObject;
@@ -21,7 +21,7 @@ public class RayFromCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class RayFromCamera : MonoBehaviour
     public GameObject LockOn(LayerMask layerMask)
     {
         rayDirection = (rayPos.position - transform.position).normalized;
-        
+
         Debug.DrawRay(transform.position, rayDirection * rayLegth);
         bool isHit = Physics.Raycast(transform.position, rayDirection, out hit, rayLegth, layerMask);
 
@@ -62,7 +62,7 @@ public class RayFromCamera : MonoBehaviour
         rayDirection = (rayPos.position - transform.position).normalized;
 
         Debug.DrawRay(transform.position, rayDirection * rayLegth);
-        bool isHit = Physics.Raycast(transform.position, rayDirection, out hit, rayLegth, 1<<LayerMask.NameToLayer(layer));
+        bool isHit = Physics.Raycast(transform.position, rayDirection, out hit, rayLegth, 1 << LayerMask.NameToLayer(layer));
 
         if (isHit)
             return hit.point;

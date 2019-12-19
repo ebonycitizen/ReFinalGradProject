@@ -14,7 +14,7 @@ public partial class OrcaState : MonoBehaviour
         Swim,
         Click,
         Come,
-        Rescue,
+        PenguinSinging,
         PlayerJump,
         Tutorial,
         Kick,
@@ -64,7 +64,7 @@ public partial class OrcaState : MonoBehaviour
 
 
         stateMachine.AddTransition<IdleState, SwimState>((int)StateEventId.Swim);
-        stateMachine.AddTransition<IdleState, RescueState>((int)StateEventId.Rescue);
+
         stateMachine.AddTransition<IdleState, KickState>((int)StateEventId.Kick);
         stateMachine.AddTransition<IdleState, ElectricShock>((int)StateEventId.ElectricShock);
         stateMachine.AddTransition<IdleState, ApproachState>((int)StateEventId.Approach);
@@ -73,6 +73,10 @@ public partial class OrcaState : MonoBehaviour
 
         stateMachine.AddTransition<IdleState, JumpState>((int)StateEventId.Jump);
         stateMachine.AddTransition<ApproachState, JumpState>((int)StateEventId.Jump);
+
+        //歌う
+        stateMachine.AddTransition<IdleState, PenguinSingingState>((int)StateEventId.PenguinSinging);
+
 
         //stateMachine.AddTransition<IdleState, FollowState>((int)StateEventId.Follow);
         //stateMachine.AddTransition<TutorialState, FollowState>((int)StateEventId.Follow);
@@ -101,14 +105,13 @@ public partial class OrcaState : MonoBehaviour
     }
 
     private void Start()
-    { 
+    {
         stateMachine.Update();
     }
 
     private void FixedUpdate()
     {
         stateMachine.Update();
-        //Debug.Log(stateMachine.CurrentStateName);
     }
 
     private void ChangeParentCameraRig()
@@ -154,15 +157,14 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Approach);
             return true;
         }
-
         if (tag == "G_Jump" && stateMachine.CurrentStateName == "IdleState")
         {
             stateMachine.SendEvent((int)StateEventId.Jump);
             return true;
         }
-        if (tag == "G_Rescue" && stateMachine.CurrentStateName == "IdleState")
+        if (tag == "G_PenguinSinging" && stateMachine.CurrentStateName == "IdleState")
         {
-            stateMachine.SendEvent((int)StateEventId.Rescue);
+            stateMachine.SendEvent((int)StateEventId.PenguinSinging);
             return true;
         }
         if (tag == "G_ElectricShock" && stateMachine.CurrentStateName == "IdleState")

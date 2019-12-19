@@ -14,7 +14,7 @@ namespace BoidECSCoral
     }
 
     [InternalBufferCapacity(4)]
-    public unsafe struct NeighborsEntityBuffer : IBufferElementData
+    public /*unsafe*/ struct NeighborsEntityBuffer : IBufferElementData
     {
         public Entity Value;
     }
