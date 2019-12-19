@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527888737}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.920001, y: -277.01996, z: 4031.9102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -70,6 +70,8 @@ MonoBehaviour:
   light: {fileID: 1648061701}
   soul: {fileID: 1904247315}
   scanMat: {fileID: 2100000, guid: cba932647462303408a100237b2d0ebf, type: 2}
+  area: {fileID: 0}
+  areaDisappearTime: 30
 --- !u!1 &609541609
 GameObject:
   m_ObjectHideFlags: 0

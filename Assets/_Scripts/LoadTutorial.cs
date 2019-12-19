@@ -24,10 +24,14 @@ public class LoadTutorial : MonoBehaviour
         Scene curScene = SceneManager.GetActiveScene();
         AsyncOperation async = SceneManager.LoadSceneAsync("TutorialF", LoadSceneMode.Additive);
 
+        //SteamVR_LoadLevel.Begin("TutorialF");
         //async.allowSceneActivation = false;
         yield return new WaitForSeconds(3f);
+        
 
-        SceneManager.UnloadSceneAsync("Loading");
+
         //async.allowSceneActivation = true;
+        //yield return null;
+        SceneManager.UnloadSceneAsync(curScene);
     }
 }

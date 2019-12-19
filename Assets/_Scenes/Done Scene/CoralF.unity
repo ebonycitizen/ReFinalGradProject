@@ -17951,6 +17951,21 @@ PrefabInstance:
       propertyPath: dolly
       value: 
       objectReference: {fileID: 226089607}
+    - target: {fileID: 3765551872330351293, guid: 16074907dd55a324187b5b21cdf07551,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765551872688705100, guid: 16074907dd55a324187b5b21cdf07551,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303011328810118091, guid: 16074907dd55a324187b5b21cdf07551,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1413695997, guid: 16074907dd55a324187b5b21cdf07551, type: 3}
       propertyPath: height
       value: 60
@@ -17973,21 +17988,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1413695997, guid: 16074907dd55a324187b5b21cdf07551, type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1303011328810118091, guid: 16074907dd55a324187b5b21cdf07551,
-        type: 3}
-      propertyPath: m_Drag
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765551872330351293, guid: 16074907dd55a324187b5b21cdf07551,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765551872688705100, guid: 16074907dd55a324187b5b21cdf07551,
-        type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -19192,6 +19192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glitter: {fileID: 451393287}
+  m_glitters: []
   duration: 5
 --- !u!65 &515383744
 BoxCollider:
@@ -60571,6 +60572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glitter: {fileID: 796576398}
+  m_glitters: []
   duration: 7
 --- !u!65 &1495131761
 BoxCollider:
@@ -68316,6 +68318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glitter: {fileID: 940739445}
+  m_glitters: []
   duration: 5
 --- !u!65 &1662673357
 BoxCollider:
@@ -78499,6 +78502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glitter: {fileID: 798798209}
+  m_glitters: []
   duration: 8
 --- !u!65 &1916009419
 BoxCollider:

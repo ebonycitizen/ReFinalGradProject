@@ -23,6 +23,11 @@ public class Spark : MonoBehaviour
     [SerializeField]
     private Material scanMat;
 
+    [SerializeField]
+    private GameObject area;
+    [SerializeField]
+    private float areaDisappearTime = 30f;
+
     private Material soulMat;
     private float mainIntensity;
 
@@ -94,5 +99,9 @@ public class Spark : MonoBehaviour
         yield return null;
 
         core.SetActive(false);
+
+        yield return new WaitForSeconds(areaDisappearTime);
+
+        area.SetActive(false);
     }
 }

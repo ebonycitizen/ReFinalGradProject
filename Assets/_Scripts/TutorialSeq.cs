@@ -13,32 +13,28 @@ public class TutorialSeq : MonoBehaviour
 
     private void Awake()
     {
-        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 0f);
-        sunShaft.SetActive(false);
+        
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //#if DEBUG
+        sunShaft.SetActive(false);
+        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 0f);
+        SceneManager.activeSceneChanged += OnActiveScene;
 
-        //#endif
-
-            SceneManager.activeSceneChanged += OnActiveScene;
-        //Invoke("StartSeq", 3);
-    }
-
-    private void StartSeq()
-    {
+#if DEBUG
         var duration = 5f;
-        SteamVR_Fade.Start(new Color(0, 0, 0, 0), duration);
-        sunShaft.SetActive(true);
+        SteamVR_Fade.Start(new Color(0, 0, 0, 0), duration, true);
+        //sunShaft.SetActive(true);
         Invoke("EnableGameObject", 2f);
+#endif
     }
 
     private void EnableGameObject()
     {
-        
+        //sunShaft.SetActive(true);
         firstGlitter.SetActive(true);
         SoundManager.Instance.PlayOneShotSe(ESeTable.Twinkle, 0.5f);
     }
@@ -47,7 +43,6 @@ public class TutorialSeq : MonoBehaviour
     {
         var duration = 5f;
         SteamVR_Fade.Start(new Color(0,0,0,0), duration);
-        sunShaft.SetActive(true);
         Invoke("EnableGameObject", 2f);
         //EnableGameObject();
 
