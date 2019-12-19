@@ -10,48 +10,47 @@ public partial class OrcaState
     {
         private Transform orca;
         private Transform player;
+        private Transform rot;
         Sequence s;
         
         private Vector3 oldPos;
+
+        private Vector3 pos;
+
+
+        private MyCinemachineDollyCart dolly;
         private void Rotate()
         {
-            var d = player.position - oldPos;
-            if (d.magnitude > 0)
+            if (dolly != null)
             {
-                var q = Quaternion.LookRotation(d);
+                //orca.rotation = Quaternion.Lerp(orca.rotation, dolly.forward, Time.fixedDeltaTime);
+                orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(dolly.forwardDig.x, dolly.forwardDig.y, rot.localEulerAngles.z), Time.fixedDeltaTime * 3);
 
-                if (q.eulerAngles != Vector3.zero)
-                {
-                    //orca.localEulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, rot.localEulerAngles.z);
-                    orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(q.eulerAngles.x, q.eulerAngles.y, 0), 0.2f);
-                }
-
+                return;
             }
-
-            oldPos = player.position;
 
         }
         private void Come()
         {
-            s = DOTween.Sequence();
-            s.Append(orca.DOLocalMove(new Vector3(0.2f, 0.05f, 0f), 1).SetEase(Ease.InOutQuad))
-                .Append(player.DOLocalMoveY(85, 2).SetEase(Ease.OutQuad))
-                .AppendInterval(0.3f)
-                .Append(player.DOLocalMoveY(0, 2).SetEase(Ease.InOutQuad))
-                .AppendCallback(() => stateMachine.SendEvent((int)StateEventId.Idle));
-
-            s.Play();
+           
         }
         protected internal override void Enter()
         {
             orca = Context.orcaModel.transform;
             player = Context.transform.parent;
             Context.ChangeParentCameraRig();
-            
-            Come();
+            rot = Context.idleRotation;
+            dolly = Context.dolly;
+            Context.orcaAnim.SetTrigger("PlayerJump");
+            //Come();
+
+            pos = orca.localPosition;
         }
         protected internal override void Update()
         {
+            //Rotate();
+            orca.localPosition = Vector3.Lerp(orca.localPosition, pos, Time.fixedDeltaTime);
+
             Rotate();
         }
         protected internal override void Exit()
