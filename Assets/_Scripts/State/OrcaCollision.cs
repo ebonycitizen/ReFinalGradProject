@@ -20,6 +20,9 @@ public class OrcaCollision : MonoBehaviour
     [SerializeField]
     private ParticleSystem no;
 
+    [SerializeField]
+    private OrcaState orcaState;
+
 
 
     public void PlayNoEffect()
@@ -47,6 +50,13 @@ public class OrcaCollision : MonoBehaviour
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterJump, speaker);
         }
+        if(other.gameObject.tag=="Jump")
+        {
+            Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterJump, speaker);
+            orcaState.ChangeState("G_PlayerJump", this.gameObject);
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -56,6 +66,14 @@ public class OrcaCollision : MonoBehaviour
             SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterDown, speaker);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
+        }
+        if (other.gameObject.tag == "Jump")
+        {
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterDown, speaker);
+            Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
+            Instantiate(waterSplash, transform);
+            orcaState.ChangeState("G_Idle", this.gameObject);
+
         }
     }
 

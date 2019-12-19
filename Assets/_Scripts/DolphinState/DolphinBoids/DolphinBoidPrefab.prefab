@@ -226,6 +226,10 @@ MonoBehaviour:
   boid: {fileID: 1963386778369798871}
   simulation: {fileID: 0}
   animator: {fileID: 4143880495896063152}
+  bigSplash: {fileID: 6225514082102216699, guid: c1f84986d8e8840489127a63489560a3,
+    type: 3}
+  waterSplash: {fileID: 5940851870576248728, guid: eb2803101a9ed5245b33f957c6141179,
+    type: 3}
 --- !u!1 &1325993191634607736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1585,7 @@ PrefabInstance:
     - target: {fileID: 13700000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f6c8516d7404b6642ba3dd216fbe179d, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
       propertyPath: m_Bones.Array.data[0]
       value: 

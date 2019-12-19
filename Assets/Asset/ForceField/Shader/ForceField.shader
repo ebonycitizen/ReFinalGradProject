@@ -38,6 +38,8 @@ Pass
 #pragma vertex vert
 #pragma fragment frag
 
+#pragma shader_feature _EMISSION
+
 #include "UnityCG.cginc"
 
 	struct appdata
@@ -90,10 +92,10 @@ v2f vert(appdata v)
 
 	o.viewDir = normalize(UnityWorldSpaceViewDir(mul(unity_ObjectToWorld, v.vertex)));
 
-	v.vertex.x += sign(v.vertex.x) * sin(_Time.w) / 10;
-	v.vertex.y += sign(v.vertex.y) * cos(_Time.w) / 10;
-	o.vertex = UnityObjectToClipPos(v.vertex);
-	o.uv = v.uv;
+	//v.vertex.x += sign(v.vertex.x) * sin(_Time.w) / 10;
+	//v.vertex.y += sign(v.vertex.y) * cos(_Time.w) / 10;
+	//o.vertex = UnityObjectToClipPos(v.vertex);
+	//o.uv = v.uv;
 
 	return o;
 }
