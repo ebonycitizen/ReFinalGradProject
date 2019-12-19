@@ -22,7 +22,7 @@ public enum ESeTable
     WaterJump,
     WaterDown,
     Touch,
-    
+
     Orac_1,
     Orac_2,
     Orac_3,
@@ -33,7 +33,7 @@ public enum ESeTable
 
     Dolphin_1,
     Dolphin_2,
-    
+
     Penguin_1,
     Penguin_2,
 
@@ -42,6 +42,8 @@ public enum ESeTable
     Water_3,
     Water_4,
     Water_5,
+
+    Song_1,
 
 }
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
