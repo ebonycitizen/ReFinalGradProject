@@ -155,6 +155,14 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         m_bgmAudio.Stop();
     }
 
+    public void FadeAllSe(float duration)
+    {
+        foreach (var se in m_seAudioSources)
+        {
+            se.DOFade(0, duration);
+        }
+    }
+
     public void PlayOntShotSe(ESeTable seType)
     {
         var clip = FindClipInSeContainer(seType);

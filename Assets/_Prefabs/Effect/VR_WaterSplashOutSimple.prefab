@@ -47,7 +47,7 @@ MonoBehaviour:
   Alpha: 1
   ShaderType: 1
   VRMode: 1
-  Distance: 0.23
+  Distance: 0.1
   GForceVector: {x: 0, y: -1, z: 0}
   Variables:
     AutoStart: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
     SizeY: 9.6
     SpawnOffsetX: 0
     SpawnOffsetY: 0
-    DistortionValue: 15
+    DistortionValue: 30
     ReliefValue: 0.11
     Blur: 0
     Darkness: 2.5
@@ -147,7 +147,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 0.24000001
+  far clip plane: 0.11
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -183,7 +183,7 @@ MonoBehaviour:
   GlobalWind: {x: 0, y: 0}
   GForceVector: {x: 0, y: -1, z: 0}
   ShaderType: 1
-  distance: 0.23
+  distance: 0.1
   VRMode: 1
 --- !u!65 &6287213794504577248
 BoxCollider:
@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95de28f77c3bc0040a314728767d1eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 0}
 --- !u!1 &6306882143612064039
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,23 +258,23 @@ MonoBehaviour:
   Alpha: 1
   ShaderType: 1
   VRMode: 1
-  Distance: 0.23
+  Distance: 0.1
   GForceVector: {x: 0, y: -1, z: 0}
   Variables:
     AutoStart: 0
     PlayOnce: 0
-    OverlayColor: {r: 1, g: 1, b: 1, a: 0.203}
-    NormalMap: {fileID: 2800000, guid: 8c654113bbefdd047b971b5fbd179807, type: 3}
-    OverlayTexture: {fileID: 2800000, guid: 6d402e4b65ce1df4086b265a91f6e3d7, type: 3}
+    OverlayColor: {r: 1, g: 1, b: 1, a: 0.7137255}
+    NormalMap: {fileID: 2800000, guid: 55c60230f90625342bbf05812c71acd2, type: 3}
+    OverlayTexture: {fileID: 2800000, guid: cea358a05d4440244aa3f2735e2d6e31, type: 3}
     AutoRotate: 1
     Duration: 1
     Delay: 0
-    MaxRainSpawnCount: 30
+    MaxRainSpawnCount: 60
     SpawnOffsetY: 0
     LifetimeMin: 2.46
     LifetimeMax: 3.61
-    EmissionRateMax: 21
-    EmissionRateMin: 17
+    EmissionRateMax: 41
+    EmissionRateMin: 41
     AlphaOverLifetime:
       serializedVersion: 2
       m_Curve:
@@ -307,10 +308,10 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    SizeMinX: 0.01
-    SizeMaxX: 0.012
-    SizeMinY: 0.01
-    SizeMaxY: 0.012
+    SizeMinX: 0.005
+    SizeMaxX: 0.01
+    SizeMinY: 0.005
+    SizeMaxY: 0.01
     SizeOverLifetime:
       serializedVersion: 2
       m_Curve:
@@ -380,7 +381,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-    DistortionValue: 10
+    DistortionValue: 6
     DistortionOverLifetime:
       serializedVersion: 2
       m_Curve:

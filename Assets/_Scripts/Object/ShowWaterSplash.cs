@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShowWaterSplash : MonoBehaviour
 {
+
     private RainCameraController controller;
 
     // Start is called before the first frame update

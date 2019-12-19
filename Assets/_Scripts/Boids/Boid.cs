@@ -28,7 +28,7 @@ public class Boid : MonoBehaviour
         UpdateNeighbors();
 
         // 壁に当たりそうになったら向きを変える
-        //UpdateWalls();
+        UpdateWalls();
 
         // 近隣の個体から離れる
         UpdateSeparation();

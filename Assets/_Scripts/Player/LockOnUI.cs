@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
-public class RotateUI : MonoBehaviour
+public class LockOnUI : MonoBehaviour
 {
     [SerializeField]
-    private float angle = 15;
+    private RayFromCamera rayCamera;
+    [SerializeField]
+    private float lockSecMax;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +18,6 @@ public class RotateUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, angle));
+        
     }
 }
