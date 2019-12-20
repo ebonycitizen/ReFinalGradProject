@@ -78,8 +78,8 @@ public class TitleSeq : MonoBehaviour
 
         floatObj.gameObject.SetActive(true);
 
-        player.AddForce(-Vector3.up * 5f, ForceMode.VelocityChange);
-        floatObj.AddForce(Vector3.up * 2f, ForceMode.VelocityChange);
+        player.AddForce(-Vector3.up * 2f, ForceMode.VelocityChange);
+        floatObj.AddForce(Vector3.up * 5f, ForceMode.VelocityChange);
 
 
         var elaspedTime = dof.focusDistance.value;

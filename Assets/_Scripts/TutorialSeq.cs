@@ -25,10 +25,13 @@ public class TutorialSeq : MonoBehaviour
         SceneManager.activeSceneChanged += OnActiveScene;
 
 #if DEBUG
-        var duration = 5f;
-        SteamVR_Fade.Start(new Color(0, 0, 0, 0), duration, true);
-        //sunShaft.SetActive(true);
-        Invoke("EnableGameObject", 2f);
+        if (SceneManager.sceneCount == 1)
+        {
+            var duration = 5f;
+            SteamVR_Fade.Start(new Color(0, 0, 0, 0), duration, true);
+            //sunShaft.SetActive(true);
+            Invoke("EnableGameObject", 2f);
+        }
 #endif
     }
 
