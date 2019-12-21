@@ -26,7 +26,7 @@ public class PenguinTriggerCtr : MonoBehaviour
     private bool m_hasEntered = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "OrcaModel" && !m_hasEntered)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Dolly") && !m_hasEntered)
         {
             m_hasEntered = true;
             m_penguinFunctions.ForEach(x => x.Setup());
