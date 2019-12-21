@@ -75,6 +75,8 @@ public class Boid : MonoBehaviour
     void UpdateWalls()
     {
         if (!simulation) return;
+        if (param.wallWeight == 0)
+            return;
 
         var scale = param.wallScale * 0.5f;
         accel +=
@@ -91,6 +93,7 @@ public class Boid : MonoBehaviour
         if (distance < param.wallDistance)
         {
             return dir * (param.wallWeight / Mathf.Abs(distance / param.wallDistance));
+            
         }
         return Vector3.zero;
     }
