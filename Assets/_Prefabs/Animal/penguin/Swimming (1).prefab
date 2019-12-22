@@ -5184,7 +5184,7 @@ PrefabInstance:
       objectReference: {fileID: 1053870417255538260}
     - target: {fileID: 912835048, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: m_spurtMaxSpeed
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 912835048, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: m_bubbleEffect
@@ -5192,11 +5192,6 @@ PrefabInstance:
       objectReference: {fileID: 5416082094310187636}
     - target: {fileID: 912835048, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: m_spurtMinSpeed
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7110721646841404617, guid: 83d51fd04689d504d9e3948c023e515a,
-        type: 3}
-      propertyPath: m_enable
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
@@ -5262,6 +5257,11 @@ PrefabInstance:
     - target: {fileID: 912835047, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
       propertyPath: speed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7110721646841404617, guid: 83d51fd04689d504d9e3948c023e515a,
+        type: 3}
+      propertyPath: m_enable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83d51fd04689d504d9e3948c023e515a, type: 3}
