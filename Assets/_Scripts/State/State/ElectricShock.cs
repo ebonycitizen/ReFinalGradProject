@@ -46,7 +46,7 @@ public partial class OrcaState
 
                 .AppendInterval(0.1f)
                 .AppendCallback(()=> Context.ChangeParentRayObject())
-                .AppendCallback(()=>SoundManager.Instance.PlayOneShot3DSe(ESeTable.Call, orca.GetComponentInChildren<Speaker>()))
+                //.AppendCallback(()=>SoundManager.Instance.PlayOneShot3DSe(ESeTable.Call, orca.GetComponentInChildren<Speaker>()))
                 .AppendCallback(() => animator.speed = 0f)
                 .AppendCallback(() => EnableEmission())
                 .AppendCallback(()=>Instantiate(jellyfish.GetShockEffect(),orca))

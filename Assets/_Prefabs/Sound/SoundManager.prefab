@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4403260522004914656}
   - component: {fileID: 4403260522004914657}
   - component: {fileID: 4403260522004914670}
+  - component: {fileID: 8343624820379090364}
+  - component: {fileID: 7067694090992069602}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -45,62 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea62fc42a97d3f4593a81995fa265ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bgmItems:
-  - BgmType: 1
-    BgmClip: {fileID: 8300000, guid: a9471e5e4a5add346b332cb6f4e29b93, type: 3}
-  - BgmType: 2
-    BgmClip: {fileID: 8300000, guid: c2e860a47feb31341b41ff963b2d3ddc, type: 3}
-  - BgmType: 3
-    BgmClip: {fileID: 8300000, guid: d750ff28bf5622c43bf971b6ed478155, type: 3}
-  - BgmType: 4
-    BgmClip: {fileID: 8300000, guid: 290571fa81438984697203508ab1e6c4, type: 3}
-  m_seItems:
-  - SeType: 0
-    SeClip: {fileID: 8300000, guid: ca45e5d9c2f5eb54faed2e63ce826e09, type: 3}
-  - SeType: 1
-    SeClip: {fileID: 8300000, guid: 8efa3c271ebad814baa87ff71d0f73ec, type: 3}
-  - SeType: 2
-    SeClip: {fileID: 8300000, guid: 4266d8e4071c53d46990027aee4dd1c0, type: 3}
-  - SeType: 3
-    SeClip: {fileID: 8300000, guid: 8cf3e5af53b88da4fb7faff5545713d2, type: 3}
-  - SeType: 4
-    SeClip: {fileID: 8300000, guid: 21dd843ef5880b248adadde7e4ac8f7a, type: 3}
-  - SeType: 6
-    SeClip: {fileID: 8300000, guid: 65f8608f6d539874f9d6963c3f675a58, type: 3}
-  - SeType: 5
-    SeClip: {fileID: 8300000, guid: 0619309b59bebf24ab8c0eaae9888885, type: 3}
-  - SeType: 7
-    SeClip: {fileID: 8300000, guid: 34c074500082d8b4eacc7f253950b50b, type: 3}
-  - SeType: 8
-    SeClip: {fileID: 8300000, guid: 8b9e32234d8a0934a8625b934dc55122, type: 3}
-  - SeType: 9
-    SeClip: {fileID: 8300000, guid: 756b0e14bba4b9f47b7ccc2cb503d176, type: 3}
-  - SeType: 10
-    SeClip: {fileID: 8300000, guid: 670c70b0b29bbef48925276872555931, type: 3}
-  - SeType: 11
-    SeClip: {fileID: 8300000, guid: 18426a7c0a2531e409bbcf71a3e33483, type: 3}
-  - SeType: 12
-    SeClip: {fileID: 8300000, guid: a202a0786e6e9c14ebcfc6e038fe1449, type: 3}
-  - SeType: 13
-    SeClip: {fileID: 8300000, guid: 8208f7eca8b0b2b48ad92f30096d1620, type: 3}
-  - SeType: 14
-    SeClip: {fileID: 8300000, guid: 770e2dc1c8831bf47bdb0d57e8cf4e6b, type: 3}
-  - SeType: 15
-    SeClip: {fileID: 8300000, guid: 4d384a342e65fd644b7ec4d192311a41, type: 3}
-  - SeType: 16
-    SeClip: {fileID: 8300000, guid: 20736696864b8fb469e99550a23f267a, type: 3}
-  - SeType: 17
-    SeClip: {fileID: 8300000, guid: 021d3f1039ea3fe4f911bcb380f49e35, type: 3}
-  - SeType: 18
-    SeClip: {fileID: 8300000, guid: 8fee18e244e799540b4eba0bd5a99bb5, type: 3}
-  - SeType: 19
-    SeClip: {fileID: 8300000, guid: 7f2a184542df71e44a3c038f0a463792, type: 3}
-  - SeType: 20
-    SeClip: {fileID: 8300000, guid: 873360251fd84c94689755f13d0b0a7b, type: 3}
-  - SeType: 21
-    SeClip: {fileID: 8300000, guid: 7dc105ff35a801645b2f47451e44e5dd, type: 3}
-  - SeType: 22
-    SeClip: {fileID: 8300000, guid: c71f588071b9b114bbf9745e88420ea7, type: 3}
+  m_bgmContainer: {fileID: 8343624820379090364}
+  m_seContainer: {fileID: 7067694090992069602}
   m_bgmAudio: {fileID: 4403260522004914657}
   m_seAudioSources:
   - {fileID: 4403260522004914670}
@@ -296,3 +244,69 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8343624820379090364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403260522004914671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b9f12265326e541a71663c3bcb71f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bgmItems:
+  - BgmType: 1
+    BgmClip: {fileID: 8300000, guid: a9471e5e4a5add346b332cb6f4e29b93, type: 3}
+  - BgmType: 2
+    BgmClip: {fileID: 8300000, guid: d750ff28bf5622c43bf971b6ed478155, type: 3}
+  - BgmType: 3
+    BgmClip: {fileID: 8300000, guid: c2e860a47feb31341b41ff963b2d3ddc, type: 3}
+  - BgmType: 4
+    BgmClip: {fileID: 8300000, guid: 290571fa81438984697203508ab1e6c4, type: 3}
+--- !u!114 &7067694090992069602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403260522004914671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fedece05ec39249bea57db5499eaa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_seItems:
+  - SeType: 0
+    SeClip: {fileID: 8300000, guid: bd1a722d53da33645a4493a7a107465e, type: 3}
+  - SeType: 1
+    SeClip: {fileID: 8300000, guid: b7389d44fe0567847b600c29f52db781, type: 3}
+  - SeType: 2
+    SeClip: {fileID: 8300000, guid: 34c074500082d8b4eacc7f253950b50b, type: 3}
+  - SeType: 3
+    SeClip: {fileID: 8300000, guid: 8b9e32234d8a0934a8625b934dc55122, type: 3}
+  - SeType: 4
+    SeClip: {fileID: 8300000, guid: 756b0e14bba4b9f47b7ccc2cb503d176, type: 3}
+  - SeType: 5
+    SeClip: {fileID: 8300000, guid: 670c70b0b29bbef48925276872555931, type: 3}
+  - SeType: 6
+    SeClip: {fileID: 8300000, guid: 18426a7c0a2531e409bbcf71a3e33483, type: 3}
+  - SeType: 7
+    SeClip: {fileID: 8300000, guid: a202a0786e6e9c14ebcfc6e038fe1449, type: 3}
+  - SeType: 8
+    SeClip: {fileID: 8300000, guid: 8208f7eca8b0b2b48ad92f30096d1620, type: 3}
+  - SeType: 9
+    SeClip: {fileID: 8300000, guid: 770e2dc1c8831bf47bdb0d57e8cf4e6b, type: 3}
+  - SeType: 10
+    SeClip: {fileID: 8300000, guid: 4d384a342e65fd644b7ec4d192311a41, type: 3}
+  - SeType: 11
+    SeClip: {fileID: 8300000, guid: 20736696864b8fb469e99550a23f267a, type: 3}
+  - SeType: 12
+    SeClip: {fileID: 8300000, guid: 021d3f1039ea3fe4f911bcb380f49e35, type: 3}
+  - SeType: 13
+    SeClip: {fileID: 8300000, guid: 94d0449bba8f4b24ba5c5e21e2337766, type: 3}
+  - SeType: 14
+    SeClip: {fileID: 8300000, guid: 21dd843ef5880b248adadde7e4ac8f7a, type: 3}
+  - SeType: 14
+    SeClip: {fileID: 8300000, guid: 0619309b59bebf24ab8c0eaae9888885, type: 3}

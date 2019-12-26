@@ -64,7 +64,7 @@ public class Glitter : MonoBehaviour
 
         GetComponent<Collider>().enabled = false;
 
-        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Action, speaker);
+        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Sparkle_2, speaker);
         foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
         {
             p.Stop();

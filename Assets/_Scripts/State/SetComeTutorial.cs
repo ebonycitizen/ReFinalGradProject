@@ -26,7 +26,7 @@ public class SetComeTutorial : MonoBehaviour
     {
         if(moveEvent.canTouch == true/* && (rightHand.GetIsApproach() || leftHand.GetIsApproach())*/)
         {
-            SoundManager.Instance.PlayOneShotSe(ESeTable.Action, 1);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.Sparkle_2, 1);
             orcaState.ChangeState(gameObject.tag, sendObj);
             Destroy(gameObject);
         }
