@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b375e4970fc10544e9a11ea43ed994fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTime: 3
-  increasePositionY: 5
+  floatingTime: 2
+  increasePositionY: 8
   dushSpeed: 0
 --- !u!1 &6490241773166396248
 GameObject:
@@ -769,6 +769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6490241775023724970}
   - component: {fileID: 6490241775023724969}
+  - component: {fileID: 2833079963548711046}
   m_Layer: 0
   m_Name: jerryfish (1)
   m_TagString: Untagged
@@ -804,7 +805,7 @@ Animator:
   m_GameObject: {fileID: 6490241775023724968}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: dbafdb91726733b4a89d72c7f8d396f2, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4583ac88dab5c1841a1504e31dc282a1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -813,6 +814,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2833079963548711046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6490241775023724968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d7913a82f07ad4b85a31cfbfda81a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6490241775124709737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,10 +1069,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7025067431585728310}
     m_Modifications:
-    - target: {fileID: 740017632, guid: 7a9e6b8363d60bc48ac2e8f1785b705d, type: 3}
-      propertyPath: m_Name
-      value: jerryfish (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 740017634, guid: 7a9e6b8363d60bc48ac2e8f1785b705d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1103,6 +1112,14 @@ PrefabInstance:
     - target: {fileID: 740017634, guid: 7a9e6b8363d60bc48ac2e8f1785b705d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740017632, guid: 7a9e6b8363d60bc48ac2e8f1785b705d, type: 3}
+      propertyPath: m_Name
+      value: jerryfish (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 740017632, guid: 7a9e6b8363d60bc48ac2e8f1785b705d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9e6b8363d60bc48ac2e8f1785b705d, type: 3}

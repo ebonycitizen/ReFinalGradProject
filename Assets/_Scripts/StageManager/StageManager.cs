@@ -59,8 +59,6 @@ public class StageManager : MonoBehaviour
 
         ChangeBGM(scene);
 
-
-
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
     }
