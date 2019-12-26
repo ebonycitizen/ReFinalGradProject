@@ -22,6 +22,9 @@ public enum ESeTable
 
     Penguin_1,
     Penguin_2,
+    Penguin_Sing_1,
+    Penguin_Sing_2,
+
 
     Tmp_PenguinSinging,
 
