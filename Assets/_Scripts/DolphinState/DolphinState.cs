@@ -114,7 +114,7 @@ public partial class DolphinState : MonoBehaviour
             animator.SetTrigger("Jump");
             stateMachine.SendEvent((int)StateEventId.Jump);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.WaterJump, 0.1f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.Tmp_JumpOutWater, 0.1f);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -125,7 +125,7 @@ public partial class DolphinState : MonoBehaviour
             simulation.ChangeExit();
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, other.ClosestPoint(transform.position), waterSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.WaterDown, 0.1f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.Tmp_JumpIntoWater, 0.1f);
         }
     }
     private void OnCollisionEnter(Collision collision)

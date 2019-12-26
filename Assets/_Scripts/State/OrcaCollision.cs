@@ -48,12 +48,12 @@ public class OrcaCollision : MonoBehaviour
         if (other.gameObject.tag == "Water")
         {
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterJump, speaker);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpOutWater, speaker);
         }
         if(other.gameObject.tag=="Jump")
         {
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterJump, speaker);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpOutWater, speaker);
             orcaState.ChangeState("G_PlayerJump", this.gameObject);
 
         }
@@ -63,13 +63,13 @@ public class OrcaCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Water")
         {
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterDown, speaker);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpIntoWater, speaker);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
         }
         if (other.gameObject.tag == "Jump")
         {
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.WaterDown, speaker);
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpIntoWater, speaker);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
             orcaState.ChangeState("G_Idle", this.gameObject);

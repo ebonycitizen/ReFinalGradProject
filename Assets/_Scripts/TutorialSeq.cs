@@ -39,7 +39,7 @@ public class TutorialSeq : MonoBehaviour
     {
         //sunShaft.SetActive(true);
         firstGlitter.SetActive(true);
-        SoundManager.Instance.PlayOneShotSe(ESeTable.Twinkle, 0.5f);
+        SoundManager.Instance.PlayOneShotSe(ESeTable.Sparkle_1, 0.5f);
     }
 
     void OnActiveScene(Scene prevScene, Scene nextScene)

@@ -22,7 +22,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial, duration: 3, volume: 1);
+        SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial, duration: 30, volume: 0.8f);
     }
 
     private IEnumerator Load(string scene)
@@ -38,7 +38,7 @@ public class StageManager : MonoBehaviour
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
 
         yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
-       
+
         RenderSettings.skybox = changeStage.GetFogData().skybox;
         ChangeFogUsage();
         float elaspedTime = 0f;
@@ -53,12 +53,12 @@ public class StageManager : MonoBehaviour
             elaspedTime += Time.deltaTime;
             yield return null;
         }
-        
+
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
-        
+
 
 
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
@@ -77,23 +77,16 @@ public class StageManager : MonoBehaviour
 
     private void ChangeBGM(string scene)
     {
-        //var _duration = 1;
-        //SoundManager.Instance.DoFadeOutBgm(duration: _duration);
-
-        //Observable.Timer(TimeSpan.FromSeconds(_duration))
-        //    .Subscribe(_ =>
-        //    {
         SoundManager.Instance.StopAllBgm();
 
         if (scene == "TutorialF")
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
         if (scene == "IceF")
-            SoundManager.Instance.PlayBgm(EBgmTable.Seaside);
+            SoundManager.Instance.PlayBgm(EBgmTable.Island);
         if (scene == "CoralF")
             SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
         if (scene == "CaveF")
             SoundManager.Instance.PlayBgm(EBgmTable.Cave);
-            //});
     }
 
     private void ChangeFogUsage()

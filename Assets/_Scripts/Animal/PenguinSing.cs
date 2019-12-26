@@ -19,7 +19,7 @@ public class PenguinSing : PenguinFunction
     private Speaker m_speaker = null;
 
     [SerializeField]
-    private ESeTable m_eSe = ESeTable.Song_1;
+    private ESeTable m_eSe = ESeTable.Tmp_PenguinSinging;
 
     [SerializeField]
     private float m_singTime = 1.6f;

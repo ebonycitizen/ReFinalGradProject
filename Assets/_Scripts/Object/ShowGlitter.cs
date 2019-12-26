@@ -37,7 +37,7 @@ public class ShowGlitter : MonoBehaviour
                 {
                     x.SetActive(true);
                     //Destroy(x, duration);
-                    SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, x.GetComponentInChildren<Speaker>(), 0.5f);
+                    SoundManager.Instance.PlayOneShot3DSe(ESeTable.Sparkle_1, x.GetComponentInChildren<Speaker>(), 0.5f);
                 });
             }
             else
@@ -47,7 +47,7 @@ public class ShowGlitter : MonoBehaviour
                 if (duration > 0)
                     Destroy(glitter, duration);
 
-                SoundManager.Instance.PlayOneShot3DSe(ESeTable.Twinkle, speaker, 0.5f);
+                SoundManager.Instance.PlayOneShot3DSe(ESeTable.Sparkle_1, speaker, 0.5f);
             }
             Destroy(gameObject);
         }

@@ -45,7 +45,7 @@ public class TitleSeq : MonoBehaviour
         color3Ori = skyboxMat.GetColor("_Color3");
 
         floatObj.gameObject.SetActive(false);
-        
+
         foreach (PostProcessEffectSettings item in postProcess.profile.settings)
         {
             if (item as DepthOfField)
@@ -64,7 +64,7 @@ public class TitleSeq : MonoBehaviour
 
     private IEnumerator StartUp()
     {
-        SoundManager.Instance.PlayLoopSe(ESeTable.Water_4);
+        //SoundManager.Instance.PlayLoopSe(ESeTable.Water_4);
 
         yield return new WaitForSeconds(1f);
 

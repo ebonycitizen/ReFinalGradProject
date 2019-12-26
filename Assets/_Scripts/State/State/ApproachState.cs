@@ -21,7 +21,7 @@ public partial class OrcaState
 
         protected internal override void Enter()
         {
-            SoundManager.Instance.PlayOneShotSe(ESeTable.Action, 1);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.Sparkle_2, 1);
             rayObj = Context.rayObject;
             orca = Context.orcaModel.transform;
             forwardPos = Context.cameraRig.transform;

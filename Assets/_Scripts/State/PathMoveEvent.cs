@@ -66,7 +66,7 @@ public class PathMoveEvent : MonoBehaviour
             .SetLookAt(0.05f, Vector3.forward))
             .AppendCallback(() => NextEvent())
             //.AppendInterval(2f)
-            .AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Twinkle))
+            .AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Sparkle_1))
             .AppendCallback(() => glitter.gameObject.SetActive(true));
             
 

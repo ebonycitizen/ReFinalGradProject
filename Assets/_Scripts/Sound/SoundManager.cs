@@ -1,74 +1,15 @@
 ﻿using System.Collections.Generic;
 using System;
-using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using DG.Tweening;
 
-public enum EBgmTable
-{
-    Default,
-    Tutorial,
-    Seaside,
-    Ocean,
-    Cave,
-}
-public enum ESeTable
-{
-    Twinkle,
-    Action,
-    Call,
-    Drown,
-    WaterJump,
-    WaterDown,
-    Touch,
-
-    Orac_1,
-    Orac_2,
-    Orac_3,
-    Orac_4,
-    Orac_5,
-    Orac_6,
-    Orac_7,
-
-    Dolphin_1,
-    Dolphin_2,
-
-    Penguin_1,
-    Penguin_2,
-
-    Water_1,
-    Water_2,
-    Water_3,
-    Water_4,
-    Water_5,
-
-    Song_1,
-
-}
 public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
-    [Serializable]
-    public class BgmItem
-    {
-        public EBgmTable BgmType;
-
-        public AudioClip BgmClip;
-    }
+    [SerializeField]
+    private BgmContainer m_bgmContainer = null;
 
     [SerializeField]
-    private List<BgmItem> m_bgmItems = new List<BgmItem>();
-
-    [Serializable]
-    public class SeItem
-    {
-        public ESeTable SeType;
-
-        public AudioClip SeClip;
-    }
-
-    [SerializeField]
-    private List<SeItem> m_seItems = new List<SeItem>();
+    private SeContainer m_seContainer = null;
 
     [SerializeField]
     private AudioSource m_bgmAudio = null;
@@ -76,21 +17,6 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     [SerializeField]
     private List<AudioSource> m_seAudioSources = new List<AudioSource>();
 
-    public void Update()
-    {
-#if DEBUG
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            DoFadeInBgm(EBgmTable.Tutorial);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            DoFadeInBgm(EBgmTable.Seaside);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            DoFadeInBgm(EBgmTable.Ocean);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-            DoFadeInBgm(EBgmTable.Cave);
-
-#endif
-
-    }
     public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float volume = 1)
     {
         if (m_bgmAudio.isPlaying)
@@ -432,9 +358,9 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
     private AudioClip FindClipInSeContainer(ESeTable eSeTable)
     {
-        var selectItem = m_seItems.Find(x => x.SeType == eSeTable);
+        var selectItem = m_seContainer.SE.Find(x => x.SeType == eSeTable);
 
-        if (!m_seItems.Exists(item => item.SeType == eSeTable))
+        if (!m_seContainer.SE.Exists(item => item.SeType == eSeTable))
         {
             Debug.LogError("該当のBgmが見つかりません");
             return null;
@@ -449,9 +375,9 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
     private AudioClip FindClipInBgmContainer(EBgmTable eBgmTable)
     {
-        var selectItem = m_bgmItems.Find(x => x.BgmType == eBgmTable);
+        var selectItem = m_bgmContainer.BGM.Find(x => x.BgmType == eBgmTable);
 
-        if (!m_bgmItems.Exists(item => item.BgmType == eBgmTable))
+        if (!m_bgmContainer.BGM.Exists(item => item.BgmType == eBgmTable))
         {
             Debug.LogError("該当のBgmが見つかりません");
             return null;
