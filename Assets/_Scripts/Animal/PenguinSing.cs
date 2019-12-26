@@ -27,37 +27,33 @@ public class PenguinSing : PenguinFunction
     [SerializeField]
     private float m_turnTime = 1;
 
+    [SerializeField]
+    private AudioSource m_audio = null;
+
     public override void Setup()
     {
-        m_penguins.ForEach(x =>
-        {
-            x.StopAnimation();
-            x.PlayNextAnimation("Sing");
-        });
+        m_penguins.ForEach(x => x.PlayNextAnimation("Sing"));
 
         Observable.Timer(TimeSpan.FromSeconds(m_singTime))
             .Subscribe(_ =>
             {
-                m_penguins.ForEach(x => x.PlayNextAnimation("Turn"));
+                m_penguins.ForEach(x =>
+                {
+                    x.PlayAnimation("Turn");
+                });
 
             }).AddTo(this);
 
-        //Observable.Timer(TimeSpan.FromSeconds(m_singTime + m_turnTime))
-        //    .Subscribe(_ =>
-        //    {
-        //        m_penguins.ForEach(x => x.StopAnimation());
-        //        m_penguins.ForEach(x => x.PlayNextAnimation("Sing"));
-
-        //    }).AddTo(this);
-
         m_singEffect.Play();
-        SoundManager.Instance.PlayOneShot3DSe(m_eSe, m_speaker, 0.6f);
+
+        m_audio.volume = 1;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //Setup();
+        m_audio.volume = 1;
+
     }
 
     // Update is called once per frame

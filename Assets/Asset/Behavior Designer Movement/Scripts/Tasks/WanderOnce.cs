@@ -51,18 +51,16 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             var isValidDestination = false;
             var attempts = 2;
 
-
             while (!isValidDestination && attempts > 0)
             {
                 direction = direction + Random.insideUnitSphere * wanderRate.Value;
-                destination = transform.position + direction.normalized * Random.Range(minWanderDistance.Value, maxWanderDistance.Value);
+                destination = transform.position + new Vector3(Random.insideUnitCircle.x, 0, Random.insideUnitCircle.y) * 50;
                 isValidDestination = SamplePosition(destination);
                 attempts--;
             }
 
             if (isValidDestination)
             {
-
                 SetDestination(destination);
             }
         }
