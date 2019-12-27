@@ -12,6 +12,8 @@ public class ChangeStage : MonoBehaviour
     private float waitActiveSec = 6f;
     [SerializeField]
     private FogData fogData;
+    [SerializeField]
+    private GameObject postEffect;
 
     public float GetUnloadWaitSec()
     {
@@ -26,6 +28,11 @@ public class ChangeStage : MonoBehaviour
     public FogData GetFogData()
     {
         return fogData;
+    }
+
+    public GameObject GetPostEffect()
+    {
+        return postEffect;
     }
 
     // Start is called before the first frame update

@@ -58,9 +58,11 @@ public class StageManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
+        
 
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
+        ChangePostEffect();
     }
 
     public void LoadNextScene(string scene)
@@ -73,9 +75,15 @@ public class StageManager : MonoBehaviour
     {
     }
 
+    private void ChangePostEffect()
+    {
+        if (changeStage.GetPostEffect() != null)
+            Instantiate(changeStage.GetPostEffect());
+    }
+
     private void ChangeBGM(string scene)
     {
-        SoundManager.Instance.StopAllBgm();
+        //SoundManager.Instance.StopAllBgm();
 
         if (scene == "TutorialF")
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
