@@ -61,7 +61,7 @@ public class PathMoveEvent : MonoBehaviour
         //    .SetLookAt(0.05f, Vector3.forward))
         //    .AppendCallback(() => NextEvent());
 
-        s.Join(transform.DOLocalPath(movePath, moveTime, PathType.CatmullRom)
+        s.Join(transform.DOPath(movePath, moveTime, PathType.CatmullRom)
             .SetEase(Ease.Linear)
             .SetLookAt(0.05f, Vector3.forward))
             .AppendCallback(() => NextEvent())
@@ -72,7 +72,7 @@ public class PathMoveEvent : MonoBehaviour
 
 
         s2 = DOTween.Sequence();
-        s2.Join(transform.DOLocalPath(movePath2, moveTime2, PathType.CatmullRom)
+        s2.Join(transform.DOPath(movePath2, moveTime2, PathType.CatmullRom)
             .SetOptions(true).SetEase(Ease.Linear)
             .SetLookAt(0.05f, Vector3.forward));
 

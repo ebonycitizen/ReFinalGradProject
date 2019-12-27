@@ -39,7 +39,7 @@ public class PathMoveCome : MonoBehaviour
         }
 
         s = DOTween.Sequence();
-        s.Join(transform.DOLocalPath(movePath, moveTime, PathType.CatmullRom)
+        s.Join(transform.DOPath(movePath, moveTime, PathType.CatmullRom)
            .SetEase(Ease.Linear)
            .SetLookAt(0.05f, Vector3.forward))
            .AppendCallback(() => hasDone = true)
