@@ -32,14 +32,14 @@ public class LogoSeq : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        logo1.color = new Color(0, 0, 0, 0);
+        logo1.color = new Color(1,1,1,0);
         logo2.fillAmount = 0;
-        logo3.color = new Color(0, 0, 0, 0);
-        logo4.color = new Color(0, 0, 0, 0);
-        logo5.color = new Color(0, 0, 0, 0);
-        logo6.color = new Color(0, 0, 0, 0);
+        logo3.color = new Color(1, 1, 1, 0);
+        logo4.color = new Color(1, 1, 1, 0);
+        logo5.color = new Color(1, 1, 1, 0);
+        logo6.color = new Color(1, 1, 1, 0);
 
-        effect.SetActive(false);
+        //effect.SetActive(false);
         //postEffect.SetActive(false);
     }
 
@@ -79,9 +79,11 @@ public class LogoSeq : MonoBehaviour
         logo6.DOColor(Color.white, duration);
         yield return new WaitForSeconds(duration);
 
-        bg.DOColor(new Color(0, 0, 0, 0), duration * 2);
-        effect.SetActive(true);
+        //bg.DOColor(new Color(0, 0, 0, 0), duration * 2);
+        //effect.SetActive(true);
         //postEffect.SetActive(true);
+
         yield return new WaitForSeconds(duration * 2);
+        bg.DOColor(new Color(0, 0, 0, 1), duration * 2);
     }
 }

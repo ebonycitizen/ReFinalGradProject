@@ -98,9 +98,9 @@ public partial class OrcaState : MonoBehaviour
         stateMachine.AddTransition<ScrollState, AttackState>((int)StateEventId.Attack);
 
         stateMachine.SetStartState<NoneState>();
-#if DEBUG
+//#if DEBUG
         stateMachine.SetStartState<IdleState>();
-#endif
+//#endif
 
     }
 

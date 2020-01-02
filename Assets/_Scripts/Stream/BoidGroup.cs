@@ -47,7 +47,7 @@ public class BoidGroup : MonoBehaviour
         foreach (var p in particle)
             p.Play();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         Destroy(gameObject);
     }
