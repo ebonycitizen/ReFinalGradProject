@@ -79,7 +79,7 @@ public partial class OrcaState : MonoBehaviour
         //歌う
         stateMachine.AddTransition<IdleState, PenguinSingingState>((int)StateEventId.PenguinSinging);
 
-        stateMachine.AddTransition<SwimState, DissapearState>((int)StateEventId.Dissapear);
+        stateMachine.AddTransition<IdleState, DissapearState>((int)StateEventId.Dissapear);
 
 
         //stateMachine.AddTransition<IdleState, FollowState>((int)StateEventId.Follow);
@@ -196,7 +196,7 @@ public partial class OrcaState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.LightUp);
             return true;
         }
-        if (tag == "G_Dissapear" && stateMachine.CurrentStateName == "SwimState")
+        if (tag == "G_Dissapear" && stateMachine.CurrentStateName == "IdleState")
         {
             stateMachine.SendEvent((int)StateEventId.Dissapear);
             return true;

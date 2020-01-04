@@ -29,7 +29,7 @@ public class OrcaSoul : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        wakeSeq = Object.FindObjectOfType<WakeSeq>();
     }
 
     // Update is called once per frame

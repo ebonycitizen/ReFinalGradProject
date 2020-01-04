@@ -69,7 +69,6 @@ public class ShowSoulOrca : MonoBehaviour
 
     private IEnumerator StartShowSoul()
     {
-        
         soulBall.SetActive(true);
         soulBallMat.DOFloat(1f, "_Globalopacity", 4f);
         yield return new WaitForSeconds(3f);

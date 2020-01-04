@@ -14,6 +14,8 @@ public class WakeSeq : MonoBehaviour
     [SerializeField]
     private splineMove splineRoute;
     [SerializeField]
+    private splineMove lastRoute;
+    [SerializeField]
     private ParticleSystem orcaTrail;
 
     private Animator orcaAnimator;
@@ -24,6 +26,8 @@ public class WakeSeq : MonoBehaviour
     {
         orcaAnimator = soulOrca.GetComponent<Animator>();
         orcaMat = soulOrca.GetComponentInChildren<SkinnedMeshRenderer>().material;
+
+        soulOrca.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +43,10 @@ public class WakeSeq : MonoBehaviour
 
     private IEnumerator Wake()
     {
+        GameObject.Find("OrcaModel").SetActive(false);
+        yield return null;
+        soulOrca.SetActive(true);
+
         orcaMat.DOColor(soulColor, "_Color", 1f);
         orcaMat.DOFloat(0.8f, "_RimStrength", 1f);
         orcaAnimator.SetTrigger("Start");
@@ -53,8 +61,7 @@ public class WakeSeq : MonoBehaviour
         soulOrca.transform.parent = splineRoute.transform;
         soulOrca.transform.DORotate(new Vector3(0, 90, 0), 2f);
 
-        
-        //splineRoute.StartMove();
-        
+        yield return new WaitForSeconds(splineRoute.speed - 0.5f);
+        soulOrca.transform.parent = lastRoute.transform;
     }
 }
