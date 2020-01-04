@@ -13,6 +13,8 @@ public class WakeSeq : MonoBehaviour
     private Color soulColor;
     [SerializeField]
     private splineMove splineRoute;
+    [SerializeField]
+    private ParticleSystem orcaTrail;
 
     private Animator orcaAnimator;
     private Material orcaMat;
@@ -40,6 +42,8 @@ public class WakeSeq : MonoBehaviour
         orcaMat.DOColor(soulColor, "_Color", 1f);
         orcaMat.DOFloat(0.8f, "_RimStrength", 1f);
         orcaAnimator.SetTrigger("Start");
+        orcaTrail.Play();
+
         Instantiate(boids);
 
         yield return new WaitForSeconds(2f);
@@ -47,7 +51,7 @@ public class WakeSeq : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         soulOrca.transform.parent = splineRoute.transform;
-        //soulOrca.transform.DORotate(new Vector3(0, 90, 0), 2f);
+        soulOrca.transform.DORotate(new Vector3(0, 90, 0), 2f);
 
         
         //splineRoute.StartMove();

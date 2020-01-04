@@ -379,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630450503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.05, z: 1.61}
+  m_LocalPosition: {x: -0, y: -0.61, z: 0.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2031216870}
@@ -575,7 +575,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6650943, g: 0.8867924, b: 0.84170127, a: 1}
+      maxColor: {r: 0.6650943, g: 0.8867924, b: 0.84170127, a: 0.62352943}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -637,7 +637,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5712,7 +5712,7 @@ Animator:
   m_GameObject: {fileID: 2031216868}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 00ce5c62f313d084297b459b590c11d8, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33f98f44802b14f428107a9943f1b8b2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

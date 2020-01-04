@@ -55,7 +55,7 @@ public partial class OrcaState
 
             Sequence s = DOTween.Sequence();
 
-            s.AppendCallback(() => SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_7, speaker))
+            s.AppendCallback(() => SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_5, speaker))
                 .AppendInterval(1f)
                 .AppendCallback(() => ChangeMat())
                 .AppendCallback(() => CreateEffect())
