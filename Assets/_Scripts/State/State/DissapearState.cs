@@ -35,6 +35,10 @@ public partial class OrcaState
             rigid.constraints = RigidbodyConstraints.FreezeAll;
             canMove = true;
 
+            var colliders = orca.GetComponents<Collider>();
+            foreach (var c in colliders)
+                c.enabled = false;
+
             soulBall = Instantiate(rayObject.GetComponent<SendObj>().soulBall, orca);
 
             SetSecondMat();
