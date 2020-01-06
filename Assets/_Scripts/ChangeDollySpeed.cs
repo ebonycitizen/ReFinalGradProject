@@ -31,7 +31,7 @@ public class ChangeDollySpeed : MonoBehaviour
         }
 
         dollyCart.m_Speed = max;
-
+        gameObject.SetActive(false);
         yield return null;
     }
 }

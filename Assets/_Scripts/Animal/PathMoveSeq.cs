@@ -34,7 +34,7 @@ public class PathMoveSeq : MonoBehaviour
         hasReach = false;
 
         s = DOTween.Sequence();
-        s.Append(transform.DOPath(movePath, duration, PathType.CatmullRom).SetEase(ease).SetDelay(delayTime).SetLookAt(0.02f, Vector3.forward))
+        s.Append(transform.DOPath(movePath, duration, PathType.CatmullRom).SetEase(ease).SetDelay(delayTime).SetLookAt(0.05f, Vector3.forward))
             .AppendCallback(() => hasDone = true);
 
         StartCoroutine("SetUp");
