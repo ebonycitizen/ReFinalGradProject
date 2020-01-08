@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class OrcaSoul : MonoBehaviour
 {
@@ -35,12 +36,33 @@ public class OrcaSoul : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if DEBUG
         if (Input.GetKeyDown(KeyCode.Return))
             StartCoroutine("StartEffect");
+#endif
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "PalmTrigger")
+        {
+            var grab = other.GetComponent<Grab>();
+            if (grab.GetIsRightHand())
+                HI5.HI5_Manager.EnableRightVibration(1000);
+            else
+                HI5.HI5_Manager.EnableRightVibration(1000);
+
+            StartCoroutine("StartEffect");
+        }
     }
 
     private IEnumerator StartEffect()
     {
+        GetComponent<Collider>().enabled = false;
+
+        var text = Object.FindObjectOfType<Text>();
+        text.DOFade(0f, 0.5f);
+
         kira.Play();
         light.Play();
 

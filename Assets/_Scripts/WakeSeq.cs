@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using SWS;
+
 public class WakeSeq : MonoBehaviour
 {
     [SerializeField]
@@ -17,9 +18,12 @@ public class WakeSeq : MonoBehaviour
     private splineMove lastRoute;
     [SerializeField]
     private ParticleSystem orcaTrail;
+    [SerializeField]
+    private Material soulHand;
 
     private Animator orcaAnimator;
     private Material orcaMat;
+    private SkinnedMeshRenderer[] hands;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,14 @@ public class WakeSeq : MonoBehaviour
         orcaMat = soulOrca.GetComponentInChildren<SkinnedMeshRenderer>().material;
 
         soulOrca.SetActive(false);
+
+        var viveInstance = Object.FindObjectsOfType<HI5.HI5_VIVEInstance>();
+        hands = new SkinnedMeshRenderer[viveInstance.Length];
+        for(int i=0;i<hands.Length;i++)
+        {
+            hands[i] = viveInstance[i].GetComponentInChildren<SkinnedMeshRenderer>();
+        }
+
     }
 
     // Update is called once per frame
@@ -43,6 +55,9 @@ public class WakeSeq : MonoBehaviour
 
     private IEnumerator Wake()
     {
+        foreach (var h in hands)
+            h.material = soulHand;
+
         GameObject.Find("OrcaModel").SetActive(false);
         yield return null;
         soulOrca.SetActive(true);

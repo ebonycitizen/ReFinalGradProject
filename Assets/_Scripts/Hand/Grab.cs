@@ -7,6 +7,11 @@ public class Grab : MonoBehaviour
 {
     [SerializeField]
     private bool isRightHand;
+    public bool GetIsRightHand()
+    {
+        return isRightHand;
+    }
+
     [SerializeField]
     private Transform palmForward;
     [SerializeField]

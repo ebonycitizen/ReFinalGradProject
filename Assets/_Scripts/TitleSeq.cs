@@ -39,6 +39,12 @@ public class TitleSeq : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 0f);
+        var duration = 4f;
+        SteamVR_Fade.Start(new Color(0, 0, 0, 0), duration, true);
+
+        EnableLight(duration);
+    
         skyboxMat = RenderSettings.skybox;
         color1Ori = skyboxMat.GetColor("_Color1");
         color2Ori = skyboxMat.GetColor("_Color2");
@@ -53,6 +59,18 @@ public class TitleSeq : MonoBehaviour
                 dof = item as DepthOfField;
             };
         }
+        
+    }
+
+    private void EnableLight(float duration)
+    {
+        var lights = sunShaft.GetComponentsInChildren<Light>();
+        var intensity = lights[0].intensity;
+        foreach (var l in lights)
+        {
+            l.intensity = 0f;
+            l.DOIntensity(intensity, duration);
+        }
     }
 
     // Update is called once per frame
@@ -61,6 +79,7 @@ public class TitleSeq : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
             StartCoroutine("StartUp");
     }
+
 
     private IEnumerator StartUp()
     {

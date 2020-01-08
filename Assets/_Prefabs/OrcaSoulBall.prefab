@@ -18836,7 +18836,6 @@ GameObject:
   - component: {fileID: 7860577002275603248}
   - component: {fileID: 1862282083206886050}
   - component: {fileID: 5143005025272214410}
-  - component: {fileID: 97806719412732890}
   m_Layer: 0
   m_Name: OrcaSoul
   m_TagString: Untagged
@@ -18904,19 +18903,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &97806719412732890
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7319000783142770745}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7783936181436834426
 GameObject:
   m_ObjectHideFlags: 0
@@ -23683,6 +23669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7084551408608341340}
   - component: {fileID: 7008765689646924740}
+  - component: {fileID: 7493970058796000635}
   m_Layer: 0
   m_Name: OrcaSoulBall
   m_TagString: Untagged
@@ -23727,6 +23714,19 @@ MonoBehaviour:
   leaveEffect: {fileID: 3747917535404942959, guid: b6009a59ad3364847a50d16a500fe002,
     type: 3}
   wakeSeq: {fileID: 0}
+--- !u!135 &7493970058796000635
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424539596585204857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8645982338850895011
 GameObject:
   m_ObjectHideFlags: 0

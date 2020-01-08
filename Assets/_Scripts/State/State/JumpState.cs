@@ -68,7 +68,7 @@ public partial class OrcaState
         {
             elaspedTime += Time.deltaTime;
 
-            if (elaspedTime >= 1.5f)
+            if (elaspedTime >= 3f)
                 Move();
             else
                 MoveToGlitter();

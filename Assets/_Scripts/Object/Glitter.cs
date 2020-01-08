@@ -16,6 +16,8 @@ public class Glitter : MonoBehaviour
     private ParticleSystem startLockOn;
     [SerializeField]
     private ParticleSystem endLockOn;
+    [SerializeField]
+    private ParticleSystem circle;
 
     [SerializeField]
     private Color normalColor;
@@ -65,6 +67,8 @@ public class Glitter : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         SoundManager.Instance.PlayOneShot3DSe(ESeTable.Sparkle_2, speaker);
+
+        circle.Clear();
         foreach (ParticleSystem p in transform.GetComponentsInChildren<ParticleSystem>())
         {
             p.Stop();

@@ -87,6 +87,7 @@ public class OrcaCollision : MonoBehaviour
             Grab grab = collision.gameObject.GetComponent<Grab>();
             if (grab != null)
             {
+
                 if (grab.GetVelocity().magnitude < touchSpeed && !heart.isPlaying)
                 {
                     heart.Play();
@@ -95,6 +96,12 @@ public class OrcaCollision : MonoBehaviour
                 }
                 else if (grab.GetVelocity().magnitude >= touchSpeed && !breakHeart.isPlaying)
                     breakHeart.Play();
+
+                if (grab.GetIsRightHand())
+                    HI5.HI5_Manager.EnableRightVibration(100);
+                else
+                    HI5.HI5_Manager.EnableRightVibration(100);
+
             }
         }
         else
