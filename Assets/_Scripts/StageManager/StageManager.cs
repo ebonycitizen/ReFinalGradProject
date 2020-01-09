@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 using UniRx;
 using UniRx.Triggers;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.AI;
 
-public class StageManager : MonoBehaviour
+public class StageManager : SingletonMonoBehaviour<StageManager>
 {
     [SerializeField]
     private GameObject[] transferObj;
 
     private ChangeStage changeStage;
     private GlobalFog globalFog;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -36,6 +38,11 @@ public class StageManager : MonoBehaviour
 
         foreach (GameObject obj in transferObj)
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
+
+
+        GameObject behaviour = GameObject.Find("Behavior Manager");
+        if(behaviour != null)
+            SceneManager.MoveGameObjectToScene(behaviour, SceneManager.GetSceneByName(scene));
 
         yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
 

@@ -42,7 +42,7 @@ public class BoidGroup : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         foreach (var r in renderer)
-            r.transform.parent.DOScale(0, 0.2f);
+            r.transform.parent.parent.DOScale(0, 0.5f);
 
         foreach (var p in particle)
             p.Play();

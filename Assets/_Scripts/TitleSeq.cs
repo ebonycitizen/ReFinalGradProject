@@ -60,6 +60,10 @@ public class TitleSeq : MonoBehaviour
             };
         }
         
+        if(Object.FindObjectOfType<StageManager>() != null)
+        {
+            Destroy(Object.FindObjectOfType<StageManager>().gameObject);
+        }
     }
 
     private void EnableLight(float duration)

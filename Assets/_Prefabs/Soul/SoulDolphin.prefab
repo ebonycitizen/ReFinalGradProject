@@ -75,7 +75,7 @@ MonoBehaviour:
   currentPoint: 0
   closeLoop: 1
   localType: 0
-  lookAhead: 0
+  lookAhead: 0.02
   sizeToAdd: 0
   timeValue: 1
   speed: 10
@@ -635,14 +635,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5.2523503
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 2fe7954bbe2c90b4dbe621555d6fa5ea, type: 3}
-    - target: {fileID: 9500000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 87f95bcf01e5e2b459c4839f9160e135, type: 2}
     - target: {fileID: 13700000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -707,6 +699,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
+    - target: {fileID: 9500000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 2fe7954bbe2c90b4dbe621555d6fa5ea, type: 3}
+    - target: {fileID: 9500000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 87f95bcf01e5e2b459c4839f9160e135, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b49c3f6691aecb49ad81b691b9a88f3, type: 3}
 --- !u!4 &2475713600154305944 stripped

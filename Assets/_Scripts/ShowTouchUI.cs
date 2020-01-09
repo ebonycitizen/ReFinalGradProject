@@ -17,11 +17,25 @@ public class ShowTouchUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameObject.Find("OrcaSoulBall") == null)
+            return;
+        if(GameObject.Find("OrcaSoulBall").GetComponent<Collider>().enabled == false)
+        {
+            StartCoroutine("Dissapear");
+        }
+    }
+
+    private IEnumerator Dissapear()
+    {
+        text.DOFade(0f, 1f);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 
     public void Show()
     {
+        if (GameObject.Find("OrcaSoulBall").GetComponent<Collider>().enabled == false)
+            return;
         text.DOFade(1f, 1f).SetDelay(15f);
     }
 }

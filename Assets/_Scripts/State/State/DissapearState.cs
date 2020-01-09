@@ -40,6 +40,7 @@ public partial class OrcaState
                 c.enabled = false;
 
             soulBall = Instantiate(rayObject.GetComponent<SendObj>().soulBall, orca);
+            soulBall.name = "OrcaSoulBall";
 
             SetSecondMat();
             DissapearSeq();

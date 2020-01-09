@@ -13,6 +13,8 @@ namespace BoidECSCoral
         {
             get
             {
+                if (FindObjectOfType<BootstrapCoral>() != null)
+                    _Instance = FindObjectOfType<BootstrapCoral>();
                 return _Instance ?? (_Instance = FindObjectOfType<BootstrapCoral>());
             }
         }

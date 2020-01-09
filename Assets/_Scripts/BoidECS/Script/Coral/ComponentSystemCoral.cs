@@ -42,7 +42,12 @@ namespace BoidECSCoral
 
         protected override void OnUpdate()
         {
-            if (!BootstrapCoral.IsValid) return;
+            if (!BootstrapCoral.IsValid)
+            {
+                if (hasSpawn)
+                    hasSpawn = false;
+                return;
+            }
 
             var entities = group.GetEntityArray();
             for (int i = 0; i < entities.Length - BootstrapCoral.Boid.count; ++i)

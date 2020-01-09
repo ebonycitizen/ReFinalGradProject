@@ -15,6 +15,13 @@ public partial class DolphinState : MonoBehaviour
         Jump,
     }
 
+    private enum JumpType
+    {
+        Jump1,
+        Jump2,
+        Jump3,
+    }
+
     [SerializeField] //for debug
     private GameObject rayObject;
 
@@ -31,6 +38,9 @@ public partial class DolphinState : MonoBehaviour
     private GameObject bigSplash;
     [SerializeField]
     private GameObject waterSplash;
+
+    [SerializeField]
+    private JumpType jumpType;
 
     private ImtStateMachine<DolphinState> stateMachine;
 
