@@ -7,6 +7,8 @@ public class BoidGroup : MonoBehaviour
 {
     [SerializeField]
     private Material disappearMat;
+    [SerializeField]
+    private Speaker speaker;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class BoidGroup : MonoBehaviour
             return;
 
         Object.FindObjectOfType<OrcaState>().ChangeState(gameObject.tag, null);
+
+        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Sparkle_2, speaker);
 
         StartCoroutine("Disappear");
     }

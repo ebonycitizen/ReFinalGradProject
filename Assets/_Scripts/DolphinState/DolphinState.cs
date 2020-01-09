@@ -32,6 +32,9 @@ public partial class DolphinState : MonoBehaviour
     [SerializeField]
     private GameObject waterSplash;
 
+    [SerializeField]
+    private Speaker speaker;
+
     private ImtStateMachine<DolphinState> stateMachine;
 
     // Start is called before the first frame update
