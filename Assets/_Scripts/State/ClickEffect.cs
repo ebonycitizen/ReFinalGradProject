@@ -8,18 +8,20 @@ public class ClickEffect : MonoBehaviour
     private GameObject clickEffect;
     [SerializeField]
     private Transform glitterPos;
+    [SerializeField]
+    private Speaker speaker;
 
     public bool hasDone { get; private set; }
 
     private Transform orca;
-    
+
     void Start()
     {
         hasDone = false;
     }
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,6 +39,8 @@ public class ClickEffect : MonoBehaviour
         Rigidbody[] rigid = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody r in rigid)
             r.isKinematic = false;
+
+        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Crystal, speaker);
     }
 
     private IEnumerator Click()
@@ -57,6 +61,6 @@ public class ClickEffect : MonoBehaviour
     {
         this.orca = orca;
 
-        StartCoroutine("Click");  
+        StartCoroutine("Click");
     }
 }

@@ -14,6 +14,7 @@ public partial class DolphinState
             transform = Context.transform;
             Context.ChangeParentNull();
             sendObj = Context.sendObj.transform;
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Dolphin_1, Context.speaker);
         }
         protected internal override void Update()
         {

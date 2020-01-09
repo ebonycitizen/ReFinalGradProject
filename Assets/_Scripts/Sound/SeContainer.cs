@@ -30,6 +30,15 @@ public enum ESeTable
 
     Tmp_JumpOutWater,
     Tmp_JumpIntoWater,
+
+    Crystal,
+
+    Rock_1,
+    Rock_2,
+
+    Whale_1,
+    Whale_2,
+    Whale_3,
 }
 public class SeContainer : MonoBehaviour
 {
