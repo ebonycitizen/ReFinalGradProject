@@ -15,7 +15,7 @@ public class Bootstrap : MonoBehaviour
     { 
         get 
         {
-            if (FindObjectOfType<Bootstrap>() != null)
+            if (_Instance == null && FindObjectOfType<Bootstrap>() != null)
                 _Instance = FindObjectOfType<Bootstrap>();
             return _Instance ?? (_Instance = FindObjectOfType<Bootstrap>());
         }

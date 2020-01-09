@@ -42,6 +42,9 @@ public partial class DolphinState : MonoBehaviour
     [SerializeField]
     private JumpType jumpType;
 
+    [SerializeField]
+    private Speaker speaker;
+
     private ImtStateMachine<DolphinState> stateMachine;
 
     // Start is called before the first frame update
@@ -121,7 +124,20 @@ public partial class DolphinState : MonoBehaviour
             Debug.Log(stateMachine.CurrentStateName);
             if (stateMachine.CurrentStateName != "D_SwimState")
                 return;
-            animator.SetTrigger("Jump");
+
+            switch(jumpType)
+            {
+                case JumpType.Jump1:
+                    animator.SetTrigger("Jump1");
+                    break;
+                case JumpType.Jump2:
+                    animator.SetTrigger("Jump2");
+                    break;
+                case JumpType.Jump3:
+                    animator.SetTrigger("Jump3");
+                    break;
+            }
+            
             stateMachine.SendEvent((int)StateEventId.Jump);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             SoundManager.Instance.PlayOneShotSe(ESeTable.Tmp_JumpOutWater, 0.1f);

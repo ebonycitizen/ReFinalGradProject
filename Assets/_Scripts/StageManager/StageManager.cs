@@ -39,11 +39,6 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         foreach (GameObject obj in transferObj)
             SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneByName(scene));
 
-
-        GameObject behaviour = GameObject.Find("Behavior Manager");
-        if(behaviour != null)
-            SceneManager.MoveGameObjectToScene(behaviour, SceneManager.GetSceneByName(scene));
-
         yield return new WaitForSeconds(changeStage.GetWaitActiveSec());
 
         RenderSettings.skybox = changeStage.GetFogData().skybox;
@@ -64,9 +59,12 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
+        GameObject behaviour = GameObject.Find("Behavior Manager");
+        if(behaviour != null)
+            SceneManager.MoveGameObjectToScene(behaviour, SceneManager.GetSceneByName(scene));
+
         ChangeBGM(scene);
         
-
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
         ChangePostEffect();
