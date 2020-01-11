@@ -26,6 +26,9 @@ public class PathMoveEvent : MonoBehaviour
     [SerializeField]
     private float distance;
 
+    [SerializeField]
+    private GameObject tutorial_2;
+
     private Sequence s;
     private Sequence s2;
 
@@ -61,7 +64,8 @@ public class PathMoveEvent : MonoBehaviour
         //    .SetLookAt(0.05f, Vector3.forward))
         //    .AppendCallback(() => NextEvent());
 
-        s.Join(transform.DOPath(movePath, moveTime, PathType.CatmullRom)
+        s.AppendCallback(() => DisableUISeq())
+            .Join(transform.DOPath(movePath, moveTime, PathType.CatmullRom)
             .SetEase(Ease.Linear)
             .SetLookAt(0.05f, Vector3.forward))
             .AppendCallback(() => NextEvent())
@@ -77,6 +81,20 @@ public class PathMoveEvent : MonoBehaviour
             .SetLookAt(0.05f, Vector3.forward));
 
         //s.Play();
+    }
+
+    private void DisableUISeq()
+    {
+        Sequence s_1 = DOTween.Sequence();
+
+        var textGroup = tutorial_2.GetComponentInChildren<CanvasGroup>();
+        var duration = 1f;
+
+        s_1.Append(textGroup.DOFade(0f, 1f))
+            .AppendInterval(1f)
+            .AppendCallback(() => tutorial_2.SetActive(false));
+
+        s_1.Play();
     }
 
     private void NextEvent()
