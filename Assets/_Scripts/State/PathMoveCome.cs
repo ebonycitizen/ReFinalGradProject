@@ -65,12 +65,13 @@ public class PathMoveCome : MonoBehaviour
     }
     private IEnumerator EventEnd()
     {
-        float time = 10;
+        yield return new WaitForSeconds(1f);
+        float time = 10f;
         while (time < 20)
         {
 
             dollyCart.m_Speed = time;
-            time += Time.deltaTime * 3;
+            time += Time.deltaTime * 3f;
             yield return null;
         }
 
