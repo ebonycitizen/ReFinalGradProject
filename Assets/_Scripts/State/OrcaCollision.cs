@@ -98,9 +98,9 @@ public class OrcaCollision : MonoBehaviour
                     breakHeart.Play();
 
                 if (grab.GetIsRightHand())
-                    HI5.HI5_Manager.EnableRightVibration(100);
+                    HI5.HI5_Manager.EnableRightVibration(500);
                 else
-                    HI5.HI5_Manager.EnableRightVibration(100);
+                    HI5.HI5_Manager.EnableRightVibration(500);
 
             }
         }

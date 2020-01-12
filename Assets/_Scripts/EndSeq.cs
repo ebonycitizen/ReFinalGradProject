@@ -18,9 +18,13 @@ public class EndSeq : MonoBehaviour
     private MyCinemachineDollyCart dollyCart;
     private float dollySpeed = 10f;
 
+    private int touchTimes;
+
     // Start is called before the first frame update
     void Start()
     {
+        touchTimes = 0;
+
         dollyCart = GameObject.FindObjectOfType<MyCinemachineDollyCart>();
         //StartCoroutine("InitRoute");
 
@@ -52,7 +56,10 @@ public class EndSeq : MonoBehaviour
             else
                 HI5.HI5_Manager.EnableRightVibration(500);
 
-            StartSeq();
+            touchTimes++;
+
+            if(touchTimes == 2)
+                StartSeq();
         }
     }
 

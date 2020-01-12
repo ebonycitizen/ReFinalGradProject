@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShowWaterSplash : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject splashPrefab;
 
     private RainCameraController controller;
 
@@ -22,7 +24,7 @@ public class ShowWaterSplash : MonoBehaviour
     private IEnumerator StartEffect()
     {
         controller.Play();
-
+        Instantiate(splashPrefab);
         yield return new WaitForSeconds(2f);
         controller.Stop();
     }
