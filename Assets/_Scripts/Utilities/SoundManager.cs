@@ -91,6 +91,15 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         }
     }
 
+    public void ResetSeVolume()
+    {
+        foreach (var se in m_seAudioSources)
+        {
+            se.Stop();
+            se.DOFade(1, 0);
+        }
+    }
+
     public void PlayOntShotSe(ESeTable seType)
     {
         var clip = FindClipInSeContainer(seType);

@@ -128,6 +128,7 @@ public class TitleSeq : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
 
+        SoundManager.Instance.ResetSeVolume();
         SceneManager.LoadSceneAsync("Loading", LoadSceneMode.Single);
     }
 
