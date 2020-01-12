@@ -54,6 +54,11 @@ public class LockOn : MonoBehaviour
             lockSec = 0f;
         }
 
+        if (cameraTarget != null && cameraTarget == lockTarget && lockSec == 0)
+        {
+            SoundManager.Instance.PlayOneShotSe(ESeTable.Sparkle_3, 0.3f);
+        }
+
         if (cameraTarget != null && cameraTarget == lockTarget)
         {
             lockSec += Time.deltaTime;

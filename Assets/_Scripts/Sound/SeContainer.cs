@@ -7,7 +7,7 @@ public enum ESeTable
 {
     Sparkle_1/*キラキラの自身の音*/,
     Sparkle_2/*キラキラを使った音*/,
-
+    Sparkle_3/*キラキラに目を合わせた音*/,
 
     Orac_1/*鳴き声*/,
     Orac_2/*喜び*/,
