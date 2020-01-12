@@ -9,6 +9,8 @@ public enum EBgmTable
     Island,
     Ocean,
     Cave,
+    TestCave,
+    TestStream,
 }
 public class BgmContainer : MonoBehaviour
 {

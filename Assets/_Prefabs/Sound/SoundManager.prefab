@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea62fc42a97d3f4593a81995fa265ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
   m_bgmContainer: {fileID: 8343624820379090364}
   m_seContainer: {fileID: 7067694090992069602}
   m_bgmAudio: {fileID: 4403260522004914657}
@@ -169,7 +170,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 250
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -265,6 +266,10 @@ MonoBehaviour:
     BgmClip: {fileID: 8300000, guid: c2e860a47feb31341b41ff963b2d3ddc, type: 3}
   - BgmType: 4
     BgmClip: {fileID: 8300000, guid: 5b7caaa98d956124e98e9e0984759e60, type: 3}
+  - BgmType: 5
+    BgmClip: {fileID: 8300000, guid: 02080e58802890a4783a8a98e3e52ee7, type: 3}
+  - BgmType: 6
+    BgmClip: {fileID: 8300000, guid: 3c24f577a6067a4408f42254817e822c, type: 3}
 --- !u!114 &7067694090992069602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,17 +294,17 @@ MonoBehaviour:
   - SeType: 4
     SeClip: {fileID: 8300000, guid: 756b0e14bba4b9f47b7ccc2cb503d176, type: 3}
   - SeType: 5
-    SeClip: {fileID: 8300000, guid: 670c70b0b29bbef48925276872555931, type: 3}
+    SeClip: {fileID: 8300000, guid: 604efd45efb855e4e845b7e8ebe1b3ff, type: 3}
   - SeType: 6
-    SeClip: {fileID: 8300000, guid: 18426a7c0a2531e409bbcf71a3e33483, type: 3}
+    SeClip: {fileID: 8300000, guid: 99edaeab2db695844a98a8f5ca2c56b1, type: 3}
   - SeType: 7
     SeClip: {fileID: 8300000, guid: a202a0786e6e9c14ebcfc6e038fe1449, type: 3}
   - SeType: 8
-    SeClip: {fileID: 8300000, guid: 8208f7eca8b0b2b48ad92f30096d1620, type: 3}
+    SeClip: {fileID: 8300000, guid: 8f004b0b103759842b6ef9756308399c, type: 3}
   - SeType: 9
-    SeClip: {fileID: 8300000, guid: a9042e1d614c3a84ab32b7819b0d20b0, type: 3}
+    SeClip: {fileID: 8300000, guid: 3536e6bfa7cca184cb20909529c17efd, type: 3}
   - SeType: 10
-    SeClip: {fileID: 8300000, guid: a9042e1d614c3a84ab32b7819b0d20b0, type: 3}
+    SeClip: {fileID: 8300000, guid: a74eb03b235178c49a18865d302a93eb, type: 3}
   - SeType: 11
     SeClip: {fileID: 8300000, guid: 20736696864b8fb469e99550a23f267a, type: 3}
   - SeType: 12
@@ -313,12 +318,16 @@ MonoBehaviour:
   - SeType: 18
     SeClip: {fileID: 8300000, guid: 7b374fa9875394a46898ad0f3dd66de4, type: 3}
   - SeType: 19
-    SeClip: {fileID: 8300000, guid: af07fb967ecd2944c9cfee6ecf5d43b4, type: 3}
+    SeClip: {fileID: 8300000, guid: 4d527941b2c89ad439744f20336f0278, type: 3}
   - SeType: 20
-    SeClip: {fileID: 8300000, guid: a4cf3d00845376b4fa1bd7846cdc826a, type: 3}
+    SeClip: {fileID: 8300000, guid: 982e8604507b24b4cb8ccfab56238bf9, type: 3}
   - SeType: 21
-    SeClip: {fileID: 8300000, guid: 4057b2b689657ad48b5f484c1e8ff97e, type: 3}
+    SeClip: {fileID: 8300000, guid: 6c8dfece2c84fcb4fbfd78412597f387, type: 3}
   - SeType: 22
-    SeClip: {fileID: 8300000, guid: cf73a1f400a226d429edf71b3bf01d4d, type: 3}
+    SeClip: {fileID: 8300000, guid: 20241cec4071e4c4b9ce31f78b8c34d4, type: 3}
   - SeType: 23
-    SeClip: {fileID: 8300000, guid: 9faf35f56c53cd94399ac94beaf31847, type: 3}
+    SeClip: {fileID: 8300000, guid: 34d576e463b7fc24a8bd84b9a8a73513, type: 3}
+  - SeType: 17
+    SeClip: {fileID: 8300000, guid: 1c58e3e9aa084fb4b9c1e6c722562d46, type: 3}
+  - SeType: 16
+    SeClip: {fileID: 8300000, guid: 8e538d1d21877b34ebc3aad834dd5537, type: 3}

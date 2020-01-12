@@ -28,8 +28,8 @@ public enum ESeTable
 
     Tmp_PenguinSinging,
 
-    Tmp_JumpOutWater,
-    Tmp_JumpIntoWater,
+    JumpOutWater,
+    JumpIntoWater,
 
     Crystal,
 
