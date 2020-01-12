@@ -28,10 +28,10 @@ public class BoidGroup : MonoBehaviour
             return;
 
         Object.FindObjectOfType<OrcaState>().ChangeState(gameObject.tag, null);
+                
+        StartCoroutine("Disappear");
 
         SoundManager.Instance.PlayOneShot3DSe(ESeTable.Sparkle_2, speaker);
-
-        StartCoroutine("Disappear");
     }
 
     private IEnumerator Disappear()

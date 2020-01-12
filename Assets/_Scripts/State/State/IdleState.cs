@@ -95,7 +95,8 @@ public partial class OrcaState
 
             RaycastHit hit;
             Debug.DrawRay(cameraEye.position, direction.normalized * 34);
-            bool isHit = Physics.Raycast(cameraEye.position, direction, out hit, 34,1<< LayerMask.NameToLayer("Stage"));
+            int layerMask = 1 << LayerMask.NameToLayer("IgnoreProjection") | 1 << LayerMask.NameToLayer("Stage");
+            bool isHit = Physics.Raycast(cameraEye.position, direction, out hit, 34, layerMask);
 
             Vector3 targetPos;
             if (isHit)

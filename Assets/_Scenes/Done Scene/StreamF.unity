@@ -11838,11 +11838,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 12377341}
     m_Modifications:
-    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_Name
-      value: 3DSESpeaker
-      objectReference: {fileID: 0}
     - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11897,6 +11892,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_Name
+      value: 3DSESpeaker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c7c352644c30847b154ee3e059a095, type: 3}
@@ -14280,6 +14280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HolePillar1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f5af1b574ce16894da644695e360c75e, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f5af1b574ce16894da644695e360c75e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.8
@@ -14348,6 +14352,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 645599862}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &645599864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: f5af1b574ce16894da644695e360c75e,
+    type: 3}
+  m_PrefabInstance: {fileID: 645599862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &645599865
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645599864}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: f5af1b574ce16894da644695e360c75e, type: 3}
 --- !u!1001 &647200126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20849,11 +20873,6 @@ PrefabInstance:
       propertyPath: height
       value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 3765551872770906626, guid: 16074907dd55a324187b5b21cdf07551,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 978166224910816658, guid: 16074907dd55a324187b5b21cdf07551,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -20893,6 +20912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 91.71837
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765551872770906626, guid: 16074907dd55a324187b5b21cdf07551,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 978166224910816700, guid: 16074907dd55a324187b5b21cdf07551,
         type: 3}
@@ -23243,11 +23267,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 692844368}
     m_Modifications:
-    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_Name
-      value: 3DSESpeaker
-      objectReference: {fileID: 0}
     - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23302,6 +23321,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_Name
+      value: 3DSESpeaker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c7c352644c30847b154ee3e059a095, type: 3}
@@ -23561,11 +23585,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1754404168}
     m_Modifications:
-    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_Name
-      value: 3DSESpeaker
-      objectReference: {fileID: 0}
     - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23620,6 +23639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_Name
+      value: 3DSESpeaker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c7c352644c30847b154ee3e059a095, type: 3}
@@ -42459,6 +42483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HolePillar_2_1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5c1cc4f353b34194da036edb589eea0d, type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5c1cc4f353b34194da036edb589eea0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -90.8
@@ -49879,11 +49907,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1085695285}
     m_Modifications:
-    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_Name
-      value: 3DSESpeaker
-      objectReference: {fileID: 0}
     - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -49938,6 +49961,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556882810090393337, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_Name
+      value: 3DSESpeaker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c7c352644c30847b154ee3e059a095, type: 3}
