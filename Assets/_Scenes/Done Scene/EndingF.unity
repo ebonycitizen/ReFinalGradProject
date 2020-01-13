@@ -4501,6 +4501,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3765551872770906628, guid: 16074907dd55a324187b5b21cdf07551,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999722
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765551872770906628, guid: 16074907dd55a324187b5b21cdf07551,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0074574226
+      objectReference: {fileID: 0}
     - target: {fileID: 3765551872754275463, guid: 16074907dd55a324187b5b21cdf07551,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4604,20 +4614,10 @@ PrefabInstance:
       propertyPath: heightDensity
       value: 0.01
       objectReference: {fileID: 0}
-    - target: {fileID: 1303011328810118091, guid: 16074907dd55a324187b5b21cdf07551,
+    - target: {fileID: 3765551872770906626, guid: 16074907dd55a324187b5b21cdf07551,
         type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765551872770906628, guid: 16074907dd55a324187b5b21cdf07551,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999722
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765551872770906628, guid: 16074907dd55a324187b5b21cdf07551,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.0074574226
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8169514499329488540, guid: 16074907dd55a324187b5b21cdf07551,
         type: 3}
@@ -4684,11 +4684,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 020795c3feea9f94f976ccbcb4dbc519, type: 2}
-    - target: {fileID: 3765551872770906626, guid: 16074907dd55a324187b5b21cdf07551,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3765551873045629387, guid: 16074907dd55a324187b5b21cdf07551,
         type: 3}
       propertyPath: m_Enabled
@@ -4707,6 +4702,11 @@ PrefabInstance:
     - target: {fileID: 2121254423349004257, guid: 16074907dd55a324187b5b21cdf07551,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303011328810118091, guid: 16074907dd55a324187b5b21cdf07551,
+        type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 978166224910816700, guid: 16074907dd55a324187b5b21cdf07551,
@@ -9045,7 +9045,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   pathType: 1
   pathMode: 1
-  easeType: 1
+  easeType: 6
   lockPosition: 0
   lockRotation: 0
   waypointRotation: 0

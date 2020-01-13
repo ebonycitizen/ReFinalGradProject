@@ -10240,7 +10240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260598783}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 179.49783, y: 51.789486, z: 592.4607}
+  m_LocalPosition: {x: 179.49783, y: 34.1, z: 592.4607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1601039012}
@@ -31363,7 +31363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758141443}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 146.58684, y: 51.789486, z: 488.0249}
+  m_LocalPosition: {x: 146.58684, y: 50.2, z: 488.0249}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1872172191}
@@ -36365,6 +36365,11 @@ PrefabInstance:
       propertyPath: simulation
       value: 
       objectReference: {fileID: 871940703}
+    - target: {fileID: 6589935643037386363, guid: b7a6858ebdb911c41b7216af10f8e3fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7a6858ebdb911c41b7216af10f8e3fd, type: 3}
 --- !u!1 &840196296
@@ -43884,7 +43889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062637163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 179.49783, y: 51.789486, z: 592.4607}
+  m_LocalPosition: {x: 179.49783, y: 34.7, z: 592.4607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1872172191}
@@ -44019,7 +44024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065232399}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 267.61212, y: 23.810421, z: 770.63696}
+  m_LocalPosition: {x: 277.4, y: -15.7, z: 770.63696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1872172191}
@@ -61509,7 +61514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454407428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 281, y: 23.810421, z: 774.9}
+  m_LocalPosition: {x: 281, y: -26, z: 774.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1601039012}
@@ -85061,7 +85066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: CaveF
-  unloadWaitSec: 4
+  unloadWaitSec: 2
   waitActiveSec: 9.5
   fogData: {fileID: 11400000, guid: c4bd7c5ca8f6d7e4d8d846b2525ecb5e, type: 2}
   postEffect: {fileID: 0}

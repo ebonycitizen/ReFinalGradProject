@@ -10,7 +10,7 @@ public enum ESeTable
     Sparkle_3/*キラキラに目を合わせた音*/,
 
     Orac_1/*鳴き声*/,
-    Orac_2/*喜び*/,
+    //Orac_2/*喜び*/,
     Orac_3/*悲しい*/,
     Orac_4/*甘える*/,
     Orac_5/*ひるんだ時の声*/,

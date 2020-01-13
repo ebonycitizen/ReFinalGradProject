@@ -11,6 +11,8 @@ public enum EBgmTable
     Cave,
     TestCave,
     TestStream,
+    FullBgm,
+
 }
 public class BgmContainer : MonoBehaviour
 {
