@@ -80,10 +80,17 @@ public class TitleSeq : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.C))
+            SceneManager.LoadSceneAsync("CalibrationF");
+
         if (Input.GetKeyDown(KeyCode.Return))
             StartCoroutine("StartUp");
     }
 
+    public void StartSeq()
+    {
+        StartCoroutine("StartUp");
+    }
 
     private IEnumerator StartUp()
     {
