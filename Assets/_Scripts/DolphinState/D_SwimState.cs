@@ -11,6 +11,8 @@ public partial class DolphinState
         DolphinBoid boid;
         DolphinSimulation simulation;
 
+        Sequence s;
+
         protected internal override void Enter()
         {
             Context.ChangeParentNull();
@@ -32,6 +34,8 @@ public partial class DolphinState
         {
             boid.enabled = false;
             simulation.RemoveVoid(boid);
+
+            s.Pause();
         }
         
         private void Shout()
@@ -45,7 +49,7 @@ public partial class DolphinState
             else if (seRand >= 1)
                 se = ESeTable.Dolphin_2;
 
-            Sequence s = DOTween.Sequence();
+            s = DOTween.Sequence();
 
             s.AppendInterval(waitTime)
                 .AppendCallback(() => SoundManager.Instance.PlayOneShot3DSe(se, Context.speaker))
