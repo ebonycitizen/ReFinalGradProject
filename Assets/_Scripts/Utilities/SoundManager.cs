@@ -17,6 +17,13 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     [SerializeField]
     private List<AudioSource> m_seAudioSources = new List<AudioSource>();
 
+    public bool IsBgmStarted { get; private set; }
+
+    public void SetStartingBgmFlag(bool status)
+    {
+        IsBgmStarted = status;
+    }
+
     public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float volume = 1)
     {
         if (m_bgmAudio.isPlaying)

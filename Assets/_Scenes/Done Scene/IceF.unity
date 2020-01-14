@@ -18635,10 +18635,7 @@ MonoBehaviour:
   - {fileID: 1242834064}
   - {fileID: 235195465}
   m_singEffect: {fileID: 971611911}
-  m_speaker: {fileID: 1367064616}
-  m_eSe: 23
   m_singTime: 2.5
-  m_turnTime: 1
   m_audio: {fileID: 430703164}
 --- !u!1 &524072301
 GameObject:
@@ -37783,10 +37780,7 @@ MonoBehaviour:
   - {fileID: 86097086}
   - {fileID: 996982127}
   m_singEffect: {fileID: 1546205249}
-  m_speaker: {fileID: 2003144487}
-  m_eSe: 16
   m_singTime: 2.5
-  m_turnTime: 1
   m_audio: {fileID: 1956036416}
 --- !u!4 &1254649187
 Transform:
@@ -40404,18 +40398,6 @@ Transform:
   m_Father: {fileID: 1608098814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 21.78}
---- !u!114 &1367064616 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6171186993576598582, guid: a0c7c352644c30847b154ee3e059a095,
-    type: 3}
-  m_PrefabInstance: {fileID: 2005008428}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c21d620f32e4d743902a9c2439afca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1367064619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
@@ -48010,8 +47992,18 @@ PrefabInstance:
     - target: {fileID: 9199673852498263980, guid: a0c7c352644c30847b154ee3e059a095,
         type: 3}
       propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199673852498263980, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9199673852498263980, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1bed3efd56303ee479bd5db718fb4a1a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c7c352644c30847b154ee3e059a095, type: 3}
 --- !u!1001 &1476206180
@@ -49026,6 +49018,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7067694090992069602, guid: 56468dd09e7a5734b8c7647a3d5b1bcf,
+        type: 3}
+      propertyPath: m_seItems.Array.data[13].SeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 76e172228b8af004eb2bd9fdd2513c0a, type: 3}
+    - target: {fileID: 7067694090992069602, guid: 56468dd09e7a5734b8c7647a3d5b1bcf,
+        type: 3}
+      propertyPath: m_seItems.Array.data[14].SeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1bed3efd56303ee479bd5db718fb4a1a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56468dd09e7a5734b8c7647a3d5b1bcf, type: 3}
 --- !u!1 &1529981455
@@ -62790,18 +62792,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2000352401}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2003144487 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6171186993576598582, guid: a0c7c352644c30847b154ee3e059a095,
-    type: 3}
-  m_PrefabInstance: {fileID: 1476064582}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c21d620f32e4d743902a9c2439afca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2003144490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
@@ -62894,10 +62884,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ff45d5d7a6cc8254eb3d1f54f5633cb4, type: 3}
+      objectReference: {fileID: 8300000, guid: 76e172228b8af004eb2bd9fdd2513c0a, type: 3}
     - target: {fileID: 9199673852498263980, guid: a0c7c352644c30847b154ee3e059a095,
         type: 3}
       propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199673852498263980, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -60,11 +60,11 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         GameObject behaviour = GameObject.Find("Behavior Manager");
-        if(behaviour != null)
+        if (behaviour != null)
             SceneManager.MoveGameObjectToScene(behaviour, SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
-        
+
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
         ChangePostEffect();
@@ -78,6 +78,7 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     // Update is called once per frame
     void Update()
     {
+
     }
 
     private void ChangePostEffect()
@@ -93,11 +94,10 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         if (scene == "TutorialF")
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
         if (scene == "IceF")
+        {
             SoundManager.Instance.PlayBgm(EBgmTable.FullBgm, 0.8f);
-        //if (scene == "CoralF")
-        //    SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
-        //if (scene == "CaveF")
-        //    SoundManager.Instance.PlayBgm(EBgmTable.Cave);
+            SoundManager.Instance.SetStartingBgmFlag(true);
+        }
     }
 
     private void ChangeFogUsage()
