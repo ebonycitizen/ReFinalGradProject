@@ -39,7 +39,7 @@ namespace BehaviorDesigner.Runtime.Tasks
             }
 
             // Stop the behavior tree
-            behavior.DisableBehavior();
+            //behavior.DisableBehavior();
             // Start the behavior tree back up
             behavior.EnableBehavior();
             // Return success

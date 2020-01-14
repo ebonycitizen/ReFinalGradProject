@@ -14,6 +14,7 @@ public class StageManager : MonoBehaviour
 
     private ChangeStage changeStage;
     private GlobalFog globalFog;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);

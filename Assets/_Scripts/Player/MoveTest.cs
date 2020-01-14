@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using SWS;
+using UnityEngine.SceneManagement;
 using UniRx;
 using System;
 
@@ -17,6 +18,13 @@ public class MoveTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SceneManager.LoadSceneAsync("New Scene");
+            SceneManager.UnloadSceneAsync("New Scene1");
+            StopAllCoroutines();
+        }
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             m_splineMove.StopAllCoroutines();
