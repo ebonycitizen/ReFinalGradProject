@@ -20,7 +20,8 @@ public class TutorialUISeq : MonoBehaviour
         var textGroup = tutorial_2.GetComponentInChildren<CanvasGroup>();
         textGroup.DOFade(0f, 0f);
 
-        Seq1();
+        //Seq1();
+        Seq2();
     }
 
     // Update is called once per frame
@@ -67,7 +68,8 @@ public class TutorialUISeq : MonoBehaviour
         var textGroup = tutorial_2.GetComponentInChildren<CanvasGroup>();
         var duration = 1f;
 
-        s_1.Append(textGroup.DOFade(1f, duration));
+        s_1.AppendInterval(1f)
+            .Append(textGroup.DOFade(1f, duration));
         s_1.Play();
     }
 }

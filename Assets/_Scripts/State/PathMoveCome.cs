@@ -113,7 +113,7 @@ public class PathMoveCome : MonoBehaviour
     private IEnumerator EventEnd()
     {
         UISeq2();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         float time = 10f;
         while (time < 20)
         {

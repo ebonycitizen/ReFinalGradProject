@@ -39,7 +39,7 @@ public class TutorialSeq : MonoBehaviour
             var duration = 5f;
             SteamVR_Fade.Start(new Color(0, 0, 0, 0), duration, true);
             EnableLight(duration * 10f);
-            Invoke("EnableGameObject", 7f);
+            Invoke("EnableGameObject", 1f);
         }
 #endif
     }
@@ -67,7 +67,7 @@ public class TutorialSeq : MonoBehaviour
         var duration = 5f;
         SteamVR_Fade.Start(new Color(0,0,0,0), duration);
         EnableLight(duration);
-        Invoke("EnableGameObject", 4f);
+        Invoke("EnableGameObject", 1f);
         //EnableGameObject();
 
         SceneManager.activeSceneChanged -= OnActiveScene;

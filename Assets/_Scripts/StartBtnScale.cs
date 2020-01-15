@@ -10,6 +10,13 @@ public class StartBtnScale : MonoBehaviour
     [SerializeField]
     private Transform transform;
 
+    [SerializeField]
+    private SpriteRenderer button;
+    [SerializeField]
+    private Sprite origin;
+    [SerializeField]
+    private Sprite cursor;
+
     private Vector3 originScale;
     private Vector3 enlargeScale;
 
@@ -28,5 +35,7 @@ public class StartBtnScale : MonoBehaviour
         targetScale = item.IsOver ? enlargeScale : originScale;
 
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * 10f);
+
+        button.sprite = item.IsOver ? cursor : origin;
     }
 }
