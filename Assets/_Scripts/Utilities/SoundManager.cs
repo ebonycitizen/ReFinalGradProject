@@ -77,7 +77,26 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
             m_bgmAudio.Play();
         }
     }
+    public void PlayBgmWithoutLoop(EBgmTable bgmType, float volume)
+    {
+        if (m_bgmAudio.isPlaying)
+            m_bgmAudio.Stop();
 
+        //音量調整
+        var clampVolume = Mathf.Clamp01(volume);
+
+        var clip = FindClipInBgmContainer(bgmType);
+
+        if (!clip)
+            return;
+        else
+        {
+            m_bgmAudio.volume = clampVolume;
+            m_bgmAudio.clip = clip;
+            m_bgmAudio.loop = false;
+            m_bgmAudio.Play();
+        }
+    }
     public void StopAllBgm()
     {
         m_bgmAudio.Stop();

@@ -13,6 +13,7 @@ public partial class DolphinState : MonoBehaviour
         Come,
         Swim,
         Jump,
+        DefaultSwim,
     }
 
     private enum JumpType
@@ -64,6 +65,8 @@ public partial class DolphinState : MonoBehaviour
 
         stateMachine.AddTransition<D_SwimState, D_JumpState>((int)StateEventId.Jump);
 
+        stateMachine.AddTransition<D_SwimState, D_DefaultSwimState>((int)StateEventId.DefaultSwim);
+
         stateMachine.SetStartState<D_IdleState>();
     }
     private void Start()
@@ -113,7 +116,11 @@ public partial class DolphinState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Jump);
             return true;
         }
-
+        if(tag=="D_DefaultSwim")
+        {
+            stateMachine.SendEvent((int)StateEventId.DefaultSwim);
+            return true;
+        }
 
         return false;
     }
