@@ -20,7 +20,7 @@ public class TestBgm : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
             SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
         if (Input.GetKeyDown(KeyCode.Alpha4))
-            SoundManager.Instance.PlayBgm(EBgmTable.TestCave);
+            SoundManager.Instance.PlayBgm(EBgmTable.TestCave, 0.7f);
         if (Input.GetKeyDown(KeyCode.Alpha5))
             SoundManager.Instance.PlayBgm(EBgmTable.TestStream);
     }
