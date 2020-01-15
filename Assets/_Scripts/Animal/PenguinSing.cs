@@ -18,6 +18,9 @@ public class PenguinSing : PenguinFunction
     [SerializeField]
     private AudioSource m_audio = null;
 
+    [SerializeField]
+    private float m_stopAudioTime = 3;
+
     public override void Setup()
     {
         m_penguins.ForEach(x => x.PlayNextAnimation("Sing"));
@@ -31,6 +34,13 @@ public class PenguinSing : PenguinFunction
                 });
 
             }).AddTo(this);
+
+        Observable.Timer(TimeSpan.FromSeconds(m_stopAudioTime))
+    .Subscribe(_ =>
+    {
+        m_audio.Stop();
+
+    }).AddTo(this);
 
         m_singEffect.Play();
 
