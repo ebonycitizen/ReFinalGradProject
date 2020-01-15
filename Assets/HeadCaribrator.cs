@@ -14,7 +14,7 @@ public class HeadCaribrator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Callibrate();
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class HeadCaribrator : MonoBehaviour
 
     public void Callibrate()
     {
-        var gapPos = offsetEyePos.position - eyePos.position;
-        cameraRig.position += gapPos;
+        var gapPosY = offsetEyePos.position.y - eyePos.position.y;
+        cameraRig.position += new Vector3(0, gapPosY);
     }
 }
