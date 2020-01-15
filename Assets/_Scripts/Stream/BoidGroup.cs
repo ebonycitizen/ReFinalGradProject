@@ -10,6 +10,9 @@ public class BoidGroup : MonoBehaviour
     [SerializeField]
     private Speaker speaker;
 
+    [SerializeField]
+    private ParticleSystem m_disapearEff;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,19 +42,24 @@ public class BoidGroup : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         SkinnedMeshRenderer[] renderer = transform.GetComponentsInChildren<SkinnedMeshRenderer>();
-        ParticleSystem[] particle = transform.GetComponentsInChildren<ParticleSystem>();
+
         foreach (var r in renderer)
             r.material = disappearMat;
+
+        var eff = Instantiate(m_disapearEff);
+        eff.transform.position = this.transform.position;
+
+        eff.Play();
+
+
 
         yield return new WaitForSeconds(0.5f);
 
         foreach (var r in renderer)
             r.transform.parent.parent.DOScale(0, 0.5f);
 
-        foreach (var p in particle)
-            p.Play();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
         Destroy(gameObject);
     }
