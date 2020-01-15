@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 using UniRx;
 using UniRx.Triggers;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.AI;
 
-public class StageManager : MonoBehaviour
+public class StageManager : SingletonMonoBehaviour<StageManager>
 {
     [SerializeField]
     private GameObject[] transferObj;
@@ -58,9 +59,12 @@ public class StageManager : MonoBehaviour
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
+        GameObject behaviour = GameObject.Find("Behavior Manager");
+        if(behaviour != null)
+            SceneManager.MoveGameObjectToScene(behaviour, SceneManager.GetSceneByName(scene));
+
         ChangeBGM(scene);
         
-
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
         ChangePostEffect();
@@ -89,11 +93,11 @@ public class StageManager : MonoBehaviour
         if (scene == "TutorialF")
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
         if (scene == "IceF")
-            SoundManager.Instance.PlayBgm(EBgmTable.Island);
-        if (scene == "CoralF")
-            SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
-        if (scene == "CaveF")
-            SoundManager.Instance.PlayBgm(EBgmTable.Cave);
+            SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.FullBgm, 0.8f);
+        //if (scene == "CoralF")
+        //    SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
+        //if (scene == "CaveF")
+        //    SoundManager.Instance.PlayBgm(EBgmTable.Cave);
     }
 
     private void ChangeFogUsage()

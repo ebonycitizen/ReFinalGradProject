@@ -18,9 +18,13 @@ public class EndSeq : MonoBehaviour
     private MyCinemachineDollyCart dollyCart;
     private float dollySpeed = 10f;
 
+    private int touchTimes;
+
     // Start is called before the first frame update
     void Start()
     {
+        touchTimes = 0;
+
         dollyCart = GameObject.FindObjectOfType<MyCinemachineDollyCart>();
         //StartCoroutine("InitRoute");
 
@@ -36,10 +40,10 @@ public class EndSeq : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if DEBUG
+//#if DEBUG
         if (Input.GetKeyDown(KeyCode.Space))
             StartSeq();
-#endif
+//#endif
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,7 +56,10 @@ public class EndSeq : MonoBehaviour
             else
                 HI5.HI5_Manager.EnableRightVibration(500);
 
-            StartSeq();
+            touchTimes++;
+
+            if(touchTimes == 2)
+                StartSeq();
         }
     }
 
@@ -80,10 +87,10 @@ public class EndSeq : MonoBehaviour
         StartCoroutine("ChangeSpeed");
         yield return new WaitForSeconds(6f);
 
-        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 6f);
+        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 8f);
 
-        yield return new WaitForSeconds(7f);
-        //SceneManager
+        yield return new WaitForSeconds(8f);
+        SceneManager.LoadSceneAsync("ThankF", LoadSceneMode.Single);
     }
 
     private IEnumerator ChangeSpeed()

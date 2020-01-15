@@ -13,6 +13,14 @@ public partial class DolphinState : MonoBehaviour
         Come,
         Swim,
         Jump,
+        DefaultSwim,
+    }
+
+    private enum JumpType
+    {
+        Jump1,
+        Jump2,
+        Jump3,
     }
 
     [SerializeField] //for debug
@@ -32,6 +40,12 @@ public partial class DolphinState : MonoBehaviour
     [SerializeField]
     private GameObject waterSplash;
 
+    [SerializeField]
+    private JumpType jumpType;
+
+    [SerializeField]
+    private Speaker speaker;
+
     private ImtStateMachine<DolphinState> stateMachine;
 
     // Start is called before the first frame update
@@ -50,6 +64,8 @@ public partial class DolphinState : MonoBehaviour
         stateMachine.AddTransition<D_JumpState, D_SwimState>((int)StateEventId.Swim);
 
         stateMachine.AddTransition<D_SwimState, D_JumpState>((int)StateEventId.Jump);
+
+        stateMachine.AddTransition<D_SwimState, D_DefaultSwimState>((int)StateEventId.DefaultSwim);
 
         stateMachine.SetStartState<D_IdleState>();
     }
@@ -100,7 +116,11 @@ public partial class DolphinState : MonoBehaviour
             stateMachine.SendEvent((int)StateEventId.Jump);
             return true;
         }
-
+        if(tag=="D_DefaultSwim")
+        {
+            stateMachine.SendEvent((int)StateEventId.DefaultSwim);
+            return true;
+        }
 
         return false;
     }
@@ -111,10 +131,23 @@ public partial class DolphinState : MonoBehaviour
             Debug.Log(stateMachine.CurrentStateName);
             if (stateMachine.CurrentStateName != "D_SwimState")
                 return;
-            animator.SetTrigger("Jump");
+
+            switch(jumpType)
+            {
+                case JumpType.Jump1:
+                    animator.SetTrigger("Jump1");
+                    break;
+                case JumpType.Jump2:
+                    animator.SetTrigger("Jump2");
+                    break;
+                case JumpType.Jump3:
+                    animator.SetTrigger("Jump3");
+                    break;
+            }
+            
             stateMachine.SendEvent((int)StateEventId.Jump);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.Tmp_JumpOutWater, 0.1f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpOutWater, 0.1f);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -125,7 +158,7 @@ public partial class DolphinState : MonoBehaviour
             simulation.ChangeExit();
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, other.ClosestPoint(transform.position), waterSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.Tmp_JumpIntoWater, 0.1f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.1f);
         }
     }
     private void OnCollisionEnter(Collision collision)

@@ -48,13 +48,16 @@ public class OrcaCollision : MonoBehaviour
         if (other.gameObject.tag == "Water")
         {
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpOutWater, speaker);
+            //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpOutWater, speaker);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpOutWater, 0.7f);
         }
         if(other.gameObject.tag=="Jump")
         {
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpOutWater, speaker);
+            //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpOutWater, speaker);
             orcaState.ChangeState("G_PlayerJump", this.gameObject);
+
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpOutWater, 0.7f);
 
         }
     }
@@ -63,13 +66,15 @@ public class OrcaCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Water")
         {
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpIntoWater, speaker);
+            //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpIntoWater, speaker);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.7f);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
         }
         if (other.gameObject.tag == "Jump")
         {
-            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Tmp_JumpIntoWater, speaker);
+            //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpIntoWater, speaker);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.7f);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
             orcaState.ChangeState("G_Idle", this.gameObject);
@@ -98,9 +103,9 @@ public class OrcaCollision : MonoBehaviour
                     breakHeart.Play();
 
                 if (grab.GetIsRightHand())
-                    HI5.HI5_Manager.EnableRightVibration(100);
+                    HI5.HI5_Manager.EnableRightVibration(500);
                 else
-                    HI5.HI5_Manager.EnableRightVibration(100);
+                    HI5.HI5_Manager.EnableRightVibration(500);
 
             }
         }

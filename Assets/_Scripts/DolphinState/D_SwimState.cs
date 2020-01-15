@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using IceMilkTea.Core;
+using DG.Tweening;
 
 public partial class DolphinState
 {
@@ -9,6 +10,8 @@ public partial class DolphinState
     {
         DolphinBoid boid;
         DolphinSimulation simulation;
+
+        Sequence s;
 
         protected internal override void Enter()
         {
@@ -20,6 +23,7 @@ public partial class DolphinState
             simulation = Context.simulation;
 
             simulation.AddBoid(boid);
+            Shout();
         }
         protected internal override void Update()
         {
@@ -30,7 +34,29 @@ public partial class DolphinState
         {
             boid.enabled = false;
             simulation.RemoveVoid(boid);
+
+            s.Pause();
         }
         
+        private void Shout()
+        {
+            var waitTime = Random.Range(15, 25);
+            var seRand = Random.Range(0, 2);
+            ESeTable se = ESeTable.Dolphin_2;
+
+            if(seRand == 0)
+                se = ESeTable.Dolphin_1;
+            else if (seRand >= 1)
+                se = ESeTable.Dolphin_2;
+
+            s = DOTween.Sequence();
+
+            s.AppendInterval(waitTime)
+                .AppendCallback(() => SoundManager.Instance.PlayOneShot3DSe(se, Context.speaker))
+                .AppendCallback(() => Context.animator.SetTrigger("Shout"));
+
+            s.Play().SetLoops(-1);
+        }
+
     }
 }

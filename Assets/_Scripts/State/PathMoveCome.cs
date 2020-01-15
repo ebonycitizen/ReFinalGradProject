@@ -16,6 +16,12 @@ public class PathMoveCome : MonoBehaviour
     [SerializeField]
     private Transform orca;
 
+    [SerializeField]
+    private GameObject tutorial_3;
+
+    [SerializeField]
+    private GameObject tutorial_4;
+
     private Sequence s;
 
     public bool hasDone { get; private set; }
@@ -29,7 +35,7 @@ public class PathMoveCome : MonoBehaviour
     {
         hasDone = false;
 
-        //glitter.gameObject.SetActive(false);
+        InitUI();
 
         Vector3[] movePath = new Vector3[pathRef.childCount];
 
@@ -43,8 +49,7 @@ public class PathMoveCome : MonoBehaviour
            .SetEase(Ease.Linear)
            .SetLookAt(0.05f, Vector3.forward))
            .AppendCallback(() => hasDone = true)
-           .AppendInterval(2f)
-           .AppendCallback(() => glitter.gameObject.SetActive(true));
+           .AppendCallback(() => UISeq1());
     }
 
     // Update is called once per frame
@@ -52,6 +57,48 @@ public class PathMoveCome : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 
+    }
+
+    private void InitUI()
+    {
+        var textGroup1 = tutorial_3.GetComponentInChildren<CanvasGroup>();
+        textGroup1.DOFade(0f, 0f);
+
+        var textGroup2 = tutorial_4.GetComponentInChildren<CanvasGroup>();
+        textGroup2.DOFade(0f, 0f);
+
+    }
+
+    private void UISeq1()
+    {
+        Sequence s_1 = DOTween.Sequence();
+
+        var textGroup = tutorial_3.GetComponentInChildren<CanvasGroup>();
+        var duration = 1f;
+
+        s_1.Append(textGroup.DOFade(1f, duration));
+
+        s_1.Play();
+    }
+
+    private void UISeq2()
+    {
+        Sequence s_1 = DOTween.Sequence();
+
+        var textGroup1 = tutorial_3.GetComponentInChildren<CanvasGroup>();
+        var textGroup2 = tutorial_4.GetComponentInChildren<CanvasGroup>();
+        var duration = 1f;
+
+        s_1.Append(textGroup1.DOFade(0f, duration))
+            .Append(textGroup2.DOFade(1f, duration))
+            .AppendInterval(1f)
+            .AppendCallback(() => tutorial_3.SetActive(false))
+            .AppendInterval(4f)
+            .Append(textGroup2.DOFade(0f, duration))
+            .AppendInterval(1f)
+            .AppendCallback(() => tutorial_4.SetActive(false));
+
+        s_1.Play();
     }
 
     public void StartEvent()
@@ -65,12 +112,14 @@ public class PathMoveCome : MonoBehaviour
     }
     private IEnumerator EventEnd()
     {
-        float time = 10;
+        UISeq2();
+        yield return new WaitForSeconds(1f);
+        float time = 10f;
         while (time < 20)
         {
 
             dollyCart.m_Speed = time;
-            time += Time.deltaTime * 3;
+            time += Time.deltaTime * 3f;
             yield return null;
         }
 

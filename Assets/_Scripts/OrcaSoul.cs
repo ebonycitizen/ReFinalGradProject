@@ -36,10 +36,10 @@ public class OrcaSoul : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if DEBUG
+//#if DEBUG
         if (Input.GetKeyDown(KeyCode.Return))
             StartCoroutine("StartEffect");
-#endif
+//#endif
     }
 
     private void OnTriggerEnter(Collider other)

@@ -14,6 +14,9 @@ public class EnableEmissionAnim : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         splineMove = GetComponent<splineMove>();
+
+        if (splineMove == null)
+            splineMove = GetComponentInParent<splineMove>();
     }
 
     private IEnumerator Emission()

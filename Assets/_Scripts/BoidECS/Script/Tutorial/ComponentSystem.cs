@@ -21,7 +21,7 @@ public class BoidsEntityGenerationSystem : ComponentSystem
     Unity.Mathematics.Random random;
     bool hasSpawn = false;
 
-    protected override void OnCreateManager()
+    protected override void OnStartRunning()
     {
         //if (!Bootstrap.IsValid) return;
 
@@ -42,7 +42,12 @@ public class BoidsEntityGenerationSystem : ComponentSystem
 
     protected override void OnUpdate()
     {
-        if (!Bootstrap.IsValid) return;
+        if (!Bootstrap.IsValid)
+        {
+            if (hasSpawn)
+                hasSpawn = false;
+                return;
+        }
 
         var entities = group.GetEntityArray();
         for (int i = 0; i < entities.Length - Bootstrap.Boid.count; ++i)

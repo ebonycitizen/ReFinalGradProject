@@ -56,7 +56,10 @@ public class WakeSeq : MonoBehaviour
     private IEnumerator Wake()
     {
         foreach (var h in hands)
+        {
+            if(h != null)
             h.material = soulHand;
+        }
 
         GameObject.Find("OrcaModel").SetActive(false);
         yield return null;

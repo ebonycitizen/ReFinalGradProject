@@ -30,6 +30,10 @@ public partial class OrcaState
             camera = Context.cameraEye;
 
             targetPos = orca.position;
+
+            Context.SetBehaviorStatus(true);
+
+            SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_5, orca.GetComponentInChildren<Speaker>());
         }
         protected internal override void Update()
         {
@@ -59,7 +63,7 @@ public partial class OrcaState
 
         protected internal override void Exit()
         {
-            
+            Context.SetBehaviorStatus(false);
         }
     }
 }

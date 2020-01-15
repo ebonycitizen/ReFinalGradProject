@@ -20,12 +20,17 @@ public partial class OrcaState
 
         private MyCinemachineDollyCart dolly;
 
+        private Transform cameraEye;
+        private bool oldHit;
+
         protected internal override void Enter()
         {
             Context.ChangeParentCameraRig();
             target = Context.idleTarget;
             rot = Context.idleRotation;
             orca = Context.orcaModel.transform;
+
+            cameraEye = Context.cameraEye.transform;
 
             dolly = Context.dolly;
 
@@ -88,11 +93,29 @@ public partial class OrcaState
         {
             var direction = Quaternion.Euler(target.localEulerAngles) * Context.cameraRig.transform.forward;
 
-            var targetPos = direction * distance;
+            RaycastHit hit;
+            Debug.DrawRay(cameraEye.position, direction.normalized * 34);
+            int layerMask = 1 << LayerMask.NameToLayer("IgnoreProjection") | 1 << LayerMask.NameToLayer("Stage");
+            bool isHit = Physics.Raycast(cameraEye.position, direction, out hit, 34, layerMask);
+
+            Vector3 targetPos;
+            if (isHit)
+            {
+                targetPos = Context.transform.InverseTransformPoint(hit.point - direction * 10);//distance = (transform.position - hit.point).magnitude;
+                Debug.Log("targetPos   " + direction * distance + "   " + targetPos);
+            }
+            else
+            {
+                targetPos = direction * distance;//distance = maxDistance;
+                if (oldHit != isHit)
+                    ratio = 1f;
+            }
 
             targetPos -= orca.transform.up *0.2f;
 
             orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime * ratio);
+
+            oldHit = isHit;
         }
         private Vector3 old;
         private void Rotate()

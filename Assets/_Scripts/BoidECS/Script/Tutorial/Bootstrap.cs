@@ -7,12 +7,16 @@ namespace BoidECS
 
 public class Bootstrap : MonoBehaviour 
 {
+    private static bool uu;
+
     public static Bootstrap _Instance;
 
     public static Bootstrap Instance 
     { 
         get 
-        { 
+        {
+            if (_Instance == null && FindObjectOfType<Bootstrap>() != null)
+                _Instance = FindObjectOfType<Bootstrap>();
             return _Instance ?? (_Instance = FindObjectOfType<Bootstrap>());
         }
     }
@@ -113,6 +117,10 @@ public class Bootstrap : MonoBehaviour
         return null;
     }
 
+    private void OnEnable()
+    {
+            // boidInfo.hasDestroy = false;
+    }
 
     private void OnDisable()
     {
