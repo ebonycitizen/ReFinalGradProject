@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using BrunoMikoski.TextJuicer;
 
 public class TutorialUISeq : MonoBehaviour
 {
@@ -66,10 +67,12 @@ public class TutorialUISeq : MonoBehaviour
         Sequence s_1 = DOTween.Sequence();
 
         var textGroup = tutorial_2.GetComponentInChildren<CanvasGroup>();
+        var anim = tutorial_2.GetComponentInChildren<JuicedText>();
         var duration = 1f;
 
         s_1.AppendInterval(1f)
-            .Append(textGroup.DOFade(1f, duration));
+            .Append(textGroup.DOFade(1f, duration))
+            .AppendCallback(() => anim.Play());
         s_1.Play();
     }
 }

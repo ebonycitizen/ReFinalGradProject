@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using BrunoMikoski.TextJuicer;
 
 public class PathMoveCome : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class PathMoveCome : MonoBehaviour
 
     [SerializeField]
     private GameObject tutorial_4;
+
+    [SerializeField]
+    private ParticleSystem[] illusionFishes;
 
     private Sequence s;
 
@@ -74,9 +78,11 @@ public class PathMoveCome : MonoBehaviour
         Sequence s_1 = DOTween.Sequence();
 
         var textGroup = tutorial_3.GetComponentInChildren<CanvasGroup>();
+        var anim1 = tutorial_3.GetComponentInChildren<JuicedText>();
         var duration = 1f;
 
-        s_1.Append(textGroup.DOFade(1f, duration));
+        s_1.Append(textGroup.DOFade(1f, duration))
+            .AppendCallback(() => anim1.Play());
 
         s_1.Play();
     }
@@ -87,18 +93,32 @@ public class PathMoveCome : MonoBehaviour
 
         var textGroup1 = tutorial_3.GetComponentInChildren<CanvasGroup>();
         var textGroup2 = tutorial_4.GetComponentInChildren<CanvasGroup>();
+
+        var anim2 = tutorial_4.GetComponentInChildren<JuicedText>();
+
         var duration = 1f;
 
         s_1.Append(textGroup1.DOFade(0f, duration))
-            .Append(textGroup2.DOFade(1f, duration))
+            .Join(textGroup2.DOFade(1f, duration))
+            .AppendCallback(()=> StartCoroutine("ShowIllusionFish"))
+            .AppendCallback(() => anim2.Play())
             .AppendInterval(1f)
             .AppendCallback(() => tutorial_3.SetActive(false))
-            .AppendInterval(4f)
+            .AppendInterval(10f)
             .Append(textGroup2.DOFade(0f, duration))
             .AppendInterval(1f)
             .AppendCallback(() => tutorial_4.SetActive(false));
 
         s_1.Play();
+    }
+
+    private IEnumerator ShowIllusionFish()
+    {
+        foreach(var p in illusionFishes)
+        {
+            p.Play();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void StartEvent()
@@ -115,7 +135,7 @@ public class PathMoveCome : MonoBehaviour
         UISeq2();
         yield return new WaitForSeconds(3f);
         float time = 10f;
-        while (time < 20)
+        while (time < 10)
         {
 
             dollyCart.m_Speed = time;
@@ -123,7 +143,7 @@ public class PathMoveCome : MonoBehaviour
             yield return null;
         }
 
-        dollyCart.m_Speed = 20f;
+        dollyCart.m_Speed = 10f;
 
         yield return null;
     }
