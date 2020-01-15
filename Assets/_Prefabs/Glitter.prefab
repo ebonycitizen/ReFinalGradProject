@@ -151,7 +151,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.001
+      scalar: 0.0001
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -952,18 +952,18 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 34
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 1
-          outSlope: 1
-          tangentMode: 34
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
@@ -1271,7 +1271,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 53777
+        atime1: 29491
         atime2: 65535
         atime3: 65535
         atime4: 65535
@@ -4632,7 +4632,7 @@ ParticleSystemRenderer:
   m_MaxParticleSize: 0.1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: 10
+  m_LengthScale: 7
   m_SortingFudge: 10
   m_NormalDirection: 1
   m_ShadowBias: 0
@@ -37415,61 +37415,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3DSESpeaker
       objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9199673852498263980, guid: a0c7c352644c30847b154ee3e059a095,
         type: 3}
       propertyPath: MinDistance
@@ -37565,6 +37510,61 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1662659737673998264}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7644291536265789987, guid: a0c7c352644c30847b154ee3e059a095,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c7c352644c30847b154ee3e059a095, type: 3}
 --- !u!4 &192740257519198775 stripped
