@@ -70,7 +70,7 @@ public class TutorialUISeq : MonoBehaviour
         var anim = tutorial_2.GetComponentInChildren<JuicedText>();
         var duration = 1f;
 
-        s_1.AppendInterval(1f)
+        s_1.AppendInterval(2f)
             .Append(textGroup.DOFade(1f, duration))
             .AppendCallback(() => anim.Play());
         s_1.Play();
