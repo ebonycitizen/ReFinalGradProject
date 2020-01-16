@@ -96,10 +96,15 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
             SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.FullBgm, 0.8f);
             SoundManager.Instance.SetStartingBgmFlag(true);
         }
+        if(scene == "StreamF")
+        {
+            GameObject.FindObjectOfType<MyCinemachineDollyCart>().m_Position = 5300;
+        }
         if (scene == "BoneF")
         {
-            SoundManager.Instance.PlayBgm(EBgmTable.LastBgm);
-            SoundManager.Instance.SetLastBgmFlag(true);
+            //SoundManager.Instance.PlayBgm(EBgmTable.LastBgm);
+            //SoundManager.Instance.SetLastBgmFlag(true);
+            GameObject.FindObjectOfType<MyCinemachineDollyCart>().m_Position = 8300;
         }
         //if (scene == "CaveF")
         //    SoundManager.Instance.PlayBgm(EBgmTable.Cave);
