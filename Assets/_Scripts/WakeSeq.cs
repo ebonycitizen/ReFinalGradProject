@@ -81,5 +81,6 @@ public class WakeSeq : MonoBehaviour
 
         yield return new WaitForSeconds(splineRoute.speed - 0.5f);
         soulOrca.transform.parent = lastRoute.transform;
+        soulOrca.transform.DOLocalRotate(new Vector3(0, 180, 0), 5);
     }
 }

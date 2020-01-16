@@ -43,7 +43,7 @@ public class IllusionFish : MonoBehaviour
         var particle = GetComponent<ParticleSystem>();
 
         particleRenderer.material = disappearMat;
-        particle.Stop();
+        particle.Clear();
 
         m_disapearEff.Play();
 
