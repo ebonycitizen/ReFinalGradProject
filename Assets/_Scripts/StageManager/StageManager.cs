@@ -56,7 +56,6 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
             yield return null;
         }
 
-
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         GameObject behaviour = GameObject.Find("Behavior Manager");
@@ -93,12 +92,18 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         if (scene == "TutorialF")
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
         if (scene == "IceF")
+        {
             SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.FullBgm, 0.8f);
-        //if (scene == "CoralF")
-        //    SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
+            SoundManager.Instance.SetStartingBgmFlag(true);
+        }
+        if (scene == "BoneF")
+        {
+            SoundManager.Instance.PlayBgm(EBgmTable.LastBgm);
+            SoundManager.Instance.SetLastBgmFlag(true);
+        }
         //if (scene == "CaveF")
         //    SoundManager.Instance.PlayBgm(EBgmTable.Cave);
-    }
+        }
 
     private void ChangeFogUsage()
     {

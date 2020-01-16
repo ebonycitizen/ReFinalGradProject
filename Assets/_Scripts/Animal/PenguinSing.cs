@@ -51,6 +51,14 @@ public class PenguinSing : PenguinFunction
     void Start()
     {
         //m_audio.volume = 0;
+        SoundManager.Instance
+    .ObserveEveryValueChanged(x => x.IsBgmStarted)
+    .Where(x => x)
+    .Subscribe(_ =>
+    {
+        m_audio.Play();
+    }).AddTo(this);
+
     }
 
     // Update is called once per frame
@@ -61,12 +69,6 @@ public class PenguinSing : PenguinFunction
         //    Setup();
         //}
 
-        //SoundManager.Instance
-        //    .ObserveEveryValueChanged(x => x.IsBgmStarted)
-        //    .Where(x => x)
-        //    .Subscribe(_ =>
-        //    {
-        //        m_audio.Play();
-        //    }).AddTo(this);
+
     }
 }
