@@ -22,6 +22,9 @@ public partial class OrcaState
             
             Sequence s = DOTween.Sequence();
 
+            if(Context.dolly.m_Speed <= 20f)
+                atkDist = 5f;
+
             s.AppendCallback(() => animator.SetTrigger("Attack"))
                 .AppendInterval(0.1f)
                 .Append(orca.DOLocalMove(orca.localPosition +  orca.forward * atkDist, rotateSec))
