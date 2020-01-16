@@ -27,6 +27,8 @@ public class Spark : MonoBehaviour
     private GameObject area;
     [SerializeField]
     private float areaDisappearTime = 30f;
+    [SerializeField]
+    private SparkBgmPart bgm;
 
     private Material soulMat;
     private float mainIntensity;
@@ -34,6 +36,11 @@ public class Spark : MonoBehaviour
     public Material GetScanMaterial()
     {
         return scanMat;
+    }
+
+    public SparkBgmPart GetSparkBgm()
+    {
+        return bgm;
     }
 
     private void OnEnable()
@@ -57,13 +64,13 @@ public class Spark : MonoBehaviour
         soulMat = soul.GetComponentInChildren<SkinnedMeshRenderer>().material;
         soulMat.color = new Color(soulMat.color.r, soulMat.color.g, soulMat.color.b, 0f);
 
-        gameObject.SetActive(false);
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       
+       gameObject.SetActive(false);
     }
 
     // Update is called once per frame
