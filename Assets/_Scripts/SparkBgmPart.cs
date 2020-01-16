@@ -11,15 +11,15 @@ public class SparkBgmPart : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        SoundManager.Instance
-            .ObserveEveryValueChanged(x => x.IsLastBgmStarted)
-            .Where(x => x)
-            .Subscribe(_ =>
-            {
-                audio.Play();
-            }).AddTo(this);
+        //SoundManager.Instance
+        //    .ObserveEveryValueChanged(x => x.IsLastBgmStarted)
+        //    .Where(x => x)
+        //    .Subscribe(_ =>
+        //    {
+        //        audio.Play();
+        //    }).AddTo(this);
 
-        audio.volume = 0;
+        //audio.volume = 0;
     }
 
     // Update is called once per frame

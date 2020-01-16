@@ -24,12 +24,12 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         IsBgmStarted = status;
     }
 
-    public bool IsLastBgmStarted { get; private set; }
+    //public bool IsLastBgmStarted { get; private set; }
 
-    public void SetLastBgmFlag(bool status)
-    {
-        IsLastBgmStarted = status;
-    }
+    //public void SetLastBgmFlag(bool status)
+    //{
+    //    IsLastBgmStarted = status;
+    //}
 
     public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float volume = 1)
     {
