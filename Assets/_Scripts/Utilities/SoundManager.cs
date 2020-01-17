@@ -68,6 +68,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         else
         {
             m_bgmAudio.clip = clip;
+            m_bgmAudio.loop = true;
             m_bgmAudio.Play();
         }
     }
@@ -88,6 +89,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         {
             m_bgmAudio.volume = clampVolume;
             m_bgmAudio.clip = clip;
+            m_bgmAudio.loop = true;
             m_bgmAudio.Play();
         }
     }

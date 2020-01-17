@@ -111,7 +111,7 @@ public partial class OrcaState
                     ratio = 1f;
             }
 
-            targetPos -= orca.transform.up *0.3f;
+            targetPos -= orca.transform.up *0.2f;
 
             orca.localPosition = Vector3.Lerp(orca.localPosition, targetPos, Time.fixedDeltaTime * ratio);
 

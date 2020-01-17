@@ -27,7 +27,7 @@ public class ThankSeq : MonoBehaviour
 
     private IEnumerator StartUp()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         SteamVR_Fade.Start(new Color(0, 0, 0, 0), 2f);
         yield return new WaitForSeconds(4f);

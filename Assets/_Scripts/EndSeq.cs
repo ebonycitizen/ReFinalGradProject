@@ -85,11 +85,11 @@ public class EndSeq : MonoBehaviour
         lastRoute.Resume();
         yield return new WaitForSeconds(3f);
         StartCoroutine("ChangeSpeed");
-        yield return new WaitForSeconds(6f);
-
-        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 8f);
-
         yield return new WaitForSeconds(8f);
+
+        SteamVR_Fade.Start(new Color(0, 0, 0, 1), 6f);
+
+        yield return new WaitForSeconds(6f);
         SceneManager.LoadSceneAsync("ThankF", LoadSceneMode.Single);
     }
 

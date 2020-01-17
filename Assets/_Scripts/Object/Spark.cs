@@ -30,9 +30,6 @@ public class Spark : MonoBehaviour
     [SerializeField]
     private SparkBgmPart bgm;
 
-    [SerializeField]
-    private SparkBgmPart bgm;
-
     public SparkBgmPart GetBgm()
     {
         return bgm;

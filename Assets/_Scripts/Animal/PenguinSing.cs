@@ -36,12 +36,12 @@ public class PenguinSing : PenguinFunction
 
             }).AddTo(this);
 
-        Observable.Timer(TimeSpan.FromSeconds(m_stopAudioTime))
-    .Subscribe(_ =>
-    {
-        StopSing();
+    //    Observable.Timer(TimeSpan.FromSeconds(m_stopAudioTime))
+    //.Subscribe(_ =>
+    //{
+    //    StopSing();
 
-    }).AddTo(this);
+    //}).AddTo(this);
 
         m_singEffect.Play();
 
@@ -51,8 +51,8 @@ public class PenguinSing : PenguinFunction
     private void StopSing()
     {
         Sequence s = DOTween.Sequence();
-        s.Append(m_audio.DOFade(0f, 1f))
-            .AppendInterval(1f)
+        s.Append(m_audio.DOFade(0f, 2f))
+            .AppendInterval(2f)
             .AppendCallback(() => m_audio.Stop());
         s.Play();
     }
@@ -67,6 +67,13 @@ public class PenguinSing : PenguinFunction
     .Subscribe(_ =>
     {
         m_audio.Play();
+    }).AddTo(this);
+
+        Observable.Timer(TimeSpan.FromSeconds(m_stopAudioTime))
+    .Subscribe(_ =>
+    {
+        StopSing();
+
     }).AddTo(this);
 
     }

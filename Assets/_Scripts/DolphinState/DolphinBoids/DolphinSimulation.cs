@@ -101,7 +101,7 @@ public class DolphinSimulation : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (state==State.Jump)
+        if (state!=State.Enter)
             return;
         if (other.gameObject.layer == LayerMask.NameToLayer("Dolly"))
         {
