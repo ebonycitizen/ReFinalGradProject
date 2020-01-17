@@ -23,5 +23,7 @@ public class TestBgm : MonoBehaviour
             SoundManager.Instance.PlayBgm(EBgmTable.TestCave, 0.7f);
         if (Input.GetKeyDown(KeyCode.Alpha5))
             SoundManager.Instance.PlayBgm(EBgmTable.TestStream);
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+            SoundManager.Instance.PlayBgm(EBgmTable.LastBgm);
     }
 }

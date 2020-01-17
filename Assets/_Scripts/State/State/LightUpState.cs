@@ -88,6 +88,7 @@ public partial class OrcaState
 
             spark.GetBgm().Play();
             ChangeMat();
+            spark.GetSparkBgm().Play();
         }
         protected internal override void Update()
         {
