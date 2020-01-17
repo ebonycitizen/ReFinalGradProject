@@ -68,6 +68,8 @@ public class WakeSeq : MonoBehaviour
         orcaMat.DOColor(soulColor, "_Color", 1f);
         orcaMat.DOFloat(0.8f, "_RimStrength", 1f);
         orcaAnimator.SetTrigger("Start");
+        SoundManager.Instance.PlayOneShotSe(ESeTable.Orac_7, 0.7f);
+
         orcaTrail.Play();
 
         Instantiate(boids);

@@ -112,7 +112,7 @@ public partial class OrcaState
         {
             if (canMove)
             {
-                orca.localPosition = Vector3.Lerp(orca.localPosition, Vector3.zero, Time.fixedDeltaTime * 1f);
+                orca.localPosition = Vector3.Lerp(orca.localPosition, Vector3.zero, Time.fixedDeltaTime * 0.5f);
                 orca.localRotation = Quaternion.Lerp(orca.localRotation, Quaternion.Euler(0, 0, rot.localEulerAngles.z), Time.fixedDeltaTime * 2f);
             }
         }
