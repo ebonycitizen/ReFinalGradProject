@@ -28,6 +28,14 @@ public class Spark : MonoBehaviour
     [SerializeField]
     private float areaDisappearTime = 30f;
 
+    [SerializeField]
+    private SparkBgmPart bgm;
+
+    public SparkBgmPart GetBgm()
+    {
+        return bgm;
+    }
+
     private Material soulMat;
     private float mainIntensity;
 

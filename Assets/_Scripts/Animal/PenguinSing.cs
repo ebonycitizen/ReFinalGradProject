@@ -3,6 +3,7 @@ using UniRx;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PenguinSing : PenguinFunction
 {
@@ -38,7 +39,7 @@ public class PenguinSing : PenguinFunction
         Observable.Timer(TimeSpan.FromSeconds(m_stopAudioTime))
     .Subscribe(_ =>
     {
-        m_audio.Stop();
+        StopSing();
 
     }).AddTo(this);
 
@@ -47,10 +48,27 @@ public class PenguinSing : PenguinFunction
         m_audio.volume = 1;
     }
 
+    private void StopSing()
+    {
+        Sequence s = DOTween.Sequence();
+        s.Append(m_audio.DOFade(0f, 1f))
+            .AppendInterval(1f)
+            .AppendCallback(() => m_audio.Stop());
+        s.Play();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         //m_audio.volume = 0;
+        SoundManager.Instance
+    .ObserveEveryValueChanged(x => x.IsBgmStarted)
+    .Where(x => x)
+    .Subscribe(_ =>
+    {
+        m_audio.Play();
+    }).AddTo(this);
+
     }
 
     // Update is called once per frame
@@ -61,12 +79,6 @@ public class PenguinSing : PenguinFunction
         //    Setup();
         //}
 
-        //SoundManager.Instance
-        //    .ObserveEveryValueChanged(x => x.IsBgmStarted)
-        //    .Where(x => x)
-        //    .Subscribe(_ =>
-        //    {
-        //        m_audio.Play();
-        //    }).AddTo(this);
+
     }
 }

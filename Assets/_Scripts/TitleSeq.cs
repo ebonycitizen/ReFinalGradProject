@@ -43,6 +43,8 @@ public class TitleSeq : MonoBehaviour
         var duration = 4f;
         SteamVR_Fade.Start(new Color(0, 0, 0, 0), duration, true);
 
+        SoundManager.Instance.PlayBgm(EBgmTable.Title);
+
         EnableLight(duration);
     
         skyboxMat = RenderSettings.skybox;
@@ -94,6 +96,8 @@ public class TitleSeq : MonoBehaviour
 
     private IEnumerator StartUp()
     {
+        SoundManager.Instance.DoFadeOutBgm(1);
+
         //SoundManager.Instance.PlayLoopSe(ESeTable.Water_4);
 
         yield return new WaitForSeconds(1f);

@@ -93,7 +93,15 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         if (scene == "TutorialF")
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
         if (scene == "IceF")
+        {
             SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.FullBgm, 0.8f);
+            SoundManager.Instance.SetStartingBgmFlag(true);
+        }
+        if (scene == "BoneF")
+        {
+            SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.LastBgm, 0.8f);
+            SoundManager.Instance.SetLastBgmFlag(true);
+        }
         //if (scene == "CoralF")
         //    SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
         //if (scene == "CaveF")

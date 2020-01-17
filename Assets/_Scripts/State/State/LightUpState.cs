@@ -86,6 +86,7 @@ public partial class OrcaState
             //hasTouch = false;
             //hasChangeMat = false;
 
+            spark.GetBgm().Play();
             ChangeMat();
         }
         protected internal override void Update()

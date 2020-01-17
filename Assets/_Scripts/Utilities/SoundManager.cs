@@ -24,6 +24,13 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         IsBgmStarted = status;
     }
 
+    public bool IsLastBgmStarted { get; private set; }
+
+    public void SetLastBgmFlag(bool status)
+    {
+        IsLastBgmStarted = status;
+    }
+
     public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float volume = 1)
     {
         if (m_bgmAudio.isPlaying)
@@ -104,17 +111,18 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
             m_bgmAudio.Play();
         }
     }
-    public void StopAllBgm()
-    {
-        m_bgmAudio.Stop();
-    }
 
     public void FadeAllSe(float duration)
     {
         foreach (var se in m_seAudioSources)
         {
-            se.DOFade(0, duration);
+            se.DOFade(0, duration).OnComplete(() => se.Stop());
         }
+    }
+
+    public void FadeAllBgm(float duration)
+    {
+        m_bgmAudio.DOFade(0, duration);
     }
 
     public void ResetSeVolume()
