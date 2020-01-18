@@ -102,8 +102,8 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
             SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.LastBgm, 0.8f);
             SoundManager.Instance.SetLastBgmFlag(true);
         }
-        //if (scene == "CoralF")
-        //    SoundManager.Instance.PlayBgm(EBgmTable.Ocean);
+        if (scene == "CoralF")
+            SoundManager.Instance.SetLastBgmFlag(false);
         //if (scene == "CaveF")
         //    SoundManager.Instance.PlayBgm(EBgmTable.Cave);
     }

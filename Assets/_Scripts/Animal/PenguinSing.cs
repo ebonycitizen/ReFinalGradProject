@@ -55,6 +55,7 @@ public class PenguinSing : PenguinFunction
             .AppendInterval(2f)
             .AppendCallback(() => m_audio.Stop());
         s.Play();
+        SoundManager.Instance.SetStartingBgmFlag(false);
     }
 
     // Start is called before the first frame update
