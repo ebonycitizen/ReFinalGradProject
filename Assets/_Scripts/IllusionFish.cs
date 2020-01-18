@@ -32,7 +32,7 @@ public class IllusionFish : MonoBehaviour
 
         StartCoroutine("Disappear");
 
-        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Sparkle_2, speaker);
+        SoundManager.Instance.PlayOneShot3DSe(ESeTable.Fish, speaker);
     }
 
     private IEnumerator Disappear()

@@ -39,6 +39,8 @@ public enum ESeTable
     Whale_1,
     Whale_2,
     Whale_3,
+
+    Fish,
 }
 public class SeContainer : MonoBehaviour
 {
