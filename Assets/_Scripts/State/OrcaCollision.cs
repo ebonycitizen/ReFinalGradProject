@@ -107,6 +107,9 @@ public class OrcaCollision : MonoBehaviour
                 else
                     HI5.HI5_Manager.EnableRightVibration(500);
 
+                if (grab.GetIsRightHand() && !grab.FirstContact)
+                    grab.FirstContact = true;
+
             }
         }
         else

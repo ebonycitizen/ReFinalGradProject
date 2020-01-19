@@ -35,6 +35,8 @@ public class HitCrystal : MonoBehaviour
             Instantiate(hitEffect,cameraEye);
 
             Instantiate(crack, cameraEye);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.HeadHitCrystal,1);
+            GetComponent<Collider>().enabled = false;
         }
     }
 }

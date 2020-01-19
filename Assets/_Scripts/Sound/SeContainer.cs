@@ -42,6 +42,7 @@ public enum ESeTable
 
     Fish,
     Disappear,
+    HeadHitCrystal,
 }
 public class SeContainer : MonoBehaviour
 {

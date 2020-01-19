@@ -91,6 +91,8 @@ public class Grab : MonoBehaviour
         return approachObj;
     }
 
+    public bool FirstContact { get; set; }
+
     private LineRenderer line;
 
     //public GameObject LockOn(LayerMask layerMask)
@@ -115,6 +117,7 @@ public class Grab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FirstContact = false;
         hasGrab = false;
         fingers = new List<GameObject>();
         previousFingerCount = fingers.Count;
