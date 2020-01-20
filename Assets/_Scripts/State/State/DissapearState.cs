@@ -95,7 +95,7 @@ public partial class OrcaState
 
             s.AppendCallback(() => SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_5, speaker))
                 .AppendInterval(1f)
-                .AppendCallback(() => SoundManager.Instance.PlayOneShot3DSe(ESeTable.Disappear, speaker))
+                .AppendCallback(() => SoundManager.Instance.PlayOntShotSe(ESeTable.Disappear))
                 .AppendCallback(() => ChangeMat())
                 .AppendCallback(() => CreateEffect())
                 .AppendInterval(14f)

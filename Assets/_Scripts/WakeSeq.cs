@@ -74,6 +74,7 @@ public class WakeSeq : MonoBehaviour
 
         Instantiate(boids);
 
+        SoundManager.Instance.DoFadeInBgm(EBgmTable.EndBgm, 2, 1);
         yield return new WaitForSeconds(2f);
         splineRoute.StartMove();
 

@@ -14,6 +14,7 @@ public enum EBgmTable
     FullBgm,
     LastBgm,
     Title,
+    EndBgm,
 
 }
 public class BgmContainer : MonoBehaviour

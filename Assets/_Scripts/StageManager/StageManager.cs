@@ -24,7 +24,7 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial, duration: 30, volume: 0.8f);
+        SoundManager.Instance.DoFadeInBgm(EBgmTable.Tutorial, duration: 30, maxVolume: 0.8f);
     }
 
     private IEnumerator Load(string scene)
@@ -60,11 +60,11 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene));
 
         GameObject behaviour = GameObject.Find("Behavior Manager");
-        if(behaviour != null)
+        if (behaviour != null)
             SceneManager.MoveGameObjectToScene(behaviour, SceneManager.GetSceneByName(scene));
 
         ChangeBGM(scene);
-        
+
         yield return new WaitForSeconds(changeStage.GetUnloadWaitSec());
         SceneManager.UnloadSceneAsync(oldScene);
         ChangePostEffect();
@@ -94,11 +94,20 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
             SoundManager.Instance.PlayBgm(EBgmTable.Tutorial);
         if (scene == "IceF")
         {
+            //FadeOut
             SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.FullBgm, 0.8f);
             SoundManager.Instance.SetStartingBgmFlag(true);
         }
         if (scene == "BoneF")
         {
+            //FadeIn
+            //SoundManager.Instance.DoFadeOutBgm(duration: 1);
+            //Observable.Timer(TimeSpan.FromSeconds(1))
+            //    .Subscribe(_ =>
+            //    {
+            //        //SoundManager.Instance.DoFadeInBgmWithoutLoop(EBgmTable.LastBgm, 1, 0.8f);
+                    
+            //    }).AddTo(this);
             SoundManager.Instance.PlayBgmWithoutLoop(EBgmTable.LastBgm, 0.8f);
             SoundManager.Instance.SetLastBgmFlag(true);
         }

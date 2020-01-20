@@ -23,7 +23,7 @@ public class OrcaCollision : MonoBehaviour
     [SerializeField]
     private OrcaState orcaState;
 
-
+    private int touchTimes;
 
     public void PlayNoEffect()
     {
@@ -41,6 +41,7 @@ public class OrcaCollision : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         speaker = GetComponentInChildren<Speaker>();
+        touchTimes = 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,14 +68,14 @@ public class OrcaCollision : MonoBehaviour
         if (other.gameObject.tag == "Water")
         {
             //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpIntoWater, speaker);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.7f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.4f);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
         }
         if (other.gameObject.tag == "Jump")
         {
             //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpIntoWater, speaker);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.7f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.4f);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
             orcaState.ChangeState("G_Idle", this.gameObject);
@@ -108,8 +109,11 @@ public class OrcaCollision : MonoBehaviour
                     HI5.HI5_Manager.EnableRightVibration(500);
 
                 if (grab.GetIsRightHand() && !grab.FirstContact)
-                    grab.FirstContact = true;
-
+                {
+                    touchTimes++;
+                    if(touchTimes >= 2)
+                        grab.FirstContact = true;
+                }
             }
         }
         else

@@ -96,9 +96,11 @@ public class TitleSeq : MonoBehaviour
 
     private IEnumerator StartUp()
     {
-        SoundManager.Instance.DoFadeOutBgm(1);
+        SoundManager.Instance.PlayLoopSe(ESeTable.TitleStart);
 
-        //SoundManager.Instance.PlayLoopSe(ESeTable.Water_4);
+        SoundManager.Instance.DoFadeOutBgm(2);
+
+        
 
         yield return new WaitForSeconds(1f);
 

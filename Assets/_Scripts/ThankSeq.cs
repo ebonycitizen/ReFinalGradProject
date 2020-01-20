@@ -27,7 +27,7 @@ public class ThankSeq : MonoBehaviour
 
     private IEnumerator StartUp()
     {
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
 
         SteamVR_Fade.Start(new Color(0, 0, 0, 0), 2f);
         yield return new WaitForSeconds(4f);
@@ -41,6 +41,10 @@ public class ThankSeq : MonoBehaviour
 
         SteamVR_Fade.Start(new Color(0, 0, 0, 1), 2f);
         yield return new WaitForSeconds(2f);
+
+        var gameObj = GameObject.Find("SoundManager");
+        if (gameObj != null)
+            Destroy(gameObj);
 
         SceneManager.LoadSceneAsync("TitleF", LoadSceneMode.Single);
     }

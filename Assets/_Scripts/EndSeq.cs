@@ -88,6 +88,7 @@ public class EndSeq : MonoBehaviour
         yield return new WaitForSeconds(8f);
 
         SteamVR_Fade.Start(new Color(0, 0, 0, 1), 6f);
+        SoundManager.Instance.DoFadeOutBgm(4f);
 
         yield return new WaitForSeconds(6f);
         SceneManager.LoadSceneAsync("ThankF", LoadSceneMode.Single);

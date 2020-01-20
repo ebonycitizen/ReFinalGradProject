@@ -31,7 +31,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         IsLastBgmStarted = status;
     }
 
-    public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float volume = 1)
+    public void DoFadeInBgm(EBgmTable bgmType, float duration = 3, float maxVolume = 1)
     {
         if (m_bgmAudio.isPlaying)
             m_bgmAudio.Stop();
@@ -47,13 +47,34 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         {
             m_bgmAudio.clip = clip;
             m_bgmAudio.Play();
-            m_bgmAudio.DOFade(volume, duration);
+            m_bgmAudio.loop = true;
+            m_bgmAudio.DOFade(maxVolume, duration);
+        }
+    }
+
+    public void DoFadeInBgmWithoutLoop(EBgmTable bgmType, float duration = 3, float maxVolume = 1)
+    {
+        if (m_bgmAudio.isPlaying)
+            m_bgmAudio.Stop();
+
+        if (m_bgmAudio.volume != 0)
+            m_bgmAudio.volume = 0;
+
+        var clip = FindClipInBgmContainer(bgmType);
+
+        if (!clip)
+            return;
+        else
+        {
+            m_bgmAudio.clip = clip;
+            m_bgmAudio.Play();
+            m_bgmAudio.loop = false;
+            m_bgmAudio.DOFade(maxVolume, duration);
         }
     }
     public void DoFadeOutBgm(float duration = 3)
     {
         m_bgmAudio.DOFade(0, duration).OnComplete(() => m_bgmAudio.Stop());
-
     }
 
     public void PlayBgm(EBgmTable bgmType)
