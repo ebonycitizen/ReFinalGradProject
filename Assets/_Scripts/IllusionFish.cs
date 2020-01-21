@@ -44,10 +44,11 @@ public class IllusionFish : MonoBehaviour
 
         particleRenderer.material = disappearMat;
         particle.Clear();
+        particle.Stop();
 
         m_disapearEff.Play();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         Destroy(gameObject);
     }

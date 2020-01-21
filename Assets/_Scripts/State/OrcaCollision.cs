@@ -23,7 +23,7 @@ public class OrcaCollision : MonoBehaviour
     [SerializeField]
     private OrcaState orcaState;
 
-
+    private int touchTimes;
 
     public void PlayNoEffect()
     {
@@ -41,6 +41,7 @@ public class OrcaCollision : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         speaker = GetComponentInChildren<Speaker>();
+        touchTimes = 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -108,8 +109,11 @@ public class OrcaCollision : MonoBehaviour
                     HI5.HI5_Manager.EnableRightVibration(500);
 
                 if (grab.GetIsRightHand() && !grab.FirstContact)
-                    grab.FirstContact = true;
-
+                {
+                    touchTimes++;
+                    if(touchTimes >= 2)
+                        grab.FirstContact = true;
+                }
             }
         }
         else

@@ -58,6 +58,7 @@ public class OrcaSoul : MonoBehaviour
 
     private IEnumerator StartEffect()
     {
+        SoundManager.Instance.PlayOneShotSe(ESeTable.LastOrcaTouch, 1);
         GetComponent<Collider>().enabled = false;
 
         var text = Object.FindObjectOfType<Text>();

@@ -43,6 +43,8 @@ public enum ESeTable
     Fish,
     Disappear,
     HeadHitCrystal,
+    LastOrcaTouch,
+    TitleStart,
 }
 public class SeContainer : MonoBehaviour
 {
