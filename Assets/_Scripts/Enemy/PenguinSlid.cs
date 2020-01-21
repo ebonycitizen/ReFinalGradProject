@@ -27,9 +27,13 @@ public class PenguinSlid : PenguinFunction, ITriggerSetupper
 
     public void PlayWalk()
     {
-        m_agent.enabled = true;
+        m_penguinAnimator.StopAnimation();
+        m_penguinAnimator.PlayNextAnimation("Walk");
         m_move.Stop();
         m_move.StopAllCoroutines();
+
+        m_agent.enabled = true;
+
         m_behavior.EnableBehavior();
 
     }
