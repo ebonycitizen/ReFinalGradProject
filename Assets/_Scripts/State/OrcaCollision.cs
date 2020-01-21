@@ -68,14 +68,14 @@ public class OrcaCollision : MonoBehaviour
         if (other.gameObject.tag == "Water")
         {
             //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpIntoWater, speaker);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.4f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.7f);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
         }
         if (other.gameObject.tag == "Jump")
         {
             //SoundManager.Instance.PlayOneShot3DSe(ESeTable.JumpIntoWater, speaker);
-            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.4f);
+            SoundManager.Instance.PlayOneShotSe(ESeTable.JumpIntoWater, 0.7f);
             Instantiate(bigSplash, other.ClosestPoint(transform.position), bigSplash.transform.rotation);
             Instantiate(waterSplash, transform);
             orcaState.ChangeState("G_Idle", this.gameObject);
