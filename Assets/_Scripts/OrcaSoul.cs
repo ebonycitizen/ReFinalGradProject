@@ -54,6 +54,13 @@ public class OrcaSoul : MonoBehaviour
 
             StartCoroutine("StartEffect");
         }
+        else if (other.gameObject.tag == "ControllerPalmTrigger")
+        {
+            var hand = other.GetComponent<ControllerHand>();
+            hand.ControllerHaptic();
+
+            StartCoroutine("StartEffect");
+        }
     }
 
     private IEnumerator StartEffect()

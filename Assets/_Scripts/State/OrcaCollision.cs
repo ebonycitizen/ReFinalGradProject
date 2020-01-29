@@ -116,6 +116,20 @@ public class OrcaCollision : MonoBehaviour
                 }
             }
         }
+        else if (collision.gameObject.tag == "ControllerPalmTrigger")
+        {
+
+            var hand = collision.gameObject.GetComponent<ControllerHand>();
+            if (hand != null)
+            {
+                heart.Play();
+                animator.SetTrigger("SpoilSolo");
+                SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_4, speaker);
+
+                hand.ControllerHaptic();
+                hand.FirstContact = true;
+            }
+        }
         else
             Instantiate(hitPrefab, c[0].point, Quaternion.identity);
     }

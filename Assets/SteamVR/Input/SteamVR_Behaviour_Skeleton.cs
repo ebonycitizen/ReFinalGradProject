@@ -644,11 +644,11 @@ namespace Valve.VR
                 }
                 else
                 {
-                    for (int boneIndex = 0; boneIndex < bones.Length; boneIndex++)
-                    {
-                        SetBonePosition(boneIndex, blendSnapshot.bonePositions[boneIndex]);
-                        SetBoneRotation(boneIndex, blendSnapshot.boneRotations[boneIndex]);
-                    }
+                    //for (int boneIndex = 0; boneIndex < bones.Length; boneIndex++)
+                    //{
+                    //    SetBonePosition(boneIndex, blendSnapshot.bonePositions[boneIndex]);
+                    //    SetBoneRotation(boneIndex, blendSnapshot.boneRotations[boneIndex]);
+                    //}
                 }
             }
             else if (skeletonBlend >= 1)

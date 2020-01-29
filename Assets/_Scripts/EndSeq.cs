@@ -58,8 +58,19 @@ public class EndSeq : MonoBehaviour
 
             touchTimes++;
 
-            if(touchTimes == 2)
+            if(touchTimes == 1)
                 StartSeq();
+        }
+        else if (other.gameObject.tag == "ControllerPalmTrigger")
+        {
+            var hand = other.GetComponent<ControllerHand>();
+            hand.ControllerHaptic();
+
+            touchTimes++;
+
+            if (touchTimes == 1)
+                StartSeq();
+
         }
     }
 

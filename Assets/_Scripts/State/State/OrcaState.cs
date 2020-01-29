@@ -38,6 +38,8 @@ public partial class OrcaState : MonoBehaviour
     private Grab rightHand;
     [SerializeField]
     private Grab leftHand;
+    [SerializeField]
+    private ControllerHand controllerHand;
 
     [SerializeField] //for debug
     private GameObject rayObject;
@@ -57,6 +59,8 @@ public partial class OrcaState : MonoBehaviour
 
     [SerializeField]
     private MyCinemachineDollyCart dolly;
+
+    public bool CanWave { get; set; }
 
     private void Awake()
     {
@@ -81,6 +85,7 @@ public partial class OrcaState : MonoBehaviour
 
         stateMachine.AddTransition<IdleState, DissapearState>((int)StateEventId.Dissapear);
 
+        stateMachine.AddTransition<ComeState, SwimState>((int)StateEventId.Swim);
 
         //stateMachine.AddTransition<IdleState, FollowState>((int)StateEventId.Follow);
         //stateMachine.AddTransition<TutorialState, FollowState>((int)StateEventId.Follow);
@@ -182,6 +187,11 @@ public partial class OrcaState : MonoBehaviour
             return true;
         }
         if (tag == "G_Swim" && stateMachine.CurrentStateName == "IdleState")
+        {
+            stateMachine.SendEvent((int)StateEventId.Swim);
+            return true;
+        }
+        if (tag == "G_Swim" && stateMachine.CurrentStateName == "ComeState")
         {
             stateMachine.SendEvent((int)StateEventId.Swim);
             return true;

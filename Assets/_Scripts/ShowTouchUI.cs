@@ -36,6 +36,6 @@ public class ShowTouchUI : MonoBehaviour
     {
         if (GameObject.Find("OrcaSoulBall").GetComponent<Collider>().enabled == false)
             return;
-        text.DOFade(1f, 1f).SetDelay(15f);
+        text.DOFade(1f, 1f).SetDelay(10f);
     }
 }

@@ -32,6 +32,7 @@ public partial class OrcaState
             targetPos = orca.position;
 
             Context.SetBehaviorStatus(true);
+            Context.CanWave = true;
 
             SoundManager.Instance.PlayOneShot3DSe(ESeTable.Orac_5, orca.GetComponentInChildren<Speaker>());
         }
@@ -64,6 +65,7 @@ public partial class OrcaState
         protected internal override void Exit()
         {
             Context.SetBehaviorStatus(false);
+            Context.CanWave = false;
         }
     }
 }

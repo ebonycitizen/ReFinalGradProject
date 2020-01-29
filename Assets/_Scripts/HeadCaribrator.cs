@@ -14,7 +14,7 @@ public class HeadCaribrator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Callibrate();
+        Callibrate();
     }
 
     // Update is called once per frame

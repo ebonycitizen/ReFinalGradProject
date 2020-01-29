@@ -30,6 +30,7 @@ public partial class OrcaState
             s.AppendCallback(() => animator.SetTrigger("Attack"))
                 .AppendInterval(0.1f)
                 .Append(orca.DOLocalMove(orca.localPosition +  orca.forward * atkDist, rotateSec))
+                .AppendCallback(()=>Context.CanWave = true)
                 .AppendCallback(()=> stateMachine.PopAndDirectSetState());
             
             s.Play();

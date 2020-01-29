@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using BrunoMikoski.TextJuicer;
+using SWS;
 
 public class PathMoveCome : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class PathMoveCome : MonoBehaviour
     [SerializeField]
     private MyCinemachineDollyCart dollyCart;
 
+    [SerializeField]
+    private GameObject sendObj;
+    private OrcaState orcaState;
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +59,8 @@ public class PathMoveCome : MonoBehaviour
            .SetLookAt(0.05f, Vector3.forward))
            .AppendCallback(() => hasDone = true)
            .AppendCallback(() => UISeq1());
+
+        orcaState = Object.FindObjectOfType<OrcaState>();
     }
 
     // Update is called once per frame
@@ -129,11 +136,27 @@ public class PathMoveCome : MonoBehaviour
     public void EndEvent()
     {
         StartCoroutine("EventEnd");
+        
+        bool hasChangeState = orcaState.ChangeState("G_Swim", sendObj);
+
+        sendObj.GetComponent<splineMove>().StartMove();
+
+        if (!hasChangeState)
+            return;
+
+        StartCoroutine("ChangeState");
+    }
+    private IEnumerator ChangeState()
+    {
+        yield return new WaitForSeconds(4f);
+        {
+            bool hasChangeState = orcaState.ChangeState("G_Idle", sendObj);
+        }
     }
     private IEnumerator EventEnd()
     {
         UISeq2();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         float time = 10f;
         while (time < 10)
         {

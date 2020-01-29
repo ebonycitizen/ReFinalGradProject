@@ -62,6 +62,22 @@ namespace Valve.VR.InteractionSystem
 
 			return velocity;
 		}
+        public float GetVelocityEstimateX()
+		{
+			// Compute average velocity
+			float velocity = 0;
+			int velocitySampleCount = Mathf.Min( sampleCount, velocitySamples.Length );
+			if ( velocitySampleCount != 0 )
+			{
+				for ( int i = 0; i < velocitySampleCount; i++ )
+				{
+                    velocity += Mathf.Abs(velocitySamples[i].x);
+				}
+				velocity *= ( 1.0f / velocitySampleCount );
+			}
+
+			return velocity;
+		}
 
 
 		//-------------------------------------------------
@@ -81,6 +97,7 @@ namespace Valve.VR.InteractionSystem
 
 			return angularVelocity;
 		}
+        
 
 
 		//-------------------------------------------------
@@ -122,8 +139,8 @@ namespace Valve.VR.InteractionSystem
 		{
 			sampleCount = 0;
 
-			Vector3 previousPosition = transform.position;
-			Quaternion previousRotation = transform.rotation;
+			Vector3 previousPosition = transform.localPosition;
+			Quaternion previousRotation = transform.localRotation;
 			while ( true )
 			{
 				yield return new WaitForEndOfFrame();
@@ -135,10 +152,10 @@ namespace Valve.VR.InteractionSystem
 				sampleCount++;
 
 				// Estimate linear velocity
-				velocitySamples[v] = velocityFactor * ( transform.position - previousPosition );
+				velocitySamples[v] = velocityFactor * ( transform.localPosition - previousPosition );
 
 				// Estimate angular velocity
-				Quaternion deltaRotation = transform.rotation * Quaternion.Inverse( previousRotation );
+				Quaternion deltaRotation = transform.localRotation * Quaternion.Inverse( previousRotation );
 
 				float theta = 2.0f * Mathf.Acos( Mathf.Clamp( deltaRotation.w, -1.0f, 1.0f ) );
 				if ( theta > Mathf.PI )
@@ -154,8 +171,8 @@ namespace Valve.VR.InteractionSystem
 
 				angularVelocitySamples[w] = angularVelocity;
 
-				previousPosition = transform.position;
-				previousRotation = transform.rotation;
+				previousPosition = transform.localPosition;
+				previousRotation = transform.localRotation;
 			}
 		}
 	}

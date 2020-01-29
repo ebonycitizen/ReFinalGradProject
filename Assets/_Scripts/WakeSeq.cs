@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using SWS;
+using Valve.VR;
 
 public class WakeSeq : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class WakeSeq : MonoBehaviour
     private Animator orcaAnimator;
     private Material orcaMat;
     private SkinnedMeshRenderer[] hands;
+    private SkinnedMeshRenderer controllerHand;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,9 @@ public class WakeSeq : MonoBehaviour
         {
             hands[i] = viveInstance[i].GetComponentInChildren<SkinnedMeshRenderer>();
         }
+
+        controllerHand = Object.FindObjectOfType<SteamVR_Behaviour_Skeleton>()
+            .GetComponentInChildren<SkinnedMeshRenderer>();
 
     }
 
@@ -60,6 +65,9 @@ public class WakeSeq : MonoBehaviour
             if(h != null)
             h.material = soulHand;
         }
+
+        if (controllerHand != null)
+            controllerHand.material = soulHand;
 
         GameObject.Find("OrcaModel").SetActive(false);
         yield return null;

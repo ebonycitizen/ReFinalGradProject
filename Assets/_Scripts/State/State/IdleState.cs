@@ -39,6 +39,8 @@ public partial class OrcaState
             ratio = 0.25f;
             
             Context.SetBehaviorStatus(true);
+
+            Context.CanWave = true;
         }
         protected internal override void Update()
         {
@@ -87,6 +89,7 @@ public partial class OrcaState
             //Debug.Log("IdleExit");
 
             Context.SetBehaviorStatus(false);
+            Context.CanWave = false;
         }
 
         private void Move()
