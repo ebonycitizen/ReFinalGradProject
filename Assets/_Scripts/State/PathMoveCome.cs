@@ -23,6 +23,8 @@ public class PathMoveCome : MonoBehaviour
 
     [SerializeField]
     private GameObject tutorial_4;
+    [SerializeField]
+    private GameObject tutorial_5;
 
     [SerializeField]
     private ParticleSystem[] illusionFishes;
@@ -78,6 +80,8 @@ public class PathMoveCome : MonoBehaviour
         var textGroup2 = tutorial_4.GetComponentInChildren<CanvasGroup>();
         textGroup2.DOFade(0f, 0f);
 
+        var textGroup3 = tutorial_5.GetComponentInChildren<CanvasGroup>();
+        textGroup3.DOFade(0f, 0f);
     }
 
     private void UISeq1()
@@ -100,19 +104,34 @@ public class PathMoveCome : MonoBehaviour
 
         var textGroup1 = tutorial_3.GetComponentInChildren<CanvasGroup>();
         var textGroup2 = tutorial_4.GetComponentInChildren<CanvasGroup>();
+        var textGroup3 = tutorial_5.GetComponentInChildren<CanvasGroup>();
 
         var anim2 = tutorial_4.GetComponentInChildren<JuicedText>();
+        var anim3 = tutorial_5.GetComponentInChildren<JuicedText>();
 
         var duration = 1f;
 
         s_1.Append(textGroup1.DOFade(0f, duration))
+            //show tutorial_4
             .Join(textGroup2.DOFade(1f, duration))
             .AppendCallback(()=> StartCoroutine("ShowIllusionFish"))
             .AppendCallback(() => anim2.Play())
+            //del tutorial_3
             .AppendInterval(1f)
             .AppendCallback(() => tutorial_3.SetActive(false))
+            
             .AppendInterval(10f)
             .Append(textGroup2.DOFade(0f, duration))
+            //show tutorial_5
+            .Join(textGroup3.DOFade(1f, duration))
+            .AppendCallback(() => anim3.Play())
+            //del tutorial_4
+            .AppendInterval(1f)
+            .AppendCallback(() => tutorial_4.SetActive(false))
+
+            .AppendInterval(7f)
+            .Append(textGroup3.DOFade(0f, duration))
+            //del tutorial_5
             .AppendInterval(1f)
             .AppendCallback(() => tutorial_4.SetActive(false));
 
